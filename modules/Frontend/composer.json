@@ -1,0 +1,23 @@
+{
+    "name": "investdor/frontend",
+    "minimum-stability": "dev",
+    "description": "",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Frontend\\Providers\\FrontendServiceProvider",
+                "Modules\\Frontend\\Providers\\ScheduleServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "modules\\Frontend\\": ""
+        }
+    },
+    "require": {
+        "zircote/swagger-php": "^3.2"
+    }
+}

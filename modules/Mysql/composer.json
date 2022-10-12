@@ -1,0 +1,22 @@
+{
+    "name": "investdor/mysql",
+    "minimum-stability": "dev",
+    "description": "",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Mysql\\Providers\\MysqlServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "modules\\Mysql\\": ""
+        }
+    },
+    "require": {
+    }
+}
