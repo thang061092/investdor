@@ -6,7 +6,10 @@ namespace Modules\Mysql\Models;
 
 class User extends BaseModel
 {
-    protected $table = 'user';
+    protected $table = 'users';
+    protected $hidden = [
+        'password'
+    ];
 
     //column
     const EMAIL = 'email';

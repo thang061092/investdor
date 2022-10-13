@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Mysql\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
