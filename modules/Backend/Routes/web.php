@@ -18,4 +18,5 @@ Route::prefix('/backend')->group(function () {
     Route::get('/', function () {
         echo 'welcome investdor Backend';
     });
+
 });

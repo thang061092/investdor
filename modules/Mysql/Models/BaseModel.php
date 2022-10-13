@@ -1,9 +1,9 @@
 <?php
-
+namespace Modules\Mysql\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
     //column
     const ID = 'id';

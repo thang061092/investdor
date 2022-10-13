@@ -1,5 +1,6 @@
 <?php
 
+namespace Modules\Mysql\Controller;
 
 use App\Http\Controllers\Controller;
 
@@ -119,4 +120,25 @@ abstract class BaseController extends Controller
     const HTTP_LOOP_DETECTED = 508;                                               // RFC5842
     const HTTP_NOT_EXTENDED = 510;                                                // RFC2774
     const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;
+
+    const STATUS = 'status';
+    const MESSAGE = 'message';
+    const DATA = 'date';
+    const SUCCESS = 'success';
+    const FAIL = 'failed';
+
+    /**
+     * @param $http_code
+     * @param $message
+     * @param null $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function send_response($http_code, $message, $data = null)
+    {
+        return response()->json([
+            self::STATUS => $http_code,
+            self::MESSAGE => $message,
+            self::DATA => $data
+        ]);
+    }
 }

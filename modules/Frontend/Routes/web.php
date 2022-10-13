@@ -17,7 +17,11 @@ Route::group(['middleware' => 'locale'], function () {
     Route::prefix('/frontend')->group(function () {
         Route::get('/', function () {
             echo __('Frontend::message.success');
-        });
+        })->name('Frontend::home.index');
+    });
+
+    Route::prefix('/template')->group(function () {
+        Route::get('/example', "TemplateController@example");
     });
 });
 
