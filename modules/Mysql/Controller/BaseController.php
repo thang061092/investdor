@@ -123,9 +123,7 @@ abstract class BaseController extends Controller
 
     const STATUS = 'status';
     const MESSAGE = 'message';
-    const DATA = 'date';
-    const SUCCESS = 'success';
-    const FAIL = 'failed';
+    const DATA = 'data';
 
     /**
      * @param $http_code

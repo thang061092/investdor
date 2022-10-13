@@ -4,9 +4,10 @@
 namespace Modules\Backend\Providers;
 
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Backend\Providers\RouteServiceProvider;
+use Modules\Backend\Http\Middleware\Locale;
 
 class BackendServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,8 @@ class BackendServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
         $this->registerTranslations();
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('locale_be', Locale::class);
     }
 
     /**
