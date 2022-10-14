@@ -170,4 +170,55 @@ class UserService
         }
         return $data;
     }
+
+    public function validate_login($request)
+    {
+        $validate = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            "email.required" => __('Backend::message.email_not_null'),
+            "email.email" => __('Backend::message.email_malformed'),
+            "password.required" => __('Backend::message.password_not_null'),
+        ]);
+        return $validate;
+    }
+
+    public function check_login($request, $type)
+    {
+        $data = [];
+        $user = $this->userRepository->findOne([
+            User::EMAIL => $request->email,
+            User::TYPE => $type
+        ]);
+        if (!($user)) {
+            $data['message'] = __('Backend::message.email_unregistered');
+        } else {
+            if ($user['status'] == User::NEW) {
+                $data['message'] = __('Backend::message.email_not_activated');
+            } elseif ($user['status'] == User::BLOCK) {
+                $data['message'] = __('Backend::message.email_temporarily_locked');
+            } elseif ($user['status'] == User::ACTIVE) {
+                if (!Hash::check($request->password, $user['password'])) {
+                    $data['message'] = __('Backend::message.password_incorrect');
+                } else {
+                    $data['user'] = $user;
+                }
+            }
+        }
+        return $data;
+    }
+
+    public function login($user)
+    {
+        $data = [
+            'id' => $user['id'],
+            'time' => time(),
+            'string' => uniqid()
+        ];
+        $token = Authorization::generateToken($data);
+        $user = $this->userRepository->update($user['id'], [User::TOKEN_APP => $token, User::LAST_LOGIN => Carbon::now()]);
+        return $user;
+    }
+
 }

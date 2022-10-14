@@ -16,14 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'locale_be'], function () {
     Route::prefix('/backend')->group(function () {
         Route::get('/', function () {
-            echo 'welcome investdor Backend - test';
+            echo __('Backend::message.success');
         });
     });
 
     Route::prefix('/user')->group(function () {
-        Route::post('/create_admin', 'UserController@create_admin');
-        Route::post('/create_employee', 'UserController@create_employee');
-        Route::post('/customer_register', 'UserController@customer_register');
-        Route::post('/login_social', 'UserController@login_social');
+        Route::post('/create_admin', 'Admin\UserController@create_admin');
+        Route::post('/employee_login', 'Admin\UserController@employee_login');
+        Route::post('/customer_register', 'Customer\UserController@customer_register');
+        Route::post('/login_social', 'Customer\UserController@login_social');
+        Route::post('/customer_login', 'Customer\UserController@customer_login');
+    });
+
+    //admin
+    Route::group(['middleware' => 'auth_employee'], function () {
+        Route::prefix('/user')->group(function () {
+            Route::post('/create_employee', 'Admin\UserController@create_employee');
+        });
+    });
+
+    //nhà đầu tư
+    Route::group(['middleware' => 'auth_investor'], function () {
+        Route::prefix('/user')->group(function () {
+
+        });
     });
 });

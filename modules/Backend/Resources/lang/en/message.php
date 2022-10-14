@@ -13,4 +13,9 @@ return [
     'type_social_illegal' => "Type Login Social illegal",
     'account_social_not_null' => "Account login social not null",
     'account_block' => "Account is block",
+    'invalid_authentication' => "Invalid authentication",
+    'email_unregistered' => "Email unregistered",
+    'email_not_activated' => "Email not activated",
+    'email_temporarily_locked' => "Email temporarily locked",
+    'password_incorrect' => "Password incorrect",
 ];

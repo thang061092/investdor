@@ -7,8 +7,9 @@ namespace Modules\Frontend\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use Modules\Frontend\Http\Middleware\Auth_employee;
+use Modules\Frontend\Http\Middleware\Auth_customer;
 use Modules\Frontend\Http\Middleware\Locale;
-use Modules\Frontend\Providers\RouteServiceProvider;
 
 class FrontendServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,8 @@ class FrontendServiceProvider extends ServiceProvider
         $this->registerViews();
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('locale', Locale::class);
+        $router->aliasMiddleware('employee', Auth_employee::class);
+        $router->aliasMiddleware('customer', Auth_customer::class);
     }
 
     /**

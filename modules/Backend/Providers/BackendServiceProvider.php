@@ -7,6 +7,8 @@ namespace Modules\Backend\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use Modules\Backend\Http\Middleware\Auth_employee;
+use Modules\Backend\Http\Middleware\Auth_investor;
 use Modules\Backend\Http\Middleware\Locale;
 
 class BackendServiceProvider extends ServiceProvider
@@ -32,6 +34,8 @@ class BackendServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('locale_be', Locale::class);
+        $router->aliasMiddleware('auth_employee', Auth_employee::class);
+        $router->aliasMiddleware('auth_investor', Auth_investor::class);
     }
 
     /**

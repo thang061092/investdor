@@ -13,4 +13,9 @@ return [
     'type_social_illegal' => "Loại login social không hợp lệ",
     'account_social_not_null' => "Tài khoản login social không để trống",
     'account_block' => "Tài khoản đang bị khóa",
+    'invalid_authentication' => "Xác thực không hợp lệ",
+    'email_unregistered' => "Email của bạn chưa đăng ký",
+    'email_not_activated' => "Email của bạn chưa được kích hoạt",
+    'email_temporarily_locked' => "Email của bạn đang tạm khóa",
+    'password_incorrect' => "Mật khẩu không chính xác",
 ];
