@@ -1,7 +1,7 @@
 @extends("frontend::template.index")
 @section("content")
     <div class="banner">
-        <img src="images/banner.jpg" class="img-fluid" alt=""/>
+        <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
         <div class="box-banner">
             <h2 class="banner_title wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">
                 Đầu tư và bất động sản
@@ -43,7 +43,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>
@@ -67,7 +67,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>
@@ -91,7 +91,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>
@@ -125,17 +125,17 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                 <span class="img">
-                                    <img src="images/hotel.jpg" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/hotel.jpg')}}" class="img-fluid" alt=""/>
                                 </span>
                                 </div>
                                 <div class="swiper-slide">
                                 <span class="img">
-                                    <img src="images/hotel.jpg" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/hotel.jpg')}}" class="img-fluid" alt=""/>
                                 </span>
                                 </div>
                                 <div class="swiper-slide">
                                 <span class="img">
-                                    <img src="images/hotel.jpg" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/hotel.jpg')}}" class="img-fluid" alt=""/>
                                 </span>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>
@@ -229,7 +229,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>
@@ -253,7 +253,7 @@
                     <div class="item-knowledge shadow wow fadeIn">
                         <div class="img d-block">
                             <a href="" title="" class="image">
-                                <img src="images/kien-thuc.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/kien-thuc.jpg')}}" class="img-fluid" alt=""/>
                             </a>
                             <div class="content p-lg-3 p-3">
                                 <h2>

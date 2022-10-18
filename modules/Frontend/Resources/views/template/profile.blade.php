@@ -21,7 +21,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="avatar" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src="images/pl.jpg" id="avatar" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/pl.jpg')}}" id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-lg-0 mb-0 wow fadeInUp">
