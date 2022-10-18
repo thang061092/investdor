@@ -1,4 +1,5 @@
 @extends("frontend::template.index")
+@section("content")
 <section class="banners banners_home position-relative">
     <div class="swiper">
         <div class="swiper-wrapper">
@@ -111,7 +112,7 @@
     </div>
 </section>
 <section class="numbers section_all" style="
-        background-image: url('images/number.jpg');
+        background-image: url('{{asset('frontend/images/number.jpg')}}');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -839,7 +840,7 @@
                 <div class="swiper-slide h-auto">
                     <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">
                         <div class="img mx-auto d-block mb-lg-3 mb-2">
-                            <img src="images/avatar.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="desc mb-lg-3 mb-2">
                             “ (lời phản hồi) Ipsum is simply dummy text of the
@@ -854,7 +855,7 @@
                 <div class="swiper-slide h-auto">
                     <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="0.3s">
                         <div class="img mx-auto d-block mb-lg-3 mb-2">
-                            <img src="images/avatar.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="desc mb-lg-3 mb-2">
                             “ (lời phản hồi) Ipsum is simply dummy text of the
@@ -869,7 +870,7 @@
                 <div class="swiper-slide h-auto">
                     <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.9s" data-wow-duration="0.3s">
                         <div class="img mx-auto d-block mb-lg-3 mb-2">
-                            <img src="images/avatar.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="desc mb-lg-3 mb-2">
                             “ (lời phản hồi) Ipsum is simply dummy text of the
@@ -884,7 +885,7 @@
                 <div class="swiper-slide h-auto">
                     <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="1.1s" data-wow-duration="0.3s">
                         <div class="img mx-auto d-block mb-lg-3 mb-2">
-                            <img src="images/avatar.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="desc mb-lg-3 mb-2">
                             “ (lời phản hồi) Ipsum is simply dummy text of the
@@ -899,7 +900,7 @@
                 <div class="swiper-slide h-auto">
                     <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="1.3s" data-wow-duration="0.3s">
                         <div class="img mx-auto d-block mb-lg-3 mb-2">
-                            <img src="images/avatar.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="desc mb-lg-3 mb-2">
                             “ (lời phản hồi) Ipsum is simply dummy text of the

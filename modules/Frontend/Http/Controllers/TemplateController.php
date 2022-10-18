@@ -86,6 +86,6 @@ class TemplateController extends BaseController
     }
     public function trangchu()
     {
-        return view('frontend::template.index');
+        return view('frontend::template.main');
     }
 }

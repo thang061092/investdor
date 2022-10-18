@@ -39,7 +39,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/register', "TemplateController@register");
         Route::get('/thongbao', "TemplateController@thongbao");
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
-        Route::get('/trangchu', "TemplateController@index");
+        Route::get('/trangchu', "TemplateController@trangchu");
     });
 });
 
