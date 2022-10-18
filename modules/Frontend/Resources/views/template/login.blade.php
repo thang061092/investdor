@@ -5,7 +5,7 @@
         <div class="container">
             <div class="wrapper center mx-auto">
                 <a href="" title="" class="big-logo d-block img text-center">
-                    <img src="images/logo.png" class="img-fluid" alt=""/>
+                    <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt=""/>
                 </a>
                 <form action="" method="" class="frm auth__frm p-xl-4 p-3">
                     <p class="title auth__tit mb-2">Đăng nhập</p>
