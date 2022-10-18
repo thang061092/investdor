@@ -1,10 +1,10 @@
 @extends("frontend::template.index")
 @section("content")
     <div class="box-full d-flex align-items-center justify-content-between"
-         style="background-image: url('images/bg-login.png')">
+         style="background-image: url('{{asset('frontend/images/bg-login.png')}}')">
         <div class="container">
             <div class="wrapper center mx-auto">
-                <a href="" title="" class="big-logo d-block img text-center"> <img src="images/logo.png"
+                <a href="" title="" class="big-logo d-block img text-center"> <img src="{{asset('frontend/images/logo.png')}}"
                                                                                    class="img-fluid" alt=""/> </a>
                 <form action="" method="" class="frm auth__frm p-xl-4 p-3">
                     <p class="title auth__tit mb-2">Lấy lại mật khẩu</p>

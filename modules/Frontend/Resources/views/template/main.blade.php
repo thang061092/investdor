@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="banner">
-                    <img src="images/banner.jpg" class="img-fluid" alt=""/>
+                    <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
                     <div class="box-banner">
                         <h2 class="banner_title">Đầu tư và bất động sản</h2>
                         <div class="banner_short">
@@ -19,7 +19,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="banner">
-                    <img src="images/banner.jpg" class="img-fluid" alt=""/>
+                    <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
                     <div class="box-banner">
                         <h2 class="banner_title">Đầu tư và bất động sản</h2>
                         <div class="banner_short">
@@ -177,7 +177,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="img d-block">
-                            <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -310,7 +310,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="img d-block">
-                            <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -339,7 +339,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="img d-block">
-                            <img src="images/inter.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -393,7 +393,7 @@
                             Đang mở để đầu tư Đang mở để đầu tư Đang mở để đầu tư Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -462,7 +462,7 @@
                             Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -531,7 +531,7 @@
                             Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -600,7 +600,7 @@
                             Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -669,7 +669,7 @@
                             Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -738,7 +738,7 @@
                             Đang mở để đầu tư
                         </span>
                         <a href="" title="" class="d-block img">
-                            <img src="images/img1.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
                             <span class="category inline-block text-white">Đa gia đình</span>
                         </a>
                         <div class="p-3 pb-lg-4">
@@ -808,7 +808,7 @@
 <section class="section_invest section_all">
     <div class="container">
         <a href="" class="logo-footer d-block img mb-lg-4 mb-4 wow fadeInUp">
-            <img src="images/logo.png" class="img-fluid" alt=""/>
+            <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt=""/>
         </a>
         <div class="desc mb-lg-4 mb-4 wow fadeInUp">
             “ (giới thiệu về công ty) Ipsum is simply dummy text of the printing
