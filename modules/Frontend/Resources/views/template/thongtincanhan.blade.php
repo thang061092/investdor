@@ -23,7 +23,7 @@
                     <div
                         class="col-md-9 mb-md-0 mb-5 d-flex flex-wrap align-items-center justify-content-lg-start justify-content-center wow fadeInUp">
                         <div class="img mr-3 pr-1 mb-sm-0 mb-3">
-                            <img src="images/sep.jpg" class="img-fluid" alt=""/>
+                            <img src="{{asset('frontend/images/sep.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="content text-lg-left text-center">
                             <p class="title_lg">Nguyễn Phúc Vĩnh Thuỵ</p>
@@ -121,7 +121,7 @@
                                         <input type="file" name="cmt-before" accept="image/*" class="d-none"
                                                id="img-cmt-before"
                                                onchange="document.getElementById('img-before').src = window.URL.createObjectURL(this.files[0])"/>
-                                        <img id="img-before" src="images/before-cmt.png" class="img-fluid" alt=""/>
+                                        <img id="img-before" src="{{asset('frontend/images/before-cmt.png')}}" class="img-fluid" alt=""/>
                                     </label>
                                     <p class="c-cmt mt-3">Mặt trước chứng từ</p>
                                 </div>
@@ -130,7 +130,7 @@
                                         <input type="file" name="cmt-after" accept="image/*" class="d-none"
                                                id="img-cmt-after"
                                                onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
-                                        <img id="img-after" src="images/after-cmt.png" class="img-fluid" alt=""/>
+                                        <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
                                     </label>
                                     <p class="c-cmt mt-3">Mặt trước chứng từ</p>
                                 </div>
