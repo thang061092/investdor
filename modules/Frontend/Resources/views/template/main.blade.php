@@ -1,4 +1,5 @@
 @extends("frontend::template.index")
+@section("content")
 <section class="banners banners_home position-relative">
     <div class="swiper">
         <div class="swiper-wrapper">
