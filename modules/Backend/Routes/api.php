@@ -33,6 +33,10 @@ Route::group(['middleware' => 'locale_be'], function () {
         Route::prefix('/user')->group(function () {
             Route::post('/create_employee', 'Admin\UserController@create_employee');
         });
+
+        Route::prefix('/project')->group(function () {
+            Route::post('/create_project', 'Admin\ProjectController@create_new_project');
+        });
     });
 
     //nhà đầu tư
