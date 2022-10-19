@@ -15,7 +15,7 @@
     <section class="profile">
         <div class="container mb-xl-4 pb-lg-2 mb-3">
             <div class="box-profile" style="
-                background-image: url('images/bg.jpg');
+                background-image: url('{{asset('frontend/images/bg.jpg')}}');
                 background-size: cover;
                 background-repeat: no-repeat;
             ">
