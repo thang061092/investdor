@@ -41,5 +41,11 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
         Route::get('/trangchu', "TemplateController@trangchu");
     });
+
+    Route::prefix('/frontend_project')->group(function () {
+        Route::get('/create', "ProjectController@index_create_project");
+        Route::post('/create_project', "ProjectController@create_project");
+
+    });
 });
 

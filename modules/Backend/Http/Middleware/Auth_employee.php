@@ -26,7 +26,7 @@ class Auth_employee
             if ($token) {
                 $user = $this->userRepository->findOne([
                     User::ID => $token->id,
-                    User::TOKEN_APP => $request->header('Authorization'),
+                    User::TOKEN_WEB => $request->header('Authorization'),
                     User::STATUS => User::ACTIVE,
                     User::TYPE => User::EMPLOYEE
                 ]);

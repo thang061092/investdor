@@ -18,4 +18,5 @@ return [
     'email_not_activated' => "Email của bạn chưa được kích hoạt",
     'email_temporarily_locked' => "Email của bạn đang tạm khóa",
     'password_incorrect' => "Mật khẩu không chính xác",
+    'project_name_not_null' => "Tên dự án không được để trống",
 ];

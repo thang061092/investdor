@@ -19,9 +19,9 @@ class ProjectService
     function validate_create_new_project($request){
 
         $validate = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'project_name' => 'required',
         ], [
-            "email.required" => __('Backend::message.email_not_null'),
+            "project_name.required" => __('Backend::message.project_name_not_null'),
 
         ]);
         return $validate;

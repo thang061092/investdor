@@ -18,4 +18,5 @@ return [
     'email_not_activated' => "Email not activated",
     'email_temporarily_locked' => "Email temporarily locked",
     'password_incorrect' => "Password incorrect",
+    'project_name_not_null' => "Project name cannot be empty",
 ];
