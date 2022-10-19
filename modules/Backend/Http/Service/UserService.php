@@ -217,7 +217,7 @@ class UserService
             'string' => uniqid()
         ];
         $token = Authorization::generateToken($data);
-        $user = $this->userRepository->update($user['id'], [User::TOKEN_APP => $token, User::LAST_LOGIN => Carbon::now()]);
+        $user = $this->userRepository->update($user['id'], [User::TOKEN_WEB => $token, User::LAST_LOGIN => Carbon::now()]);
         return $user;
     }
 
