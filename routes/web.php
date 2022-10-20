@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'locale'], function () {
-    Route::get('/', "Customer\HomeController@index")->name('home.index');
-
     Route::prefix('/template')->group(function () {
         Route::get('/cackhoandautu', "TemplateController@cackhoandautu");
         Route::get('/checkotp', "TemplateController@checkotp");
@@ -39,10 +37,17 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
     //customer
+    Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/login', "Customer\AuthController@login")->name('customer.login');
+    Route::post('/login_submit', "Customer\AuthController@login_submit")->name('customer.login_submit');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
+    Route::post('/register_submit', "Customer\AuthController@register_submit")->name('customer.register_submit');
 
+    Route::group(['middleware' => 'auth_customer'], function () {
+        Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
+        Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
 
+    });
 
     //employee
     Route::prefix('/employee')->group(function () {

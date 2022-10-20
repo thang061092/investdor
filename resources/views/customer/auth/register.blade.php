@@ -7,18 +7,22 @@
                 <a href="" title="" class="big-logo d-block img text-center">
                     <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt=""/>
                 </a>
-                <form action="" method="" class="frm auth__frm p-xl-4 p-3">
-                    <p class="title auth__tit mb-2">Đăng ký</p>
+                <form action="{{route('customer.register_submit')}}" method="post" class="frm auth__frm p-xl-4 p-3">
+                    @csrf
+                    <p class="title auth__tit mb-2">{{__('auth.register')}}</p>
                     <div class="desc auth__note">
-                        <span class="note d-inline-block text-bdy">Bạn đã có tài khoản?</span>
-                        <a href="" title="" class="d-inline-block ml-2 auth__reg-now">Đăng nhập ngay</a>
+                        <span class="note d-inline-block text-bdy">{{__('auth.have_account')}}</span>
+                        <a href="{{route('customer.login')}}" title=""
+                           class="d-inline-block ml-2 auth__reg-now">{{__('auth.login_now')}}</a>
                     </div>
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Tên của bạn <span class="require">*</span>
+                        {{__('auth.your_name')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="text" class="form-control auth__inp border-0 p-0"
-                               placeholder="Nhập lại tên của bạn "/>
+                        <input type="text"
+                               class="form-control auth__inp border-0 p-0 @if($errors->has('full_name'))is-invalid @endif"
+                               name="full_name"
+                               placeholder="{{__('auth.enter_your_name')}}"/>
                         <div class="auth__ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -31,11 +35,17 @@
                             </svg>
                         </div>
                     </div>
+                    @if($errors->has('full_name'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Email <span class="require">*</span>
+                        {{__('auth.email')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="text" class="form-control auth__inp border-0 p-0" placeholder="Nhập email"/>
+                        <input type="email"
+                               class="form-control auth__inp border-0 p-0 @if($errors->has('email'))is-invalid @endif"
+                               placeholder="{{__('auth.enter_email')}}"
+                               name="email"/>
                         <div class="auth__ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -48,12 +58,16 @@
                             </svg>
                         </div>
                     </div>
+                    @if($errors->has('email'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Mật khẩu <span class="require">*</span>
+                        {{__('auth.password')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="password" class="form-control auth__inp frm-pwd border-0 p-0"
-                               placeholder="Nhập mật khẩu"/>
+                        <input type="password"
+                               class="form-control auth__inp frm-pwd border-0 p-0 @if($errors->has('password'))is-invalid @endif"
+                               placeholder="{{__('auth.enter_password')}}" name="password"/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -64,15 +78,18 @@
                                       d="M8.00016 6.66634C7.26378 6.66634 6.66683 7.26329 6.66683 7.99967C6.66683 8.73605 7.26378 9.33301 8.00016 9.33301C8.73654 9.33301 9.3335 8.73605 9.3335 7.99967C9.3335 7.26329 8.73654 6.66634 8.00016 6.66634ZM5.3335 7.99967C5.3335 6.52692 6.5274 5.33301 8.00016 5.33301C9.47292 5.33301 10.6668 6.52692 10.6668 7.99967C10.6668 9.47243 9.47292 10.6663 8.00016 10.6663C6.5274 10.6663 5.3335 9.47243 5.3335 7.99967Z"
                                       fill="#676767"/>
                             </svg>
-
                         </div>
                     </div>
+                    @if($errors->has('password'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Nhập lại mật khẩu <span class="require">*</span>
+                        {{__('auth.re_password')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2 mb-xl-4 mb-3">
-                        <input type="password" class="form-control auth__inp frm-pwd border-0 p-0"
-                               placeholder="Nhập lại mật khẩu"/>
+                        <input type="password"
+                               class="form-control auth__inp frm-pwd border-0 p-0 @if($errors->has('confirm_password'))is-invalid @endif"
+                               placeholder="{{__('auth.re_enter_password')}}" name="password_confirmation"/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -86,17 +103,21 @@
 
                         </div>
                     </div>
+                    @if($errors->has('confirm_password'))
+                        <p class="text-danger"
+                           style="padding-bottom: 10px;">{{ $errors->first('confirm_password') }}</p>
+                    @endif
                     <button type="submit" class="btn_all submit auth__submit btn-block mb-xl-4 mb-sm-3 mb-4">
-                        Đăng ký
+                        {{__('auth.register')}}
                     </button>
                     <div
                         class="note-other-login auth__others position-relative text-bdy mb-3 mb-xl-4 d-flex align-items-center justify-content-center">
-                        <span class="auth__others__lbl px-2">Hoặc</span>
+                        <span class="auth__others__lbl px-2">{{__('auth.or')}}</span>
                     </div>
                     <div class="d-flex flex-nowrap justify-content-center">
                         <a href="" title=""
                            class="social auth__social btn_all fb d-block w-100 text-center mr-lg-3 mr-2">
-                            facebook
+                            {{__('auth.facebook')}}
                             <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -105,7 +126,7 @@
                             </svg>
                         </a>
                         <a href="" title="" class="social auth__social btn_all gg d-block w-100 text-center">
-                            google
+                            {{__('auth.google')}}
                             <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

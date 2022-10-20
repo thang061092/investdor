@@ -3,14 +3,12 @@
 
 namespace App\Http\Repositories;
 
-
-use App\Models\User;
+use App\Models\Users;
 
 class UserRepository extends BaseRepository
 {
     public function getModel()
     {
-        // TODO: Implement getModel() method.
-        return User::class;
+        return Users::class;
     }
 }

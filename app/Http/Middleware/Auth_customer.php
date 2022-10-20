@@ -12,7 +12,7 @@ class Auth_customer
 
     public function handle($request, Closure $next)
     {
-        $user = $request->session()->get('user');
+        $user = $request->session()->get('customer');
         if ($user) {
             if ($user['type'] == self::CUSTOMER) {
                 return $next($request);

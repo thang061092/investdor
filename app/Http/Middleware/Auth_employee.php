@@ -12,7 +12,7 @@ class Auth_employee
 
     public function handle($request, Closure $next)
     {
-        $user = $request->session()->get('user');
+        $user = $request->session()->get('employee');
         if ($user) {
             if ($user['type'] == self::EMPLOYEE) {
                 return $next($request);
