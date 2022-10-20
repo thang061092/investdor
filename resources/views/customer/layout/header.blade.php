@@ -87,15 +87,16 @@
                                       fill="white"/>
                             </svg>
                         </div>
-                        <div class="items">
-                            <a href="" title="Vietnamese">
-                                <img src="{{asset('frontend/images/vi.jpg')}}" alt=""/>
-                                Vietnamese
-                            </a>
-                        </div>
+                        {{--                        <div class="items">--}}
+                        {{--                            <a href="" title="Vietnamese">--}}
+                        {{--                                <img src="{{asset('frontend/images/vi.jpg')}}" alt=""/>--}}
+                        {{--                                Vietnamese--}}
+                        {{--                            </a>--}}
+                        {{--                        </div>--}}
                     </div>
                     <!--DA LOGIN-->
-                    <a href="" title="Đăng xuất" class="btn_all white d-xl-none d-inline-block logout">Đăng xuất</a>
+                    <a href="{{route('customer.logout')}}" title="Đăng xuất"
+                       class="btn_all white d-xl-none d-inline-block logout">Đăng xuất</a>
                     <!--DA LOGIN-->
             @else
                 <!--CHƯA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
@@ -122,12 +123,12 @@
                                   fill="white"/>
                         </svg>
                     </div>
-                    <div class="items">
-                        <a href="" title="Vietnamese">
-                            <img src="{{asset('frontend/images/vi.jpg')}}" alt=""/>
-                            Vietnamese
-                        </a>
-                    </div>
+                    {{--                    <div class="items">--}}
+                    {{--                        <a href="" title="Vietnamese">--}}
+                    {{--                            <img src="{{asset('frontend/images/vi.jpg')}}" alt=""/>--}}
+                    {{--                            Vietnamese--}}
+                    {{--                        </a>--}}
+                    {{--                    </div>--}}
                 </div>
                 <div>
 
@@ -183,7 +184,8 @@
                                               fill="#676767"/>
                                     </svg>
                                 </a>
-                                <a href="" title="" class="d-flex align-items-center justify-content-between action">
+                                <a href="{{route('customer.logout')}}" title=""
+                                   class="d-flex align-items-center justify-content-between action">
                                     Đăng xuất
                                     <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          viewBox="0 0 16 16" fill="none">

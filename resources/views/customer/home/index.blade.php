@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.home_page'))
 @section("content")
     <section class="banners banners_home position-relative">
         <div class="swiper">
@@ -917,4 +918,4 @@
             </div>
         </div>
     </section>
-@endsection
+@stop

@@ -7,17 +7,19 @@
                 <a href="" title="" class="big-logo d-block img text-center">
                     <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt=""/>
                 </a>
-                <form action="" method="" class="frm auth__frm p-xl-4 p-3">
-                    <p class="title auth__tit mb-2">Đăng nhập</p>
+                <form action="{{route('customer.login_submit')}}" method="post" class="frm auth__frm p-xl-4 p-3">
+                    @csrf
+                    <p class="title auth__tit mb-2">{{__('auth.login')}}</p>
                     <div class="desc auth__note"><span
-                            class="note d-inline-block text-bdy">Bạn chưa có tài khoản?</span>
-                        <a href="" title="" class="d-inline-block ml-2 auth__reg-now">Đăng kí ngay</a>
+                            class="note d-inline-block text-bdy">{{__('auth.not_have_account')}}</span>
+                        <a href="" title="" class="d-inline-block ml-2 auth__reg-now">{{__('auth.register_now')}}</a>
                     </div>
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Email <span class="require">*</span>
+                        {{__('auth.email')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="text" class="form-control auth__inp border-0 p-0" placeholder="Nhập email"/>
+                        <input type="text" class="form-control auth__inp border-0 p-0"
+                               placeholder="{{__('auth.enter_email')}}" name="email"/>
                         <div class="auth__ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -31,11 +33,11 @@
                         </div>
                     </div>
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
-                        Mật khẩu <span class="require">*</span>
+                        {{__('auth.password')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
                         <input type="password" class="form-control auth__inp frm-pwd border-0 p-0"
-                               placeholder="Nhập mật khẩu"/>
+                               placeholder="{{__('auth.enter_password')}}" name="password"/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -53,23 +55,23 @@
                         <label for="remember" class="remember my-checkbox d-inline-flex align-items-center">
                             <input type="checkbox" class="my-checkbox__inp" id="remember"/>
                             <span class="checkbox auth__checkbox my-checkbox__lbl mr-2"></span>
-                            <span class="text text-bdy my-checkbox__txt">Lưu mật khẩu</span>
+                            <span class="text text-bdy my-checkbox__txt">{{__('auth.save_password')}}</span>
                         </label>
                         <a href="" title="Quên mật khẩu" class="forgot_password auth__forgot d-inline-block">
-                            Quên mật khẩu
+                            {{__('auth.forgot_password')}}
                         </a>
                     </div>
                     <button type="submit" class="btn_all submit auth__submit btn-block mb-xl-4 mb-sm-3 mb-4">
-                        Đăng nhập
+                        {{__('auth.login')}}
                     </button>
                     <div
                         class="note-other-login auth__others position-relative text-bdy mb-3 mb-xl-4 d-flex align-items-center justify-content-center">
-                        <span class="auth__others__lbl px-2">Hoặc</span>
+                        <span class="auth__others__lbl px-2">{{__('auth.or')}}</span>
                     </div>
                     <div class="d-flex flex-nowrap justify-content-center">
                         <a href="" title=""
                            class="social auth__social btn_all fb d-block w-100 text-center mr-lg-3 mr-2">
-                            facebook
+                            {{__('auth.facebook')}}
                             <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -78,7 +80,7 @@
                             </svg>
                         </a>
                         <a href="" title="" class="social auth__social btn_all gg d-block w-100 text-center">
-                            google
+                            {{__('auth.google')}}
                             <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
