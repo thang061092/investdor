@@ -41,5 +41,16 @@ Route::group(['middleware' => 'locale'], function () {
     //customer
     Route::get('/login', "Customer\AuthController@login")->name('customer.login');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
+
+
+
+    //employee
+    Route::prefix('/employee')->group(function () {
+        Route::get('/index_create_project', "Admin\ProjectController@index_create_project")->name('index.project.create');
+        Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.project');
+    });
+
+
+
 });
 
