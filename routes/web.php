@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'locale'], function () {
-    Route::get('/', function () {
-        echo __('message.success');
-    })->name('home.index');
+    Route::get('/', "Customer\HomeController@index")->name('home.index');
 
     Route::prefix('/template')->group(function () {
         Route::get('/cackhoandautu', "TemplateController@cackhoandautu");
@@ -39,5 +37,9 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
         Route::get('/trangchu', "TemplateController@trangchu");
     });
+
+    //customer
+    Route::get('/login', "Customer\AuthController@login")->name('customer.login');
+    Route::get('/register', "Customer\AuthController@register")->name('customer.register');
 });
 
