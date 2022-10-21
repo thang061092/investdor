@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Services\ImageGalleryService;
 use App\Http\Services\ProjectService;
+use App\Models\ImageGallery;
 use Illuminate\Http\Request;
 
 class ProjectController extends BaseController
 {
     protected $projectService;
-    public function __construct(ProjectService $projectService)
+    protected $imageGalleryService;
+    public function __construct(ProjectService $projectService,
+                                  ImageGalleryService $imageGalleryService )
     {
         $this->projectService = $projectService;
+        $this->imageGalleryService = $imageGalleryService;
     }
 
     function index_create_project(){
@@ -32,8 +37,12 @@ class ProjectController extends BaseController
                 'message' => $validate->errors()->first()
             ]);
         } else {
-
             $project = $this->projectService->create_new_project($request);
+
+            if (!empty($project)){
+                $this->imageGalleryService->create_image_gallery_project($project['id'], $request->image_gallery);
+            }
+
 
             return response()->json([
                 'status' => BaseController::HTTP_OK,

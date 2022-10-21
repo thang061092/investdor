@@ -4,9 +4,9 @@
 namespace App\Models;
 
 
-class Project extends BaseModel
+class Projects extends BaseModel
 {
-    protected $table = 'project';
+    protected $table = 'projects';
 
     //Status
     const ON_SALE = 1; //Đang mở bán
@@ -39,9 +39,9 @@ class Project extends BaseModel
     const TARGET_STABLE_RETURN_ON_COST = 'target_stable_return_on_cost'; //Mục tiêu Lợi tức ổn định trên Chi phí
     const COST_SO_FAR = 'cost_so_far'; //Giá ($ 6,5mm) + Chi phí cho đến nay
     const PROJECT_HIGHLIGHTS = 'project_highlights'; //Điểm nổi bật của dự án
+    const PROJECT_LOCATION_DESCRIPTION = 'project_location_description'; //Mô tả vị trí dự án
 
     //Chủ đầu tư
-    const INVESTOR = 'investor'; //Chủ đầu tư
     const INTRODUCING_INVESTOR = 'introducing_investor'; //Giới thiệu chủ đầu tư
     const COMPANY_NAME = 'company_name'; //Tên công ty
     const COMPANY_ADDRESS = 'company_address'; //Địa chỉ công ty
