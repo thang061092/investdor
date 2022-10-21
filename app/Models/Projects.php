@@ -42,7 +42,6 @@ class Projects extends BaseModel
     const PROJECT_LOCATION_DESCRIPTION = 'project_location_description'; //Mô tả vị trí dự án
 
     //Chủ đầu tư
-    const INVESTOR = 'investor'; //Chủ đầu tư
     const INTRODUCING_INVESTOR = 'introducing_investor'; //Giới thiệu chủ đầu tư
     const COMPANY_NAME = 'company_name'; //Tên công ty
     const COMPANY_ADDRESS = 'company_address'; //Địa chỉ công ty

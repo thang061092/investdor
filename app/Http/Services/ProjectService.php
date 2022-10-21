@@ -32,6 +32,8 @@ class ProjectService
             'target_stable_return_on_cost' => 'required|regex:/^\d+$/',
             'project_highlights' => 'required',
             'project_location_description' => 'required',
+            'introducing_investor' => 'required',
+            'description_business_plan' => 'required',
 
         ], [
             "project_name.required" => __('message.project_name_not_null'),
@@ -55,6 +57,11 @@ class ProjectService
             "cost_so_far.regex" => __('message.cost_so_far_regex'),
             "project_highlights.required" => __('message.project_highlights_required'),
             "project_location_description.required" => __('message.project_location_description_required'),
+            "introducing_investor.required" => __('message.introducing_investor_required'),
+            "company_name.required" => __('message.company_name_required'),
+            "company_address.required" => __('message.company_address_required'),
+            "company_description.required" => __('message.company_description_required'),
+            "description_business_plan.required" => __('message.description_business_plan_required'),
 
         ]);
 
@@ -85,6 +92,11 @@ class ProjectService
             Projects::COST_SO_FAR => $request->cost_so_far,
             Projects::PROJECT_HIGHLIGHTS => $request->project_highlights,
             Projects::PROJECT_LOCATION_DESCRIPTION => $request->project_location_description,
+            Projects::INTRODUCING_INVESTOR => $request->introducing_investor,
+            Projects::COMPANY_NAME => $request->company_name,
+            Projects::COMPANY_ADDRESS => $request->company_address,
+            Projects::COMPANY_DESCRIPTION => $request->company_description,
+            Projects::DESCRIPTION_BUSINESS_PLAN => $request->description_business_plan,
         ];
         return $this->projectRepository->create($data);
     }

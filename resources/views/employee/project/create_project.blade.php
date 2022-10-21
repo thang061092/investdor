@@ -199,38 +199,133 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">Tài sản</label>
+                            <label for=""><?= __('message.year_built') ?></label>
                             <input type="number" class="form-control" id="year_built">
                         </div>
                         <div class="form-group">
-                            <label for="">Tổng diện tích xây dựng</label>
-                            <input type="number" class="form-control" id="total_building_area">
+                            <label for=""><?= __('message.total_building_area') ?></label>
+                            <input type="number" class="form-control" id="">
                         </div>
                         <div class="form-group">
                             <label for="">NRSF</label>
                             <input type="number" class="form-control" id="nrsf">
                         </div>
                         <div class="form-group">
-                            <label for="">Công suất dự kiến ​​(bao gồm hợp đồng thuê MTM)</label>
+                            <label for=""><?= __('message.expected_capacity') ?></label>
                             <input type="number" class="form-control" id="expected_capacity">
                         </div>
                         <div class="form-group">
-                            <label for="">Mục tiêu Lợi tức ổn định trên Chi phí</label>
+                            <label for=""><?= __('message.target_stable_return_on_cost') ?></label>
                             <input type="number" class="form-control" id="target_stable_return_on_cost">
                         </div>
                         <div class="form-group">
-                            <label for="">Giá ($ 6,5mm) + Chi phí cho đến nay</label>
+                            <label for=""><?= __('message.cost_so_far') ?></label>
                             <input type="number" class="form-control" id="cost_so_far">
                         </div>
                         <div class="form-group">
-                            <label for="">Điểm nổi bật của dự án</label>
+                            <label for=""><?= __('message.project_highlights') ?></label>
                             <textarea class="form-control " id="project_highlights"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Mô tả vị trí dự án</label>
-                            <textarea class="form-control " id="project_highlights"></textarea>
+                            <textarea class="form-control " id="project_location_description"></textarea>
                         </div>
-
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <p class="title mb-3"><?= __('message.investor') ?></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for=""><?= __('message.investor_introduction') ?></label>
+                            <textarea type="text" class="form-control" id="introducing_investor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for=""><?= __('message.company_name') ?></label>
+                            <input type="text" class="form-control" id="company_name">
+                        </div>
+                        <div class="form-group">
+                            <label for=""><?= __('message.company_address') ?></label>
+                            <input type="text" class="form-control" id="company_address">
+                        </div>
+                        <div class="form-group">
+                            <label for=""><?= __('message.company_description') ?></label>
+                            <textarea type="text" class="form-control" id="company_description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <p class="title mb-3"><?= __('message.business_plan') ?></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for=""><?= __('message.description_of_the_business_plan') ?></label>
+                            <textarea type="text" class="form-control" id="description_business_plan"></textarea>
+                        </div>
+                    </div>
+                    <div class="ls">
+                        <div class="elementor_json_field">
+                            <div class="hidden-item" style="display:none;">
+                                <div class="item col-100">
+                                    <div class="elementor_json_field_control col-100">
+                                        <div class="elementor_json_field_control_name">
+                                            <label>Tiêu đề</label>
+                                        </div>
+                                        <div class="elementor_json_field_control_content col">
+                                            <input type="text" data-name="title_plan" data-type="text" class="control text title form-control" value="">
+                                        </div>
+                                    </div>
+                                    <div class="elementor_json_field_control col-100">
+                                        <div class="elementor_json_field_control_name">
+                                            <label>Nội dung</label>
+                                        </div>
+                                        <div class="elementor_json_field_control_content col">
+                                            <textarea type="text" data-name="content_plan" data-type="text" class="control text content form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <span class="close">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="list-items list-items-json_fieldcontents rounded">
+                                <div class="item col-100">
+                                    <div class="elementor_json_field_control col-100">
+                                        <div class="elementor_json_field_control_name">
+                                            <label>Tiêu đề</label>
+                                        </div>
+                                        <div class="elementor_json_field_control_content col">
+                                            <input type="text" data-name="title_plan" data-type="text" class="control text title form-control" value="">
+                                        </div>
+                                    </div>
+                                    <div class="elementor_json_field_control col-100">
+                                        <div class="elementor_json_field_control_name">
+                                            <label>Nội dung</label>
+                                        </div>
+                                        <div class="elementor_json_field_control_content col">
+                                            <textarea type="text" data-name="content_plan" data-type="text" class="control text content form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <span class="close">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="text-center" style="width: 80%; text-align: left !important;">
+                                <div class="btnadmin">
+                                    <button type="button" class="btn btn-success add-json_fieldcontents action">
+                                        Thêm mới
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,6 +363,10 @@
             let project_highlights = CKEDITOR.instances.project_highlights.getData();
             let project_location_description = CKEDITOR.instances.project_location_description.getData();
 
+            let introducing_investor = CKEDITOR.instances.introducing_investor.getData();
+            let company_description = CKEDITOR.instances.company_description.getData();
+            let company_name = $('#company_name').val()
+            let company_address = $('#company_address').val()
 
             let count_image_gallery = $("img[name='image_gallery']").length;
             let image_gallery = [];
@@ -276,6 +375,28 @@
                     image_gallery.push($(this).attr('src'))
                 });
             }
+
+            //
+            let count_title_plan = $("input[data-name='title_plan']").length;
+            let count_content_plan = $("input[data-name='title_plan']").length;
+            let data_plan = {};
+            let count = 0
+            if (count_title_plan > 0) {
+                $("input[data-name='title_plan']").each(function () {
+                    let test = {};
+                    test['title_plan'] = $(this).val();
+                    data[count] = test
+                    count++
+                });
+            }
+            count = 0
+            if (count_content_plan > 0) {
+                $("textarea[data-name='content_plan']").each(function () {
+                    data[count]['content_plan'] = $(this).val()
+                    count++
+                });
+            }
+
 
             $.ajax({
                 url: window.origin + '/employee/create_project',
@@ -304,6 +425,13 @@
                     cost_so_far: cost_so_far,
                     project_highlights: project_highlights,
                     project_location_description: project_location_description,
+
+                    introducing_investor: introducing_investor,
+                    company_name: company_name,
+                    company_description: company_description,
+                    company_address: company_address,
+
+                    data_plan: data_plan
                 },
                 dataType: 'json',
                 headers: {

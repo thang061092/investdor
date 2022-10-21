@@ -27,4 +27,25 @@ return [
     'cost_so_far_regex' => 'Giá và chi phí cho đến nay là dạng số',
     'project_highlights_required' => 'Điểm nổi bật dự án không được để trống',
     'project_location_description_required' => 'Mô tả vị trí dự án không được để trống',
+    'investor' => 'Chủ đầu tư',
+    'introducing_investor_required' => 'Giới thiệu chủ đầu tư không được để trống',
+    'company_name_required' => 'Tên công ty không được để trống',
+    'company_address_required' => 'Địa chỉ công ty không được để trống',
+    'company_description_required' => 'Mô tả công ty không được để trống',
+    'business_plan' => 'Kế hoạch kinh doanh',
+    'description_business_plan_required' => 'Mô tả kế hoạch kinh doanh không được để trống',
+    'description_of_the_business_plan' => 'Mô tả kế hoạch kinh doanh',
+    'investor_introduction' => 'Giới thiệu chủ đầu tư',
+    'company_name' => 'Tên công ty',
+    'company_address' => 'Địa chỉ công ty',
+    'company_description' => 'Mô tả công ty',
+    'year_built' => 'Năm xây dựng',
+    'total_building_area' => 'Tổng diện tích xây dựng',
+    'expected_capacity' => 'Công suất dự kiến',
+    'target_stable_return_on_cost' => 'Mục tiêu Lợi tức ổn định trên chi phí',
+    'cost_so_far' => 'Giá chi phí cho đến thời điểm hiện tại',
+    'project_highlights' => 'Điểm nổi bật của dự án',
+
+
+
 ];
