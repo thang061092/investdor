@@ -34,6 +34,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/thongbao', "TemplateController@thongbao");
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
         Route::get('/trangchu', "TemplateController@trangchu");
+        Route::get('/dashboard', "TemplateController@dashboard");
     });
 
     //customer
