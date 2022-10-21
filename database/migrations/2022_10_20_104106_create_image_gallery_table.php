@@ -15,9 +15,7 @@ class CreateImageGalleryTable extends Migration
     {
         Schema::create('image_gallery', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_id')->nullable();
-            $table->string('file_type')->nullable();
-            $table->string('file_name')->nullable();
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->string('path')->nullable();
             $table->string('created_by')->nullable();
             $table->timestamps();

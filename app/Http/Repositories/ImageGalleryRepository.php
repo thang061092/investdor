@@ -1,16 +1,13 @@
 <?php
-
-
 namespace App\Http\Repositories;
 
-use App\Models\Projects;
+use App\Models\ImageGallery;
 
-class ProjectRepository extends BaseRepository
+
+class ImageGalleryRepository extends BaseRepository
 {
-
     public  function getModel(){
         // TODO: Implement getModel() method.
-        return Projects::class;
+        return ImageGallery::class;
     }
-
 }
