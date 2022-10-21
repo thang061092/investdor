@@ -35,7 +35,6 @@ class CreateProjectTable extends Migration
             $table->string('expected_capacity')->nullable();
             $table->string('target_stable_return_on_cost')->nullable();
             $table->string('cost_so_far')->nullable();
-            $table->string('investor')->nullable();
             $table->string('project_highlights')->nullable();
             $table->string('introducing_investor')->nullable();
             $table->string('company_name')->nullable();
@@ -43,6 +42,7 @@ class CreateProjectTable extends Migration
             $table->string('company_description')->nullable();
             $table->string('description_business_plan')->nullable();
             $table->string('description_other_documents')->nullable();
+            $table->string('project_location_description')->nullable();
 
             $table->timestamps();
         });
