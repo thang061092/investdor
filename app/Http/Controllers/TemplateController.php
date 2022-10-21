@@ -109,4 +109,8 @@ class TemplateController extends BaseController
     {
         return view('template.dashboard');
     }
+    public function dashboard()
+    {
+        return view('template.inputs');
+    }
 }
