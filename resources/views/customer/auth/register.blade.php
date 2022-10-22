@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.register'))
 @section("content")
     <div class="box-full d-flex align-items-center justify-content-between"
          style="background-image: url('{{asset('frontend/images/bg-login.png')}}')">
