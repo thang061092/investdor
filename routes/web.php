@@ -47,6 +47,12 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
         Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
 
+        Route::prefix('/customer')->group(function () {
+            Route::prefix('/user')->group(function () {
+                Route::get('/manager', 'Customer\UserController@manager')->name('customer.user.manager');
+            });
+        });
+
     });
 
     //employee
@@ -54,7 +60,6 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/index_create_project', "Admin\ProjectController@index_create_project")->name('index.project.create');
         Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.project');
     });
-
 
 
 });
