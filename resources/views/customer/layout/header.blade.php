@@ -73,8 +73,9 @@
             @if(!empty(session()->get('customer')))
                 <!--DA LOGIN-->
                     <div class="group-user-mobile d-xl-none d-block">
-                        <a href="" title="Thông tin cá nhân" class="group-user-mobile-link">Thông tin cá nhân</a>
-                        <a href="" title="Thông báo" class="group-user-mobile-link">Thông báo</a>
+                        <a href="{{route('customer.user.manager')}}" title="Thông tin cá nhân"
+                           class="group-user-mobile-link"> {{__('auth.personal_information')}}</a>
+                        <a href="" title="Thông báo" class="group-user-mobile-link">{{__('auth.notification')}}</a>
                     </div>
                     <!--DA LOGIN-->
                     <div class="langs d-xl-none d-block">
@@ -96,16 +97,16 @@
                     </div>
                     <!--DA LOGIN-->
                     <a href="{{route('customer.logout')}}" title="Đăng xuất"
-                       class="btn_all white d-xl-none d-inline-block logout">Đăng xuất</a>
+                       class="btn_all white d-xl-none d-inline-block logout">{{__('auth.logout')}}</a>
                     <!--DA LOGIN-->
             @else
                 <!--CHƯA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
                     <a href="{{route('customer.login')}}" title="Đăng nhập"
                        class="btn_all blue d-xl-none d-inline-block mr-2 login"
-                    >Đăng nhập</a>
+                    >{{__('auth.login')}}</a>
                     <a href="{{route('customer.register')}}" title="Đăng ký"
                        class="btn_all white d-xl-none d-inline-block register"
-                    >Đăng ký</a>
+                    >{{__('auth.register')}}</a>
                     <!--CHƯA LOGIN-->
                 @endif
 
@@ -135,10 +136,10 @@
                 </div>
             @if(empty(session()->get('customer')))
                 <!--CHUA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
-                    <a href="{{route('customer.login')}}" title="Đăng nhập" class="btn_all blue d-inline-block mr-2">Đăng
-                        nhập</a>
-                    <a href="{{route('customer.register')}}" title="Đăng ký" class="btn_all white d-inline-block">Đăng
-                        ký</a>
+                    <a href="{{route('customer.login')}}" title="Đăng nhập"
+                       class="btn_all blue d-inline-block mr-2">{{__('auth.login')}}</a>
+                    <a href="{{route('customer.register')}}" title="Đăng ký"
+                       class="btn_all white d-inline-block">{{__('auth.register')}}</a>
                     <!--CHUA LOGIN-->
             @else
                 <!--DA LOGIN-->
@@ -154,14 +155,14 @@
                         </svg>
                     </a>
                     <div class="group-box group-user">
-                        <a href="" title="Thông tin cá nhân" class="btn_user unconfirmed mr-3">
+                        <a href="#" title="{{__('auth.personal_information')}}" class="btn_user unconfirmed mr-3">
                             <img
                                 src="{{!empty(session()->get('customer')['avatar']) ? session()->get('customer')['avatar']: asset('frontend/images/avatar.jpg')}}"
                                 class="img-fluid" alt=""/>
                         </a>
                         <!--CHÚ Ý CLASS unconfirmed khi chưa xác thực - confirmed cho xác thực-->
                         <div class="group-action-user">
-                            <a href="" title="Thông tin cá nhân" class="btn_user_link unconfirmed">
+                            <p title="{{__('auth.personal_information')}}" class="btn_user_link unconfirmed">
                                 {{!empty(session()->get('customer')['full_name']) ? session()->get('customer')['full_name'] : ""}}
                                 <svg class="ml-1" width="12" height="7" viewBox="0 0 12 7" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -169,13 +170,14 @@
                                           d="M0.646447 0.646447C0.841709 0.451184 1.15829 0.451184 1.35355 0.646447L6 5.29289L10.6464 0.646447C10.8417 0.451184 11.1583 0.451184 11.3536 0.646447C11.5488 0.841709 11.5488 1.15829 11.3536 1.35355L6.35355 6.35355C6.15829 6.54882 5.84171 6.54882 5.64645 6.35355L0.646447 1.35355C0.451184 1.15829 0.451184 0.841709 0.646447 0.646447Z"
                                           fill="white"/>
                                 </svg>
-                            </a>
+                            </p>
                             <div class="box">
                                 <p class="alert-confirmed">
                                     Chưa xác thực tài khoản
                                 </p>
-                                <a href="" title="" class="d-flex align-items-center justify-content-between action">
-                                    Thông tin cá nhân
+                                <a href="{{route('customer.user.manager')}}" title=""
+                                   class="d-flex align-items-center justify-content-between action">
+                                    {{__('auth.personal_information')}}
                                     <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          viewBox="0 0 16 16" fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -188,7 +190,7 @@
                                 </a>
                                 <a href="{{route('customer.logout')}}" title=""
                                    class="d-flex align-items-center justify-content-between action">
-                                    Đăng xuất
+                                    {{__('auth.logout')}}
                                     <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          viewBox="0 0 16 16" fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd"

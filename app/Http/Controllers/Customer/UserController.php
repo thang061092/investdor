@@ -6,9 +6,8 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Requests\FormRegister;
-use Illuminate\Http\Request;
 use App\Http\Services\UserService;
-use App\Models\Users;
+use Illuminate\Http\Request;
 
 class UserController extends BaseController
 {
@@ -36,5 +35,23 @@ class UserController extends BaseController
         }
     }
 
-
+    public function manager(Request $request)
+    {
+        $main_tab = !empty($request->main_tab) ? $request->main_tab : 'manager';
+        $tab = !empty($request->tab) ? $request->tab : 'active';
+        if ($main_tab == 'manager') {
+            if ($tab == 'active') {
+                return view('customer.user.manager');
+            } elseif ($tab == 'complete') {
+                return view('customer.user.manager-complete');
+            } elseif ($tab == 'warning') {
+                return view('customer.user.manager-warning');
+            }
+        } elseif ($main_tab == 'history') {
+            return view('customer.user.history-investor');
+        } elseif ($main_tab == 'profile') {
+            return view('customer.user.profile');
+        }
+        return view('customer.user.manager');
+    }
 }
