@@ -38,35 +38,40 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="" title="" class="current-page">INVESTDOR</a>
+                        <a href="{{route('home.index')}}" title=""
+                           class="{{request()->path() == '/' ? 'current-page' : ''}}">INVESTDOR</a>
                         <ul>
                             <li>
-                                <a href="" title="" class="current-page">INVESTDOR</a>
+                                <a href="{{route('home.index')}}" title="" class="current-page">INVESTDOR</a>
                                 <ul>
                                     <li>
-                                        <a href="" title="" class="current-page">INVESTDOR</a>
+                                        <a href="{{route('home.index')}}" title="" class="">INVESTDOR</a>
                                     </li>
                                     <li>
-                                        <a href="" title="">Sản phẩm</a>
+                                        <a href="{{route('customer.home_page')}}"
+                                           title="">{{__('page_name.product')}}</a>
                                     </li>
                                     <li>
-                                        <a href="" title="">Kiến thức cập nhật</a>
+                                        <a href="{{route('customer.knowledge')}}"
+                                           title="">{{__('page_name.knowledge')}}</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="" title="">Sản phẩm</a>
+                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>
                             </li>
                             <li>
-                                <a href="" title="">Kiến thức cập nhật</a>
+                                <a href="{{route('customer.knowledge')}}" title="">{{__('page_name.knowledge')}}</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="" title="">Sản phẩm</a>
+                        <a href="{{route('customer.home_page')}}" title=""
+                           class="{{ request()->path() == 'home-page' ? 'current-page' : ''}}">{{__('page_name.product')}}</a>
                     </li>
                     <li>
-                        <a href="" title="">Kiến thức cập nhật</a>
+                        <a href="{{route('customer.knowledge')}}" title=""
+                           class="{{request()->path() == 'knowledge' ? 'current-page' : ''}}">{{__('page_name.knowledge')}}</a>
                     </li>
                 </ul>
 
@@ -96,15 +101,15 @@
                         {{--                        </div>--}}
                     </div>
                     <!--DA LOGIN-->
-                    <a href="{{route('customer.logout')}}" title="Đăng xuất"
+                    <a href="{{route('customer.logout')}}" title="{{__('auth.logout')}}"
                        class="btn_all white d-xl-none d-inline-block logout">{{__('auth.logout')}}</a>
                     <!--DA LOGIN-->
             @else
                 <!--CHƯA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
-                    <a href="{{route('customer.login')}}" title="Đăng nhập"
+                    <a href="{{route('customer.login')}}" title="{{__('auth.login')}}"
                        class="btn_all blue d-xl-none d-inline-block mr-2 login"
                     >{{__('auth.login')}}</a>
-                    <a href="{{route('customer.register')}}" title="Đăng ký"
+                    <a href="{{route('customer.register')}}" title="{{__('auth.register')}}"
                        class="btn_all white d-xl-none d-inline-block register"
                     >{{__('auth.register')}}</a>
                     <!--CHƯA LOGIN-->
