@@ -11,14 +11,18 @@ class Locale
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if (!Session::has('lang')) {
-            Session::put('lang', 'vi');
+        if (!empty($request->lang)) {
+            Session::put('lang', $request->lang);
+        } else {
+            if (!Session::has('lang')) {
+                Session::put('lang', 'vi');
+            }
         }
         Lang::setLocale(Session::get('lang'));
         return $next($request);

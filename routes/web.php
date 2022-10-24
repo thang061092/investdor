@@ -37,15 +37,17 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
     //customer
-    Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/login', "Customer\AuthController@login")->name('customer.login');
     Route::post('/login_submit', "Customer\AuthController@login_submit")->name('customer.login_submit');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
     Route::post('/register_submit', "Customer\AuthController@register_submit")->name('customer.register_submit');
 
+    Route::get('/', "Customer\HomeController@index")->name('home.index');
+    Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
+    Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
+
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
-        Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
 
         Route::prefix('/customer')->group(function () {
             Route::prefix('/user')->group(function () {
