@@ -42,7 +42,7 @@ class AuthController extends BaseController
                 Session::put('customer', $user);
                 return redirect()->route('customer.home_page');
             } else {
-                $error = 'Thông tin đăng nhập chưa chính xác';
+                $error = __('auth.login_fail');
             }
         }
         return view('customer.auth.login', compact('error'));
