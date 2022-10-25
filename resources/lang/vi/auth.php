@@ -40,5 +40,6 @@ return [
     'forgot_password' => "Quên mật khẩu",
     'logout' => "Đăng xuất",
     'personal_information' => "Thông tin cá nhân",
-    'notification' => 'Thông báo'
+    'notification' => 'Thông báo',
+    'login_fail' => 'Thông tin đăng nhập chưa chính xác'
 ];

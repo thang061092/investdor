@@ -52,5 +52,6 @@ return [
     'forgot_password' => "Forgot password",
     'logout' => "Logout",
     'personal_information' => "Personal information",
-    'notification' => 'Notification'
+    'notification' => 'Notification',
+    'login_fail' => 'Login information is incorrect'
 ];
