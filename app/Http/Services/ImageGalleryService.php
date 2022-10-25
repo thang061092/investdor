@@ -14,9 +14,10 @@ class ImageGalleryService
         $this->imageGalleryRepository = $imageGalleryRepository;
     }
 
-    function create_image_gallery_project($project_id, $image_gallery){
-        if(!empty($image_gallery)){
-            foreach ($image_gallery as $value){
+    function create_image_gallery_project($project_id, $image_gallery)
+    {
+        if (!empty($image_gallery)) {
+            foreach ($image_gallery as $value) {
                 $data = [
                     ImageGallery::PROJECT_ID => $project_id,
                     ImageGallery::PATH => $value
