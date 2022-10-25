@@ -14,17 +14,18 @@ class ProjectController extends BaseController
 {
     protected $projectService;
     protected $imageGalleryService;
+
     public function __construct(ProjectService $projectService,
-                                  ImageGalleryService $imageGalleryService )
+                                ImageGalleryService $imageGalleryService)
     {
         $this->projectService = $projectService;
         $this->imageGalleryService = $imageGalleryService;
     }
 
-    function index_create_project(){
+    function index_create_project()
+    {
         return view('employee.project.create_project');
     }
-
 
     public function create_new_project(Request $request)
     {
@@ -32,24 +33,15 @@ class ProjectController extends BaseController
         $validate = $this->projectService->validate_create_new_project($request);
 
         if ($validate->fails()) {
-            return response()->json([
-                'status' => BaseController::HTTP_BAD_REQUEST,
-                'message' => $validate->errors()->first()
-            ]);
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
         } else {
             $project = $this->projectService->create_new_project($request);
 
-            if (!empty($project)){
+            if (!empty($project)) {
                 $this->imageGalleryService->create_image_gallery_project($project['id'], $request->image_gallery);
             }
-
-
-            return response()->json([
-                'status' => BaseController::HTTP_OK,
-                'message' =>  __('message.success'),
-            ]);
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
         }
     }
-
 
 }
