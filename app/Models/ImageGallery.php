@@ -10,6 +10,7 @@ class ImageGallery extends BaseModel
 
     //column
     const PATH = 'path';
+    const TYPE = 'type';
     const PROJECT_ID = 'project_id';
 
 }

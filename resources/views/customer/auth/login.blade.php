@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.login'))
 @section("content")
     <div class="box-full d-flex align-items-center justify-content-between"
          style="background-image: url({{asset('frontend/images/bg-login.png')}})">
@@ -14,11 +15,19 @@
                             class="note d-inline-block text-bdy">{{__('auth.not_have_account')}}</span>
                         <a href="" title="" class="d-inline-block ml-2 auth__reg-now">{{__('auth.register_now')}}</a>
                     </div>
+                    @if( isset($error) && $error )
+                        <div class="mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-title">{{ $error }}</h4>
+                            </div>
+                        </div>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
                         {{__('auth.email')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="text" class="form-control auth__inp border-0 p-0"
+                        <input type="email"
+                               class="form-control auth__inp border-0 p-0 @if($errors->has('email'))is-invalid @endif"
                                placeholder="{{__('auth.enter_email')}}" name="email"/>
                         <div class="auth__ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -32,11 +41,15 @@
                             </svg>
                         </div>
                     </div>
+                    @if($errors->has('email'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
                         {{__('auth.password')}} <span class="require">*</span>
                     </label>
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
-                        <input type="password" class="form-control auth__inp frm-pwd border-0 p-0"
+                        <input type="password"
+                               class="form-control auth__inp frm-pwd border-0 p-0 @if($errors->has('password'))is-invalid @endif"
                                placeholder="{{__('auth.enter_password')}}" name="password"/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -51,6 +64,9 @@
 
                         </div>
                     </div>
+                    @if($errors->has('password'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>
+                    @endif
                     <div class="d-flex flex-wrap align-items-center justify-content-between my-4">
                         <label for="remember" class="remember my-checkbox d-inline-flex align-items-center">
                             <input type="checkbox" class="my-checkbox__inp" id="remember"/>

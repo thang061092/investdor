@@ -37,5 +37,9 @@ return [
     'email_temporarily_locked' => "Email của bạn đang tạm khóa",
     'password_incorrect' => "Mật khẩu không chính xác",
     'save_password' => 'Lưu mật khẩu',
-    'forgot_password' => "Quên mật khẩu"
+    'forgot_password' => "Quên mật khẩu",
+    'logout' => "Đăng xuất",
+    'personal_information' => "Thông tin cá nhân",
+    'notification' => 'Thông báo',
+    'login_fail' => 'Thông tin đăng nhập chưa chính xác'
 ];

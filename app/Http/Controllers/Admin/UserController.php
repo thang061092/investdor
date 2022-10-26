@@ -8,6 +8,7 @@ use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Models\Users;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends BaseController
 {
@@ -40,11 +41,17 @@ class UserController extends BaseController
     {
         $data = $this->userService->check_login($request, Users::EMPLOYEE);
         if (!empty($data['message'])) {
-            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $data['message']);
+            $error = $data['message'];
         } else {
             $user = $this->userService->login($data['user']);
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
+            if ($user) {
+                Session::put('employee', $user);
+                return redirect()->route('customer.home_page');
+            } else {
+                $error = __('auth.login_fail');
+            }
         }
+        return view('customer.auth.login', compact('error'));
     }
 
 }

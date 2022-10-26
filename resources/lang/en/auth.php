@@ -49,5 +49,9 @@ return [
     'email_temporarily_locked' => "Email temporarily locked",
     'password_incorrect' => "Password incorrect",
     'save_password' => 'Save password',
-    'forgot_password' => "Forgot password"
+    'forgot_password' => "Forgot password",
+    'logout' => "Logout",
+    'personal_information' => "Personal information",
+    'notification' => 'Notification',
+    'login_fail' => 'Login information is incorrect'
 ];

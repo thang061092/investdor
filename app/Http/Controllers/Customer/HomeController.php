@@ -19,4 +19,9 @@ class HomeController extends BaseController
     {
         return view('customer.home.home-page');
     }
+
+    public function knowledge(Request $request)
+    {
+        return view('customer.home.knowledge');
+    }
 }
