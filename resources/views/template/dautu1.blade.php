@@ -66,7 +66,7 @@
     </div>
     <section class="invest mt-lg-3 pt-2">
         <div class="container">
-            <form action="" method="" class="frm-set-invest wow fadeInUp">
+            <form action="" method="" class="frm-set-invest invest-step-1 wow fadeInUp">
                 <div class="wrapper-set-invest mx-auto">
                     <p class="title_lg">Thông tin cá nhân</p>
                     <label for="" class="d-block mb-2"> Họ và tên </label>
@@ -76,7 +76,7 @@
                     <label for="" class="d-block mb-2"> Giới tính </label>
                     <div class="radios mb-3">
                         <label class="gender-choose" for="male">
-                            <input type="radio" value="1" name="gender"/>
+                            <input type="radio" checked value="1" name="gender"/>
                             Nam
                         </label>
                         <label class="gender-choose" for="female">

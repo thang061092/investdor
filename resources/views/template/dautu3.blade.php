@@ -1,6 +1,6 @@
 @extends("template.index")
 @section("content")
-    <div class="banner banner-invest mb-3">
+    <div class="banner banner-invest mb-3 d-md-block d-none">
         <img src="{{asset('frontend/images/banner-x.jpg')}}" class="img-fluid" alt=""/>
         <div class="box-banner">
             <h2 class="banner_title text-center wow fadeInUp">Intercontinatal</h2>
@@ -64,10 +64,10 @@
             </div>
         </div>
     </div>
-    <section class="invest mt-lg-3 pt-2">
+    <section class="invest mt-lg-3 pt-5">
         <div class="container">
             <form action="" method="" class="frm-set-invest wow fadeInUp">
-                <div class="wrapper-set-invest mx-auto">
+                <div class="wrapper-set-invest invest-step-3 mx-auto">
                     <p class="title_lg">Điều kiện và điều khoản sử dụng</p>
                     <div class="box-contents">
                         <div class="s-content">
@@ -144,7 +144,7 @@
                     </label>
                 </div>
                 <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3">
-                    Tiếp tục
+                    Tiến hành đầu tư
                 </button>
             </form>
         </div>
