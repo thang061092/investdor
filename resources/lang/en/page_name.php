@@ -8,6 +8,7 @@ return [
     'investment_history' => 'Investment history',
     'personal_profile' => 'Personal Profile',
     'product' => 'Product',
-    'knowledge' => 'Knowledge'
+    'knowledge' => 'Knowledge',
+    'detail_project'=>'Project details'
 
 ];
