@@ -7,10 +7,11 @@
 ## create DB
 + php artisan migrate
 
-## run get city, district, ward
 ## city
 + php artisan cron:city
 ## district
 + php artisan cron:district
 ## ward
 + php artisan cron:ward
+## bank
++ php artisan cron:bank
