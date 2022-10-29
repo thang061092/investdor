@@ -8,11 +8,9 @@
 + php artisan migrate
 
 ## run get city, district, ward
-# city
+## city
 + php artisan cron:city
-
-# district
+## district
 + php artisan cron:district
-
-#ward
+## ward
 + php artisan cron:ward
