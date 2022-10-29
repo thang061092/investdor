@@ -2,7 +2,10 @@
 ## setup
 1. composer install
 2. cp .env.example .env
-3. php artisan key:generate
+3. php artisan key:generate.
+
+## create DB
++ php artisan migrate
 
 ## run get city, district, ward
 # city
