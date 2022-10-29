@@ -157,7 +157,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="" title="Xem dự án" class="btn_all medium d-block">
+                            <a href="{{route('customer.detail_project')}}" title="Xem dự án"
+                               class="btn_all medium d-block" target="_blank">
                                 Xem dự án
                                 <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
