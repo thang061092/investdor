@@ -38,4 +38,9 @@ class RealEstateProject extends BaseModel
     {
         return $this->hasMany(ImageProject::class, ImageProject::REAL_ESTATE_PROJECT_ID);
     }
+
+    public function investorProject()
+    {
+        return $this->hasOne(InvestorProject::class, InvestorProject::REAL_ESTATE_PROJECT_ID);
+    }
 }

@@ -15,12 +15,15 @@ class CreateRealEstateProjectTable extends Migration
     {
         Schema::create('real_estate_project', function (Blueprint $table) {
             $table->id();
-            $table->string('name_vi')->nullable()->comment('Tên dự án');
-            $table->string('name_en')->nullable()->comment('Tên dự án');
+            $table->longText('name_vi')->nullable()->comment('Tên dự án');
+            $table->longText('name_en')->nullable()->comment('Tên dự án');
+            $table->longText('slug_vi')->nullable();
+            $table->longText('slug_en')->nullable();
             $table->integer('city')->nullable();
             $table->integer('district')->nullable();
             $table->integer('ward')->nullable();
-            $table->longText('address')->nullable();
+            $table->longText('address_vi')->nullable();
+            $table->longText('address_en')->nullable();
             $table->string('image')->nullable();
             $table->bigInteger('total_value')->nullable()->comment('Tổng giá trị tài sản');
             $table->bigInteger('part')->nullable()->comment('số phần đầu tư');
