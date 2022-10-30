@@ -1,0 +1,16 @@
+{
+    "host": "orianna.shop",
+    "username": "thangbm@orianna.shop",
+    "password": "thangvip1",
+    "remotePath": "/",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": true,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}

@@ -67,7 +67,7 @@ var HOME = (function () {
     };
     var _toggleContent = function () {
         var btn = $(".btn_toggle:not(.item-step)");
-        if ($(window).width() < 991) {
+        if ($(window).width() < 768) {
             var btn = $(".btn_toggle");
         }
         if (btn.length > 0) {

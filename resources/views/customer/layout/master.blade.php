@@ -1,8 +1,6 @@
-<!--page_home dành cho trang chủ || page_other cho trang con-->
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="vi"
-      class="{{url()->current() == url() ? 'page_home':'page_other'}}">
-
+      class="{{url()->current() == url('/') ? 'page_home':'page_other'}}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,8 +14,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/nice-select2.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('frontend/scss/style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('frontend/scss/responsive.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}"/>
     @yield('css')
 <body>
 @include('customer.layout.header')

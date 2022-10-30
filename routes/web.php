@@ -34,6 +34,12 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/thongbao', "TemplateController@thongbao");
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
         Route::get('/trangchu', "TemplateController@trangchu");
+        Route::get('/dashboard', "TemplateController@dashboard");
+        Route::get('/inputs', "TemplateController@inputs");
+        Route::get('/tempalte-mail-co-hoi-dau-tu', "TemplateController@investmail");
+        Route::get('/tempalte-mail-thong-bao-dau-tu', "TemplateController@notificationinvest");
+        Route::get('/tempalte-mail-thong-bao-dau-tu-thanh-cong', "TemplateController@notificationinvestsuccess");
+        Route::get('/inputs', "TemplateController@inputs");
     });
 
     //customer
