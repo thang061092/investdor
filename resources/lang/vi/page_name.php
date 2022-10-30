@@ -9,5 +9,6 @@ return [
     'personal_profile' => 'Profile cá nhân',
     'product' => 'Sản phẩm',
     'knowledge' => 'Kiến thức cập nhật',
-    'detail_project' => 'Chi tiết dự án'
+    'detail_project' => 'Chi tiết dự án',
+    'dashboard' => 'Dashboard'
 ];

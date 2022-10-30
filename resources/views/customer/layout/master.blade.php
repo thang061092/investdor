@@ -7,7 +7,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>InvestDor - @yield('page_name')</title>
-    {{--    <link rel="stylesheet" href="css/bootstrap.min.css" />--}}
+    <link type=”image/x-icon” href="{{asset('frontend/images/logo.png')}}" rel="shortcut icon"/>
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/animation.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/reset.css')}}"/>

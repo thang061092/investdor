@@ -1,0 +1,45 @@
+.page-wrapper {
+    width: 100%;
+}
+
+.container-fluid {
+    margin: auto;
+}
+
+.text-justify {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boder {
+    border-radius: 12px;
+    border: dashed 1px rgba(60, 60, 60, 0.08);
+    margin-top: 0;
+    background-color: white;
+    text-align: justify;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 10px 10px;
+}
+
+h2 {
+    color: #C62828;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    position: relative;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+    color: #C62828;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 16px;
+}

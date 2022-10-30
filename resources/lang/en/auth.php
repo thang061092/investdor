@@ -53,5 +53,8 @@ return [
     'logout' => "Logout",
     'personal_information' => "Personal information",
     'notification' => 'Notification',
-    'login_fail' => 'Login information is incorrect'
+    'login_fail' => 'Login information is incorrect',
+    'save_login' => "Save login",
+    'account' => 'Account',
+    'all_notification' => 'All notification'
 ];
