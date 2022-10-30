@@ -9,6 +9,7 @@ return [
     'personal_profile' => 'Personal Profile',
     'product' => 'Product',
     'knowledge' => 'Knowledge',
-    'detail_project'=>'Project details'
+    'detail_project' => 'Project details',
+    'dashboard' => 'Dashboard'
 
 ];

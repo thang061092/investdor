@@ -66,8 +66,18 @@ Route::group(['middleware' => 'locale'], function () {
 
     //employee
     Route::prefix('/admin')->group(function () {
-        Route::get('/index_create_project', "Admin\ProjectController@index_create_project")->name('index.project.create');
-        Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.project');
+        Route::get('/', "Admin\UserController@login")->name('admin');
+        Route::post('/login', "Admin\UserController@employee_login")->name('admin.login');
+        Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
+
+        Route::prefix('/dashboard')->group(function () {
+            Route::get('/', "Admin\DashboardController@index")->name('dashboard');
+        });
+
+        Route::prefix('/project')->group(function () {
+            Route::get('/create', "Admin\ProjectController@index_create_project")->name('project.create');
+            Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.create_project');
+        });
     });
 
 

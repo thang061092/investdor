@@ -24,7 +24,7 @@ class ProjectController extends BaseController
 
     function index_create_project()
     {
-        return view('employee.project.create_project');
+        return view('employee.project.create');
     }
 
     public function create_new_project(Request $request)

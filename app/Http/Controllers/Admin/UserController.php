@@ -46,12 +46,24 @@ class UserController extends BaseController
             $user = $this->userService->login($data['user']);
             if ($user) {
                 Session::put('employee', $user);
-                return redirect()->route('customer.home_page');
+                return redirect()->route('dashboard');
             } else {
                 $error = __('auth.login_fail');
             }
         }
         return view('customer.auth.login', compact('error'));
+    }
+
+    public function login(Request $request)
+    {
+        return view('employee.auth.login');
+    }
+
+    public function logout()
+    {
+        Session::forget('employee');
+        return redirect()->route('admin');
+
     }
 
 }

@@ -41,5 +41,8 @@ return [
     'logout' => "Đăng xuất",
     'personal_information' => "Thông tin cá nhân",
     'notification' => 'Thông báo',
-    'login_fail' => 'Thông tin đăng nhập chưa chính xác'
+    'login_fail' => 'Thông tin đăng nhập chưa chính xác',
+    'save_login'=> "Lưu thông tin đăng nhập",
+    'account'=>'Tài khoản',
+    'all_notification'=> 'Xem tất cả thông báo'
 ];
