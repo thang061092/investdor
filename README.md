@@ -5,13 +5,15 @@
 3. php artisan key:generate.
 
 ## create DB
-+ php artisan migrate
+4. php artisan migrate
 
 ## city
-+ php artisan cron:city
+5. php artisan cron:city
 ## district
-+ php artisan cron:district
+6. php artisan cron:district
 ## ward
-+ php artisan cron:ward
+7. php artisan cron:ward
 ## bank
-+ php artisan cron:bank
+8. php artisan cron:bank
+##upload
+9. php artisan storage:link

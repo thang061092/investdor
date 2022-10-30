@@ -65,5 +65,6 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
 
+    Route::post('/upload', "UploadController@upload");
 });
 
