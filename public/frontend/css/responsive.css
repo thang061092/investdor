@@ -41,9 +41,9 @@
     width: 18.5rem;
   }
 
-  .page_other .header.scroll .btn_all {
-    color: #fff !important;
-  }
+  /*.page_other .header.scroll .btn_all {*/
+  /*  color: #fff !important;*/
+  /*}*/
 
   .page_other .header.scroll .box-menu>ul li ul li a:hover,
   .page_other .header.scroll .box-menu>ul li ul li a:focus {

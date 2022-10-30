@@ -110,7 +110,7 @@
                        class="btn_all blue d-xl-none d-inline-block mr-2 login"
                     >{{__('auth.login')}}</a>
                     <a href="{{route('customer.register')}}" title="{{__('auth.register')}}"
-                       class="btn_all white d-xl-none d-inline-block register"
+                       class="btn_all blue d-xl-none d-inline-block register"
                     >{{__('auth.register')}}</a>
                     <!--CHƯA LOGIN-->
                 @endif
@@ -141,10 +141,10 @@
                 </div>
             @if(empty(session()->get('customer')))
                 <!--CHUA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
-                    <a href="{{route('customer.login')}}" title="Đăng nhập"
+                    <a href="{{route('customer.login')}}" title="{{__('auth.login')}}"
                        class="btn_all blue d-inline-block mr-2">{{__('auth.login')}}</a>
-                    <a href="{{route('customer.register')}}" title="Đăng ký"
-                       class="btn_all white d-inline-block">{{__('auth.register')}}</a>
+                    <a href="{{route('customer.register')}}" title="{{__('auth.register')}}"
+                       class="btn_all blue d-inline-block">{{__('auth.register')}}</a>
                     <!--CHUA LOGIN-->
             @else
                 <!--DA LOGIN-->
