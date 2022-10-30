@@ -1,5 +1,5 @@
 @extends("employee.layout.master")
-@section('page_name', 'Tạo mới dự án')
+@section('page_name', '- Tạo mới dự án')
 @section("content")
     <div class="column column-right d-flex flex-wrap flex-fill">
         <div class="col-md-6">
