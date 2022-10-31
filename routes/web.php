@@ -52,6 +52,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::prefix('/customer')->group(function () {
             Route::prefix('/user')->group(function () {
                 Route::get('/manager', 'Customer\UserController@manager')->name('customer.user.manager');
+                Route::post('/update_profile', 'Customer\UserController@update_profile')->name('customer.user.update_profile');
             });
         });
 

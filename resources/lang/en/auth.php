@@ -53,5 +53,14 @@ return [
     'logout' => "Logout",
     'personal_information' => "Personal information",
     'notification' => 'Notification',
-    'login_fail' => 'Login information is incorrect'
+    'login_fail' => 'Login information is incorrect',
+    'birthday_not_null' => "Birthday is not empty",
+    'gender_not_null' => "Gender is not empty",
+    'phone_number_not_null' => "Phone is not empty",
+    'bank_name_not_null' => "Bank name is not empty",
+    'account_number_not_null' => "Bank account number is not empty",
+    'account_name_not_null' => "Account name is not empty",
+    'province_not_null' => "Province is not empty",
+    'district_not_null' => "District is not empty",
+    'ward_not_null' => "Ward is not empty",
 ];

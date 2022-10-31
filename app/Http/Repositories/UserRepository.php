@@ -11,4 +11,14 @@ class UserRepository extends BaseRepository
     {
         return Users::class;
     }
+
+    public function find($id) {
+        $user = BaseRepository::find($id);
+        return $user;
+    }
+
+    public function update_profile($id, $data) {
+        $update = BaseRepository::update($id, $data);
+        return $update;
+    }
 }

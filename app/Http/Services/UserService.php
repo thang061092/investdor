@@ -170,4 +170,24 @@ class UserService
         return $user;
     }
 
+    public function update_profile($request, $id)
+    {
+        $data = [
+            Users::FULL_NAME => $request['full_name'] ?? "",
+            Users::EMAIL => $request['email'] ?? "",
+            Users::PHONE => $request['phone_number'] ?? "",
+            Users::GENDER => $request['gender'] ?? "",
+            Users::BIRTHDAY =>  $request['birthday'] ?? "",
+            Users::BANK_NAME => $request['bank_name'] ?? "",
+            Users::ACCOUNT_NUMBER => $request['account_number'] ?? "",
+            Users::ACCOUNT_NAME => $request['account_name'] ?? "",
+            Users::CITY => $request['province'] ?? "",
+            Users::DISTRICT => $request['district'] ?? "",
+            Users::WARD => $request['ward'] ?? "",
+            Users::ADDRESS => $request['specific_address'] ?? "",
+        ];
+        $user = $this->userRepository->update_profile($id, $data);
+        return $user;
+    }
+
 }

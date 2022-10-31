@@ -41,5 +41,14 @@ return [
     'logout' => "Đăng xuất",
     'personal_information' => "Thông tin cá nhân",
     'notification' => 'Thông báo',
-    'login_fail' => 'Thông tin đăng nhập chưa chính xác'
+    'login_fail' => 'Thông tin đăng nhập chưa chính xác',
+    'birthday_not_null' => "Ngày sinh không để trống",
+    'gender_not_null' => "Giới tính không để trống",
+    'phone_number_not_null' => "Số điện thoại không để trống",
+    'bank_name_not_null' => "Tên ngân hàng không để trống",
+    'account_number_not_null' => "Số tài khoản ngân hàng không để trống",
+    'account_name_not_null' => "Tên chủ tài khoản ngân hàng không để trống",
+    'province_not_null' => "Tỉnh, thành phố không để trống",
+    'district_not_null' => "Quận, huyện không để trống",
+    'ward_not_null' => "Phường, xã không để trống",
 ];

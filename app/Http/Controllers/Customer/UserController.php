@@ -8,6 +8,8 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Requests\FormRegister;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
+use App\Http\Requests\FormLogin;
+use App\Http\Requests\FormUpdateProfile;
 
 class UserController extends BaseController
 {
@@ -50,8 +52,24 @@ class UserController extends BaseController
         } elseif ($main_tab == 'history') {
             return view('customer.user.history-investor');
         } elseif ($main_tab == 'profile') {
-            return view('customer.user.profile');
+            $user = session()->get('customer');
+            $userId = $user['id'];
+            $detail = $this->userService->find($userId);
+            return view('customer.user.profile', [
+                'detail' => $detail
+            ]);
         }
         return view('customer.user.manager');
+    }
+
+    public function update_profile(FormUpdateProfile $request) {
+        $data = $request->all();
+        $user = session()->get('customer');
+        $userId = $user['id'];
+        $update_profile = $this->userService->update_profile($data, $userId);
+        if ($update_profile) {
+            return redirect("/customer/user/manager?main_tab=profile")->with('status', 'Cập nhật thông tin thành công!');
+        }
+        return redirect("/customer/user/manager?main_tab=profile")->with('fails', 'Cập nhật thông tin thất bại! Vui lòng thử lại sau!');
     }
 }
