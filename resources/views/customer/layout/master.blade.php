@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/scss/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/scss/responsive.css')}}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     @yield('css')
 <body>
 @include('customer.layout.header')
@@ -33,6 +34,7 @@
 <script src="{{asset('frontend/js/char.js')}}"></script>
 <script src="{{asset('frontend/js/auth.js')}}"></script>
 <script src="{{asset('frontend/js/script.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 @yield('js')
 </body>
 

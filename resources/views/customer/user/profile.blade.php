@@ -15,13 +15,6 @@
                             <img src="{{asset('frontend/images/pl.jpg')}}" id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
-                    @if(session('status'))
-                    <div class="mb-3">
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-title">{{session('status')}}</h4>
-                        </div>
-                    </div>
-                    @endif
                     @if( isset($error) && $error )
                         <div class="mb-3">
                             <div class="alert alert-danger" role="alert">
@@ -200,4 +193,18 @@
             </form>
         </div>
     </section>
+
+@section('js')
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 10000;
+        @if (Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+        @elseif(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+        @endif
+    });
+
+</script>
+@endsection
 @stop
