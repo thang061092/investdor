@@ -758,7 +758,7 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.1094rem;
   line-height: 1.8;
   color: #676767;
-  margin-top: -5.0625rem;
+  margin-top: -7.5rem;
 }
 
 .title_small,
@@ -822,7 +822,7 @@ body::-webkit-scrollbar-thumb {
   z-index: 1;
 }
 
-.item-step:hover .step, .item-step.active .step, .item-step:focus .step {
+.item-step:hover .step, .item-step.show .step, .item-step:focus .step {
   background-color: #03204c;
   color: #fff;
 }
@@ -1113,7 +1113,7 @@ html .testimonial .steps .nav-item:nth-child(2) .item-step:after {
 
 .section_invest .btn_all.lg {
   font-weight: 600;
-  padding: 0.825rem 4.25rem;
+  padding: 0.825rem 3.25rem;
   font-size: 1.25rem;
 }
 
@@ -1349,26 +1349,26 @@ footer ul li a {
 
 .check .text:before {
   content: "";
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   display: inline-block;
   border: solid thin #ebebeb;
   border-radius: 0.3125rem;
   vertical-align: middle;
-  margin-right: 0.4688rem;
+  margin-right: 7.5008px;
   position: relative;
   z-index: 1;
-  top: -0.125rem;
+  top: -2px;
 }
 
 .check .text:after {
   position: absolute;
-  left: 0;
-  width: 1.5rem;
-  height: 1.5rem;
+  left: 2px;
+  width: 20px;
+  height: 20px;
   background: #03204c;
   opacity: 0;
-  top: -0.125rem;
+  top: -1px;
 }
 
 .check input:checked+.text:after {
@@ -1376,7 +1376,7 @@ footer ul li a {
 }
 
 .check input:checked+.text:before {
-  opacity: 0;
+  opacity: 1;
 }
 
 .group-filter.group-text {
@@ -1883,8 +1883,12 @@ footer ul li a {
   margin: auto;
 }
 
+input[disabled]::placeholder {
+  color: #676767
+}
+
 input[disabled] {
-  background-color: #d8d8d8 !important;
+  background-color: #E6E6E6 !important;
 }
 
 .invest-complete .row {
@@ -2157,6 +2161,7 @@ input[disabled] {
 .project-asset,
 .docs-project,
 .plan-sale,
+.progress-payment,
 .ratting,
 .auth-invest,
 .project-main {
@@ -2718,16 +2723,23 @@ header.header.fixed.scroll .langs svg path {
   z-index: 1;
 }
 
-.group-action-user:hover>.wrapper-box,
-.group-action-user:focus>.wrapper-box {
+.group-action-user.show>.wrapper-box,
+.group-action-user.show>.wrapper-box {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
 }
 
+.group-action-user .wrapper-box[style^="display: none;"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .group-action-user .wrapper-box .box {
   background: #ffffff;
   padding: 1.25rem 0.75rem;
+  border-radius: 5px;
 }
 
 .group-action-user .wrapper-box .box>*:not(:last-child) {
@@ -2743,11 +2755,10 @@ header.header.fixed.scroll .langs svg path {
   color: #676767;
   min-width: 14.5rem;
   right: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: 0.3s all 0s;
-  padding-top: 1.25rem;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  padding-top: 1.5rem;
 }
 
 .group-action-user .wrapper-box>*:not(:last-child) {
@@ -2844,8 +2855,13 @@ header.header.fixed.scroll .langs svg path {
   background: red;
 }
 
-.group-action-user .btn_user_link {
+.group-action-user .btn_user_link,
+.page_other .header.is-login .group-action-user .btn_user_link {
   color: #03204c;
+}
+
+.group-action-user .btn_user_link, .page_other .header.is-login .group-action-user .btn_user_link path {
+  fill: #03204c;
 }
 
 header.header.fixed.scroll .group-action-user .btn_user_link {
@@ -2862,7 +2878,8 @@ header.header.fixed.scroll .group-action-user .btn_user_link {
   font-size: 1.125rem;
 }
 
-.profile.update input[type="text"][disabled] {
+.profile.update input[type="text"][disabled],
+.profile.update input[type="text"][disabled]::placeholder {
   background-color: #E6E6E6 !important;
   color: #676767 !important;
 }
@@ -2881,4 +2898,20 @@ header.header.fixed.scroll .group-action-user .btn_user_link {
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+.testimonial .steps .nav-item:last-child .linek {
+  display: none;
+}
+
+.header.is-login .group-action-user .btn_user_link {
+  color: #fff;
+}
+
+.header.is-login.fixed.scroll .group-action-user .btn_user_link {
+  color: #03204c;
+}
+
+.header.is-login.fixed.scroll .group-action-user .btn_user_link svg path {
+  fill: #03204c;
 }

@@ -29,7 +29,7 @@
                         </label>
                         <div class="radios mb-3">
                             <label class="gender-choose" for="male">
-                                <input type="radio" value="1" name="gender"/>
+                                <input checked type="radio" value="1" name="gender"/>
                                 Nam
                             </label>
                             <label class="gender-choose" for="female">

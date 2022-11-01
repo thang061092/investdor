@@ -118,8 +118,8 @@
         background-size: cover;
         background-repeat: no-repeat;
         ">
-        <div class="container max-w">
-            <div class="row justify-content-center">
+        <div class="container">
+            <div class="row justify-content-between">
                 <div class="col-lg-auto col-md-6 col-sm-6 mb-lg-0 mb-3 wow fadeInUp" data-wow-duration="0.5s"
                      data-wow-delay="0.5s">
                     <div class="number">10.200</div>
@@ -149,11 +149,11 @@
             <p class="title_small wow fadeInUp">TESTIMONIAL</p>
             <p class="title_lg wow fadeInUp">Đầu tư ngay chỉ với ba bước</p>
             <ul class="nav steps row mb-lg-4 pb-1 mb-3" role="tablist">
-                <li class="nav-item col-md-4 mb-md-0 mb-3 toggle-content wow fadeInLeft" data-wow-delay="0.1s"
-                    data-wow-duration="0.5s">
+                <li class="nav-item col-md-4 mb-md-0 mb-3 toggle-content wow fadeInLeft" data-wow-delay="0.1s" data-wow-duration="0.5s">
                     <div class="item-step d-flex align-items-center btn_toggle active" data-toggle="tab" href="#step-1">
                         <span class="step d-block mr-2">1</span>
                         <p class="text">Đăng ký và xác thực tài khoản</p>
+                        <span class="linek"></span>
                     </div>
                     <div class="guide-step content mt-4 d-md-none" style="display:block;">
                         <div class="row">
@@ -179,17 +179,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="img d-block">
-                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item col-md-4 mb-md-0 mb-3 toggle-content wow fadeInLeft" data-wow-delay="0.3s"
-                    data-wow-duration="0.6s">
+                <li class="nav-item col-md-4 mb-md-0 mb-3 toggle-content wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="0.6s">
                     <div class="item-step d-flex align-items-center btn_toggle" data-toggle="tab" href="#step-2">
                         <span class="step d-block mr-2">2</span>
                         <p class="text">Lựa chọn sản phẩm</p>
+                        <span class="linek"></span>
                     </div>
                     <div class="guide-step content mt-4 d-md-none" style="display:none;">
                         <div class="row">
@@ -215,18 +215,18 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="img d-block">
-                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <!--Chú ý index cuối không có mb-md-0 mb-3-->
-                <li class="nav-item col-md-4 toggle-content wow fadeInLeft" data-wow-delay="0.5s"
-                    data-wow-duration="0.5s">
+                <li class="nav-item col-md-4 toggle-content wow fadeInLeft" data-wow-delay="0.5s" data-wow-duration="0.5s">
                     <div class="item-step d-flex align-items-center btn_toggle" data-toggle="tab" href="#step-3">
                         <span class="step d-block mr-2">3</span>
                         <p class="text">Nạp tiền và trải nghiệm</p>
+                        <span class="linek"></span>
                     </div>
                     <div class="guide-step content mt-4 d-md-none" style="display:none;">
                         <div class="row">
@@ -252,7 +252,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="img d-block">
-                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                    <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                             </div>
                         </div>
                     </div>
@@ -313,7 +313,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                             </div>
                         </div>
                     </div>
@@ -342,13 +342,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="img d-block">
-                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt=""/>
+                                <img src="{{asset('frontend/images/inter.jpg')}}" class="img-fluid" alt="" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
     <section class="recent_project section_all position-relative">
