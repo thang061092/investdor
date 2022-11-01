@@ -76,6 +76,7 @@
                     <div class="group-box">
                         <p class="title_lg">Hoặc scan mã QR code sau</p>
                         <div class="qr d-block">
+                            <a href="" title="Tải xuống Qrcode" class="dl-qrcode">Tải xuống Qrcode</a>
                             <img src="{{asset('frontend/images/qr.png')}}" class="img-fluid" alt=""/>
                         </div>
                     </div>

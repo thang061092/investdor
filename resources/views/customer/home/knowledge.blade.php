@@ -1,8 +1,8 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.knowledge'))
 @section("content")
-    <div class="banner">
-        <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
+<div class="banner">
+        <img src="{{asset('frontend/images/banner-kien-thuc.jpg')}}" class="img-fluid" alt=""/>
         <div class="box-banner">
             <h2 class="banner_title wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">
                 Đầu tư và bất động sản
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="" title="Xem các khoản đầu tư khác" class="btn_all lg mx-auto mt-xl-3 mt-2">Xem các khoản đầu
+                <a href="" title="Xem các khoản đầu tư khác" class="btn_all lg mx-auto mt-xl-3 mt-2">Xem ngay các khoản đầu
                     tư khác</a>
             </div>
         </div>
@@ -276,7 +276,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="" title="Xem các khoản đầu tư khác" class="btn_all lg mx-auto mt-xl-3 mt-2">Xem các khoản đầu
+                <a href="" title="Xem các khoản đầu tư khác" class="btn_all lg mx-auto mt-xl-3 mt-2">Xem ngay các khoản đầu
                     tư khác</a>
             </div>
         </div>

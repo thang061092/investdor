@@ -1,0 +1,119 @@
+{
+  "ftp://thangbm@orianna.shop@orianna.shop": {
+    ".editorconfig": {
+      "type": "-",
+      "size": 220,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".env": {
+      "type": "-",
+      "size": 866,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".env.example": {
+      "type": "-",
+      "size": 838,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".ftpquota": {
+      "type": "-",
+      "size": 14,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".git": {},
+    ".gitattributes": {
+      "type": "-",
+      "size": 111,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".gitignore": {
+      "type": "-",
+      "size": 170,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".htaccess": {
+      "type": "-",
+      "size": 141,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".styleci.yml": {
+      "type": "-",
+      "size": 174,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".well-known": {},
+    "README.md": {
+      "type": "-",
+      "size": 3738,
+      "lmtime": 0,
+      "modified": false
+    },
+    "app": {},
+    "artisan": {
+      "type": "-",
+      "size": 1686,
+      "lmtime": 0,
+      "modified": false
+    },
+    "bootstrap": {},
+    "composer.json": {
+      "type": "-",
+      "size": 1878,
+      "lmtime": 0,
+      "modified": false
+    },
+    "composer.lock": {
+      "type": "-",
+      "size": 318302,
+      "lmtime": 0,
+      "modified": false
+    },
+    "config": {},
+    "database": {},
+    "package-lock.json": {
+      "type": "-",
+      "size": 1114492,
+      "lmtime": 0,
+      "modified": false
+    },
+    "package.json": {
+      "type": "-",
+      "size": 1004,
+      "lmtime": 0,
+      "modified": false
+    },
+    "phpunit.xml": {
+      "type": "-",
+      "size": 1215,
+      "lmtime": 0,
+      "modified": false
+    },
+    "public": {},
+    "resources": {},
+    "routes": {},
+    "server.php": {
+      "type": "-",
+      "size": 563,
+      "lmtime": 0,
+      "modified": false
+    },
+    "storage": {},
+    "tests": {},
+    "vendor": {},
+    "webpack.mix.js": {
+      "type": "-",
+      "size": 538,
+      "lmtime": 0,
+      "modified": false
+    }
+  },
+  "$version": 1
+}

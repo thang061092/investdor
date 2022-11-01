@@ -1,0 +1,124 @@
+.alert-modal {
+    background: #fff;
+    padding: 3rem;
+    position: relative;
+    top: 50%;
+}
+
+.alert-modal:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    content: '';
+    width: 100%;
+    display: block;
+    z-index: 1;
+}
+
+.modal-content {
+    border: transparent;
+    line-height: 1.5;
+}
+
+.modal-content.success .alert-modal__close:hover,
+.modal-content.success .alert-modal__close:focus {
+    color: green;
+}
+
+.modal-content.failed .alert-modal__close:hover,
+.modal-content.failed .alert-modal__close:focus {
+    color: #ae1c1c;
+}
+
+.modal-content.success .alert-modal__ico,
+.modal-content.success .alert-modal:before {
+    background-color: green;
+}
+
+.modal-content.success .alert-modal__close {
+    border: 1px solid green !important;
+    color: green;
+}
+
+.modal-content.failed .alert-modal__close {
+    border: 1px solid #ae1c1c !important;
+    color: #ae1c1c;
+}
+
+.modal-content.failed .alert-modal__ico,
+.modal-content.failed .alert-modal:before {
+    background-color: #ae1c1c;
+}
+
+.alert-modal__tit {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-top: 0.5rem;
+}
+
+.alert-modal__cnt {
+    max-width: 18.75rem;
+}
+
+.alert-modal__close:hover,
+.alert-modal__close:focus {
+    background: #e8e8e8;
+}
+
+.alert-modal__close {
+    display: block;
+    width: 100%;
+    opacity: 1;
+    transition: 0.3s all 0s;
+}
+
+.alert-modal__note {
+    font-size: 0.875rem;
+    color: #888888;
+}
+
+.rounded-ico {
+    z-index: 1;
+    position: relative;
+}
+
+.rounded-ico>svg,
+.rounded-ico>img {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert-modal__ico-wrap {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: fit-content;
+    transform: translate(-50%, -50%);
+}
+
+.alert-modal__ico {
+    padding: 3rem;
+    background-color: #ae1c1c;
+}
+
+@media(max-width:1651px) {
+    .alert-modal__tit {
+        font-size: 2rem;
+    }
+
+    .rounded-ico>svg, .rounded-ico>img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .alert-modal {
+        padding: 3rem 1.5rem;
+    }
+}

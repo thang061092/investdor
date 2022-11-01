@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header {{!empty(session()->get('customer')) ? 'is-login':'not-login'}}">
     <div class="container">
         <div class="row align-items-center">
             <div
@@ -110,7 +110,7 @@
                        class="btn_all blue d-xl-none d-inline-block mr-2 login"
                     >{{__('auth.login')}}</a>
                     <a href="{{route('customer.register')}}" title="{{__('auth.register')}}"
-                       class="btn_all white d-xl-none d-inline-block register"
+                       class="btn_all blue d-xl-none d-inline-block register"
                     >{{__('auth.register')}}</a>
                     <!--CHƯA LOGIN-->
                 @endif
@@ -141,10 +141,10 @@
                 </div>
             @if(empty(session()->get('customer')))
                 <!--CHUA LOGIN - CHÚ Ý BỎ CLASS STYLE DISPAY:NONE ĐI-->
-                    <a href="{{route('customer.login')}}" title="Đăng nhập"
+                    <a href="{{route('customer.login')}}" title="{{__('auth.login')}}"
                        class="btn_all blue d-inline-block mr-2">{{__('auth.login')}}</a>
-                    <a href="{{route('customer.register')}}" title="Đăng ký"
-                       class="btn_all white d-inline-block">{{__('auth.register')}}</a>
+                    <a href="{{route('customer.register')}}" title="{{__('auth.register')}}"
+                       class="btn_all blue d-inline-block">{{__('auth.register')}}</a>
                     <!--CHUA LOGIN-->
             @else
                 <!--DA LOGIN-->
@@ -159,7 +159,7 @@
                             <circle cx="24" cy="7" r="5" fill="#C70404" stroke="white" stroke-width="2"/>
                         </svg>
                     </a>
-                    <div class="group-box group-user">
+                    <div class="group-box group-user toggle-content">
                         <a href="#" title="{{__('auth.personal_information')}}" class="btn_user unconfirmed mr-3">
                             <img
                                 src="{{!empty(session()->get('customer')['avatar']) ? session()->get('customer')['avatar']: asset('frontend/images/avatar.jpg')}}"
@@ -167,7 +167,7 @@
                         </a>
                         <!--CHÚ Ý CLASS unconfirmed khi chưa xác thực - confirmed cho xác thực-->
                         <div class="group-action-user">
-                            <p title="{{__('auth.personal_information')}}" class="btn_user_link unconfirmed">
+                            <p title="{{__('auth.personal_information')}}" class="btn_user_link btn_toggle unconfirmed">
                                 {{!empty(session()->get('customer')['full_name']) ? session()->get('customer')['full_name'] : ""}}
                                 <svg class="ml-1" width="12" height="7" viewBox="0 0 12 7" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -176,39 +176,41 @@
                                           fill="white"/>
                                 </svg>
                             </p>
-                            <div class="box">
-                                <p class="alert-confirmed">
-                                    Chưa xác thực tài khoản
-                                </p>
-                                <a href="{{route('customer.user.manager')}}" title=""
-                                   class="d-flex align-items-center justify-content-between action">
-                                    {{__('auth.personal_information')}}
-                                    <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                         viewBox="0 0 16 16" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M2.97631 10.3103C3.60143 9.68517 4.44928 9.33398 5.33333 9.33398H10.6667C11.5507 9.33398 12.3986 9.68517 13.0237 10.3103C13.6488 10.9354 14 11.7833 14 12.6673V14.0007C14 14.3688 13.7015 14.6673 13.3333 14.6673C12.9651 14.6673 12.6667 14.3688 12.6667 14.0007V12.6673C12.6667 12.1369 12.456 11.6282 12.0809 11.2531C11.7058 10.878 11.1971 10.6673 10.6667 10.6673H5.33333C4.8029 10.6673 4.29419 10.878 3.91912 11.2531C3.54405 11.6282 3.33333 12.1369 3.33333 12.6673V14.0007C3.33333 14.3688 3.03486 14.6673 2.66667 14.6673C2.29848 14.6673 2 14.3688 2 14.0007V12.6673C2 11.7833 2.35119 10.9354 2.97631 10.3103Z"
-                                              fill="#676767"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M8.00008 2.66732C6.89551 2.66732 6.00008 3.56275 6.00008 4.66732C6.00008 5.77189 6.89551 6.66732 8.00008 6.66732C9.10465 6.66732 10.0001 5.77189 10.0001 4.66732C10.0001 3.56275 9.10465 2.66732 8.00008 2.66732ZM4.66675 4.66732C4.66675 2.82637 6.15913 1.33398 8.00008 1.33398C9.84103 1.33398 11.3334 2.82637 11.3334 4.66732C11.3334 6.50827 9.84103 8.00065 8.00008 8.00065C6.15913 8.00065 4.66675 6.50827 4.66675 4.66732Z"
-                                              fill="#676767"/>
-                                    </svg>
-                                </a>
-                                <a href="{{route('customer.logout')}}" title=""
-                                   class="d-flex align-items-center justify-content-between action">
-                                    {{__('auth.logout')}}
-                                    <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                         viewBox="0 0 16 16" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M3.33325 2.66732C3.15644 2.66732 2.98687 2.73756 2.86185 2.86258C2.73682 2.9876 2.66659 3.15717 2.66659 3.33398V12.6673C2.66659 12.8441 2.73682 13.0137 2.86185 13.1387C2.98687 13.2637 3.15644 13.334 3.33325 13.334H5.99992C6.36811 13.334 6.66658 13.6325 6.66658 14.0007C6.66658 14.3688 6.36811 14.6673 5.99992 14.6673H3.33325C2.80282 14.6673 2.29411 14.4566 1.91904 14.0815C1.54397 13.7065 1.33325 13.1978 1.33325 12.6673V3.33398C1.33325 2.80355 1.54397 2.29484 1.91904 1.91977C2.29411 1.5447 2.80282 1.33398 3.33325 1.33398H5.99992C6.36811 1.33398 6.66658 1.63246 6.66658 2.00065C6.66658 2.36884 6.36811 2.66732 5.99992 2.66732H3.33325Z"
-                                              fill="#676767"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M10.1953 4.19526C10.4556 3.93491 10.8777 3.93491 11.1381 4.19526L14.4714 7.5286C14.7318 7.78894 14.7318 8.21106 14.4714 8.4714L11.1381 11.8047C10.8777 12.0651 10.4556 12.0651 10.1953 11.8047C9.93491 11.5444 9.93491 11.1223 10.1953 10.8619L13.0572 8L10.1953 5.13807C9.93491 4.87772 9.93491 4.45561 10.1953 4.19526Z"
-                                              fill="#676767"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M5.33325 8.00065C5.33325 7.63246 5.63173 7.33398 5.99992 7.33398H13.9999C14.3681 7.33398 14.6666 7.63246 14.6666 8.00065C14.6666 8.36884 14.3681 8.66732 13.9999 8.66732H5.99992C5.63173 8.66732 5.33325 8.36884 5.33325 8.00065Z"
-                                              fill="#676767"/>
-                                    </svg>
-                                </a>
+                            <div class="wrapper-box content" style="display:none;">
+                                <div class="box">
+                                    <p class="alert-confirmed">
+                                        Chưa xác thực tài khoản
+                                    </p>
+                                    <a href="{{route('customer.user.manager')}}" title=""
+                                    class="d-flex align-items-center justify-content-between action">
+                                        {{__('auth.personal_information')}}
+                                        <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M2.97631 10.3103C3.60143 9.68517 4.44928 9.33398 5.33333 9.33398H10.6667C11.5507 9.33398 12.3986 9.68517 13.0237 10.3103C13.6488 10.9354 14 11.7833 14 12.6673V14.0007C14 14.3688 13.7015 14.6673 13.3333 14.6673C12.9651 14.6673 12.6667 14.3688 12.6667 14.0007V12.6673C12.6667 12.1369 12.456 11.6282 12.0809 11.2531C11.7058 10.878 11.1971 10.6673 10.6667 10.6673H5.33333C4.8029 10.6673 4.29419 10.878 3.91912 11.2531C3.54405 11.6282 3.33333 12.1369 3.33333 12.6673V14.0007C3.33333 14.3688 3.03486 14.6673 2.66667 14.6673C2.29848 14.6673 2 14.3688 2 14.0007V12.6673C2 11.7833 2.35119 10.9354 2.97631 10.3103Z"
+                                                fill="#676767"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8.00008 2.66732C6.89551 2.66732 6.00008 3.56275 6.00008 4.66732C6.00008 5.77189 6.89551 6.66732 8.00008 6.66732C9.10465 6.66732 10.0001 5.77189 10.0001 4.66732C10.0001 3.56275 9.10465 2.66732 8.00008 2.66732ZM4.66675 4.66732C4.66675 2.82637 6.15913 1.33398 8.00008 1.33398C9.84103 1.33398 11.3334 2.82637 11.3334 4.66732C11.3334 6.50827 9.84103 8.00065 8.00008 8.00065C6.15913 8.00065 4.66675 6.50827 4.66675 4.66732Z"
+                                                fill="#676767"/>
+                                        </svg>
+                                    </a>
+                                    <a href="{{route('customer.logout')}}" title=""
+                                    class="d-flex align-items-center justify-content-between action">
+                                        {{__('auth.logout')}}
+                                        <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.33325 2.66732C3.15644 2.66732 2.98687 2.73756 2.86185 2.86258C2.73682 2.9876 2.66659 3.15717 2.66659 3.33398V12.6673C2.66659 12.8441 2.73682 13.0137 2.86185 13.1387C2.98687 13.2637 3.15644 13.334 3.33325 13.334H5.99992C6.36811 13.334 6.66658 13.6325 6.66658 14.0007C6.66658 14.3688 6.36811 14.6673 5.99992 14.6673H3.33325C2.80282 14.6673 2.29411 14.4566 1.91904 14.0815C1.54397 13.7065 1.33325 13.1978 1.33325 12.6673V3.33398C1.33325 2.80355 1.54397 2.29484 1.91904 1.91977C2.29411 1.5447 2.80282 1.33398 3.33325 1.33398H5.99992C6.36811 1.33398 6.66658 1.63246 6.66658 2.00065C6.66658 2.36884 6.36811 2.66732 5.99992 2.66732H3.33325Z"
+                                                fill="#676767"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M10.1953 4.19526C10.4556 3.93491 10.8777 3.93491 11.1381 4.19526L14.4714 7.5286C14.7318 7.78894 14.7318 8.21106 14.4714 8.4714L11.1381 11.8047C10.8777 12.0651 10.4556 12.0651 10.1953 11.8047C9.93491 11.5444 9.93491 11.1223 10.1953 10.8619L13.0572 8L10.1953 5.13807C9.93491 4.87772 9.93491 4.45561 10.1953 4.19526Z"
+                                                fill="#676767"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.33325 8.00065C5.33325 7.63246 5.63173 7.33398 5.99992 7.33398H13.9999C14.3681 7.33398 14.6666 7.63246 14.6666 8.00065C14.6666 8.36884 14.3681 8.66732 13.9999 8.66732H5.99992C5.63173 8.66732 5.33325 8.36884 5.33325 8.00065Z"
+                                                fill="#676767"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

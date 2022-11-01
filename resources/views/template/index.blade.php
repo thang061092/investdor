@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/swiper-bundle.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/nice-select2.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('frontend/scss/style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('frontend/scss/responsive.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}"/>
 <body>
 @include('template.header')
 @yield('content')

@@ -1,0 +1,6 @@
+/*.markdown>table>:not(caption)>*>*, .table>:not(caption)>*>* {*/
+/*    border-bottom-width: 0;*/
+/*}*/
+/*table.dataTable.no-footer {*/
+/*    border-bottom: 1px solid #111;*/
+/*}*/

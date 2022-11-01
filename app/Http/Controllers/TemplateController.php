@@ -105,4 +105,24 @@ class TemplateController extends BaseController
     {
         return view('template.main');
     }
+    public function dashboard()
+    {
+        return view('template.dashboard');
+    }
+    public function inputs()
+    {
+        return view('template.inputs');
+    }
+    public function investmail()
+    {
+        return view('template.cohoidautu');
+    }
+    public function notificationinvest()
+    {
+        return view('template.thongbaodautu');
+    }
+    public function notificationinvestsuccess()
+    {
+        return view('template.thongbaodaututhanhcong');
+    }
 }

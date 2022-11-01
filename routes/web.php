@@ -34,6 +34,12 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/thongbao', "TemplateController@thongbao");
         Route::get('/thongtincanhan', "TemplateController@thongtincanhan");
         Route::get('/trangchu', "TemplateController@trangchu");
+        Route::get('/dashboard', "TemplateController@dashboard");
+        Route::get('/inputs', "TemplateController@inputs");
+        Route::get('/tempalte-mail-co-hoi-dau-tu', "TemplateController@investmail");
+        Route::get('/tempalte-mail-thong-bao-dau-tu', "TemplateController@notificationinvest");
+        Route::get('/tempalte-mail-thong-bao-dau-tu-thanh-cong', "TemplateController@notificationinvestsuccess");
+        Route::get('/inputs', "TemplateController@inputs");
     });
 
     //customer
@@ -45,6 +51,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
+    Route::get('/detail_project', "Customer\HomeController@detail_project")->name('customer.detail_project');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -59,11 +66,22 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
     //employee
-    Route::prefix('/employee')->group(function () {
-        Route::get('/index_create_project', "Admin\ProjectController@index_create_project")->name('index.project.create');
-        Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.project');
+    Route::prefix('/admin')->group(function () {
+        Route::get('/', "Admin\UserController@login")->name('admin');
+        Route::post('/login', "Admin\UserController@employee_login")->name('admin.login');
+        Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
+
+        Route::prefix('/dashboard')->group(function () {
+            Route::get('/', "Admin\DashboardController@index")->name('dashboard');
+        });
+
+        Route::prefix('/project')->group(function () {
+            Route::get('/create', "Admin\ProjectController@index_create_project")->name('project.create');
+            Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.create_project');
+        });
     });
 
 
+    Route::post('/upload', "UploadController@upload");
 });
 

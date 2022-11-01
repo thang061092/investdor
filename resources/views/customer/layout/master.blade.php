@@ -1,15 +1,13 @@
-<!--page_home dành cho trang chủ || page_other cho trang con-->
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="vi"
-      class="{{url()->current() == url() ? 'page_home':'page_other'}}">
-
+      class="{{url()->current() == url('/') ? 'page_home':'page_other'}}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>InvestDor - @yield('page_name')</title>
-    {{--    <link rel="stylesheet" href="css/bootstrap.min.css" />--}}
+    <link type=”image/x-icon” href="{{asset('frontend/images/logo.png')}}" rel="shortcut icon"/>
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/animation.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/reset.css')}}"/>
@@ -19,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('frontend/scss/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/scss/responsive.css')}}"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}"/>
     @yield('css')
 <body>
 @include('customer.layout.header')

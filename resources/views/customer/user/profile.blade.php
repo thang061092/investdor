@@ -43,6 +43,7 @@
                         </label>
                         <div class="radios mb-3">
                             <label class="gender-choose" for="male">
+
                             @php
                                 if($detail->gender == 1) {
                                     $check = " checked";
@@ -53,6 +54,9 @@
                                 }
                             @endphp
                                 <input type="radio" value="1" {{$check}} name="gender" />
+
+                                <input checked type="radio" value="1" name="gender"/>
+
                                 Nam
                             </label>
                             <label class="gender-choose" for="female">

@@ -24,4 +24,9 @@ class HomeController extends BaseController
     {
         return view('customer.home.knowledge');
     }
+
+    public function detail_project(Request $request)
+    {
+        return view('customer.home.detail-project');
+    }
 }

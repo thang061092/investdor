@@ -63,4 +63,8 @@ return [
     'province_not_null' => "Province is not empty",
     'district_not_null' => "District is not empty",
     'ward_not_null' => "Ward is not empty",
+    'save_login' => "Save login",
+    'account' => 'Account',
+    'all_notification' => 'All notification'
+
 ];

@@ -51,4 +51,7 @@ return [
     'province_not_null' => "Tỉnh, thành phố không để trống",
     'district_not_null' => "Quận, huyện không để trống",
     'ward_not_null' => "Phường, xã không để trống",
+    'save_login'=> "Lưu thông tin đăng nhập",
+    'account'=>'Tài khoản',
+    'all_notification'=> 'Xem tất cả thông báo'
 ];
