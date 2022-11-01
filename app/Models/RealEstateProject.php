@@ -33,6 +33,7 @@ class RealEstateProject extends BaseModel
     //type
     const APARTMENT = 1; //chung cư,
     const VILLA = 2; //biệt thự
+    const RESIDENTIAL = 3; // Khu dân cư
 
     public function imageProjects()
     {
@@ -42,5 +43,25 @@ class RealEstateProject extends BaseModel
     public function investorProject()
     {
         return $this->hasOne(InvestorProject::class, InvestorProject::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function assetProject()
+    {
+        return $this->hasOne(AssetProject::class, AssetProject::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function overviewProject()
+    {
+        return $this->hasOne(OverviewProject::class, OverviewProject::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function documentProject()
+    {
+        return $this->hasOne(DocumentProject::class, DocumentProject::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function businessPlane()
+    {
+        return $this->hasOne(BusinessPlane::class, BusinessPlane::REAL_ESTATE_PROJECT_ID);
     }
 }
