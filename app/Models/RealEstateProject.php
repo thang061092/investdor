@@ -11,10 +11,13 @@ class RealEstateProject extends BaseModel
     //column
     const NAME_VI = 'name_vi';
     const NAME_EN = 'name_en';
+    const SLUG_VI = 'slug_vi';
+    const SLUG_EN = 'slug_en';
     const CITY = 'city';
     const DISTRICT = 'district';
     const WARD = 'ward';
-    const ADDRESS = 'address';
+    const ADDRESS_VI = 'address_vi';
+    const ADDRESS_EN = 'address_en';
     const IMAGE = 'image';
     const TOTAL_VALUE = 'total_value';
     const PART = 'part';
@@ -25,6 +28,7 @@ class RealEstateProject extends BaseModel
     const TYPE = 'type';
 
     //status
+    const NEW = 0; //nháp
     const ON_SALE = 1; //Đang mở bán
     const FINISHED = 2; //Dự án đã hoàn thành
     const PENDING = 3; //Dự án đang pending

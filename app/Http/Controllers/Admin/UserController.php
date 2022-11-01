@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\FormLogin;
 use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Models\Users;
@@ -37,7 +38,7 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
     }
 
-    public function employee_login(Request $request)
+    public function employee_login(FormLogin $request)
     {
         $data = $this->userService->check_login($request, Users::EMPLOYEE);
         if (!empty($data['message'])) {

@@ -38,4 +38,9 @@ class CityService
         }
         return;
     }
+
+    public function city()
+    {
+        return $this->cityRepository->getAll();
+    }
 }
