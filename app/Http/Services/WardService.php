@@ -47,4 +47,9 @@ class WardService
             }
         }
     }
+
+    public function ward($request)
+    {
+        return $this->wardRepository->findMany(['parent_code' => $request->code]);
+    }
 }

@@ -10,5 +10,6 @@ return [
     'product' => 'Sản phẩm',
     'knowledge' => 'Kiến thức cập nhật',
     'detail_project' => 'Chi tiết dự án',
-    'dashboard' => 'Dashboard'
+    'dashboard' => 'Dashboard',
+    'project_list'=> 'Danh sách dự án'
 ];

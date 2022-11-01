@@ -43,3 +43,21 @@ function vn_to_str($str)
     $str = str_replace(' ', '_', $str);
     return $str;
 }
+
+if (!function_exists('type_project')) {
+    function type_project($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.apartment'),
+            2 => __('project.villa'),
+            3 => __('project.residential'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}

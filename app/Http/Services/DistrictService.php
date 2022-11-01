@@ -48,4 +48,9 @@ class DistrictService
         }
         return;
     }
+
+    public function district($request)
+    {
+        return $this->districtRepository->findMany(['parent_code' => $request->code]);
+    }
 }

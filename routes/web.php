@@ -68,19 +68,27 @@ Route::group(['middleware' => 'locale'], function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', "Admin\UserController@login")->name('admin');
         Route::post('/login', "Admin\UserController@employee_login")->name('admin.login');
-        Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
 
-        Route::prefix('/dashboard')->group(function () {
-            Route::get('/', "Admin\DashboardController@index")->name('dashboard');
-        });
+        Route::group(['middleware' => 'auth_admin'], function () {
+            Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
 
-        Route::prefix('/project')->group(function () {
-            Route::get('/create', "Admin\ProjectController@index_create_project")->name('project.create');
-            Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.create_project');
+            Route::prefix('/dashboard')->group(function () {
+                Route::get('/', "Admin\DashboardController@index")->name('dashboard');
+            });
+
+            Route::prefix('/project')->group(function () {
+                Route::get('/list', "Admin\ProjectController@list")->name('project.list');
+                Route::get('/tem', "Admin\ProjectController@index_create_project")->name('project.tem');
+                Route::get('/create', "Admin\ProjectController@create")->name('project.create');
+                Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
+            });
         });
     });
 
-
     Route::post('/upload', "UploadController@upload");
+    Route::prefix('/address')->group(function () {
+        Route::get('/district', "Admin\AddressController@district");
+        Route::get('/ward', "Admin\AddressController@ward");
+    });
 });
 
