@@ -51,7 +51,7 @@ class UserController extends BaseController
                 $error = __('auth.login_fail');
             }
         }
-        return view('customer.auth.login', compact('error'));
+        return view('employee.auth.login', compact('error'));
     }
 
     public function login(Request $request)
