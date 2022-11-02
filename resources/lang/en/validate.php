@@ -16,4 +16,7 @@ return [
     "type_project_not_null" => "Type project not null",
     "description_project_vi_not_null" => "Description project vi not null",
     "description_project_en_not_null" => "Description project en not null",
+    'period_not_null' => "Period not null",
+    'interest_not_null' => "Interest not null",
+
 ];
