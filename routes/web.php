@@ -83,13 +83,14 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
             });
 
+            Route::prefix('/interest')->group(function () {
+                Route::post('/create', "Admin\InterestController@create")->name('interest.create');
+            });
 
 
         });
     });
-    Route::prefix('/interest')->group(function () {
-        Route::post('/create', "Admin\InterestController@create")->name('interest.create');
-    });
+
     Route::post('/upload', "UploadController@upload");
     Route::prefix('/address')->group(function () {
         Route::get('/district', "Admin\AddressController@district");
