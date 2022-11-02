@@ -16,4 +16,6 @@ return [
     "type_project_not_null" => "Loại hình dự án không để trống",
     "description_project_vi_not_null" => "Mô tả dự án tiếng việt không để trống",
     "description_project_en_not_null" => "Mô tả dự án tiếng việt không để trống",
+    'period_not_null'=> "Kì hạn không để trống",
+    'interest_not_null' => "Lãi suất không để trống",
 ];

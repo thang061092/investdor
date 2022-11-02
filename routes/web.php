@@ -82,6 +82,12 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/create', "Admin\ProjectController@create")->name('project.create');
                 Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
             });
+
+            Route::prefix('/interest')->group(function () {
+                Route::post('/create', "Admin\InterestController@create")->name('interest.create');
+            });
+
+
         });
     });
 
