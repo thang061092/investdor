@@ -11,7 +11,6 @@
             </ol>
         </div>
     </div>
-    @include('employee.layout.alert_success')
     <div class="row mt-3">
         <div class="col-12">
             <div class="card" style="border-radius: 10px;">
@@ -19,16 +18,22 @@
                     {{-- Head --}}
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h1 class="d-inline-block">LỊCH SỬ GIAO DỊCH <span
-                                    style="color: red">()</span></h1>
+                            <h1 class="d-inline-block">Danh sách dự án <span
+                                    style="color: red">({{count($projects)}})</span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
+                                <a class="btn btn-success"
+                                   href="{{route('project.create')}}"
+                                   target="_blank">
+                                    <i class="fas fa-plus"></i>&nbsp;
+                                    Thêm mới
+                                </a>
                                 <a class="btn btn-primary" href="#" data-bs-toggle="dropdown">
                                     <i class="fas fa-filter"></i>&nbsp;
                                     Lọc dữ liệu
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-card"
-                                     style="width: 500px;">
+                                     style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
                                             <form method="get" action="">
@@ -70,23 +75,54 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">STT</th>
-                                        <th style="text-align: center">Ngày tạo giao dịch</th>
-                                        <th style="text-align: center">Ngày thanh toán</th>
-                                        <th style="text-align: center">Mã giao dịch</th>
-                                        <th style="text-align: center">Nguồn tiền</th>
-                                        <th style="text-align: center">Đối tác</th>
-                                        <th style="text-align: center">Mã hợp đồng</th>
-                                        <th style="text-align: center">Tên khách hàng</th>
-                                        <th style="text-align: center">Tổng tiền</th>
-                                        <th style="text-align: center">Tổng gốc</th>
-                                        <th style="text-align: center">Tổng lãi</th>
-                                        <th style="text-align: center">Loại giao dịch</th>
+                                        <th style="text-align: center">Tên dự án</th>
+                                        <th style="text-align: center">Giá trị dự án</th>
+                                        <th style="text-align: center">Số phần</th>
+                                        <th style="text-align: center">Giá trị 1 phần</th>
+                                        <th style="text-align: center">Loại dự án</th>
                                         <th style="text-align: center">Trạng thái</th>
-
+                                        <th style="text-align: center">Ngày tạo</th>
+                                        <th style="text-align: center">Người tạo</th>
+                                        <th style="text-align: center"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                    @empty($projects[0])
+                                        <tr>
+                                            <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
+                                                liệu
+                                            </td>
+                                        </tr>
+                                    @else
+                                        @foreach($projects as $key => $project)
+                                            <tr style="text-align: center">
+                                                <td>{{++$key}}</td>
+                                                <td>{{$project->name_vi}}</td>
+                                                <td>{{number_format($project->total_value)}}</td>
+                                                <td>{{number_format($project->part)}}</td>
+                                                <td>{{number_format($project->value_part)}}</td>
+                                                <td>{{type_project($project->type)}}</td>
+                                                <td>
+                                                    <select class="form-control status_project">
+                                                        @foreach(status_project() as $k => $v)
+                                                            <option
+                                                                value="{{$k}}" {{$k == $project->status ? "selected" : ''}}>{{$v}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td>{{$project->created_at}}</td>
+                                                <td>{{$project->created_by}}</td>
+                                            </tr>
+                                        @endforeach
+                                        <div class="col-12 col-md-12">
+                                            <div class="row">
+                                                <div class="col-12 col-md-10"></div>
+                                                <div
+                                                    class=" col-12 col-md-2">  {{$projects->appends(request()->query())}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endempty
                                     </tbody>
                                 </table>
                             </div>

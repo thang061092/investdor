@@ -61,3 +61,30 @@ if (!function_exists('type_project')) {
         return $result;
     }
 }
+
+if (!function_exists('status_project')) {
+    function status_project($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.new'),
+            2 => __('project.on_sale'),
+            3 => __('project.accomplished'),
+            4 => __('project.pending'),
+            5 => __('project.close_investment')
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+function number_format_vn($number)
+{
+    return number_format($number, 0, ',', '.');
+}
+
+

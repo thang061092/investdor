@@ -15,9 +15,21 @@ class RealEstateProjectRepository extends BaseRepository
         return RealEstateProject::class;
     }
 
-    public function get_all_project($request)
+    public function getAllPaginate($request)
     {
         $query = DB::table('real_estate_project')
+            ->paginate(20);
+        return $query;
+    }
+
+    public function list_project_investor($request)
+    {
+        $limit = $request->limit ?? 6;
+        $offset = $request->offset ?? 0;
+        $query = DB::table('real_estate_project')
+            ->limit((int)$limit)
+            ->offset((int)$offset)
+            ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->get();
         return $query;
     }
