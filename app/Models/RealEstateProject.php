@@ -28,11 +28,11 @@ class RealEstateProject extends BaseModel
     const TYPE = 'type';
 
     //status
-    const NEW = 0; //nháp
-    const ON_SALE = 1; //Đang mở bán
-    const FINISHED = 2; //Dự án đã hoàn thành
-    const PENDING = 3; //Dự án đang pending
-    const CLOSE_INVESTMENT = 4; //Đóng đầu tư
+    const NEW = 1; //nháp
+    const ON_SALE = 2; //Đang mở bán
+    const FINISHED = 3; //Dự án đã hoàn thành
+    const PENDING = 4; //Dự án đang pending
+    const CLOSE_INVESTMENT = 5; //Đóng đầu tư
 
     //type
     const APARTMENT = 1; //chung cư,

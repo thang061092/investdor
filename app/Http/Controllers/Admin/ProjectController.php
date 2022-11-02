@@ -30,7 +30,7 @@ class ProjectController extends BaseController
 
     public function list(Request $request)
     {
-        $projects = $this->realEstateProjectService->getAll($request);
+        $projects = $this->realEstateProjectService->getAllPaginate($request);
         return view('employee.project.list', compact('projects'));
     }
 
@@ -47,7 +47,6 @@ class ProjectController extends BaseController
             return redirect()->route('project.list');
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
-            Session::put('error', $error);
             $cities = $this->cityService->city();
             return view('employee.project.create', compact('cities', 'error'));
         }

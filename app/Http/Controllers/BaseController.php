@@ -124,6 +124,8 @@ class BaseController extends Controller
     const STATUS = 'status';
     const MESSAGE = 'message';
     const DATA = 'data';
+    const LANG_VI = 'vi';
+    const LANG_EN = 'en';
 
     /**
      * @param $http_code

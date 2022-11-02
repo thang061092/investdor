@@ -51,7 +51,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
-    Route::get('/detail_project', "Customer\HomeController@detail_project")->name('customer.detail_project');
+    Route::get('/detail_project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');

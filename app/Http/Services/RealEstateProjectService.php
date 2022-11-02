@@ -4,6 +4,7 @@
 namespace App\Http\Services;
 
 
+use App\Http\Controllers\BaseController;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
@@ -40,8 +41,23 @@ class RealEstateProjectService
         $this->estateProjectRepository->create($data);
     }
 
-    public function getAll($request)
+    public function getAllPaginate($request)
     {
-        return $this->estateProjectRepository->get_all_project($request);
+        return $this->estateProjectRepository->getAllPaginate($request);
+    }
+
+    public function list_project_investor($request)
+    {
+        return $this->estateProjectRepository->list_project_investor($request);
+    }
+
+    public function detail_project($slug)
+    {
+        if (Session::get('lang') == BaseController::LANG_EN) {
+            $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_EN => $slug]);
+        } else {
+            $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_VI => $slug]);
+        }
+        return $project;
     }
 }
