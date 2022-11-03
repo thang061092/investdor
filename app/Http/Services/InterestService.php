@@ -76,6 +76,12 @@ class InterestService
             ]);
             $this->logInterestService->create([], $detail_new, 'create');
         }
+    }
 
+    public function get_current_interest()
+    {
+        $interest = $this->interestRepository->findOne([Interest::STATUS => Interest::ACTIVE]);
+        $interest['detail'] = $interest->detailInterests()->where(DetailInterest::STATUS, DetailInterest::ACTIVE)->first();
+        return $interest;
     }
 }

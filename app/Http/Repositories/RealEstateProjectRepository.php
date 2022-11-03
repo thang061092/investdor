@@ -26,7 +26,7 @@ class RealEstateProjectRepository extends BaseRepository
     {
         $limit = $request->limit ?? 6;
         $offset = $request->offset ?? 0;
-        $query = DB::table('real_estate_project')
+        $query = $this->model
             ->limit((int)$limit)
             ->offset((int)$offset)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
