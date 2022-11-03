@@ -33,4 +33,9 @@ class District extends BaseModel
     {
         return $this->belongsTo(City::class, self::CITY_ID);
     }
+
+    public function realEstateProjects()
+    {
+        return $this->hasMany(RealEstateProject::class, RealEstateProject::DISTRICT_ID);
+    }
 }

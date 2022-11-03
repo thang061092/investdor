@@ -100,7 +100,7 @@
                     <p class="title_lg mb-xl-4 mb-3">Mở để đầu tư</p>
                     <div class="row">
                         @empty($projects[0])
-                            <div class="text-danger" style="text-align: center">Không có dữ liệu</div>
+                            <div class="text-danger" style="text-align: center">{{__('table.no_data')}}</div>
                         @else
                             @foreach($projects as $k => $v)
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-12 mb-lg-4 mb-5 wow fadeInUp"
@@ -124,11 +124,11 @@
                                                 </a>
                                             </h3>
                                             <div class="desc mb-2">
-                                                {{$v->address_vi}}
+                                                {{$v->address_vi. ', '. $v->ward->name.', '. $v->district->name .', '. $v->city->name}}
                                             </div>
                                             <div class="line_share mb-2">
                                                 <div class="text mb-1">
-                                                    Tổng số phần
+                                                    {{__('project.total_investment')}}
                                                     <span
                                                         class="number ml-3">{{number_format_vn($v->part)}}</span>
                                                 </div>
@@ -156,8 +156,8 @@
                                                             </clipPath>
                                                         </defs>
                                                     </svg>
-                                                    Lợi nhuận dự kiến
-                                                    <span class="num-profit ml-3">12%</span>
+                                                    {{__('project.expected_profit')}}
+                                                    <span class="num-profit ml-3">{{$current_interest}}%</span>
                                                 </p>
                                             </div>
                                             <div class="project_desc mb-lg-3 mb-2">
@@ -175,7 +175,7 @@
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="Xem dự án"
                                        class="btn_all medium d-block" target="_blank">
-                                        Xem dự án
+                                        {{__('project.view_project')}}
                                         <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"

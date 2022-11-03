@@ -14,8 +14,11 @@ class RealEstateProject extends BaseModel
     const SLUG_VI = 'slug_vi';
     const SLUG_EN = 'slug_en';
     const CITY = 'city';
+    const CITY_ID = 'city_id';
     const DISTRICT = 'district';
+    const DISTRICT_ID = 'district_id';
     const WARD = 'ward';
+    const WARD_ID = 'ward_id';
     const ADDRESS_VI = 'address_vi';
     const ADDRESS_EN = 'address_en';
     const IMAGE = 'image';
@@ -67,5 +70,20 @@ class RealEstateProject extends BaseModel
     public function businessPlane()
     {
         return $this->hasOne(BusinessPlane::class, BusinessPlane::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, self::CITY_ID);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, self::DISTRICT_ID);
+    }
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class, self::WARD_ID);
     }
 }

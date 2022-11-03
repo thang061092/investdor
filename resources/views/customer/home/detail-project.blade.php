@@ -1,60 +1,58 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.detail_project'))
 @section("content")
-<section class="banner-project-detail">
+    <section class="banner-project-detail">
         <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
         <div class="box-banner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                         <p class="state wow fadeInUp">ĐANG MỞ ĐẦU TƯ</p>
-                        <div class="category-name wow fadeInUp">KHU DÂN CƯ</div>
+                        <div class="category-name wow fadeInUp">{{type_project($project->type)}}</div>
                         <h2 class="banner_title wow fadeInUp">Intercontinatal</h2>
                         <div class="banner_desc wow fadeInUp">
-                            Số 12, phố Quan Hoa, quận Tây Hồ, thành phố Hà
-                            Nội
+                            {{$project->address_vi. ', '. $project->ward->name.', '. $project->district->name .', '. $project->city->name}}
                         </div>
                         <div class="process d-flex flex-nowrap wow fadeInUp">
                             <span class="d-block text-center" style="width: 20%">20.000</span>
                             <span class="d-block text-center" style="width: 80%">80.000</span>
                         </div>
                         <div class="banner-content wow fadeInUp">
-                            ( giới thiệu về đự án)Lorem Ipsum is simply
-                            dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when
-                            an e industry's standard dummy text ever since
-                            the 1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
+                            @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
+                                {!! $project->description_en !!}
+                            @else
+                                {!! $project->description_vi !!}
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-6 d-lg-block d-none">
                         <div class="infomation-project-invest">
                             <p class="title p-lg-3 p-2 wow fadeInUp wow fadeInUp">
-                                OFFERED BY PALLADIUS CAPITAL MANAGEMENT, LLC
+                                {{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $project->name_en : $project->name_vi}}
                             </p>
                             <div class="box p-lg-3 p-2 wow fadeInUp wow fadeInUp">
-                                <span class="invest-percent d-block w-100 text-center">15%</span>
-                                <span class="c-label mb-xl-4 mb-3">Lợi nhuận dự kiến</span>
+                                <span class="invest-percent d-block w-100 text-center">{{$current_interest}}%</span>
+                                <span class="c-label mb-xl-4 mb-3">{{__('project.expected_profit')}}</span>
                                 <div class="index index-1">
-                                    <span class="c-label">Tổng giá trị đầu tư</span>
-                                    <span class="c-value">Chỉ số</span>
+                                    <span class="c-label">{{__('project.total_investment')}}</span>
+                                    <span class="c-value">{{number_format_vn($project->total_value)}}</span>
                                 </div>
                                 <div class="index index-2">
                                     <span class="c-label">Estimated Hold Period</span>
-                                    <span class="c-value">Chỉ số</span>
+                                    <span class="c-value">12</span>
                                 </div>
                                 <div class="index index-3">
                                 <span class="c-label">
                                     Minimum Investmen</span>
-                                    <span class="c-value">Chỉ số</span>
+                                    <span class="c-value">20</span>
                                 </div>
                                 <div class="index index-4">
-                                    <span class="c-label">Giá bán</span>
-                                    <span class="c-value">50.000vnđ/phần</span>
+                                    <span class="c-label">{{__('project.price')}}</span>
+                                    <span
+                                        class="c-value">{{number_format_vn($project->value_part)}} VND/{{__('project.part')}}</span>
                                 </div>
                             </div>
-                            <a href="" title="" class="btn_all lg wow fadeInUp">Đầu tư ngay
+                            <a href="" title="" class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
                                 <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                      viewBox="0 0 20 20" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -76,29 +74,30 @@
         <div class="container px-0">
             <div class="infomation-project-invest">
                 <p class="title p-lg-3 p-2 wow fadeInUp">
-                    OFFERED BY PALLADIUS CAPITAL MANAGEMENT, LLC
+                    {{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $project->name_en : $project->name_vi}}
                 </p>
                 <div class="box p-lg-3 p-2 wow fadeInUp">
-                    <span class="invest-percent d-block w-100 text-center">15%</span>
-                    <span class="c-label mb-xl-4 mb-3">Lợi nhuận dự kiến</span>
+                    <span class="invest-percent d-block w-100 text-center">{{$current_interest}}%</span>
+                    <span class="c-label mb-xl-4 mb-3">{{__('project.expected_profit')}}</span>
                     <div class="index index-1">
-                        <span class="c-label">Tổng giá trị đầu tư</span>
-                        <span class="c-value">Chỉ số</span>
+                        <span class="c-label">{{__('project.total_investment')}}</span>
+                        <span class="c-value">{{number_format_vn($project->total_value)}}</span>
                     </div>
                     <div class="index index-2">
                         <span class="c-label">Estimated Hold Period</span>
-                        <span class="c-value">Chỉ số</span>
+                        <span class="c-value">12</span>
                     </div>
                     <div class="index index-3">
                         <span class="c-label"> Minimum Investmen</span>
-                        <span class="c-value">Chỉ số</span>
+                        <span class="c-value">20</span>
                     </div>
                     <div class="index index-4">
-                        <span class="c-label">Giá bán</span>
-                        <span class="c-value">50.000vnđ/phần</span>
+                        <span class="c-label">{{__('project.price')}}</span>
+                        <span
+                            class="c-value">{{number_format_vn($project->value_part)}} VND/{{__('project.part')}}</span>
                     </div>
                 </div>
-                <a href="" title="" class="btn_all lg">Đầu tư ngay
+                <a href="" title="" class="btn_all lg">{{__('project.invest_now')}}
                     <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                          fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"

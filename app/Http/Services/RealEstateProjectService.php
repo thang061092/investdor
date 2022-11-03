@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Session;
 class RealEstateProjectService
 {
     protected $estateProjectRepository;
+    protected $interestService;
 
-    public function __construct(RealEstateProjectRepository $estateProjectRepository)
+    public function __construct(RealEstateProjectRepository $estateProjectRepository,
+                                InterestService $interestService)
     {
         $this->estateProjectRepository = $estateProjectRepository;
+        $this->interestService = $interestService;
     }
 
     public function create($request)
@@ -25,9 +28,9 @@ class RealEstateProjectService
             RealEstateProject::NAME_EN => $request->project_name_en ?? null,
             RealEstateProject::SLUG_VI => slugify($request->project_name_vi),
             RealEstateProject::SLUG_EN => slugify($request->project_name_en),
-            RealEstateProject::CITY => $request->city_project ?? null,
-            RealEstateProject::DISTRICT => $request->district_project ?? null,
-            RealEstateProject::WARD => $request->ward_project ?? null,
+            RealEstateProject::CITY_ID => $request->city_project ?? null,
+            RealEstateProject::DISTRICT_ID => $request->district_project ?? null,
+            RealEstateProject::WARD_ID => $request->ward_project ?? null,
             RealEstateProject::ADDRESS_VI => $request->address_project ?? null,
             RealEstateProject::TOTAL_VALUE => $request->total_value_project ?? null,
             RealEstateProject::PART => $request->total_part_project ?? null,
@@ -48,16 +51,13 @@ class RealEstateProjectService
 
     public function list_project_investor($request)
     {
-        return $this->estateProjectRepository->list_project_investor($request);
+        $projects = $this->estateProjectRepository->list_project_investor($request);
+        return $projects;
     }
 
     public function detail_project($slug)
     {
-        if (Session::get('lang') == BaseController::LANG_EN) {
-            $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_EN => $slug]);
-        } else {
-            $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_VI => $slug]);
-        }
+        $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_VI => $slug]);
         return $project;
     }
 }
