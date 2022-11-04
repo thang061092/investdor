@@ -11,6 +11,7 @@ class ImageProject extends BaseModel
     //column
     const PATH = 'path';
     const TYPE = 'type';
+    const NAME = 'name';
     const STATUS = 'status';
     const REAL_ESTATE_PROJECT_ID = 'real_estate_project_id';
 

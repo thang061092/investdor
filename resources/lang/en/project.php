@@ -25,4 +25,5 @@ return [
     'view_investments_other' => 'View investments other',
     'chance_for_you' => ':total chance for you',
     'clear_filter' => 'Clear filter',
+    'id_does_not_exist' => "ID :id does not exist"
 ];
