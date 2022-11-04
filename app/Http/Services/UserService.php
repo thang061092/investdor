@@ -180,12 +180,12 @@ class UserService
     public function update_profile($request, $id)
     {   
         $user = $this->userRepository->find($id);
-        // if ($request->file('avatar')){
-        //     if ($user->avatar != "") {
-        //         Storage::delete($user->avatar);
-        //     }
-        //     $avatar = $request->file('avatar')->store('public/avatar');
-        // }
+        if ($request->hasFile('avatar')){
+            if ($user->avatar != "") {
+                Storage::delete($user->avatar);
+            }
+            $avatar = $request->file('avatar')->store('public/avatar');
+        }
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",

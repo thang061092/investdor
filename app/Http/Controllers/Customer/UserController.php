@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FormLogin;
 use App\Http\Requests\FormUpdateProfile;
 use Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends BaseController
 {
@@ -89,7 +90,6 @@ class UserController extends BaseController
     public function update_profile(FormUpdateProfile $request) {
         $user = session()->get('customer');
         $userId = $user['id'];
-        // dd($request->all());
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
             Toastr::success('Cập nhật thành công :)',__('message.success'));

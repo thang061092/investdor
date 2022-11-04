@@ -4,7 +4,7 @@
     @include('customer.user.header-your-manager')
     <section class="profile update">
         <div class="container">
-            <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8">
+            <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
             @csrf
                 <div class="row">
                     <div class="col-lg-4 mb-lg-0 mb-2 wow fadeInUp">
