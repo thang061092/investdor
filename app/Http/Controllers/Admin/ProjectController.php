@@ -44,6 +44,7 @@ class ProjectController extends BaseController
     {
         try {
             $this->realEstateProjectService->create($request);
+            toastr()->success(__('message.success'));
             return redirect()->route('project.list');
         } catch (\Exception $exception) {
             $error = $exception->getMessage();

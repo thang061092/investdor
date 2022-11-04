@@ -14,6 +14,15 @@ return [
     'part' => 'Part',
     'price' => 'Price',
     'invest_now' => 'Invest now',
-    'view_project' => 'View project'
-
+    'view_project' => 'View project',
+    'name_project' => 'Name project',
+    'investment_status' => 'Investment status',
+    'not_invested' => 'Not invested',
+    'invested' => "Invested",
+    'project_status' => 'Project status',
+    'open' => 'Open',
+    'close' => 'Close',
+    'view_investments_other' => 'View investments other',
+    'chance_for_you' => ':total chance for you',
+    'clear_filter' => 'Clear filter',
 ];

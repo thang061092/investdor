@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 aside mb-lg-0 mb-3 wow fadeInLeft">
                     <div class="filter_mobile d-lg-none d-flex align-items-center justify-content-between">
-                        <p class="title">301 cơ hội cho bạn </p>
+                        <p class="title">{{__('project.chance_for_you', ['total'=> count($projects)])}}</p>
                         <div class="box">
                         <span class="show-filter mr-2">
                             {{__('project.search')}}
@@ -45,13 +45,14 @@
                         </div>
                     </div>
                     <div class="box-filter">
-                        <p class="title_lg">301 cơ hội cho bạn</p>
+                        <p class="title_lg">{{__('project.chance_for_you', ['total'=> count($projects)])}}</p>
                         <div class="desc font-weight-bold">
                             {{__('project.search')}}
                         </div>
                         <form action="" method="" class="frm_filter" accept-charset="utf-8">
                             <div class="group-filter group-text">
-                                <label for="name_project" class="name_group label">Tên dự án</label>
+                                <label for="name_project"
+                                       class="name_group label">{{__('project.name_project')}}</label>
                                 <div class="group position-relative">
                                     <input type="text" placeholder="Nhập tên dự án" class="form-control"/>
                                     <button type="submit">
@@ -67,37 +68,39 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="group-filter group-checkbox">
-                                <div class="name_group desc font-weight-bold">
-                                    Trạng thái đầu tư
+                            @if(!empty(session()->get('customer')))
+                                <div class="group-filter group-checkbox">
+                                    <div class="name_group desc font-weight-bold">
+                                        {{__('project.investment_status')}}
+                                    </div>
+                                    <label for="state-1" class="check">
+                                        <input type="checkbox" id="state-1" name=""/>
+                                        <span class="text">{{__('project.not_invested')}}</span>
+                                    </label>
+                                    <label for="state-2" class="check">
+                                        <input type="checkbox" id="state-2" name=""/>
+                                        <span class="text">{{__('project.invested')}}</span>
+                                    </label>
                                 </div>
-                                <label for="state-1" class="check">
-                                    <input type="checkbox" id="state-1" name=""/>
-                                    <span class="text">Chưa đầu tư</span>
-                                </label>
-                                <label for="state-2" class="check">
-                                    <input type="checkbox" id="state-2" name=""/>
-                                    <span class="text">Đã đầu tư</span>
-                                </label>
-                            </div>
+                            @endif
                             <div class="group-filter group-checkbox">
                                 <div class="name_group desc font-weight-bold">
-                                    Trạng thái đầu tư
+                                    {{__('project.project_status')}}
                                 </div>
                                 <label for="state-3" class="check">
                                     <input type="checkbox" id="state-3" name=""/>
-                                    <span class="text">Đang mở</span>
+                                    <span class="text">{{__('project.open')}}</span>
                                 </label>
                                 <label for="state-4" class="check">
                                     <input type="checkbox" id="state-4" name=""/>
-                                    <span class="text">Chưa mở</span>
+                                    <span class="text">{{__('project.close')}}</span>
                                 </label>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-9 wow fadeInRight">
-                    <p class="title_lg mb-xl-4 mb-3">Mở để đầu tư</p>
+                    <p class="title_lg mb-xl-4 mb-3">{{__('project.open')}}</p>
                     <div class="row">
                         @empty($projects[0])
                             <div class="text-danger" style="text-align: center">{{__('table.no_data')}}</div>
@@ -108,7 +111,7 @@
                                      data-wow-duration="0.5s">
                                     <div class="item_project">
                             <span class="status d-block w-100">
-                                Đang mở để đầu tư
+                                {{__('project.on_sale')}}
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
@@ -167,8 +170,8 @@
                                                     {!! \Illuminate\Support\Str::limit($v->description_vi, 150) !!}
                                                 @endif
                                                 <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
-                                                   title="{{__('button.see_more')}}"
-                                                   class="d-inline-block view_more">{{__('button.see_more')}}</a>
+                                                   title="{{__('project.see_more')}}"
+                                                   class="d-inline-block view_more">{{__('project.see_more')}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +194,7 @@
                         @endempty
                     </div>
                     <div class="line my-xl-4 my-lg-3 my-2"></div>
-                    <p class="title_lg mb-xl-4 mb-3">Đang mở</p>
+                    <p class="title_lg mb-xl-4 mb-3">{{__('project.open')}}</p>
                     <div class="row">
                         @empty($projects[0])
                             <div class="text-danger" style="text-align: center">{{__('table.no_data')}}</div>
@@ -202,7 +205,7 @@
                                      data-wow-duration="0.5s">
                                     <div class="item_project">
                             <span class="status d-block w-100">
-                                Đang mở để đầu tư
+                                {{__('project.on_sale')}}
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
@@ -261,8 +264,8 @@
                                                     {!! \Illuminate\Support\Str::limit($v->description_vi, 150) !!}
                                                 @endif
                                                 <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
-                                                   title="{{__('button.see_more')}}"
-                                                   class="d-inline-block view_more">{{__('button.see_more')}}</a>
+                                                   title="{{__('project.see_more')}}"
+                                                   class="d-inline-block view_more">{{__('project.see_more')}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -286,8 +289,8 @@
                     </div>
                     <div class="line my-xl-4 my-lg-3 my-2"></div>
                     <div class="load_more text-center">
-                        <a href="" title="Xem các khoản đầu tư khác" class="btn_all blue mx-auto">Xem các khoản đầu tư
-                            khác</a>
+                        <a href="" title="{{__('project.view_investments_other')}}"
+                           class="btn_all blue mx-auto">{{__('project.view_investments_other')}}</a>
                     </div>
                 </div>
             </div>
