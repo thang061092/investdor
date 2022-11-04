@@ -115,7 +115,9 @@
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
-                                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
+                                            <img
+                                                src="{{!empty($v->image) ? $v->image : asset('frontend/images/img1.jpg')}}"
+                                                class="img-fluid" alt=""/>
                                             <span
                                                 class="category inline-block text-white">{{type_project($v->type)}}</span>
                                         </a>
@@ -209,7 +211,9 @@
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
-                                            <img src="{{asset('frontend/images/img1.jpg')}}" class="img-fluid" alt=""/>
+                                            <img
+                                                src="{{!empty($v->image) ? $v->image : asset('frontend/images/img1.jpg')}}"
+                                                class="img-fluid" alt=""/>
                                             <span
                                                 class="category inline-block text-white">{{type_project($v->type)}}</span>
                                         </a>

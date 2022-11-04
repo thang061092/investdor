@@ -5,7 +5,9 @@ namespace App\Http\Services;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
+use App\Models\ImageProject;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
 
@@ -13,12 +15,15 @@ class RealEstateProjectService
 {
     protected $estateProjectRepository;
     protected $interestService;
+    protected $imageProjectRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
-                                InterestService $interestService)
+                                InterestService $interestService,
+                                ImageProjectRepository $imageProjectRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
+        $this->imageProjectRepository = $imageProjectRepository;
     }
 
     public function create($request)
@@ -59,5 +64,31 @@ class RealEstateProjectService
     {
         $project = $this->estateProjectRepository->find_project_by_slug($slug);
         return $project;
+    }
+
+    public function find($id)
+    {
+        return $this->estateProjectRepository->find($id);
+    }
+
+    public function update_image($request)
+    {
+        $project = $this->estateProjectRepository->update($request->id, [
+            RealEstateProject::IMAGE => $request->anh_dai_dien
+        ]);
+        $this->imageProjectRepository->delete_image_project($project['id']);
+        foreach ($request->img_project as $value) {
+            $this->imageProjectRepository->create(
+                [
+                    ImageProject::REAL_ESTATE_PROJECT_ID => $project['id'],
+                    ImageProject::STATUS => ImageProject::ACTIVE,
+                    ImageProject::PATH => $value['path'],
+                    ImageProject::TYPE => $value['file_type'],
+                    ImageProject::NAME => $value['file_name'],
+                    ImageProject::CREATED_BY=> Session::get('employee')['email'] ?? null
+                ]
+            );
+        }
+        return;
     }
 }

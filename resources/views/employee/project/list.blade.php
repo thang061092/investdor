@@ -5,7 +5,7 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href=""
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
                                                                    class="text-info">{{__('page_name.project_list')}}</a>
                 </li>
             </ol>
@@ -130,18 +130,28 @@
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
                                                                href="">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                     width="24" height="24" viewBox="0 0 24 24"
-                                                                     stroke-width="2" stroke="currentColor"
-                                                                     fill="none"
-                                                                     stroke-linecap="round" stroke-linejoin="round">
-                                                                    <path stroke="none" d="M0 0h24v24H0z"
-                                                                          fill="none"/>
-                                                                    <circle cx="12" cy="12" r="2"/>
-                                                                    <path
-                                                                        d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/>
-                                                                </svg>&nbsp;
-                                                                Chi tiết
+                                                                <i class="fa fa-info-circle"></i>&nbsp;
+                                                                Chi tiết dự án
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật thông tin cơ bản
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="{{route('project.image',['id'=> $project->id])}}">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật hình ảnh dự án
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật thông tin mở rộng
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật tài liệu
                                                             </a>
                                                         </div>
                                                     </div>

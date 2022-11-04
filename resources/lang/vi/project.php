@@ -26,5 +26,6 @@ return [
     'view_investments_other' => 'Xem các khoản đầu tư khác',
     'chance_for_you' => ':total cơ hội cho bạn',
     'clear_filter' => "Bỏ lọc",
+    'id_does_not_exist' => "ID :id không tồn tại"
 
 ];

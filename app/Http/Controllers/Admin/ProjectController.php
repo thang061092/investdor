@@ -53,4 +53,27 @@ class ProjectController extends BaseController
         }
     }
 
+    public function image($id)
+    {
+        $project = $this->realEstateProjectService->find($id);
+        if ($project) {
+            return view('employee.project.image', compact('project'));
+        } else {
+            toastr()->error(__("project.id_does_not_exist", ['id' => $id]));
+            return redirect()->route('project.list');
+        }
+    }
+
+    public function upload_image(Request $request)
+    {
+        try {
+            $this->realEstateProjectService->update_image($request);
+            toastr()->success(__('message.success'));
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
+
 }
