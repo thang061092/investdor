@@ -54,9 +54,6 @@
                                 }
                             @endphp
                                 <input type="radio" value="1" {{$check}} name="gender" />
-
-                                <input checked type="radio" value="1" name="gender"/>
-
                                 Nam
                             </label>
                             <label class="gender-choose" for="female">
@@ -112,8 +109,11 @@
                         </label>
                         <select name="bank_name" class="e-select nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
                                 data-default="Chọn">
-                            <option value="">Vietcombank</option>
-                            <option value="">Agribank</option>
+                            @if(isset($banks)) 
+                                @foreach ($banks as $bank)
+                                    <option value="{{$bank->code}}"  @if($detail->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         @if($errors->has('bank_name'))
                         <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
@@ -153,9 +153,14 @@
                         </label>
                         <select name="province" class="e-select nice-select mb-3" id="city" data-text="Chọn thành phố"
                                 data-default="Chọn">
-                            <option selected value="">
+                            <option value="">
                                 Chọn thành phố
                             </option>
+                            @if(isset($province))
+                                @foreach($province as $i)
+                                    <option value="{{$i->code}}"  @if($detail->city == $i->code) selected @endif>{{$i->name}}</option>
+                                @endforeach 
+                            @endif
                         </select>
                         @if($errors->has('province'))
                         <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('province') }}</p>
@@ -163,11 +168,16 @@
                         <label for="district" class="d-block mb-2">
                             {{__('profile.district')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="district" class="e-select nice-select mb-3" id="province" data-text="Chọn quận/ huyện"
+                        <select name="district" class="nice-select mb-3 district" id="district" data-text="Chọn quận/ huyện"
                                 data-default="Chọn">
-                            <option selected value="">
+                            <option value="">
                                 Chọn quận/ huyện
                             </option>
+                            @if(isset($district))
+                                @foreach($district as $k)
+                                    <option value="{{$k->code}}"  @if($detail->district == $k->code) selected @endif>{{$k->name}}</option>
+                                @endforeach 
+                            @endif
                         </select>
                         @if($errors->has('district'))
                         <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('district') }}</p>
@@ -175,11 +185,16 @@
                         <label for="ward" class="d-block mb-2">
                             {{__('profile.ward')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="ward" class="e-select nice-select mb-3" id="ward"
+                        <select name="ward" class="nice-select mb-3" id="ward"
                                 data-text="Chọn xã/ phường/ thị trấn" data-default="Chọn">
-                            <option selected value="">
+                            <option value="">
                                 Chọn xã/ phường/ thị trấn
                             </option>
+                            @if(isset($ward))
+                                @foreach($ward as $j)
+                                    <option value="{{$j->code}}"  @if($detail->ward == $j->code) selected @endif>{{$j->name}}</option>
+                                @endforeach 
+                            @endif
                         </select>
                         @if($errors->has('ward'))
                         <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('ward') }}</p>
@@ -187,7 +202,7 @@
                         <label for="specific_address" class="d-block mb-2">
                             {{__('profile.specific_address')}}
                         </label>
-                        <input type="text" name="specific_address" placeholder="Nhập địa chỉ cụ thể" class="form-control mb-3"/>
+                        <input type="text" name="specific_address" placeholder="Nhập địa chỉ cụ thể" class="form-control mb-3" value="{{$detail->address}}"/>
                     </div>
                 </div>
                 <div class="text-center mt-2 pt-2 wow fadeInUp">
@@ -199,7 +214,7 @@
     </section>
 
 @section('js')
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         toastr.options.timeOut = 10000;
         @if (Session::has('error'))
@@ -208,7 +223,53 @@
             toastr.success('{{ Session::get('success') }}');
         @endif
     });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#city").on('change', function() {
+            let province = $(this).val();
+            let data = {code:province};
+            $.ajax({
+                    type: "POST",
+                    url: "{{route('customer.user.district')}}",
+                    datatype: "JSON",
+                    data: data,
+                    success: function(data)
+                    {
+                        $('#district').html('');
+                        $('#ward').html('');
+                        if (data.status == 200) {
+                            $('#district').append('<option value="">' + '--Chọn quận/huyện--' + '</option>')
+                            $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
+                            $.each(data.data, function(key, value) {
+                                $('#district').append('<option value="' + value.code + '">' + value.name + '</option>');
+                            });
+                        }
+                    }
+                });
+        });
 
+        $("#district").on('change', function() {
+            let district = $(this).val();
+            let data = {code:district};
+            $.ajax({
+                    type: "POST",
+                    url: "{{route('customer.user.ward')}}",
+                    datatype: "JSON",
+                    data: data,
+                    success: function(data)
+                    {
+                        $('#ward').html('');
+                        if (data.status == 200) {
+                            $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
+                            $.each(data.data, function(key, value) {
+                                $('#ward').append('<option value="' + value.code + '">' + value.name + '</option>');
+                            });
+                        }
+                    }
+                });
+        });
+    });
 </script>
 @endsection
 @stop

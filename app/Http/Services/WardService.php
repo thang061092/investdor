@@ -47,4 +47,19 @@ class WardService
             }
         }
     }
+    public function get_ward() {
+        $ward = $this->wardRepository->get_ward();
+        if ($ward) {
+            return $ward;
+        }
+        return false;
+    }
+
+    public function get_ward_by_district($code) {
+        $ward = $this->wardRepository->get_ward_by_district($code);
+        if ($ward) {
+            return $ward;
+        }
+        return false;
+    }
 }

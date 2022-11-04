@@ -5,16 +5,19 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\CityRepository;
+use App\Http\Repositories\DistrictRepository;
 use App\Models\City;
 use Illuminate\Support\Facades\Http;
 
 class CityService
 {
     protected $cityRepository;
+    protected $districtRepository;
 
-    public function __construct(CityRepository $cityRepository)
+    public function __construct(CityRepository $cityRepository, DistrictRepository $districtRepository)
     {
         $this->cityRepository = $cityRepository;
+        $this->districtRepository = $districtRepository;
     }
 
     public function create()
@@ -37,5 +40,13 @@ class CityService
             }
         }
         return;
+    }
+
+    public function get_province() {
+        $province = $this->cityRepository->get_province();
+        if ($province) {
+            return $province;
+        }
+        return false;
     }
 }

@@ -5,18 +5,22 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\UserRepository;
+use App\Http\Repositories\BankRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Users;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
     protected $userRepository;
+    protected $bankRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, BankRepository $bankRepository)
     {
         $this->userRepository = $userRepository;
+        $this->bankRepository = $bankRepository;
     }
 
     public function find($id)
@@ -58,6 +62,9 @@ class UserService
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::INVESTOR,
+            Users::BANK_NAME => "",
+            Users::ACCOUNT_NAME => "",
+            Users::ACCOUNT_NUMBER => "",
         ];
         $user = $this->userRepository->create($data);
         return $user;
@@ -171,20 +178,28 @@ class UserService
     }
 
     public function update_profile($request, $id)
-    {
+    {   
+        $user = $this->userRepository->find($id);
+        // if ($request->file('avatar')){
+        //     if ($user->avatar != "") {
+        //         Storage::delete($user->avatar);
+        //     }
+        //     $avatar = $request->file('avatar')->store('public/avatar');
+        // }
         $data = [
-            Users::FULL_NAME => $request['full_name'] ?? "",
-            Users::EMAIL => $request['email'] ?? "",
-            Users::PHONE => $request['phone_number'] ?? "",
-            Users::GENDER => $request['gender'] ?? "",
-            Users::BIRTHDAY =>  $request['birthday'] ?? "",
-            Users::BANK_NAME => $request['bank_name'] ?? "",
-            Users::ACCOUNT_NUMBER => $request['account_number'] ?? "",
-            Users::ACCOUNT_NAME => $request['account_name'] ?? "",
-            Users::CITY => $request['province'] ?? "",
-            Users::DISTRICT => $request['district'] ?? "",
-            Users::WARD => $request['ward'] ?? "",
-            Users::ADDRESS => $request['specific_address'] ?? "",
+            Users::FULL_NAME => $request->full_name ?? "",
+            Users::EMAIL => $request->email ?? "",
+            Users::PHONE => $request->phone_number ?? "",
+            Users::GENDER => $request->gender ?? "",
+            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BANK_NAME => $request->bank_name ?? "",
+            Users::ACCOUNT_NUMBER => $request->account_number ?? "",
+            Users::ACCOUNT_NAME => $request->account_name ?? "",
+            Users::CITY => $request->province ?? "",
+            Users::DISTRICT => $request->district ?? "",
+            Users::WARD => $request->ward ?? "",
+            Users::ADDRESS => $request->specific_address ?? "",
+            Users::AVATAR => $avatar ?? "",
         ];
         $user = $this->userRepository->update_profile($id, $data);
         return $user;

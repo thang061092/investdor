@@ -53,6 +53,7 @@ class Users extends BaseModel
     const BANK_NAME = "bank_name";
     const ACCOUNT_NAME = "account_name";
     const ACCOUNT_NUMBER = "account_number";
+    const BANK_CODE = "bank_code";
 
     // status
     const ACTIVE = 'active';

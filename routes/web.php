@@ -60,6 +60,8 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/user')->group(function () {
                 Route::get('/manager', 'Customer\UserController@manager')->name('customer.user.manager');
                 Route::post('/update_profile', 'Customer\UserController@update_profile')->name('customer.user.update_profile');
+                Route::post('/district', 'Customer\UserController@get_district_by_province')->name('customer.user.district');
+                Route::post('/ward', 'Customer\UserController@get_ward_by_district')->name('customer.user.ward');
             });
         });
 
