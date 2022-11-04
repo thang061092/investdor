@@ -96,14 +96,6 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Lợi nhuận dự kiến<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Nhập Lợi nhuận" name="profit_project">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
                                                 <label for="">Loại dự án<span
                                                         class="text-danger">*</span></label>
                                                 <select type="text" class="form-control" name="type_project">
@@ -114,7 +106,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="">Mô tả dự án<span class="text-danger">(VI)*</span></label>
                                                 <textarea type="text" class="form-control"
@@ -123,7 +115,7 @@
                                                           id="description_project_vi"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="">Mô tả dự án<span class="text-danger">(EN)*</span></label>
                                                 <textarea type="text" class="form-control"

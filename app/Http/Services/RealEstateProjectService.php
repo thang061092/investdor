@@ -57,7 +57,7 @@ class RealEstateProjectService
 
     public function detail_project($slug)
     {
-        $project = $this->estateProjectRepository->findOne([RealEstateProject::SLUG_VI => $slug]);
+        $project = $this->estateProjectRepository->find_project_by_slug($slug);
         return $project;
     }
 }

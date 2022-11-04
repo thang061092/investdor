@@ -98,9 +98,9 @@
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
                                                 <td>{{$project->name_vi}}</td>
-                                                <td>{{number_format($project->total_value)}}</td>
-                                                <td>{{number_format($project->part)}}</td>
-                                                <td>{{number_format($project->value_part)}}</td>
+                                                <td>{{number_format_vn($project->total_value)}}</td>
+                                                <td>{{number_format_vn($project->part)}}</td>
+                                                <td>{{number_format_vn($project->value_part)}}</td>
                                                 <td>{{type_project($project->type)}}</td>
                                                 <td>
                                                     <select class="form-control status_project">
@@ -112,6 +112,40 @@
                                                 </td>
                                                 <td>{{$project->created_at}}</td>
                                                 <td>{{$project->created_by}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
+                                                                 width="24"
+                                                                 height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                                 stroke="currentColor" fill="none"
+                                                                 stroke-linecap="round"
+                                                                 stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                <circle cx="12" cy="12" r="1"/>
+                                                                <circle cx="12" cy="19" r="1"/>
+                                                                <circle cx="12" cy="5" r="1"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="dropdown-menu dropdown-menu-demo">
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     stroke-width="2" stroke="currentColor"
+                                                                     fill="none"
+                                                                     stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z"
+                                                                          fill="none"/>
+                                                                    <circle cx="12" cy="12" r="2"/>
+                                                                    <path
+                                                                        d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/>
+                                                                </svg>&nbsp;
+                                                                Chi tiết
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <div class="col-12 col-md-12">

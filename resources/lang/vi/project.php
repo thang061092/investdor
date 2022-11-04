@@ -15,5 +15,16 @@ return [
     'part' => 'Phần',
     'price' => "Giá bán",
     'invest_now' => "Đầu tư ngay",
-    'view_project' => 'Xem dự án'
+    'view_project' => 'Xem dự án',
+    'name_project' => 'Tên dự án',
+    'investment_status' => 'Trạng thái đầu tư',
+    'not_invested' => 'Chưa đầu tư',
+    'invested' => 'Đã đầu tư',
+    'project_status' => 'Trạng thái dự án',
+    'open' => 'Đang mở',
+    'close' => 'Đang đóng',
+    'view_investments_other' => 'Xem các khoản đầu tư khác',
+    'chance_for_you' => ':total cơ hội cho bạn',
+    'clear_filter' => "Bỏ lọc",
+
 ];
