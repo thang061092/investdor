@@ -11,10 +11,16 @@ class RealEstateProject extends BaseModel
     //column
     const NAME_VI = 'name_vi';
     const NAME_EN = 'name_en';
+    const SLUG_VI = 'slug_vi';
+    const SLUG_EN = 'slug_en';
     const CITY = 'city';
+    const CITY_ID = 'city_id';
     const DISTRICT = 'district';
+    const DISTRICT_ID = 'district_id';
     const WARD = 'ward';
-    const ADDRESS = 'address';
+    const WARD_ID = 'ward_id';
+    const ADDRESS_VI = 'address_vi';
+    const ADDRESS_EN = 'address_en';
     const IMAGE = 'image';
     const TOTAL_VALUE = 'total_value';
     const PART = 'part';
@@ -25,10 +31,11 @@ class RealEstateProject extends BaseModel
     const TYPE = 'type';
 
     //status
-    const ON_SALE = 1; //Đang mở bán
-    const FINISHED = 2; //Dự án đã hoàn thành
-    const PENDING = 3; //Dự án đang pending
-    const CLOSE_INVESTMENT = 4; //Đóng đầu tư
+    const NEW = 1; //nháp
+    const ON_SALE = 2; //Đang mở bán
+    const FINISHED = 3; //Dự án đã hoàn thành
+    const PENDING = 4; //Dự án đang pending
+    const CLOSE_INVESTMENT = 5; //Đóng đầu tư
 
     //type
     const APARTMENT = 1; //chung cư,
@@ -63,5 +70,20 @@ class RealEstateProject extends BaseModel
     public function businessPlane()
     {
         return $this->hasOne(BusinessPlane::class, BusinessPlane::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, self::CITY_ID);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, self::DISTRICT_ID);
+    }
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class, self::WARD_ID);
     }
 }

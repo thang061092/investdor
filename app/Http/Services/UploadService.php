@@ -10,7 +10,7 @@ class UploadService
     {
         $file = $request->file;
         $extension = $file->getClientOriginalExtension();
-        $fileName = time() . '-' . uniqid() . '.' . $extension;
+        $fileName = time() . '-' . hash('SHA256', uniqid()) . '.' . $extension;
         $path = $file->storeAs('uploads', $fileName, 'public');
         $url = env('BASE_URL') . 'storage/' . $path;
         return $url;

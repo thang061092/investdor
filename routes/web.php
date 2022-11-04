@@ -51,7 +51,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
-    Route::get('/detail_project', "Customer\HomeController@detail_project")->name('customer.detail_project');
+    Route::get('/detail_project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -71,19 +71,35 @@ Route::group(['middleware' => 'locale'], function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', "Admin\UserController@login")->name('admin');
         Route::post('/login', "Admin\UserController@employee_login")->name('admin.login');
-        Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
 
-        Route::prefix('/dashboard')->group(function () {
-            Route::get('/', "Admin\DashboardController@index")->name('dashboard');
-        });
+        Route::group(['middleware' => 'auth_admin'], function () {
+            Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
 
-        Route::prefix('/project')->group(function () {
-            Route::get('/create', "Admin\ProjectController@index_create_project")->name('project.create');
-            Route::post('/create_project', "Admin\ProjectController@create_new_project")->name('create.create_project');
+            Route::prefix('/dashboard')->group(function () {
+                Route::get('/', "Admin\DashboardController@index")->name('dashboard');
+            });
+
+            Route::prefix('/project')->group(function () {
+                Route::get('/list', "Admin\ProjectController@list")->name('project.list');
+                Route::get('/tem', "Admin\ProjectController@index_create_project")->name('project.tem');
+                Route::get('/create', "Admin\ProjectController@create")->name('project.create');
+                Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
+                Route::get('/image/{id}', "Admin\ProjectController@image")->name('project.image');
+                Route::post('/upload_image', "Admin\ProjectController@upload_image")->name('project.upload_image');
+            });
+
+            Route::prefix('/interest')->group(function () {
+                Route::post('/create', "Admin\InterestController@create")->name('interest.create');
+            });
+
+
         });
     });
 
-
     Route::post('/upload', "UploadController@upload");
+    Route::prefix('/address')->group(function () {
+        Route::get('/district', "Admin\AddressController@district");
+        Route::get('/ward', "Admin\AddressController@ward");
+    });
 });
 

@@ -42,11 +42,18 @@ class CityService
         return;
     }
 
+
     public function get_province() {
         $province = $this->cityRepository->get_province();
         if ($province) {
             return $province;
         }
         return false;
+    }
+    
+    public function city()
+    {
+        return $this->cityRepository->getAll();
+
     }
 }

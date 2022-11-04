@@ -28,4 +28,9 @@ class Ward extends BaseModel
     {
         return $this->belongsTo(District::class, self::DISTRICT_ID);
     }
+
+    public function realEstateProjects()
+    {
+        return $this->hasMany(RealEstateProject::class, RealEstateProject::WARD_ID);
+    }
 }

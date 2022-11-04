@@ -39,11 +39,8 @@
                                         </div>
                                     @endif
                                     <div class="mb-3">
-                                        <div class="input-icon mb-3">
-                                            <label class="input-icon-addon">
-                                                <i class="fas fa-user"></i>
-                                            </label>
-                                            <input type="text"
+                                        <div class="mb-3">
+                                            <input type="email"
                                                    class="form-control @if($errors->has('email'))is-invalid @endif"
                                                    placeholder="{{__('auth.enter_email')}}" name="email"
                                                    value="{{old('email')}}">
@@ -51,10 +48,7 @@
                                                 <p class="text-danger">{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
-                                        <div class="input-icon mb-2">
-                                            <label class="input-icon-addon">
-                                                <i class="fas fa-lock"></i>
-                                            </label>
+                                        <div class="mb-2">
                                             <input type="password"
                                                    class="form-control @if($errors->has('password'))is-invalid @endif"
                                                    placeholder="{{__('auth.enter_password')}}" name="password" value="{{old('password')}}">

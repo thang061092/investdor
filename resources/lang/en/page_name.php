@@ -10,6 +10,7 @@ return [
     'product' => 'Product',
     'knowledge' => 'Knowledge',
     'detail_project' => 'Project details',
-    'dashboard' => 'Dashboard'
+    'dashboard' => 'Dashboard',
+    'project_list'=> 'Project list'
 
 ];

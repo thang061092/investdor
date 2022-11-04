@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/selectize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-{{--    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>--}}
-{{--    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"/>--}}
+    @yield('css')
 </head>
 <body class="antialiased right_col">
 @include('employee.layout.modal_dang_xu_ly')
@@ -35,14 +34,14 @@
     <div class="page-wrapper">
         <div class="container-fluid">
             @include('employee.layout.alert_error')
+            @include('employee.layout.alert_success')
             @yield('content')
             @include('employee.layout.footer')
         </div>
     </div>
 </div>
-
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+@yield('js')
 </body>
-
-
 </html>
 

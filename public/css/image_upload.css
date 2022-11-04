@@ -1,0 +1,59 @@
+.uploads {
+    display: block;
+    margin: 0 -10px;
+}
+
+.uploads .block {
+    width: 167px;
+    padding: 0 10px;;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+button.cancelButton {
+    position: absolute;
+    right: 10px;
+    z-index: 99;
+    border: unset;
+    background: transparent;
+    color: #fff;
+}
+
+.uploads .block img {
+    height: 148px;
+    overflow: hidden;
+    object-fit: cover;
+    width: 100%;
+}
+
+.uploader {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+img.magnify-image {
+    max-width: initial;
+}
+
+.progressBar {
+    background-color: #3E6FAD;
+    width: 0px;
+    height: 5px;
+    margin-top: 40px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -moz-transition: .25s ease-out;
+    -webkit-transition: .25s ease-out;
+    -o-transition: .25s ease-out;
+    transition: .25s ease-out;
+}
+
+/*.fa, .fas {*/
+/*    color: black;*/
+/*}*/

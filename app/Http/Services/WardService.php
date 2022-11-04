@@ -47,6 +47,7 @@ class WardService
             }
         }
     }
+
     public function get_ward() {
         $ward = $this->wardRepository->get_ward();
         if ($ward) {
@@ -61,5 +62,12 @@ class WardService
             return $ward;
         }
         return false;
+
+    }
+    
+    public function ward($request)
+    {
+        return $this->wardRepository->findMany(['parent_code' => $request->code]);
+
     }
 }

@@ -18,6 +18,6 @@ class Auth_employee
                 return $next($request);
             }
         }
-        return redirect()->route('home.index');
+        return redirect()->route('admin');
     }
 }

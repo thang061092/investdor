@@ -49,6 +49,7 @@ class DistrictService
         return;
     }
 
+
     public function get_district() {
         $district = $this->districtRepository->get_district();
         if ($district) {
@@ -64,5 +65,11 @@ class DistrictService
             return $district;
         }
         return false;
+    }
+
+    public function district($request)
+    {
+        return $this->districtRepository->findMany(['parent_code' => $request->code]);
+
     }
 }
