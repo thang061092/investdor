@@ -28,6 +28,7 @@
 <script src="{{asset('frontend/js/wow.js')}}"></script>
 <script src="{{asset('frontend/js/slide.js')}}"></script>
 <script src="{{asset('frontend/js/chart.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script src="{{asset('frontend/js/char.js')}}"></script>
 <script src="{{asset('frontend/js/auth.js')}}"></script>
 <script src="{{asset('frontend/js/script.js')}}"></script>

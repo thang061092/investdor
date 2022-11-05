@@ -27,11 +27,6 @@
   .langs {
     transition: 0.3s all 0s;
   }
-
-  .langs .items {
-    transition: 0.3s all 0s;
-  }
-
   .page_other .header .box-menu>ul ul li a:hover,
   .page_other .header .box-menu>ul ul li a:focus {
     color: #fff;
@@ -40,10 +35,6 @@
   .manager-panel .group-filter {
     width: 18.5rem;
   }
-
-  /*.page_other .header.scroll .btn_all {*/
-  /*  color: #fff !important;*/
-  /*}*/
 
   .page_other .header.scroll .box-menu>ul li ul li a:hover,
   .page_other .header.scroll .box-menu>ul li ul li a:focus {
@@ -845,6 +836,7 @@
 
   .box-menu>ul {
     width: 90%;
+    margin-bottom: 1rem;
   }
 
   .auth__submit {
