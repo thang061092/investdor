@@ -119,8 +119,8 @@
           },
           "char.js": {
             "type": "-",
-            "size": 1769,
-            "lmtime": 1667544478769,
+            "size": 2561,
+            "lmtime": 1667587884554,
             "modified": false
           },
           "chart.min.js": {
@@ -168,6 +168,56 @@
           "wow.js": {
             "type": "-",
             "size": 8108,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
+        "css": {
+          "animation.css": {
+            "type": "-",
+            "size": 49675,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bootstrap.min.css": {
+            "type": "-",
+            "size": 162017,
+            "lmtime": 0,
+            "modified": false
+          },
+          "font-awesome.min.css": {
+            "type": "-",
+            "size": 31018,
+            "lmtime": 0,
+            "modified": false
+          },
+          "nice-select2.css": {
+            "type": "-",
+            "size": 3489,
+            "lmtime": 0,
+            "modified": false
+          },
+          "reset.css": {
+            "type": "-",
+            "size": 3707,
+            "lmtime": 0,
+            "modified": false
+          },
+          "responsive.css": {
+            "type": "-",
+            "size": 17341,
+            "lmtime": 1667588049101,
+            "modified": false
+          },
+          "style.css": {
+            "type": "-",
+            "size": 55695,
+            "lmtime": 1667587868082,
+            "modified": false
+          },
+          "swiper-bundle.min.css": {
+            "type": "-",
+            "size": 15563,
             "lmtime": 0,
             "modified": false
           }
@@ -320,6 +370,28 @@
             "size": 11701,
             "lmtime": 0,
             "modified": false
+          }
+        },
+        "customer": {
+          "layout": {
+            "footer.blade.php": {
+              "type": "-",
+              "size": 10795,
+              "lmtime": 1667583375352,
+              "modified": false
+            },
+            "header.blade.php": {
+              "type": "-",
+              "size": 17399,
+              "lmtime": 1667588376817,
+              "modified": false
+            },
+            "master.blade.php": {
+              "type": "-",
+              "size": 2101,
+              "lmtime": 1667583385284,
+              "modified": false
+            }
           }
         }
       }
