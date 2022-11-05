@@ -6,8 +6,10 @@ namespace App\Http\Services;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Repositories\ImageProjectRepository;
+use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\ImageProject;
+use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
 
@@ -16,14 +18,17 @@ class RealEstateProjectService
     protected $estateProjectRepository;
     protected $interestService;
     protected $imageProjectRepository;
+    protected $overviewRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
-                                ImageProjectRepository $imageProjectRepository)
+                                ImageProjectRepository $imageProjectRepository,
+                                OverviewRepository $overviewRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
         $this->imageProjectRepository = $imageProjectRepository;
+        $this->overviewRepository = $overviewRepository;
     }
 
     public function create($request)
@@ -85,9 +90,39 @@ class RealEstateProjectService
                     ImageProject::PATH => $value['path'],
                     ImageProject::TYPE => $value['file_type'],
                     ImageProject::NAME => $value['file_name'],
-                    ImageProject::CREATED_BY=> Session::get('employee')['email'] ?? null
+                    ImageProject::CREATED_BY => Session::get('employee')['email'] ?? null
                 ]
             );
+        }
+        return;
+    }
+
+    public function update_extend($request)
+    {
+        $overview = $this->overviewRepository->findOne([OverviewProject::REAL_ESTATE_PROJECT_ID => $request->id]);
+        if (!$overview) {
+            $this->overviewRepository->create([
+                OverviewProject::REAL_ESTATE_PROJECT_ID => $request->id,
+                OverviewProject::OVERVIEW_VI => $request->description_project_vi,
+                OverviewProject::OVERVIEW_EN => $request->description_project_en,
+                OverviewProject::ADDRESS_VI => $request->address_project_vi,
+                OverviewProject::ADDRESS_EN => $request->address_project_en,
+                OverviewProject::MARKET_VI => $request->market_project_vi,
+                OverviewProject::MARKET_EN => $request->market_project_en,
+                OverviewProject::BASIS_VI => $request->background_project_vi,
+                OverviewProject::BASIS_EN => $request->background_project_en,
+            ]);
+        } else {
+            $this->overviewRepository->update($overview['id'], [
+                OverviewProject::OVERVIEW_VI => $request->description_project_vi,
+                OverviewProject::OVERVIEW_EN => $request->description_project_en,
+                OverviewProject::ADDRESS_VI => $request->address_project_vi,
+                OverviewProject::ADDRESS_EN => $request->address_project_en,
+                OverviewProject::MARKET_VI => $request->market_project_vi,
+                OverviewProject::MARKET_EN => $request->market_project_en,
+                OverviewProject::BASIS_VI => $request->background_project_vi,
+                OverviewProject::BASIS_EN => $request->background_project_en,
+            ]);
         }
         return;
     }

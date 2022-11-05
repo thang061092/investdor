@@ -51,7 +51,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
-    Route::get('/detail_project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
+    Route::get('/detail-project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -81,8 +81,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/tem', "Admin\ProjectController@index_create_project")->name('project.tem');
                 Route::get('/create', "Admin\ProjectController@create")->name('project.create');
                 Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
-                Route::get('/image/{id}', "Admin\ProjectController@image")->name('project.image');
+                Route::get('/action/{id}', "Admin\ProjectController@action")->name('project.action');
                 Route::post('/upload_image', "Admin\ProjectController@upload_image")->name('project.upload_image');
+                Route::post('/update_extend', "Admin\ProjectController@update_extend")->name('project.update_extend');
             });
 
             Route::prefix('/interest')->group(function () {

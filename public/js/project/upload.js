@@ -128,7 +128,7 @@ $(document).ready(function () {
         })
     })
 
-    const anh_dai_dien_mac_dinh = window.origin + '/frontend/images/logo.png';
+    const anh_dai_dien_mac_dinh = window.origin + '/frontend/images/default.png';
     $('#input_img_per').change(function (event) {
         event.preventDefault();
         var files = $(this)[0].files;

@@ -26,6 +26,14 @@ return [
     'view_investments_other' => 'Xem các khoản đầu tư khác',
     'chance_for_you' => ':total cơ hội cho bạn',
     'clear_filter' => "Bỏ lọc",
-    'id_does_not_exist' => "ID :id không tồn tại"
+    'id_does_not_exist' => "ID :id không tồn tại",
+    'id_not_null' => "Id không để trống",
+    'image_avatar_project_not_null' => 'Ảnh đại diện không để trống',
+    'project_photo_not_null' => "Ảnh dự án không để trống",
+    'project_overview' => "Tổng quan dự án",
+    'address' => 'Địa điểm',
+    'market' => 'Thị trường',
+    'basis' => 'Nền tảng',
+    'project_information' => 'Thông tin dự án'
 
 ];
