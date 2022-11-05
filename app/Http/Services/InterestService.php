@@ -81,7 +81,11 @@ class InterestService
     public function get_current_interest()
     {
         $interest = $this->interestRepository->findOne([Interest::STATUS => Interest::ACTIVE]);
-        $interest['detail'] = $interest->detailInterests()->where(DetailInterest::STATUS, DetailInterest::ACTIVE)->first();
+        if ($interest) {
+            $interest['detail'] = $interest->detailInterests()->where(DetailInterest::STATUS, DetailInterest::ACTIVE)->first();
+        } else {
+            $interest = null;
+        }
         return $interest;
     }
 }
