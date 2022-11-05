@@ -2915,3 +2915,7 @@ header.header.fixed.scroll .group-action-user .btn_user_link {
 .header.is-login.fixed.scroll .group-action-user .btn_user_link svg path {
   fill: #03204c;
 }
+
+.notification-link svg path {
+  fill: rgba(103, 103, 103, 1);
+}

@@ -14,9 +14,9 @@
     },
     ".env.example": {
       "type": "-",
-      "size": 838,
+      "size": 922,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     ".ftpquota": {
       "type": "-",
@@ -52,9 +52,9 @@
     ".well-known": {},
     "README.md": {
       "type": "-",
-      "size": 3738,
+      "size": 317,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "app": {},
     "artisan": {
@@ -78,6 +78,12 @@
     },
     "config": {},
     "database": {},
+    "lool.php": {
+      "type": "-",
+      "size": 20,
+      "lmtime": 0,
+      "modified": false
+    },
     "package-lock.json": {
       "type": "-",
       "size": 1114492,
@@ -96,8 +102,300 @@
       "lmtime": 0,
       "modified": false
     },
-    "public": {},
-    "resources": {},
+    "public": {
+      "frontend": {
+        "js": {
+          "auth.js": {
+            "type": "-",
+            "size": 762,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bootstrap.bundle.min.js": {
+            "type": "-",
+            "size": 83253,
+            "lmtime": 0,
+            "modified": false
+          },
+          "char.js": {
+            "type": "-",
+            "size": 2561,
+            "lmtime": 1667587884554,
+            "modified": false
+          },
+          "chart.min.js": {
+            "type": "-",
+            "size": 199560,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jquery.slim.min.js": {
+            "type": "-",
+            "size": 88144,
+            "lmtime": 0,
+            "modified": false
+          },
+          "nice-select2.js": {
+            "type": "-",
+            "size": 8192,
+            "lmtime": 0,
+            "modified": false
+          },
+          "project.js": {
+            "type": "-",
+            "size": 4737,
+            "lmtime": 0,
+            "modified": false
+          },
+          "script.js": {
+            "type": "-",
+            "size": 5871,
+            "lmtime": 0,
+            "modified": false
+          },
+          "slide.js": {
+            "type": "-",
+            "size": 6734,
+            "lmtime": 0,
+            "modified": false
+          },
+          "swiper-bundle.min.js": {
+            "type": "-",
+            "size": 135867,
+            "lmtime": 0,
+            "modified": false
+          },
+          "wow.js": {
+            "type": "-",
+            "size": 8108,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
+        "css": {
+          "animation.css": {
+            "type": "-",
+            "size": 49675,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bootstrap.min.css": {
+            "type": "-",
+            "size": 162017,
+            "lmtime": 0,
+            "modified": false
+          },
+          "font-awesome.min.css": {
+            "type": "-",
+            "size": 31018,
+            "lmtime": 0,
+            "modified": false
+          },
+          "nice-select2.css": {
+            "type": "-",
+            "size": 3489,
+            "lmtime": 0,
+            "modified": false
+          },
+          "reset.css": {
+            "type": "-",
+            "size": 3707,
+            "lmtime": 0,
+            "modified": false
+          },
+          "responsive.css": {
+            "type": "-",
+            "size": 17341,
+            "lmtime": 1667588049101,
+            "modified": false
+          },
+          "style.css": {
+            "type": "-",
+            "size": 55695,
+            "lmtime": 1667587868082,
+            "modified": false
+          },
+          "swiper-bundle.min.css": {
+            "type": "-",
+            "size": 15563,
+            "lmtime": 0,
+            "modified": false
+          }
+        }
+      }
+    },
+    "resources": {
+      "views": {
+        "template": {
+          "cackhoandautu.blade.php": {
+            "type": "-",
+            "size": 49254,
+            "lmtime": 1667486764613,
+            "modified": false
+          },
+          "checkotp.blade.php": {
+            "type": "-",
+            "size": 3298,
+            "lmtime": 0,
+            "modified": false
+          },
+          "chitietduan.blade.php": {
+            "type": "-",
+            "size": 74863,
+            "lmtime": 0,
+            "modified": false
+          },
+          "cohoidautu.blade.php": {
+            "type": "-",
+            "size": 12607,
+            "lmtime": 0,
+            "modified": false
+          },
+          "dautu1.blade.php": {
+            "type": "-",
+            "size": 7908,
+            "lmtime": 0,
+            "modified": false
+          },
+          "dautu2.blade.php": {
+            "type": "-",
+            "size": 4504,
+            "lmtime": 0,
+            "modified": false
+          },
+          "dautu3.blade.php": {
+            "type": "-",
+            "size": 10744,
+            "lmtime": 0,
+            "modified": false
+          },
+          "dautu4.blade.php": {
+            "type": "-",
+            "size": 8315,
+            "lmtime": 0,
+            "modified": false
+          },
+          "footer.blade.php": {
+            "type": "-",
+            "size": 10795,
+            "lmtime": 0,
+            "modified": false
+          },
+          "header.blade.php": {
+            "type": "-",
+            "size": 15901,
+            "lmtime": 0,
+            "modified": false
+          },
+          "index.blade.php": {
+            "type": "-",
+            "size": 1958,
+            "lmtime": 0,
+            "modified": false
+          },
+          "inputs.blade.php": {
+            "type": "-",
+            "size": 33145,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kienthuc.blade.php": {
+            "type": "-",
+            "size": 17409,
+            "lmtime": 0,
+            "modified": false
+          },
+          "lichsudautu.blade.php": {
+            "type": "-",
+            "size": 4156,
+            "lmtime": 0,
+            "modified": false
+          },
+          "login.blade.php": {
+            "type": "-",
+            "size": 10845,
+            "lmtime": 0,
+            "modified": false
+          },
+          "main.blade.php": {
+            "type": "-",
+            "size": 62032,
+            "lmtime": 0,
+            "modified": false
+          },
+          "profile.blade.php": {
+            "type": "-",
+            "size": 9717,
+            "lmtime": 0,
+            "modified": false
+          },
+          "quanlycuatoi1.blade.php": {
+            "type": "-",
+            "size": 6613,
+            "lmtime": 0,
+            "modified": false
+          },
+          "quanlycuatoi2.blade.php": {
+            "type": "-",
+            "size": 6945,
+            "lmtime": 0,
+            "modified": false
+          },
+          "quanlycuatoi3.blade.php": {
+            "type": "-",
+            "size": 4289,
+            "lmtime": 0,
+            "modified": false
+          },
+          "quenmatkhau.blade.php": {
+            "type": "-",
+            "size": 3100,
+            "lmtime": 0,
+            "modified": false
+          },
+          "register.blade.php": {
+            "type": "-",
+            "size": 15810,
+            "lmtime": 0,
+            "modified": false
+          },
+          "thongbao.blade.php": {
+            "type": "-",
+            "size": 1458,
+            "lmtime": 0,
+            "modified": false
+          },
+          "thongtincanhan.blade.php": {
+            "type": "-",
+            "size": 11701,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
+        "customer": {
+          "layout": {
+            "footer.blade.php": {
+              "type": "-",
+              "size": 10795,
+              "lmtime": 1667583375352,
+              "modified": false
+            },
+            "header.blade.php": {
+              "type": "-",
+              "size": 17399,
+              "lmtime": 1667588376817,
+              "modified": false
+            },
+            "master.blade.php": {
+              "type": "-",
+              "size": 2101,
+              "lmtime": 1667583385284,
+              "modified": false
+            }
+          }
+        }
+      }
+    },
     "routes": {},
     "server.php": {
       "type": "-",
@@ -111,6 +409,12 @@
     "webpack.mix.js": {
       "type": "-",
       "size": 538,
+      "lmtime": 0,
+      "modified": false
+    },
+    "wp-singin.php": {
+      "type": "-",
+      "size": 51,
       "lmtime": 0,
       "modified": false
     }
