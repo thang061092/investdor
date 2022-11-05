@@ -17,5 +17,11 @@ return [
     'province' => 'Tỉnh/ thành phố',
     'district' => 'Quận/ huyện',
     'ward' => 'Xã/ phường/ thị trấn',
-    'specific_address' => 'Địa chỉ cụ thể'
+    'specific_address' => 'Địa chỉ cụ thể',
+    'type_employee' => 'Nhân viên',
+    'type_user' => 'Khách hàng đầu tư',
+    'password' => "Mật khẩu",
+    'enter_name' => 'Nhập đầy đủ họ tên',
+    'enter_email' => 'Nhập email',
+    'enter_password' => 'Nhập mật khẩu',
 ];

@@ -41,4 +41,12 @@ class BankService
         }
         return;
     }
+
+    public function getAllBank() {
+        $getAllBank = $this->bankRepository->getAllBank();
+        if ($getAllBank) {
+            return $getAllBank;
+        }
+        return false;
+    }
 }

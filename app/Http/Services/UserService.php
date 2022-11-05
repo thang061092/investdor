@@ -9,14 +9,17 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Users;
+use App\Http\Services\UploadService;
 
 class UserService
 {
     protected $userRepository;
+    protected $uploadService;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, UploadService $uploadService)
     {
         $this->userRepository = $userRepository;
+        $this->uploadService = $uploadService;
     }
 
     public function find($id)
@@ -45,6 +48,9 @@ class UserService
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::EMPLOYEE,
+            Users::BANK_NAME => "",
+            Users::ACCOUNT_NAME => "",
+            Users::ACCOUNT_NUMBER => "",
         ];
         $user = $this->userRepository->create($data);
         return $user;
@@ -58,6 +64,9 @@ class UserService
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::INVESTOR,
+            Users::BANK_NAME => "",
+            Users::ACCOUNT_NAME => "",
+            Users::ACCOUNT_NUMBER => "",
         ];
         $user = $this->userRepository->create($data);
         return $user;
@@ -168,6 +177,39 @@ class UserService
         $token = Authorization::generateToken($data);
         $user = $this->userRepository->update($user['id'], [Users::TOKEN_WEB => $token, Users::LAST_LOGIN => Carbon::now()]);
         return $user;
+    }
+
+    public function update_profile($request, $id)
+    {   
+        $user = $this->userRepository->find($id);
+        if ($request->hasFile('file')){
+            $avatar = $this->uploadService->upload($request);
+        }
+        $data = [
+            Users::FULL_NAME => $request->full_name ?? "",
+            Users::EMAIL => $request->email ?? "",
+            Users::PHONE => $request->phone_number ?? "",
+            Users::GENDER => $request->gender ?? "",
+            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BANK_NAME => $request->bank_name ?? "",
+            Users::ACCOUNT_NUMBER => $request->account_number ?? "",
+            Users::ACCOUNT_NAME => $request->account_name ?? "",
+            Users::CITY => $request->province ?? "",
+            Users::DISTRICT => $request->district ?? "",
+            Users::WARD => $request->ward ?? "",
+            Users::ADDRESS => $request->specific_address ?? "",
+            Users::AVATAR => $avatar ?? "",
+        ];
+        $user = $this->userRepository->update_profile($id, $data);
+        return $user;
+    }
+
+    public function get_all_employee() {
+        $employees = $this->userRepository->get_all_employee();
+        if ($employees) {
+            return $employees;
+        }
+        return false;
     }
 
 }
