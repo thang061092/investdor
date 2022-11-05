@@ -25,5 +25,13 @@ return [
     'view_investments_other' => 'View investments other',
     'chance_for_you' => ':total chance for you',
     'clear_filter' => 'Clear filter',
-    'id_does_not_exist' => "ID :id does not exist"
+    'id_does_not_exist' => "ID :id does not exist",
+    'id_not_null' => "ID not null",
+    'image_avatar_project_not_null' => 'Project representative photo not null',
+    'project_photo_not_null' => "Project photo not null",
+    'project_overview' => "Project overview",
+    'address' => 'Address',
+    'market' => 'Market',
+    'basis' => 'Basis',
+    'project_information'=>'Project information'
 ];

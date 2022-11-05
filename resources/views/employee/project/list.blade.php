@@ -129,7 +129,7 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                               href="">
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=detail">
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết dự án
                                                             </a>
@@ -139,17 +139,17 @@
                                                                 Cập nhật thông tin cơ bản
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                               href="{{route('project.image',['id'=> $project->id])}}">
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=image">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật hình ảnh dự án
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                               href="">
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=extend">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin mở rộng
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                               href="">
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=document">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài liệu
                                                             </a>

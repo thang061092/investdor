@@ -1,15 +1,16 @@
-@extends("employee.layout.master")
-@section('page_name', '- Tạo mới dự án')
-@section("content")
+@extends('employee.layout.master')
+@section('page_name', '- Cập nhật tài liệu dự án ' . $project['name_vi'] ?? '')
+@section('content')
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
-                                                                   class="text-success">Danh sách dự án</a>
+                                                                   class="text-success">{{__('page_name.project_list')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">Tạo mới dự án</a>
+                                                                   class="text-info">Cập nhật tài liệu dự
+                        án</a>
                 </li>
             </ol>
         </div>
@@ -64,64 +65,6 @@
                                                     <p class="text-danger">{{ $errors->first('total_value_project') }}</p>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Tỉnh/Thành phố<span class="text-danger">*</span></label>
-                                                <select
-                                                    class="form-control city_project @if($errors->has('city_project'))is-invalid @endif"
-                                                    name="city_project">
-                                                    <option value="">Chọn Tỉnh/Thành phố</option>
-                                                    @foreach($cities as $key => $value)
-                                                        <option value="{{$value['code']}}">{{$value['name']}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if($errors->has('city_project'))
-                                                    <p class="text-danger">{{ $errors->first('city_project') }}</p>
-                                                @endif
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Quận/Huyện<span class="text-danger">*</span></label>
-                                                <select
-                                                    class="form-control district_project @if($errors->has('district_project'))is-invalid @endif"
-                                                    name="district_project">
-                                                    <option value="">Quận/Huyện</option>
-                                                </select>
-                                                @if($errors->has('district_project'))
-                                                    <p class="text-danger">{{ $errors->first('district_project') }}</p>
-                                                @endif
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Xã/Phường<span class="text-danger">*</span></label>
-                                                <select
-                                                    class="form-control ward_project @if($errors->has('ward_project'))is-invalid @endif"
-                                                    name="ward_project">
-                                                    <option value="">Chọn Xã/Phường</option>
-                                                </select>
-                                                @if($errors->has('ward_project'))
-                                                    <p class="text-danger">{{ $errors->first('ward_project') }}</p>
-                                                @endif
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Địa chỉ<span class="text-danger">*</span></label>
-                                                <input
-                                                    class="form-control @if($errors->has('address_project'))is-invalid @endif"
-                                                    placeholder="Nhập địa chỉ"
-                                                    name="address_project">
-                                                @if($errors->has('address_project'))
-                                                    <p class="text-danger">{{ $errors->first('address_project') }}</p>
-                                                @endif
-                                            </div>
-
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
@@ -213,26 +156,6 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/address/select.js')}}"></script>
-@endsection
-@section('js')
-    <script>
-        CKEDITOR.replace('description_project_vi', {
-            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
-            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
-            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
-            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
-        });
-        CKEDITOR.replace('description_project_en', {
-            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
-            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
-            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
-            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
-        });
-    </script>
+
 @endsection
 

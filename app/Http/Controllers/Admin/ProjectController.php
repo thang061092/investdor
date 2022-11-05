@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\FormCreateProject;
+use App\Http\Requests\FormExtendProject;
+use App\Http\Requests\FormUpdateImageProject;
 use App\Http\Services\CityService;
 use App\Http\Services\RealEstateProjectService;
 use Illuminate\Http\Request;
@@ -53,18 +55,26 @@ class ProjectController extends BaseController
         }
     }
 
-    public function image($id)
+    public function action(Request $request, $id)
     {
         $project = $this->realEstateProjectService->find($id);
         if ($project) {
-            return view('employee.project.image', compact('project'));
+            if ($request->action == 'image') {
+                return view('employee.project.image', compact('project'));
+            } elseif ($request->action == 'extend') {
+                return view('employee.project.extend', compact('project'));
+            } elseif ($request->action == 'document') {
+                return view('employee.project.document', compact('project'));
+            } else {
+                return view('employee.project.detail', compact('project'));
+            }
         } else {
             toastr()->error(__("project.id_does_not_exist", ['id' => $id]));
             return redirect()->route('project.list');
         }
     }
 
-    public function upload_image(Request $request)
+    public function upload_image(FormUpdateImageProject $request)
     {
         try {
             $this->realEstateProjectService->update_image($request);
@@ -76,4 +86,15 @@ class ProjectController extends BaseController
         }
     }
 
+    public function update_extend(FormExtendProject $request)
+    {
+        try {
+            $this->realEstateProjectService->update_extend($request);
+            toastr()->success(__('message.success'));
+            return redirect()->route('project.list');
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return view('employee.project.list', compact('error'));
+        }
+    }
 }

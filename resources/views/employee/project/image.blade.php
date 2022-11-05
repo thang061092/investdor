@@ -1,5 +1,5 @@
 @extends("employee.layout.master")
-@section('page_name', '- Cập nhật hình ảnh dự án')
+@section('page_name', '- Cập nhật hình ảnh dự án ' . $project['name_vi'] ?? '')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.magnify.css') }}">
@@ -11,6 +11,9 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
+                                                                   class="text-success">Danh sách dự án</a>
+                </li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
                                                                    class="text-info">Cập nhật hình ảnh dự án</a>
                 </li>
@@ -53,10 +56,11 @@
 								    </span>
                                     <label for="input_img_per">
                                         <img id="img_anh_dai_dien"
-                                             src="{{ !empty($project['image']) ? $project['image'] : asset('frontend/images/logo.png') }}"
+                                             src="{{ !empty($project['image']) ? $project['image'] : asset('frontend/images/default.png') }}"
                                              style="width: 500px;height: 225px" alt="">
                                         <input type="file" id="input_img_per" data-preview="imgInp001"
-                                               style="visibility: hidden;" name="anh_dai_dien" value="{{$project['image']}}">
+                                               style="visibility: hidden;" name="anh_dai_dien"
+                                               value="{{$project['image']}}">
                                     </label>
                                 </div>
                             </div>
@@ -72,22 +76,22 @@
                             <div class="col-12">
                                 <div id="SomeThing" class="simpleUploader">
                                     <div class="uploads" id="img_project">
-                                        @if(!empty($project['image_asset']) && count($project['image_asset']) > 0)
-                                            @foreach($project['image_asset'] as $key => $value)
+                                        @if(!empty($project->imageProjects) && count($project->imageProjects) > 0)
+                                            @foreach($project->imageProjects as $key => $value)
                                                 <div class="block">
                                                     <!--//Image-->
-                                                    @if($value['file_type'] == 'image/png' || $value['file_type'] == 'image/jpg' || $value['file_type'] == 'image/jpeg')
-                                                        <a href="{{$value['path']}}" class="magnifyitem"
+                                                    @if($value->type == 'image/png' || $value->type == 'image/jpg' || $value->type == 'image/jpeg')
+                                                        <a href="{{$value->path}}" class="magnifyitem"
                                                            data-magnify="gallery"
                                                            data-src="" data-group="thegallery" data-toggle="lightbox"
-                                                           data-gallery="uploads_supplies" data-max-width="992"
+                                                           data-gallery="img_project" data-max-width="992"
                                                            data-type="image_project"
                                                            data-title="Ảnh dự án">
                                                             <img data-key="{{$key}}" name="img_project"
-                                                                 data-fileName="{{$value['file_name']}}"
-                                                                 data-fileType="{{$value['file_type']}}"
+                                                                 data-fileName="{{$value->name}}"
+                                                                 data-fileType="{{$value->type}}"
                                                                  data-type='image_project'
-                                                                 class="w-100" src="{{$value['path']}}" alt="">
+                                                                 class="w-100" src="{{$value->path}}" alt="">
                                                         </a>
                                                     @endif
                                                     <button type="button" onclick="deleteImage(this)"

@@ -18,5 +18,11 @@ return [
     "description_project_en_not_null" => "Description project en not null",
     'period_not_null' => "Period not null",
     'interest_not_null' => "Interest not null",
+    'address_project_vi_not_null' => "Address project vi not null",
+    'address_project_en_not_null' => "Address project en not null",
+    'market_project_vi_not_null' => "Market project vi not null",
+    'market_project_en_not_null' => "Market project en not null",
+    'background_project_vi_not_null' => "Background project vi not null",
+    'background_project_en_not_null' => "Background project en not null",
 
 ];
