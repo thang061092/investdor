@@ -17,5 +17,11 @@ return [
     'province' => 'Province',
     'district' => 'District',
     'ward' => 'Ward',
-    'specific_address'=>'Specific address'
+    'specific_address'=>'Specific address',
+    'type_employee' => 'Employee',
+    'type_user' => 'User',
+    'password' => 'Password',
+    'enter_name' => 'Enter your full name',
+    'enter_email' => 'Enter email',
+    'enter_password' => 'Enter pâssword',
 ];

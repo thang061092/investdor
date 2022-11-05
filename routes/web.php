@@ -59,6 +59,9 @@ Route::group(['middleware' => 'locale'], function () {
         Route::prefix('/customer')->group(function () {
             Route::prefix('/user')->group(function () {
                 Route::get('/manager', 'Customer\UserController@manager')->name('customer.user.manager');
+                Route::post('/update_profile', 'Customer\UserController@update_profile')->name('customer.user.update_profile');
+                Route::post('/district', 'Customer\UserController@get_district_by_province')->name('customer.user.district');
+                Route::post('/ward', 'Customer\UserController@get_ward_by_district')->name('customer.user.ward');
             });
         });
 
@@ -89,7 +92,11 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/create', "Admin\InterestController@create")->name('interest.create');
             });
 
-
+            Route::prefix('/employee')->group(function () {
+                Route::get('/get_all', 'Admin\UserController@get_all_employee')->name('customer.employee.get_all');
+                Route::get('/store_employee', 'Admin\UserController@store_employee')->name('customer.employee.store_employee');
+                Route::post('/create_employee', 'Admin\UserController@create_employee')->name('customer.employee.create_employee');
+            });
         });
     });
 

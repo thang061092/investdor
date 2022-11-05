@@ -11,5 +11,7 @@ return [
     'knowledge' => 'Kiến thức cập nhật',
     'detail_project' => 'Chi tiết dự án',
     'dashboard' => 'Dashboard',
-    'project_list'=> 'Danh sách dự án'
+    'project_list'=> 'Danh sách dự án',
+    'create_a_new_employee_account' => "Tạo mới tài khoản nhân viên",
+    'list_employee_account' => "Danh sách nhân viên",
 ];

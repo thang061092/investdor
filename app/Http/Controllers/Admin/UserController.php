@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Models\Users;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\FormCreateEmployee;
 
 class UserController extends BaseController
 {
@@ -26,10 +27,13 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
     }
 
-    public function create_employee(Request $request)
+    public function create_employee(FormCreateEmployee $request)
     {
         $user = $this->userService->create_employee($request);
-        return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
+        if ($user) {
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
+        }
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
     public function create_admin(Request $request)
@@ -67,4 +71,14 @@ class UserController extends BaseController
 
     }
 
+    public function get_all_employee() {
+        $employees = $this->userService->get_all_employee();
+        return view('employee.manager.index', [
+            'employees' => $employees,
+        ]);
+    }
+
+    public function store_employee() {
+        return view('employee.manager.createEmployee');
+    }
 }

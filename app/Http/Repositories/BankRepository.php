@@ -13,4 +13,12 @@ class BankRepository extends BaseRepository
         // TODO: Implement getModel() method.
         return Bank::class;
     }
+
+    public function getAllBank() {
+        $bank = BaseRepository::getAll();
+        if ($bank) {
+            return $bank;
+        }
+        return false;
+    }
 }

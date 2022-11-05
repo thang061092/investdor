@@ -44,5 +44,14 @@ return [
     'login_fail' => 'Thông tin đăng nhập chưa chính xác',
     'save_login'=> "Lưu thông tin đăng nhập",
     'account'=>'Tài khoản',
-    'all_notification'=> 'Xem tất cả thông báo'
+    'all_notification'=> 'Xem tất cả thông báo',
+    'birthday_not_null' => "Ngày sinh không để trống",
+    'gender_not_null' => "Giới tính không để trống",
+    'phone_number_not_null' => "Số điện thoại không để trống",
+    'bank_name_not_null' => "Tên ngân hàng không để trống",
+    'account_number_not_null' => "Số tài khoản ngân hàng không để trống",
+    'account_name_not_null' => "Tên chủ tài khoản ngân hàng không để trống",
+    'province_not_null' => "Tỉnh, thành phố không để trống",
+    'district_not_null' => "Quận, huyện không để trống",
+    'ward_not_null' => "Phường, xã không để trống",
 ];
