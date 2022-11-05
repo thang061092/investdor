@@ -81,6 +81,8 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/tem', "Admin\ProjectController@index_create_project")->name('project.tem');
                 Route::get('/create', "Admin\ProjectController@create")->name('project.create');
                 Route::post('/create_project', "Admin\ProjectController@create_post")->name('project.create_post');
+                Route::get('/image/{id}', "Admin\ProjectController@image")->name('project.image');
+                Route::post('/upload_image', "Admin\ProjectController@upload_image")->name('project.upload_image');
             });
 
             Route::prefix('/interest')->group(function () {

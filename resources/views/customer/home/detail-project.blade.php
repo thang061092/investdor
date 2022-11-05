@@ -116,31 +116,22 @@
         <div class="container">
             <div class="swiper swiper-images">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                    @if($project->imageProjects)
+                        @foreach($project->imageProjects as $img)
+                            <div class="swiper-slide">
+                                <div class="img">
+                                    <img src="{{$img->path}}" class="img-fluid" alt="" style="width: 434px;height: 194px"/>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="swiper-slide">
+                            <div class="img">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
