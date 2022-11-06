@@ -35,5 +35,9 @@ return [
     'latitude_not_null'=> 'Latitude not null',
     'project_highlights_vi_not_null'=> 'Project highlights vi not null',
     'project_highlights_en_not_null'=> 'Project highlights en not null',
+    'name_company_vi_not_null' => "Name company not null",
+    'address_vi_not_null' => "Address company not null",
+    'description_vi_not_null' => "Description company not null",
+    'description_en_not_null' => "Description company not null",
 
 ];

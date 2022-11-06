@@ -41,5 +41,9 @@ return [
     'target_stable_return_on_cost' => 'Target Stable Return on Cost',
     'price_cost_so_far' => 'Price, Cost so far',
     'project_highlights' => 'Project highlights',
-    'project_location' => 'Project location'
+    'project_location' => 'Project location',
+    "name_company" => "Name company",
+    'address_company' => "Address company",
+    'administrative_council' => 'Administrative Council',
+    'investor' => 'Investor'
 ];

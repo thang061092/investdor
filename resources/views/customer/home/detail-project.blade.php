@@ -304,15 +304,17 @@
     </section>
     <section id="chudautu" class="auth-invest wow fadeInUp">
         <div class="container">
-            <p class="title_lg text-center">Chủ đầu tư</p>
+            <p class="title_lg text-center">{{__('project.investor')}}</p>
             <div class="row mb-xl-3 mb-2 pb-1">
                 <div class="col-lg-6 mb-lg-0 mb-3">
                     <div class="img-invest">
                         <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt=""/>
                     </div>
-                    <p class="name_company mb-1">Tên công ty</p>
-                    <div class="desc_company mb-4">Địa chỉ công ty</div>
-                    <div class="team_company mb-3">Hội đồng quản trị</div>
+                    <p class="name_company mb-1">{{__('project.name_company')}}
+                        : {{$project->investorProject->name_company_vi ?? ""}}</p>
+                    <div class="desc_company mb-4">{{__('project.address_company')}}
+                        : {{$project->investorProject->address_vi ?? ""}}</div>
+                    <div class="team_company mb-3">{{__('project.administrative_council')}}</div>
                     <div class="swiper swiper-teams">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -377,51 +379,11 @@
                 <div class="col-lg-6">
                     <div class="s-content">
                         <p>
-                            ( giới thiệu về đự án)Lorem Ipsum is simply
-                            dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when
-                            an unknown printer Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown
-                            printerLorem Ipsum is simply dummy text of the
-                            printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever
-                            since the 1500s, when an unknown printerLorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer
+                            @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
+                                {!! $project->investorProject->description_en ?? "" !!}
+                            @else
+                                {!! $project->investorProject->description_vi ?? "" !!}
+                            @endif
                         </p>
                     </div>
                 </div>

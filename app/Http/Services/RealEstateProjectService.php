@@ -6,10 +6,12 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\AssetProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
+use App\Http\Repositories\InvestorProjectRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
 use App\Models\ImageProject;
+use App\Models\InvestorProject;
 use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
@@ -21,18 +23,21 @@ class RealEstateProjectService
     protected $imageProjectRepository;
     protected $overviewRepository;
     protected $assetProjectRepository;
+    protected $investorProjectRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
                                 ImageProjectRepository $imageProjectRepository,
                                 OverviewRepository $overviewRepository,
-                                AssetProjectRepository $assetProjectRepository)
+                                AssetProjectRepository $assetProjectRepository,
+                                InvestorProjectRepository $investorProjectRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
         $this->imageProjectRepository = $imageProjectRepository;
         $this->overviewRepository = $overviewRepository;
         $this->assetProjectRepository = $assetProjectRepository;
+        $this->investorProjectRepository = $investorProjectRepository;
     }
 
     public function create($request)
@@ -163,5 +168,27 @@ class RealEstateProjectService
             ]);
         }
         return;
+    }
+
+    public function update_investor($request)
+    {
+        $investor = $this->investorProjectRepository->findOne([InvestorProject::REAL_ESTATE_PROJECT_ID => $request->id]);
+        if (!$investor) {
+            $this->investorProjectRepository->create([
+                InvestorProject::NAME_COMPANY_VI => $request->name_company_vi,
+                InvestorProject::ADDRESS_VI => $request->address_vi,
+                InvestorProject::DESCRIPTION_VI => $request->description_vi,
+                InvestorProject::DESCRIPTION_EN => $request->description_en,
+                InvestorProject::REAL_ESTATE_PROJECT_ID => $request->id
+            ]);
+        } else {
+            $this->investorProjectRepository->update($investor['id'], [
+                InvestorProject::NAME_COMPANY_VI => $request->name_company_vi,
+                InvestorProject::ADDRESS_VI => $request->address_vi,
+                InvestorProject::DESCRIPTION_VI => $request->description_vi,
+                InvestorProject::DESCRIPTION_EN => $request->description_en,
+                InvestorProject::REAL_ESTATE_PROJECT_ID => $request->id
+            ]);
+        }
     }
 }

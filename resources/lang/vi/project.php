@@ -42,6 +42,10 @@ return [
     'target_stable_return_on_cost' => 'Mục tiêu Lợi tức ổn định trên Chi phí',
     'price_cost_so_far' => 'Giá + Chi phí cho đến nay',
     'project_highlights' => 'Điểm nổi bật của dự án',
-    'project_location' => 'Vị trí dự án'
+    'project_location' => 'Vị trí dự án',
+    "name_company" => "Tên công ty",
+    'address_company' => "Địa chỉ công ty",
+    'administrative_council' => 'Hội đồng quản trị',
+    'investor' => 'Chủ đầu tư'
 
 ];

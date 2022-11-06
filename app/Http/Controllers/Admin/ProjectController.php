@@ -8,6 +8,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\FormAssetProject;
 use App\Http\Requests\FormCreateProject;
 use App\Http\Requests\FormExtendProject;
+use App\Http\Requests\FormInvestorProject;
 use App\Http\Requests\FormUpdateImageProject;
 use App\Http\Services\CityService;
 use App\Http\Services\RealEstateProjectService;
@@ -107,6 +108,19 @@ class ProjectController extends BaseController
     {
         try {
             $this->realEstateProjectService->update_asset($request);
+            toastr()->success(__('message.success'));
+            return redirect()->route('project.list');
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            toastr()->error($error);
+            return redirect()->route('project.list');
+        }
+    }
+
+    public function update_investor(FormInvestorProject $request)
+    {
+        try {
+            $this->realEstateProjectService->update_investor($request);
             toastr()->success(__('message.success'));
             return redirect()->route('project.list');
         } catch (\Exception $exception) {
