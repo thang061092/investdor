@@ -4,10 +4,11 @@
 namespace App\Http\Services;
 
 
-use App\Http\Controllers\BaseController;
+use App\Http\Repositories\AssetProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
+use App\Models\AssetProject;
 use App\Models\ImageProject;
 use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
@@ -19,16 +20,19 @@ class RealEstateProjectService
     protected $interestService;
     protected $imageProjectRepository;
     protected $overviewRepository;
+    protected $assetProjectRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
                                 ImageProjectRepository $imageProjectRepository,
-                                OverviewRepository $overviewRepository)
+                                OverviewRepository $overviewRepository,
+                                AssetProjectRepository $assetProjectRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
         $this->imageProjectRepository = $imageProjectRepository;
         $this->overviewRepository = $overviewRepository;
+        $this->assetProjectRepository = $assetProjectRepository;
     }
 
     public function create($request)
@@ -122,6 +126,40 @@ class RealEstateProjectService
                 OverviewProject::MARKET_EN => $request->market_project_en,
                 OverviewProject::BASIS_VI => $request->background_project_vi,
                 OverviewProject::BASIS_EN => $request->background_project_en,
+            ]);
+        }
+        return;
+    }
+
+    public function update_asset($request)
+    {
+        $asset = $this->assetProjectRepository->findOne([AssetProject::REAL_ESTATE_PROJECT_ID => $request->id]);
+        if (!$asset) {
+            $this->assetProjectRepository->create([
+                AssetProject::YEAR_BUILT => $request->year_built,
+                AssetProject::TOTAL_BUILDING_AREA => $request->total_building_area,
+                AssetProject::NRSF => $request->nrsf,
+                AssetProject::EXPECTED_CAPACITY => $request->expected_capacity,
+                AssetProject::TARGET_TABLE => $request->target_table,
+                AssetProject::CURRENT_PRICE => $request->current_price,
+                AssetProject::PROJECT_HIGHLIGHTS_VI => $request->project_highlights_vi,
+                AssetProject::PROJECT_HIGHLIGHTS_EN => $request->project_highlights_en,
+                AssetProject::LONGITUDE => $request->longitude,
+                AssetProject::LATITUDE => $request->latitude,
+                AssetProject::REAL_ESTATE_PROJECT_ID => $request->id
+            ]);
+        } else {
+            $this->assetProjectRepository->update($asset['id'], [
+                AssetProject::YEAR_BUILT => $request->year_built,
+                AssetProject::TOTAL_BUILDING_AREA => $request->total_building_area,
+                AssetProject::NRSF => $request->nrsf,
+                AssetProject::EXPECTED_CAPACITY => $request->expected_capacity,
+                AssetProject::TARGET_TABLE => $request->target_table,
+                AssetProject::CURRENT_PRICE => $request->current_price,
+                AssetProject::PROJECT_HIGHLIGHTS_VI => $request->project_highlights_vi,
+                AssetProject::PROJECT_HIGHLIGHTS_EN => $request->project_highlights_en,
+                AssetProject::LONGITUDE => $request->longitude,
+                AssetProject::LATITUDE => $request->latitude,
             ]);
         }
         return;

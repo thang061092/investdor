@@ -221,99 +221,61 @@
     </section>
     <section id="taisan" class="project-asset wow fadeInUp">
         <div class="container">
-            <p class="title_lg text-center">Tài sản</p>
+            <p class="title_lg text-center">{{__('project.asset')}}</p>
             <div class="row justify-content-between">
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
-                        <div class="c-label">Năm xây dựng</div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-label">{{__('project.year_built')}}</div>
+                        <div class="c-value">{{$project->assetProject->year_built ?? ""}}</div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="c-label">
-                            Công suất dự kiến ​​(bao gồm hợp đồng thuê MTM)
+                            {{__('project.estimated_capacity')}}
                         </div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-value">{{$project->assetProject->expected_capacity ?? ""}}</div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
-                        <div class="c-label">Tổng diện tích xây dựng</div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-label">{{__('project.total_building_area')}}</div>
+                        <div class="c-value">{{$project->assetProject->total_building_area ?? ""}}</div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="c-label">
-                            Mục tiêu Lợi tức ổn định trên Chi phí
+                            {{__('project.target_stable_return_on_cost')}}
                         </div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-value">{{$project->assetProject->target_table ?? ""}}</div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="c-label">NRSF</div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-value">{{$project->assetProject->nrsf ?? ""}}</div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="c-label">
-                            Giá ($ 6,5mm) + Chi phí cho đến nay
+                            {{__('project.price_cost_so_far')}}
                         </div>
-                        <div class="c-value">Chỉ số</div>
+                        <div class="c-value">{{$project->assetProject->current_price ?? ""}}</div>
                     </div>
                 </div>
             </div>
             <p class="title_small mb-lg-3 mb-2 pb-1">
-                Điểm nổi bật của dự án
+                {{__('project.project_highlights')}}
             </p>
             <div class="ls">
-                <p class="item-intro position-relative mb-3">
-                    ( giới thiệu về đự án)Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer Lorem Ipsum is simply
-                    dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printerLorem
-                </p>
-                <p class="item-intro position-relative mb-3">
-                    ( giới thiệu về đự án)Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer Lorem Ipsum is simply
-                    dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printerLorem
-                </p>
-                <p class="item-intro position-relative mb-3">
-                    ( giới thiệu về đự án)Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer Lorem Ipsum is simply
-                    dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printerLorem
-                </p>
-                <p class="item-intro position-relative mb-3">
-                    ( giới thiệu về đự án)Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer Lorem Ipsum is simply
-                    dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printerLorem
-                </p>
-                <p class="item-intro position-relative mb-3">
-                    ( giới thiệu về đự án)Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry. Lorem Ipsum
-                    has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer Lorem Ipsum is simply
-                    dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printerLorem
+                <p class=" position-relative mb-3">
+                    @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
+                        {!! $project->assetProject->project_highlights_en ?? "" !!}
+                    @else
+                        {!! $project->assetProject->project_highlights_vi ?? "" !!}
+                    @endif
                 </p>
             </div>
             <div class="toggle-content mb-xl-3 mb-4 pb-1">
@@ -327,124 +289,14 @@
                               d="M3.33398 10.0003C3.33398 9.54009 3.70708 9.16699 4.16732 9.16699H15.834C16.2942 9.16699 16.6673 9.54009 16.6673 10.0003C16.6673 10.4606 16.2942 10.8337 15.834 10.8337H4.16732C3.70708 10.8337 3.33398 10.4606 3.33398 10.0003Z"
                               fill="#03204C"/>
                     </svg>
-                    Vị trí dự án
+                    {{__('project.project_location')}}
                 </p>
                 <div class="content mt-3 box-map" style="display: none">
                     <div class="maps mb-lg-3 mb-2">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0977421299594!2d105.8523647!3d21.02877475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab953357c995%3A0x1babf6bb4f9a20e!2zSOG7kyBIb8OgbiBLaeG6v20!5e0!3m2!1svi!2s!4v1665917227891!5m2!1svi!2s"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDU6vwuTA_eC2NKb0IuDJpa2XmrypkTSvA&q={{$project->assetProject->latitude ?? ""}},{{$project->assetProject->longitude ?? ""}}"
                             width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <p class="title_small mb-lg-3 mb-2 pb-1">
-                        Tổng quan thị trường
-                    </p>
-                    <div class="s-content">
-                        <p>
-                            ( giới thiệu về đự án)Lorem Ipsum is simply
-                            dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when
-                            an unknown printer Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown
-                            printerLorem Ipsum is simply dummy text of the
-                            printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever
-                            since the 1500s, when an unknown printerLorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="toggle-content mb-xl-3 mb-4 pb-1 box-images">
-                <p class="btn_toggle d-flex align-items-center">
-                    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                         fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M9.99935 3.33301C10.4596 3.33301 10.8327 3.7061 10.8327 4.16634V15.833C10.8327 16.2932 10.4596 16.6663 9.99935 16.6663C9.53911 16.6663 9.16602 16.2932 9.16602 15.833V4.16634C9.16602 3.7061 9.53911 3.33301 9.99935 3.33301Z"
-                              fill="#03204C"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M3.33398 10.0003C3.33398 9.54009 3.70708 9.16699 4.16732 9.16699H15.834C16.2942 9.16699 16.6673 9.54009 16.6673 10.0003C16.6673 10.4606 16.2942 10.8337 15.834 10.8337H4.16732C3.70708 10.8337 3.33398 10.4606 3.33398 10.0003Z"
-                              fill="#03204C"/>
-                    </svg>
-                    Ảnh dự án
-                </p>
-                <div class="content mt-3" style="display: none">
-                    <div class="row">
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 mb-4">
-                            <div class="img">
-                                <img src="{{asset('frontend/images/box.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -523,71 +375,6 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="s-content">
-                        <p>
-                            ( giới thiệu về đự án)Lorem Ipsum is simply
-                            dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when
-                            an unknown printer Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown
-                            printerLorem Ipsum is simply dummy text of the
-                            printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever
-                            since the 1500s, when an unknown printerLorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer( giới thiệu về đự án)Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer Lorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printerLorem Ipsum is
-                            simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum an unknown
-                            printer
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="toggle-content mb-xl-3 mb-4 pb-1">
-                <p class="btn_toggle d-flex align-items-center">
-                    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                         fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M9.99935 3.33301C10.4596 3.33301 10.8327 3.7061 10.8327 4.16634V15.833C10.8327 16.2932 10.4596 16.6663 9.99935 16.6663C9.53911 16.6663 9.16602 16.2932 9.16602 15.833V4.16634C9.16602 3.7061 9.53911 3.33301 9.99935 3.33301Z"
-                              fill="#03204C"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M3.33398 10.0003C3.33398 9.54009 3.70708 9.16699 4.16732 9.16699H15.834C16.2942 9.16699 16.6673 9.54009 16.6673 10.0003C16.6673 10.4606 16.2942 10.8337 15.834 10.8337H4.16732C3.70708 10.8337 3.33398 10.4606 3.33398 10.0003Z"
-                              fill="#03204C"/>
-                    </svg>
-                    Công ty
-                </p>
-                <div class="content mt-3 box-map" style="display: none">
                     <div class="s-content">
                         <p>
                             ( giới thiệu về đự án)Lorem Ipsum is simply

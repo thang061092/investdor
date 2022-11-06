@@ -24,5 +24,16 @@ return [
     'market_project_en_not_null' => "Market project en not null",
     'background_project_vi_not_null' => "Background project vi not null",
     'background_project_en_not_null' => "Background project en not null",
+    'id_project_not_null' => "ID project not null",
+    'year_built_not_null'=> 'Year built not null',
+    'total_building_area_not_null'=> 'Total building area not null',
+    'nsrf_not_null'=> 'Nsrf not null',
+    'expected_capacity_not_null'=> 'Expected capacity not null',
+    'target_table_not_null'=> 'Target table not null',
+    'current_price_not_null'=> 'Current price not null',
+    'longitude_not_null'=> 'Longitude not null',
+    'latitude_not_null'=> 'Latitude not null',
+    'project_highlights_vi_not_null'=> 'Project highlights vi not null',
+    'project_highlights_en_not_null'=> 'Project highlights en not null',
 
 ];
