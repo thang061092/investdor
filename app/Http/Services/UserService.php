@@ -51,6 +51,8 @@ class UserService
             Users::BANK_NAME => "",
             Users::ACCOUNT_NAME => "",
             Users::ACCOUNT_NUMBER => "",
+            Users::CREATED_BY => session()->get('employee')['email'] ?? "",
+            Users::CREATED_AT => date('Y-m-d H:i:s', time()),
         ];
         $user = $this->userRepository->create($data);
         return $user;
@@ -210,6 +212,16 @@ class UserService
             return $employees;
         }
         return false;
+    }
+
+    public function update_employee($request, $id) {
+        $data = [
+            Users::FULL_NAME => $request->full_name ?? "",
+            Users::EMAIL => $request->email ?? "",
+            Users::PASSWORD => Hash::make($request->password) ?? "",
+        ];
+        $user = $this->userRepository->update($id, $data);
+        return $user;
     }
 
 }

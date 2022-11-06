@@ -24,4 +24,6 @@ return [
     'enter_name' => 'Nhập đầy đủ họ tên',
     'enter_email' => 'Nhập email',
     'enter_password' => 'Nhập mật khẩu',
+    'enter_new_password' => 'Nhập mật khẩu mới',
+    'new_password' => 'Mật khẩu mới',
 ];

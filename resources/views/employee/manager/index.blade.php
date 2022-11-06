@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <h1 class="d-inline-block">Danh sách nhân viên <span
-                                    style="color: red">()</span></h1>
+                                    style="color: red"></span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
@@ -125,12 +125,12 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                                href="">
+                                                                href='{{route("customer.employee.detail_employee",["id" => $employee->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết tài khoản
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                                href="">
+                                                                href='{{route("customer.employee.edit_employee",["id" => $employee->id])}}'>
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>

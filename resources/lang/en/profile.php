@@ -23,5 +23,7 @@ return [
     'password' => 'Password',
     'enter_name' => 'Enter your full name',
     'enter_email' => 'Enter email',
-    'enter_password' => 'Enter pâssword',
+    'enter_password' => 'Enter password',
+    'enter_new_password' => 'Enter new password',
+    'new_password' => 'New password',
 ];

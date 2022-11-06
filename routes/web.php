@@ -95,8 +95,11 @@ Route::group(['middleware' => 'locale'], function () {
 
             Route::prefix('/employee')->group(function () {
                 Route::get('/get_all', 'Admin\UserController@get_all_employee')->name('customer.employee.get_all');
+                Route::get('/detail_employee/{id}', 'Admin\UserController@detail_employee')->name('customer.employee.detail_employee');
                 Route::get('/store_employee', 'Admin\UserController@store_employee')->name('customer.employee.store_employee');
                 Route::post('/create_employee', 'Admin\UserController@create_employee')->name('customer.employee.create_employee');
+                Route::get('/edit_employee/{id}', 'Admin\UserController@edit_employee')->name('customer.employee.edit_employee');
+                Route::post('/update_employee/{id}', 'Admin\UserController@update_employee')->name('customer.employee.update_employee');
             });
         });
     });

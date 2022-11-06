@@ -30,10 +30,7 @@ class UserController extends BaseController
     public function create_employee(FormCreateEmployee $request)
     {
         $user = $this->userService->create_employee($request);
-        if ($user) {
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $user);
-        }
-        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
+        return view('employee.manager.createEmployee');
     }
 
     public function create_admin(Request $request)
@@ -80,5 +77,26 @@ class UserController extends BaseController
 
     public function store_employee() {
         return view('employee.manager.createEmployee');
+    }
+
+    public function edit_employee($id) {
+        $user = $this->userService->find($id);
+        return view('employee.manager.updateEmployee', [
+            'user' => $user,
+        ]);
+    }
+
+    public function update_employee(FormCreateEmployee $request, $id) {
+        $user = $this->userService->update_employee($request, $id);
+        return view('employee.manager.updateEmployee', [
+            'user' => $user,
+        ]);
+    }
+
+    public function detail_employee($id) {
+        $user = $this->userService->find($id);
+        return view('employee.manager.detailEmployee', [
+            'user' => $user,
+        ]);
     }
 }
