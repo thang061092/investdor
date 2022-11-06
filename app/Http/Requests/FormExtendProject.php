@@ -34,6 +34,7 @@ class FormExtendProject extends FormRequest
             'market_project_en' => 'required',
             'background_project_vi' => 'required',
             'background_project_en' => 'required',
+            'id' => 'required',
         ];
     }
 
@@ -48,6 +49,7 @@ class FormExtendProject extends FormRequest
             "market_project_en.required" => __('validate.market_project_en_not_null'),
             "background_project_vi.required" => __('validate.background_project_vi_not_null'),
             "background_project_en.required" => __('validate.background_project_en_not_null'),
+            "id.required" => __('validate.id_project_not_null'),
         ];
 
     }
