@@ -21,4 +21,9 @@ class InvestorProject extends BaseModel
     {
         return $this->belongsTo(RealEstateProject::class, self::REAL_ESTATE_PROJECT_ID);
     }
+
+    public function memberCompanies()
+    {
+        return $this->hasMany(MemberCompany::class, MemberCompany::INVESTOR_PROJECT_ID);
+    }
 }

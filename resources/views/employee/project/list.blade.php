@@ -149,6 +149,16 @@
                                                                 Cập nhật thông tin mở rộng
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=asset">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật thông tin tài sản
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=investor">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật thông tin chủ đầu tư
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=document">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài liệu

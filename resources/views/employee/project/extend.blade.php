@@ -1,5 +1,5 @@
 @extends('employee.layout.master')
-@section('page_name', '- Cập nhật thông tin mở rộng dự án ' . $project['name_vi'] ?? '')
+@section('page_name', '- Cập nhật thông tin mở rộng dự án - ' . $project['name_vi'] ?? '')
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
@@ -27,7 +27,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card" style="border-radius: 10px;">
                             <div class="card-header">
-                                Thông tin tổng quan dự án dự án &nbsp; <strong
+                                Thông tin tổng quan dự án &nbsp; <strong
                                     class="text-danger">{{$project['name_vi'] ?? ''}}</strong>
                             </div>
                             <div class="card-body ">
@@ -41,7 +41,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('description_project_vi'))is-invalid @endif"
                                                           name="description_project_vi"
-                                                          id="description_project_vi">{{old('description_project_vi')}}</textarea>
+                                                          id="description_project_vi">{!! $project->overviewProject->overview_vi ?? old('description_project_vi') !!}</textarea>
                                                 @if($errors->has('description_project_vi'))
                                                     <p class="text-danger">{{ $errors->first('description_project_vi') }}</p>
                                                 @endif
@@ -54,7 +54,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('description_project_en'))is-invalid @endif"
                                                           name="description_project_en"
-                                                          id="description_project_en">{{old('description_project_en')}}</textarea>
+                                                          id="description_project_en">{!! $project->overviewProject->overview_en ?? old('description_project_en') !!}</textarea>
                                                 @if($errors->has('description_project_en'))
                                                     <p class="text-danger">{{ $errors->first('description_project_en') }}</p>
                                                 @endif
@@ -67,7 +67,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('address_project_vi'))is-invalid @endif"
                                                           name="address_project_vi"
-                                                          id="address_project_vi">{{old('address_project_vi')}}</textarea>
+                                                          id="address_project_vi">{!! $project->overviewProject->address_vi ?? old('address_project_vi') !!}</textarea>
                                                 @if($errors->has('address_project_vi'))
                                                     <p class="text-danger">{{ $errors->first('address_project_vi') }}</p>
                                                 @endif
@@ -80,7 +80,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('address_project_en'))is-invalid @endif"
                                                           name="address_project_en"
-                                                          id="address_project_en">{{old('address_project_en')}}</textarea>
+                                                          id="address_project_en">{!! $project->overviewProject->address_en ?? old('address_project_en') !!}</textarea>
                                                 @if($errors->has('address_project_en'))
                                                     <p class="text-danger">{{ $errors->first('address_project_en') }}</p>
                                                 @endif
@@ -93,7 +93,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('market_project_vi'))is-invalid @endif"
                                                           name="market_project_vi"
-                                                          id="market_project_vi">{{old('market_project_vi')}}</textarea>
+                                                          id="market_project_vi">{!! $project->overviewProject->market_vi ?? old('market_project_vi') !!}</textarea>
                                                 @if($errors->has('market_project_vi'))
                                                     <p class="text-danger">{{ $errors->first('market_project_vi') }}</p>
                                                 @endif
@@ -106,7 +106,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('market_project_en'))is-invalid @endif"
                                                           name="market_project_en"
-                                                          id="market_project_en">{{old('market_project_en')}}</textarea>
+                                                          id="market_project_en">{!! $project->overviewProject->market_en ?? old('market_project_en') !!}</textarea>
                                                 @if($errors->has('market_project_en'))
                                                     <p class="text-danger">{{ $errors->first('market_project_en') }}</p>
                                                 @endif
@@ -119,7 +119,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('background_project_vi'))is-invalid @endif"
                                                           name="background_project_vi"
-                                                          id="background_project_vi">{{old('background_project_vi')}}</textarea>
+                                                          id="background_project_vi">{!! $project->overviewProject->basis_vi ?? old('background_project_vi') !!}</textarea>
                                                 @if($errors->has('background_project_vi'))
                                                     <p class="text-danger">{{ $errors->first('background_project_vi') }}</p>
                                                 @endif
@@ -132,7 +132,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('background_project_en'))is-invalid @endif"
                                                           name="background_project_en"
-                                                          id="background_project_en">{{old('background_project_en')}}</textarea>
+                                                          id="background_project_en">{!! $project->overviewProject->basis_en ?? old('background_project_en') !!}</textarea>
                                                 @if($errors->has('background_project_en'))
                                                     <p class="text-danger">{{ $errors->first('background_project_en') }}</p>
                                                 @endif
