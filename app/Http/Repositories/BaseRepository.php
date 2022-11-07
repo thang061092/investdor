@@ -189,7 +189,12 @@ abstract class BaseRepository
     public function get_all_employee() {
         $query = $this->model;
         $query = $query->where(Users::TYPE, Users::EMPLOYEE);
-        return $query->get();
+        return $query->orderBy("created_at", "DESC")->get();
     }
 
+    public function get_all_customer() {
+        $query = $this->model;
+        $query = $query->where(Users::TYPE, Users::INVESTOR);
+        return $query->orderBy("created_at", "DESC")->get();
+    }
 }

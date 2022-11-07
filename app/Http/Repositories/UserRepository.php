@@ -26,4 +26,9 @@ class UserRepository extends BaseRepository
         $employees = BaseRepository::get_all_employee();
         return $employees;
     }
+
+    public function get_all_customer() {
+        $customer = BaseRepository::get_all_customer();
+        return $customer;
+    }
 }

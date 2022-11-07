@@ -14,4 +14,8 @@ return [
     'project_list'=> 'Danh sách dự án',
     'create_a_new_employee_account' => "Tạo mới tài khoản nhân viên",
     'list_employee_account' => "Danh sách nhân viên",
+    'list_customer_account' => "Danh sách nhà đầu tư",
+    'detail_account' => "Chi tiết tài khoản",
+    'create_account' => "Tạo mới tài khoản",
+    'update_account' => "Cập nhật tài khoản",
 ];

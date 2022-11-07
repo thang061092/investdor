@@ -6,7 +6,7 @@
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">Tạo mới tài khoản</a>
+                                                                   class="text-info">{{__('page_name.update_account')}}</a>
                 </li>
             </ol>
         </div>

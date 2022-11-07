@@ -224,4 +224,36 @@ class UserService
         return $user;
     }
 
+    public function update_status($id) {
+        $detail = $this->userRepository->find($id);
+        if ($detail[Users::STATUS] == Users::ACTIVE) {
+            $data = [
+                Users::STATUS => Users::BLOCK
+            ];
+        } else {
+            $data = [
+                Users::STATUS => Users::ACTIVE
+            ];
+        }
+        $user = $this->userRepository->update($id, $data);
+        return $user;
+    }
+
+    public function get_all_customer() {
+        $customer = $this->userRepository->get_all_customer();
+        if ($customer) {
+            return $customer;
+        }
+        return false;
+    }
+
+    public function update_customer($request, $id) {
+        $data = [
+            Users::FULL_NAME => $request->full_name ?? "",
+            Users::EMAIL => $request->email ?? "",
+            Users::PASSWORD => Hash::make($request->password) ?? "",
+        ];
+        $user = $this->userRepository->update($id, $data);
+        return $user;
+    }
 }

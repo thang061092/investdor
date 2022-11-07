@@ -1,12 +1,12 @@
 @extends('employee.layout.master')
-@section('page_name','- '.__('page_name.list_employee_account'))
+@section('page_name','- '.__('page_name.list_customer_account'))
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
-                                                                   class="text-info">{{__('page_name.detail_account')}}</a>
+                                                                   class="text-info">{{__('page_name.list_customer_account')}}</a>
                 </li>
             </ol>
         </div>
@@ -18,7 +18,7 @@
                     {{-- Head --}}
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h1 class="d-inline-block">Danh sách nhân viên <span
+                            <h1 class="d-inline-block">Danh sách nhà đầu tư<span
                                     style="color: red"></span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
@@ -85,36 +85,36 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @if (@empty($employees))
+                                        @if (@empty($customer))
                                             <tr>
                                                 <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
                                                     liệu
                                                 </td>
                                             </tr>
                                         @endif
-                                        @if (isset($employees))
-                                            @foreach ($employees as $key => $employee)
+                                        @if (isset($customer))
+                                            @foreach ($customer as $key => $item)
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
-                                                <td>{{$employee->full_name}}</td>
-                                                <td>{{$employee->email}}</td>
+                                                <td>{{$item->full_name}}</td>
+                                                <td>{{$item->email}}</td>
                                                 <td>
-                                                    @if($employee->type == 1)
+                                                    @if($item->type == 1)
                                                         {{__('profile.type_employee')}}
-                                                    @elseif($employee->type == 2)
+                                                    @elseif($item->type == 2)
                                                         {{__('profile.type_user')}}
                                                     @endif
                                                 </td>
-                                                <td>{{$employee->created_at}}</td>
-                                                <td>{{$employee->created_by}}</td>
+                                                <td>{{$item->created_at}}</td>
+                                                <td>{{$item->created_by}}</td>
                                                 <td>
-                                                    <label class=" form-switch toggle-status" data-id="{{ $employee['id'] }} ">
+                                                    <label class=" form-switch toggle-status" data-id="{{ $item['id'] }} ">
                                                         <input class="form-check-input"
                                                             style="margin-top: 6px"
                                                             type="checkbox" name="status"
-                                                            id="status" {{ ($employee['status'] == 'active') ? 'checked' : '' }}>
+                                                            id="status" {{ ($item['status'] == 'active') ? 'checked' : '' }}>
                                                     </label>
-                                                    @if($employee['status'] == 'active')
+                                                    @if($item['status'] == 'active')
                                                         <label></label>
                                                     @else
                                                         <label></label>
@@ -137,12 +137,12 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.employee.detail_employee",["id" => $employee->id])}}'>
+                                                                href='{{route("customer.customer.detail_customer",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết tài khoản
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.employee.edit_employee",["id" => $employee->id])}}'>
+                                                                href='{{route("customer.customer.edit_customer",["id" => $item->id])}}'>
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>

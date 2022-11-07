@@ -102,6 +102,14 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/create_employee', 'Admin\UserController@create_employee')->name('customer.employee.create_employee');
                 Route::get('/edit_employee/{id}', 'Admin\UserController@edit_employee')->name('customer.employee.edit_employee');
                 Route::post('/update_employee/{id}', 'Admin\UserController@update_employee')->name('customer.employee.update_employee');
+                Route::post('/update_status', 'Admin\UserController@update_status')->name('customer.employee.update_status');
+            });
+
+            Route::prefix('/customer')->group(function () {
+                Route::get('/get_all', 'Admin\UserController@get_all_customer')->name('customer.customer.get_all');
+                Route::get('/detail_customer/{id}', 'Admin\UserController@detail_customer')->name('customer.customer.detail_customer');
+                Route::get('/edit_customer/{id}', 'Admin\UserController@edit_customer')->name('customer.customer.edit_customer');
+                Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
             });
         });
     });
