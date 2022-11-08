@@ -11,6 +11,7 @@ use App\Http\Requests\FormExtendProject;
 use App\Http\Requests\FormInvestorProject;
 use App\Http\Requests\FormUpdateImageProject;
 use App\Http\Services\CityService;
+use App\Http\Services\DocumentProjectService;
 use App\Http\Services\RealEstateProjectService;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,15 @@ class ProjectController extends BaseController
 {
     protected $cityService;
     protected $realEstateProjectService;
+    protected $documentProjectService;
 
     public function __construct(CityService $cityService,
-                                RealEstateProjectService $realEstateProjectService)
+                                RealEstateProjectService $realEstateProjectService,
+                                DocumentProjectService $documentProjectService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
+        $this->documentProjectService = $documentProjectService;
     }
 
     function index_create_project()
@@ -127,6 +131,34 @@ class ProjectController extends BaseController
             $error = $exception->getMessage();
             toastr()->error($error);
             return redirect()->route('project.list');
+        }
+    }
+
+    public function add_document(Request $request)
+    {
+        try {
+            $this->realEstateProjectService->add_document($request);
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
+
+    public function show_document($id)
+    {
+        $document = $this->documentProjectService->find($id);
+        return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $document);
+    }
+
+    public function update_document(Request $request)
+    {
+        try {
+            $this->documentProjectService->update_document($request);
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
         }
     }
 }

@@ -19,136 +19,66 @@
         <div class="col-12">
             <div class="card" style="border-radius: 10px;">
                 <div class="card-body">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                Thông tin cơ bản dự án
+                    {{-- Head --}}
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h3 class="d-inline-block">{{$project['name_vi']}}</h3>
+                            {{-- Search --}}
+                            <div class="float-right d-inline-block" id="filter-data">
+                                <button data-bs-toggle="modal" data-bs-target="#add_document"
+                                        class="btn btn-primary">
+                                    <i class="fas fa-plus"></i>&nbsp;
+                                    Thêm mới
+                                </button>
                             </div>
-                            <div class="card-body ">
-                                <form method="post" action="{{route('project.create_post')}}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Tên dự án<span class="text-danger">(VI)*</span></label>
-                                                <input type="text"
-                                                       class="form-control @if($errors->has('project_name_vi'))is-invalid @endif"
-                                                       name="project_name_vi"
-                                                       placeholder="Nhập tên dự án" value="{{old('project_name_vi')}}">
-                                                @if($errors->has('project_name_vi'))
-                                                    <p class="text-danger">{{ $errors->first('project_name_vi') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Tên dự án<span class="text-danger">(EN)*</span></label>
-                                                <input type="text"
-                                                       class="form-control @if($errors->has('project_name_en'))is-invalid @endif"
-                                                       name="project_name_en"
-                                                       placeholder="Nhập tên dự án" value="{{old('project_name_en')}}">
-                                                @if($errors->has('project_name_en'))
-                                                    <p class="text-danger">{{ $errors->first('project_name_en') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Tổng giá trị dự án<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text"
-                                                       class="form-control @if($errors->has('total_value_project'))is-invalid @endif"
-                                                       name="total_value_project"
-                                                       placeholder="Nhập giá trị dự án"
-                                                       value="{{old('total_value_project')}}">
-                                                @if($errors->has('total_value_project'))
-                                                    <p class="text-danger">{{ $errors->first('total_value_project') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Tổng số phần<span class="text-danger">*</span></label>
-                                                <input type="text"
-                                                       class="form-control @if($errors->has('total_part_project'))is-invalid @endif"
-                                                       placeholder="Nhập số phần" name="total_part_project"
-                                                       value="{{old('total_part_project')}}">
-                                                @if($errors->has('total_part_project'))
-                                                    <p class="text-danger">{{ $errors->first('total_part_project') }}</p>
-                                                @endif
-                                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    {{-- Table --}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-vcenter table-nowrap table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center">STT</th>
+                                        <th style="text-align: center">Tiêu đề</th>
+                                        <th style="text-align: center">Tên file</th>
+                                        <th style="text-align: center">File</th>
+                                        <th style="text-align: center"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @empty($project->documentProjects)
+                                        <tr>
+                                            <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
+                                                liệu
+                                            </td>
+                                        </tr>
+                                    @else
+                                        @foreach($project->documentProjects as $key => $document)
+                                            <tr style="text-align: center">
+                                                <td>{{++$key}}</td>
+                                                <td>{{$document->title_vi}}</td>
+                                                <td>{{$document->name_file_vi}}</td>
+                                                <td>{{$document->link}}</td>
+                                                <td>
+                                                    <a class="btn btn-success edit_document" data-bs-toggle="modal"
+                                                       data-bs-target="#edit_document" data-id="{{$document->id}}"><i
+                                                            class="fa fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endempty
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="d-inline-block float-right">
 
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Giá trị một phần<span class="text-danger">*</span></label>
-                                                <input type="text"
-                                                       class="form-control @if($errors->has('value_part_project'))is-invalid @endif"
-                                                       placeholder="Nhập giá trị" name="value_part_project"
-                                                       value="{{old('value_part_project')}}">
-                                                @if($errors->has('value_part_project'))
-                                                    <p class="text-danger">{{ $errors->first('value_part_project') }}</p>
-                                                @endif
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Loại dự án<span
-                                                        class="text-danger">*</span></label>
-                                                <select type="text"
-                                                        class="form-control @if($errors->has('type_project'))is-invalid @endif"
-                                                        name="type_project">
-                                                    <option value="">Chọn Loại dự án</option>
-                                                    @foreach(type_project() as $k =>$v)
-                                                        <option value="{{$k}}">{{$v}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if($errors->has('type_project'))
-                                                    <p class="text-danger">{{ $errors->first('type_project') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Mô tả dự án<span class="text-danger">(VI)*</span></label>
-                                                <textarea type="text"
-                                                          class="form-control @if($errors->has('description_project_vi'))is-invalid @endif"
-                                                          placeholder="Mô tả dự án"
-                                                          name="description_project_vi"
-                                                          id="description_project_vi">{{old('description_project_vi')}}</textarea>
-                                                @if($errors->has('description_project_vi'))
-                                                    <p class="text-danger">{{ $errors->first('description_project_vi') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="">Mô tả dự án<span class="text-danger">(EN)*</span></label>
-                                                <textarea type="text"
-                                                          class="form-control @if($errors->has('description_project_en'))is-invalid @endif"
-                                                          placeholder="Mô tả dự án"
-                                                          name="description_project_en"
-                                                          id="description_project_en">{{old('description_project_en')}}</textarea>
-                                                @if($errors->has('description_project_en'))
-                                                    <p class="text-danger">{{ $errors->first('description_project_en') }}</p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="text-center" style="text-align: right !important;">
-                                            <div class="btnadmin">
-                                                <a class="btn btn-secondary" href="{{route('project.list')}}">
-                                                    Trở về &nbsp;
-                                                    <i class="fa fa-backspace" aria-hidden="true"></i>
-                                                </a>
-                                                <button type="submit" class="btn btn-success action">
-                                                    Thêm mới &nbsp;
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -156,6 +86,116 @@
             </div>
         </div>
     </div>
+    <div class="modal modal-blur" id="add_document" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="modal-header">
+                    <h5 class="modal-title d-inline-block title-update-period">Thêm tài liệu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiêu đề (VI):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control title_vi" type="text"
+                               placeholder="Nhập tiêu đề tài liệu"
+                               name="title_vi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiêu đề (EN):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control title_en" type="text"
+                               placeholder="Nhập tiêu đề tài liệu"
+                               name="title_en">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tên file (VI):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control name_file_vi" type="text"
+                               placeholder="Nhập tên tài liệu"
+                               name="name_file_vi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tên file (EN):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control name_file_en" type="text"
+                               placeholder="Nhập tên tài liệu"
+                               name="name_file_en">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tệp đính kèm :<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control file_document" type="file" id="file_document"
+                               name="file_document">
+                    </div>
+                    <input class="form-control" type="hidden"
+                           name="id" value="{{$project['id']}}">
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn_add_document">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-blur" id="edit_document" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="modal-header">
+                    <h5 class="modal-title d-inline-block title-update-period">Cập nhật tài liệu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiêu đề (VI):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control title_vi" type="text"
+                               placeholder="Nhập tiêu đề tài liệu"
+                               name="edit_title_vi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiêu đề (EN):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control title_en" type="text"
+                               placeholder="Nhập tiêu đề tài liệu"
+                               name="edit_title_en">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tên file (VI):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control name_file_vi" type="text"
+                               placeholder="Nhập tên tài liệu"
+                               name="edit_name_file_vi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tên file (EN):<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control name_file_en" type="text"
+                               placeholder="Nhập tên tài liệu"
+                               name="edit_name_file_en">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tệp đính kèm :<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control edit_file_document" type="file" id="edit_file_document"
+                               name="edit_file_document">
+                    </div>
+                    <input class="form-control" type="hidden"
+                           name="edit_id" value="">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn_edit_document">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{asset('js/project/document.js')}}"></script>
 @endsection
 

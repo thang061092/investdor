@@ -5,11 +5,13 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\AssetProjectRepository;
+use App\Http\Repositories\DocumentProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\InvestorProjectRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
+use App\Models\DocumentProject;
 use App\Models\ImageProject;
 use App\Models\InvestorProject;
 use App\Models\OverviewProject;
@@ -24,13 +26,17 @@ class RealEstateProjectService
     protected $overviewRepository;
     protected $assetProjectRepository;
     protected $investorProjectRepository;
+    protected $documentProjectRepository;
+    protected $uploadService;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
                                 ImageProjectRepository $imageProjectRepository,
                                 OverviewRepository $overviewRepository,
                                 AssetProjectRepository $assetProjectRepository,
-                                InvestorProjectRepository $investorProjectRepository)
+                                InvestorProjectRepository $investorProjectRepository,
+                                DocumentProjectRepository $documentProjectRepository,
+                                UploadService $uploadService)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -38,6 +44,8 @@ class RealEstateProjectService
         $this->overviewRepository = $overviewRepository;
         $this->assetProjectRepository = $assetProjectRepository;
         $this->investorProjectRepository = $investorProjectRepository;
+        $this->documentProjectRepository = $documentProjectRepository;
+        $this->uploadService = $uploadService;
     }
 
     public function create($request)
@@ -190,5 +198,21 @@ class RealEstateProjectService
                 InvestorProject::REAL_ESTATE_PROJECT_ID => $request->id
             ]);
         }
+    }
+
+    public function add_document($request)
+    {
+        $file = $this->uploadService->upload($request);
+        $this->documentProjectRepository->create([
+            DocumentProject::REAL_ESTATE_PROJECT_ID => $request->id,
+            DocumentProject::TITLE_VI => $request->title_vi,
+            DocumentProject::TITLE_EN => $request->title_en,
+            DocumentProject::NAME_FILE_VI => $request->name_file_vi,
+            DocumentProject::NAME_FILE_EN => $request->name_file_en,
+            DocumentProject::SLUG_VI => slugify($request->title_vi),
+            DocumentProject::SLUG_EN => slugify($request->title_en),
+            DocumentProject::LINK => $file,
+            DocumentProject::STATUS => DocumentProject::ACTIVE
+        ]);
     }
 }
