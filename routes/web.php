@@ -62,6 +62,10 @@ Route::group(['middleware' => 'locale'], function () {
             });
         });
 
+        Route::prefix('/investment')->group(function () {
+            Route::get('/', "Customer\InvestmentController@investment")->name('investment');
+        });
+
     });
 
     //employee
@@ -94,8 +98,6 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/interest')->group(function () {
                 Route::post('/create', "Admin\InterestController@create")->name('interest.create');
             });
-
-
         });
     });
 

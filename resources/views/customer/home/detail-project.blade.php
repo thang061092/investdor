@@ -52,7 +52,7 @@
                                         class="c-value">{{number_format_vn($project->value_part)}} VND/{{__('project.part')}}</span>
                                 </div>
                             </div>
-                            <a href="" title="" class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
+                            <a href="{{route('investment')}}" title="" class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
                                 <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                      viewBox="0 0 20 20" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
