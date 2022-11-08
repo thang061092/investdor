@@ -46,6 +46,7 @@ return [
     "name_company" => "Tên công ty",
     'address_company' => "Địa chỉ công ty",
     'administrative_council' => 'Hội đồng quản trị',
-    'investor' => 'Chủ đầu tư'
+    'investor' => 'Chủ đầu tư',
+    'other_documents'=>'Các tài liệu khác',
 
 ];

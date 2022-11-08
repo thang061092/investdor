@@ -62,9 +62,9 @@ class RealEstateProject extends BaseModel
         return $this->hasOne(OverviewProject::class, OverviewProject::REAL_ESTATE_PROJECT_ID);
     }
 
-    public function documentProject()
+    public function documentProjects()
     {
-        return $this->hasOne(DocumentProject::class, DocumentProject::REAL_ESTATE_PROJECT_ID);
+        return $this->hasMany(DocumentProject::class, DocumentProject::REAL_ESTATE_PROJECT_ID);
     }
 
     public function businessPlane()

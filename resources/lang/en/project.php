@@ -45,5 +45,6 @@ return [
     "name_company" => "Name company",
     'address_company' => "Address company",
     'administrative_council' => 'Administrative Council',
-    'investor' => 'Investor'
+    'investor' => 'Investor',
+    'other_documents'=>'Other documents',
 ];
