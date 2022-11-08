@@ -62,6 +62,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_profile', 'Customer\UserController@update_profile')->name('customer.user.update_profile');
                 Route::post('/district', 'Customer\UserController@get_district_by_province')->name('customer.user.district');
                 Route::post('/ward', 'Customer\UserController@get_ward_by_district')->name('customer.user.ward');
+                Route::post('/auth', 'Customer\UserController@auth')->name('customer.user.auth');
             });
         });
 
@@ -110,6 +111,8 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/detail_customer/{id}', 'Admin\UserController@detail_customer')->name('customer.customer.detail_customer');
                 Route::get('/edit_customer/{id}', 'Admin\UserController@edit_customer')->name('customer.customer.edit_customer');
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
+                Route::post('/auth/{id}','Admin\UserController@auth')->name('customer.customer.auth');
+                Route::post('/not_auth/{id}','Admin\UserController@not_auth')->name('customer.customer.not_auth');
             });
         });
     });

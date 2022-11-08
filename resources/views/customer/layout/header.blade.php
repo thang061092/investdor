@@ -146,9 +146,25 @@
                         </p>
                         <div class="wrapper-box content" style="display:none;">
                             <div class="box">
-                                <p class="alert-confirmed">
-                                    Chưa xác thực tài khoản
-                                </p>
+                                @if (!empty(session()->get('customer')))
+                                    @if (session()->get('customer')['accuracy'] == 0)
+                                        <p class="alert-confirmed">
+                                        {{__('profile.yet_auth')}}
+                                        </p>
+                                    @elseif (session()->get('customer')['accuracy'] == 1)
+                                        <p class="alert alert-success">
+                                        {{__('profile.success_auth')}}
+                                        </p>
+                                    @elseif (session()->get('customer')['accuracy'] == 2)
+                                        <p class="alert alert-warning">
+                                        {{__('profile.wait_auth')}}
+                                        </p>
+                                    @else 
+                                        <p class="alert alert-success=-danger">
+                                        {{__('profile.fail_auth')}}
+                                        </p>
+                                    @endif
+                                @endif
                                 <a href="{{route('customer.user.manager')}}" title="" class="d-flex align-items-center justify-content-between action">
                                     {{__('auth.personal_information')}}
                                     <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

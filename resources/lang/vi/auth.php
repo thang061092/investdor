@@ -54,4 +54,9 @@ return [
     'province_not_null' => "Tỉnh, thành phố không để trống",
     'district_not_null' => "Quận, huyện không để trống",
     'ward_not_null' => "Phường, xã không để trống",
+    'identity_not_null' => "Số CMND/CCCD không để trống",
+    'date_identity_not_null' => 'Ngày cấp CMND/CCCD không để trống',
+    'address_identity_not_null' => 'Nơi cấp CMND/CCCD không để trống',
+    'authentication' => "Xác thực tài khoản ?",
+    'not_authentication' => "Không xác thực tài khoản ?" ,
 ];

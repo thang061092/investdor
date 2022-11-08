@@ -138,13 +138,29 @@ class UserController extends BaseController
         ]);
     }
 
-    public function update_customer(FormCreateEmployee $request, $id) {
-        $customer = $this->userService->update_customer($request, $id);
-        if ($customer) {
-            toastr()->success(__("message.update_success"), __('message.success'));
-            return redirect()->route('customer.customer.edit_customer',['id' => $id]);
+    // public function update_customer(FormCreateEmployee $request, $id) {
+    //     $customer = $this->userService->update_customer($request, $id);
+    //     if ($customer) {
+    //         toastr()->success(__("message.update_success"), __('message.success'));
+    //         return redirect()->route('customer.customer.edit_customer',['id' => $id]);
+    //     }
+    //     toastr()->error(__("message.update_fail"), __('message.fail'));
+    //     return redirect()->route('customer.customer.edit_customer',['id' => $id]);
+    // }
+
+    public function auth(Request $request, $id) {
+        $auth =  $this->userService->confirm_auth($id);
+        if ($auth) {
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
         }
-        toastr()->error(__("message.update_fail"), __('message.fail'));
-        return redirect()->route('customer.customer.edit_customer',['id' => $id]);
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'));
+    }
+
+    public function not_auth(Request $request, $id) {
+        $auth =  $this->userService->not_confirm_auth($id);
+        if ($auth) {
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
+        }
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'));
     }
 }

@@ -37,6 +37,9 @@ class FormUpdateProfile extends FormRequest
             'province' => 'required',
             'district' => 'required',
             'ward' => 'required',
+            'identity' => 'required',
+            "date_identity" => "required",
+            "address_identity" => "required",
         ];
     }
 
@@ -55,6 +58,9 @@ class FormUpdateProfile extends FormRequest
             "province.required" => __('auth.province_not_null'),
             "district.required" => __('auth.district_not_null'),
             "ward.required" => __('auth.ward_not_null'),
+            "identity.required" => __('auth.identity_not_null'),
+            "date_identity.required" => __('auth.date_identity_not_null'),
+            "address_identity.required" => __('auth.address_identity_not_null'),
         ];
 
     }

@@ -1,9 +1,30 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.personal_profile'))
+@section('css')
+<style>
+    .theloading {
+        position: fixed;
+        z-index: 999;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, .7);
+        top: 0;
+        right: 0;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+</style>
+@endsection
 @section("content")
     @include('customer.user.header-your-manager')
     <section class="profile update">
         <div class="container">
+            <div id="loading" class="theloading" style="display: none;">
+                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+            </div>
             <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
             @csrf
                 <div class="row">
@@ -79,6 +100,27 @@
                         <input type="text" name="phone_number" placeholder="{{__('profile.phone_number')}}" class="form-control mb-3" value="{{$detail->phone}}"/>
                         @if($errors->has('phone_number'))
                         <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
+                        @endif
+                        <label for="" class="d-block mb-2">
+                            {{__('profile.identity')}}<span class="text-danger">*</span>
+                        </label>
+                        <input type="text" name="identity" placeholder="{{__('profile.identity')}}" class="form-control mb-3" value="{{$detail->identity}}"/>
+                        @if($errors->has('identity'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
+                        @endif
+                        <label for="" class="d-block mb-2">
+                            {{__('profile.date_identity')}}<span class="text-danger">*</span>
+                        </label>
+                        <input type="date" name="date_identity" placeholder="{{__('profile.date_identity')}}" class="form-control mb-3" value="{{$detail->date_identity}}"/>
+                        @if($errors->has('date_identity'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
+                        @endif
+                        <label for="" class="d-block mb-2">
+                            {{__('profile.address_identity')}}<span class="text-danger">*</span>
+                        </label>
+                        <input type="text" name="address_identity" placeholder="{{__('profile.address_identity')}}" class="form-control mb-3" value="{{$detail->address_identity}}"/>
+                        @if($errors->has('address_identity'))
+                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
                         @endif
                         <label for="" class="d-block mb-2"> {{__('profile.email')}}<span class="text-danger">*</span></label>
                         <input readonly="readonly" type="text" name="email" value="{{$detail->email}}"
@@ -208,12 +250,16 @@
                 <div class="text-center mt-2 pt-2 wow fadeInUp">
                     <a href='{{url("/")}}' title="{{__('button.cancel')}}" class="btn_all cancle d-inline-block">{{__('button.cancel')}}</a>
                     <button type="submit" class="btn_all">{{__('button.save')}}</button>
+                    @if($detail->accuracy == 0) 
+                        <a type="button" id = "auth" class="btn_all">{{__('button.auth')}}</a>
+                    @endif
                 </div>
             </form>
         </div>
     </section>
 
 @section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         toastr.options.timeOut = 10000;
@@ -222,6 +268,13 @@
         @elseif(Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
         @endif
+    });
+    $(document).ajaxStart(function() {
+        $("#loading").show();
+        var loadingHeight = window.screen.height;
+        $("#loading, .right-col iframe").css('height', loadingHeight);
+        }).ajaxStop(function() {
+        $("#loading").hide();
     });
 </script>
 <script type="text/javascript">
@@ -268,6 +321,44 @@
                         }
                     }
                 });
+        });
+
+        $("#auth").on('click', function () {
+            let auth = $(this).val();
+            Swal.fire({
+                title: "{{__('message.send_auth')}}",
+                text: "{{__('message.are_you_sure')}}",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: "{{__('message.yes')}}",
+                cancelButtonText: "{{__('message.no')}}",
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                    type: "POST",
+                    url: "{{route('customer.user.auth')}}",
+                    datatype: "JSON",
+                    success: function(data)
+                        {
+                            if (data.status == 200) {
+                                Swal.fire(
+                                    "{{__('message.success')}}",
+                                    "{{__('message.send_auth_success')}}",
+                                    'success'
+                                )
+                            } else {
+                                Swal.fire(
+                                    "{{__('message.fail')}}",
+                                    "{{__('message.send_auth_fail')}}",
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            })
         });
     });
 </script>

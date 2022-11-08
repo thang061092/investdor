@@ -201,6 +201,9 @@ class UserService
             Users::WARD => $request->ward ?? "",
             Users::ADDRESS => $request->specific_address ?? "",
             Users::AVATAR => $avatar ?? "",
+            Users::IDENTITY => $request->identity ?? "",
+            Users::DATE_IDENTITY => $request->date_identity ?? "",
+            Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
         ];
         $user = $this->userRepository->update_profile($id, $data);
         return $user;
@@ -255,5 +258,38 @@ class UserService
         ];
         $user = $this->userRepository->update($id, $data);
         return $user;
+    }
+
+    public function auth($id) {
+        $data = [
+            Users::ACCURACY => Users::WARNING_AUTH
+        ];
+        $auth = $this->userRepository->update($id, $data);
+        if ($auth) {
+            return $auth;
+        }
+        return false;
+    }
+
+    public function confirm_auth($id) {
+        $data = [
+            Users::ACCURACY => Users::AUTH,
+        ];
+        $auth = $this->userRepository->update($id, $data);
+        if ($auth) {
+            return $auth;
+        }
+        return false;
+    }
+
+    public function not_confirm_auth($id) {
+        $data = [
+            Users::ACCURACY => Users::FAIL_AUTH,
+        ];
+        $auth = $this->userRepository->update($id, $data);
+        if ($auth) {
+            return $auth;
+        }
+        return false;
     }
 }

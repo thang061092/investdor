@@ -116,4 +116,14 @@ class UserController extends BaseController
         }
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
+
+    public function auth(Request $request) {
+        $user = session()->get('customer');
+        $userId = $user['id'];
+        $auth = $this->userService->auth($userId);
+        if ($auth) {
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
+        }
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
+    }
 }

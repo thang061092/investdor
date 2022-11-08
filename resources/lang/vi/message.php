@@ -49,6 +49,12 @@ return [
     'update_fail' => "Cập nhật thất bại",
     'create_success' => "Tạo mới thành công",
     'create_fail' => "Tạo mới thất bại",
+    'send_auth_success' => "Gửi xác thực thành công",
+    'send_auth_fail' => "Gửi xác thực thất bại",
+    'send_auth' => "Gửi xác thực tài khoản",
+    'are_you_sure' => "Bạn có chắc chắn thông tin xác thực chính xác ?",
+    'yes' => "Có",
+    'no' => "Không!",
 
 
 

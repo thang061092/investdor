@@ -66,4 +66,9 @@ return [
     'province_not_null' => "Province is not empty",
     'district_not_null' => "District is not empty",
     'ward_not_null' => "Ward is not empty",
+    'identity_not_null' => "Identity number is not empty",
+    'date_identity_not_null' => 'Date of identity card is not empty',
+    'address_identity_not_null' => 'Place of identity card is not empty',
+    'authentication' => 'Authentication ?',
+    'not_authentication' => 'Authentication not verified'
 ];
