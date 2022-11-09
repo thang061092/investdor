@@ -51,7 +51,7 @@ class DistrictService
 
     public function district($request)
     {
-        return $this->districtRepository->findMany(['parent_code' => $request->code]);
+        return $this->districtRepository->findMany(['city_id' => $request->id]);
     }
 
     public function get_district() {

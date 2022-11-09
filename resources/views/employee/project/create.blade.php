@@ -73,7 +73,7 @@
                                                     name="city_project">
                                                     <option value="">Chọn Tỉnh/Thành phố</option>
                                                     @foreach($cities as $key => $value)
-                                                        <option value="{{$value['code']}}">{{$value['name']}}</option>
+                                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
                                                     @endforeach
                                                 </select>
                                                 @if($errors->has('city_project'))

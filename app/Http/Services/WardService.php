@@ -50,7 +50,7 @@ class WardService
 
     public function ward($request)
     {
-        return $this->wardRepository->findMany(['parent_code' => $request->code]);
+        return $this->wardRepository->findMany(['district_id' => $request->id]);
     }
 
     public function get_ward() {
@@ -62,7 +62,7 @@ class WardService
     }
 
     public function get_ward_by_district($code) {
-        $ward = $this->wardRepository->get_ward_by_district($code);
+        $ward = $this->wardRepository->findMany($code);
         if ($ward) {
             return $ward;
         }
