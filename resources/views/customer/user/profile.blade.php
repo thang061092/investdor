@@ -1,22 +1,22 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.personal_profile'))
 @section('css')
-<style>
-    .theloading {
-        position: fixed;
-        z-index: 999;
-        display: block;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, .7);
-        top: 0;
-        right: 0;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center
-    }
-</style>
+    <style>
+        .theloading {
+            position: fixed;
+            z-index: 999;
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .7);
+            top: 0;
+            right: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+    </style>
 @endsection
 @section("content")
     @include('customer.user.header-your-manager')
@@ -25,8 +25,9 @@
             <div id="loading" class="theloading" style="display: none;">
                 <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
             </div>
-            <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-            @csrf
+            <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8"
+                  enctype='multipart/form-data'>
+                @csrf
                 <div class="row">
                     <div class="col-lg-4 mb-lg-0 mb-2 wow fadeInUp">
                         <p class="title_lg">{{__('profile.photo')}}</p>
@@ -48,16 +49,18 @@
                         <label for="" class="d-block mb-2">
                             {{__('profile.full_name')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="full_name" placeholder="Họ tên của bạn" class="form-control mb-3" value="{{$detail->full_name}}"/>
+                        <input type="text" name="full_name" placeholder="Họ tên của bạn" class="form-control mb-3"
+                               value="{{$detail->full_name}}"/>
                         @if($errors->has('full_name'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.date_of_birth')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="date" name="birthday" placeholder="Chọn ngày" class="form-control mb-3"  value="{{$detail->birthday}}"/>
+                        <input type="date" name="birthday" placeholder="Chọn ngày" class="form-control mb-3"
+                               value="{{$detail->birthday}}"/>
                         @if($errors->has('birthday'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.gender')}}<span class="text-danger">*</span>
@@ -65,68 +68,76 @@
                         <div class="radios mb-3">
                             <label class="gender-choose" for="male">
 
-                            @php
-                                if($detail->gender == 1) {
-                                    $check = " checked";
-                                } 
-                                else 
-                                {
-                                    $check = "";
-                                }
-                            @endphp
-                                <input type="radio" value="1" {{$check}} name="gender" />
+                                @php
+                                    if($detail->gender == 1) {
+                                        $check = " checked";
+                                    }
+                                    else
+                                    {
+                                        $check = "";
+                                    }
+                                @endphp
+                                <input type="radio" value="1" {{$check}} name="gender"/>
                                 Nam
                             </label>
                             <label class="gender-choose" for="female">
-                            @php
-                                if($detail->gender == 2) {
-                                    $check = " checked";
-                                } 
-                                else 
-                                {
-                                    $check = "";
-                                }
-                            @endphp
-                                <input type="radio" value="2" {{$check}} name="gender" />
+                                @php
+                                    if($detail->gender == 2) {
+                                        $check = " checked";
+                                    }
+                                    else
+                                    {
+                                        $check = "";
+                                    }
+                                @endphp
+                                <input type="radio" value="2" {{$check}} name="gender"/>
                                 Nữ
                             </label>
                         </div>
                         @if($errors->has('gender'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('gender') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('gender') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.phone_number')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="phone_number" placeholder="{{__('profile.phone_number')}}" class="form-control mb-3" value="{{$detail->phone}}"/>
+                        <input type="text" name="phone_number" placeholder="{{__('profile.phone_number')}}"
+                               class="form-control mb-3" value="{{$detail->phone}}"/>
                         @if($errors->has('phone_number'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
+                            <p class="text-danger"
+                               style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.identity')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="identity" placeholder="{{__('profile.identity')}}" class="form-control mb-3" value="{{$detail->identity}}"/>
+                        <input type="text" name="identity" placeholder="{{__('profile.identity')}}"
+                               class="form-control mb-3" value="{{$detail->identity}}"/>
                         @if($errors->has('identity'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.date_identity')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="date" name="date_identity" placeholder="{{__('profile.date_identity')}}" class="form-control mb-3" value="{{$detail->date_identity}}"/>
+                        <input type="date" name="date_identity" placeholder="{{__('profile.date_identity')}}"
+                               class="form-control mb-3" value="{{$detail->date_identity}}"/>
                         @if($errors->has('date_identity'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
+                            <p class="text-danger"
+                               style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.address_identity')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="address_identity" placeholder="{{__('profile.address_identity')}}" class="form-control mb-3" value="{{$detail->address_identity}}"/>
+                        <input type="text" name="address_identity" placeholder="{{__('profile.address_identity')}}"
+                               class="form-control mb-3" value="{{$detail->address_identity}}"/>
                         @if($errors->has('address_identity'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
+                            <p class="text-danger"
+                               style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
                         @endif
-                        <label for="" class="d-block mb-2"> {{__('profile.email')}}<span class="text-danger">*</span></label>
+                        <label for="" class="d-block mb-2"> {{__('profile.email')}}<span
+                                class="text-danger">*</span></label>
                         <input readonly="readonly" type="text" name="email" value="{{$detail->email}}"
                                class="form-control mb-3"/>
                         @if($errors->has('email'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
                         @endif
                         <div class="ping-alert-note mb-lg-4 mb-3 pb-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -151,28 +162,33 @@
                         </label>
                         <select name="bank_name" class="e-select nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
                                 data-default="Chọn">
-                            @if(isset($banks)) 
+                            @if(isset($banks))
                                 @foreach ($banks as $bank)
-                                    <option value="{{$bank->code}}"  @if($detail->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
+                                    <option value="{{$bank->code}}"
+                                            @if($detail->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
                                 @endforeach
                             @endif
                         </select>
                         @if($errors->has('bank_name'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
                         @endif
                         <label for="account_number" class="d-block mb-2">
                             {{__('profile.account_number')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="account_number" placeholder="Nhập số tài khoản" class="form-control mb-3" value="{{$detail->account_number}}"/>
+                        <input type="text" name="account_number" placeholder="Nhập số tài khoản"
+                               class="form-control mb-3" value="{{$detail->account_number}}"/>
                         @if($errors->has('account_number'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
+                            <p class="text-danger"
+                               style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
                             {{__('profile.account holder')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="account_name" placeholder="Nhập tên chủ tài khoản" class="form-control mb-3" value="{{$detail->account_name}}"/>
+                        <input type="text" name="account_name" placeholder="Nhập tên chủ tài khoản"
+                               class="form-control mb-3" value="{{$detail->account_name}}"/>
                         @if($errors->has('account_name'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
+                            <p class="text-danger"
+                               style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
                         @endif
                         <div class="ping-alert-note mb-lg-4 mb-3 pb-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -200,29 +216,32 @@
                             </option>
                             @if(isset($province))
                                 @foreach($province as $i)
-                                    <option value="{{$i->code}}"  @if($detail->city == $i->code) selected @endif>{{$i->name}}</option>
-                                @endforeach 
+                                    <option value="{{$i->code}}"
+                                            @if($detail->city == $i->code) selected @endif>{{$i->name}}</option>
+                                @endforeach
                             @endif
                         </select>
                         @if($errors->has('province'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('province') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('province') }}</p>
                         @endif
                         <label for="district" class="d-block mb-2">
                             {{__('profile.district')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="district" class="nice-select mb-3 district" id="district" data-text="Chọn quận/ huyện"
+                        <select name="district" class="nice-select mb-3 district" id="district"
+                                data-text="Chọn quận/ huyện"
                                 data-default="Chọn">
                             <option value="">
                                 Chọn quận/ huyện
                             </option>
                             @if(isset($district))
                                 @foreach($district as $k)
-                                    <option value="{{$k->code}}"  @if($detail->district == $k->code) selected @endif>{{$k->name}}</option>
-                                @endforeach 
+                                    <option value="{{$k->code}}"
+                                            @if($detail->district == $k->code) selected @endif>{{$k->name}}</option>
+                                @endforeach
                             @endif
                         </select>
                         @if($errors->has('district'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('district') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('district') }}</p>
                         @endif
                         <label for="ward" class="d-block mb-2">
                             {{__('profile.ward')}}<span class="text-danger">*</span>
@@ -234,24 +253,27 @@
                             </option>
                             @if(isset($ward))
                                 @foreach($ward as $j)
-                                    <option value="{{$j->code}}"  @if($detail->ward == $j->code) selected @endif>{{$j->name}}</option>
-                                @endforeach 
+                                    <option value="{{$j->code}}"
+                                            @if($detail->ward == $j->code) selected @endif>{{$j->name}}</option>
+                                @endforeach
                             @endif
                         </select>
                         @if($errors->has('ward'))
-                        <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('ward') }}</p>
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('ward') }}</p>
                         @endif
                         <label for="specific_address" class="d-block mb-2">
                             {{__('profile.specific_address')}}
                         </label>
-                        <input type="text" name="specific_address" placeholder="Nhập địa chỉ cụ thể" class="form-control mb-3" value="{{$detail->address}}"/>
+                        <input type="text" name="specific_address" placeholder="Nhập địa chỉ cụ thể"
+                               class="form-control mb-3" value="{{$detail->address}}"/>
                     </div>
                 </div>
                 <div class="text-center mt-2 pt-2 wow fadeInUp">
-                    <a href='{{url("/")}}' title="{{__('button.cancel')}}" class="btn_all cancle d-inline-block">{{__('button.cancel')}}</a>
+                    <a href='{{route('customer.user.manager').'?main_tab=profile'}}' title="{{__('button.cancel')}}"
+                       class="btn_all cancle d-inline-block">{{__('button.cancel')}}</a>
                     <button type="submit" class="btn_all">{{__('button.save')}}</button>
-                    @if($detail->accuracy == 0) 
-                        <a type="button" id = "auth" class="btn_all">{{__('button.auth')}}</a>
+                    @if($detail->accuracy == 0)
+                        <a type="button" id="auth" class="btn_all">{{__('button.auth')}}</a>
                     @endif
                 </div>
             </form>
@@ -259,108 +281,105 @@
     </section>
 
 @section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        toastr.options.timeOut = 10000;
-        @if (Session::has('error'))
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
             toastr.error('{{ Session::get('error') }}');
-        @elseif(Session::has('success'))
+            @elseif(Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
-        @endif
-    });
-    $(document).ajaxStart(function() {
-        $("#loading").show();
-        var loadingHeight = window.screen.height;
-        $("#loading, .right-col iframe").css('height', loadingHeight);
-        }).ajaxStop(function() {
-        $("#loading").hide();
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#city").on('change', function() {
-            let province = $(this).val();
-            let data = {code:province};
-            $.ajax({
+            @endif
+        });
+        $(document).ajaxStart(function () {
+            $("#loading").show();
+            var loadingHeight = window.screen.height;
+            $("#loading, .right-col iframe").css('height', loadingHeight);
+        }).ajaxStop(function () {
+            $("#loading").hide();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#city").on('change', function () {
+                let province = $(this).val();
+                let data = {code: province};
+                $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.district')}}",
                     datatype: "JSON",
                     data: data,
-                    success: function(data)
-                    {
+                    success: function (data) {
                         $('#district').html('');
                         $('#ward').html('');
                         if (data.status == 200) {
                             $('#district').append('<option value="">' + '--Chọn quận/huyện--' + '</option>')
                             $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
-                            $.each(data.data, function(key, value) {
+                            $.each(data.data, function (key, value) {
                                 $('#district').append('<option value="' + value.code + '">' + value.name + '</option>');
                             });
                         }
                     }
                 });
-        });
+            });
 
-        $("#district").on('change', function() {
-            let district = $(this).val();
-            let data = {code:district};
-            $.ajax({
+            $("#district").on('change', function () {
+                let district = $(this).val();
+                let data = {code: district};
+                $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.ward')}}",
                     datatype: "JSON",
                     data: data,
-                    success: function(data)
-                    {
+                    success: function (data) {
                         $('#ward').html('');
                         if (data.status == 200) {
                             $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
-                            $.each(data.data, function(key, value) {
+                            $.each(data.data, function (key, value) {
                                 $('#ward').append('<option value="' + value.code + '">' + value.name + '</option>');
                             });
                         }
                     }
                 });
-        });
+            });
 
-        $("#auth").on('click', function () {
-            let auth = $(this).val();
-            Swal.fire({
-                title: "{{__('message.send_auth')}}",
-                text: "{{__('message.are_you_sure')}}",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: "{{__('message.yes')}}",
-                cancelButtonText: "{{__('message.no')}}",
+            $("#auth").on('click', function () {
+                let auth = $(this).val();
+                Swal.fire({
+                    title: "{{__('message.send_auth')}}",
+                    text: "{{__('message.are_you_sure')}}",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: "{{__('message.yes')}}",
+                    cancelButtonText: "{{__('message.no')}}",
                 }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                    type: "POST",
-                    url: "{{route('customer.user.auth')}}",
-                    datatype: "JSON",
-                    success: function(data)
-                        {
-                            if (data.status == 200) {
-                                Swal.fire(
-                                    "{{__('message.success')}}",
-                                    "{{__('message.send_auth_success')}}",
-                                    'success'
-                                )
-                            } else {
-                                Swal.fire(
-                                    "{{__('message.fail')}}",
-                                    "{{__('message.send_auth_fail')}}",
-                                    'error'
-                                )
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "POST",
+                            url: "{{route('customer.user.auth')}}",
+                            datatype: "JSON",
+                            success: function (data) {
+                                if (data.status == 200) {
+                                    Swal.fire(
+                                        "{{__('message.success')}}",
+                                        "{{__('message.send_auth_success')}}",
+                                        'success'
+                                    )
+                                } else {
+                                    Swal.fire(
+                                        "{{__('message.fail')}}",
+                                        "{{__('message.send_auth_fail')}}",
+                                        'error'
+                                    )
+                                }
                             }
-                        }
-                    });
-                }
-            })
+                        });
+                    }
+                })
+            });
         });
-    });
-</script>
+    </script>
 @endsection
 @stop
