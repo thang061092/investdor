@@ -53,4 +53,20 @@ class DistrictService
     {
         return $this->districtRepository->findMany(['parent_code' => $request->code]);
     }
+
+    public function get_district() {
+        $district = $this->districtRepository->get_district();
+        if ($district) {
+            return $district;
+        }
+        return false;
+    }
+
+    public function get_district_by_province($code) {
+        $district = $this->districtRepository->get_district_by_province($code);
+        if ($district) {
+            return $district;
+        }
+        return false;
+    }
 }

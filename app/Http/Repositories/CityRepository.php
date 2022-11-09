@@ -13,4 +13,12 @@ class CityRepository extends BaseRepository
         // TODO: Implement getModel() method.
         return City::class;
     }
+
+    public function get_province() {
+        $province = BaseRepository::getAll();
+        if ($province) {
+            return $province;
+        }
+        return false;
+    }
 }

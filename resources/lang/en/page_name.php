@@ -11,6 +11,11 @@ return [
     'knowledge' => 'Knowledge',
     'detail_project' => 'Project details',
     'dashboard' => 'Dashboard',
-    'project_list'=> 'Project list'
-
+    'project_list'=> 'Project list',
+    'create_a_new_employee_account' => 'Create a new employee account',
+    'list_employee_account' => 'List employee account',
+    'list_customer_account' => 'List investor account',
+    'detail_account' => 'Account details',
+    'create_account' => 'Create new account',
+    'update_account' => 'Update account',
 ];

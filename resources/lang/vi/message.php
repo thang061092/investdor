@@ -45,6 +45,16 @@ return [
     'target_stable_return_on_cost' => 'Mục tiêu Lợi tức ổn định trên chi phí',
     'cost_so_far' => 'Giá chi phí cho đến thời điểm hiện tại',
     'project_highlights' => 'Điểm nổi bật của dự án',
+    'update_success' => "Cập nhật thành công",
+    'update_fail' => "Cập nhật thất bại",
+    'create_success' => "Tạo mới thành công",
+    'create_fail' => "Tạo mới thất bại",
+    'send_auth_success' => "Gửi xác thực thành công",
+    'send_auth_fail' => "Gửi xác thực thất bại",
+    'send_auth' => "Gửi xác thực tài khoản",
+    'are_you_sure' => "Bạn có chắc chắn thông tin xác thực chính xác ?",
+    'yes' => "Có",
+    'no' => "Không!",
 
 
 

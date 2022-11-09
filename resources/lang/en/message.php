@@ -45,6 +45,17 @@ return [
     'target_stable_return_on_cost' => "Target Stable return on cost",
     'cost_so_far' => "Cost price up to now",
     'project_highlights' => "Project highlights",
+    'update_success' => 'Update successful',
+    'update_fail' => 'Update failed',
+    'create_fail' => 'Create failed',
+    'create_success' => 'Create successful',
+    'send_auth_success' => "Authentication sent successfully",
+    'send_auth' => "Send Authentication",
+    'send_auth_fail' => "Authentication send failed",
+    'are_you_sure' => "Are you sure",
+    'yes' => 'Yes',
+    'no' => 'No!',
+
 
 
 ];
