@@ -4,6 +4,7 @@
 <section class="manager">
     @php($main_tab = request()->get('main_tab') ?? 'manager')
     @php($tab = request()->get('tab') ?? 'active')
+    @php($action = request()->get('action') ?? 'show')
     <div class="container">
         <div class="text-center tabs-main mb-xl-4 mb-3 wow fadeInUp">
             <a href="{{route('customer.user.manager'). '?main_tab=manager'}}" title=""

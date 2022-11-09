@@ -26,8 +26,8 @@ class UserController extends BaseController
     protected $uploadService;
 
     public function __construct(
-        UserService $userService, 
-        BankService $bankService, CityService $cityService, 
+        UserService $userService,
+        BankService $bankService, CityService $cityService,
         DistrictService $districtService,
         WardService $wardService,
         UploadService $uploadService
@@ -62,6 +62,7 @@ class UserController extends BaseController
     {
         $main_tab = !empty($request->main_tab) ? $request->main_tab : 'manager';
         $tab = !empty($request->tab) ? $request->tab : 'active';
+        $action = !empty($request->action) ? $request->action : 'show';
         if ($main_tab == 'manager') {
             if ($tab == 'active') {
                 return view('customer.user.manager');
@@ -73,35 +74,41 @@ class UserController extends BaseController
         } elseif ($main_tab == 'history') {
             return view('customer.user.history-investor');
         } elseif ($main_tab == 'profile') {
-            $user = session()->get('customer');
-            $allBankName = $this->bankService->getAllBank();
-            $province = $this->cityService->get_province();
-            $district = $this->districtService->get_district();
-            $ward = $this->wardService->get_ward();
-            return view('customer.user.profile', [
-                'detail' => $user,
-                'banks' => $allBankName,
-                'province' => $province,
-                'district' => $district,
-                'ward' => $ward,
-            ]);
+            if ($action == 'update') {
+                $user = session()->get('customer');
+                $allBankName = $this->bankService->getAllBank();
+                $province = $this->cityService->get_province();
+                $district = $this->districtService->get_district();
+                $ward = $this->wardService->get_ward();
+                return view('customer.user.profile', [
+                    'detail' => $user,
+                    'banks' => $allBankName,
+                    'province' => $province,
+                    'district' => $district,
+                    'ward' => $ward,
+                ]);
+            } else {
+                return view('customer.user.info');
+            }
         }
         return view('customer.user.manager');
     }
 
-    public function update_profile(FormUpdateProfile $request) {
+    public function update_profile(FormUpdateProfile $request)
+    {
         $user = session()->get('customer');
         $userId = $user['id'];
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
-            Toastr::success('Cập nhật thành công :)',__('message.success'));
+            Toastr::success('Cập nhật thành công :)', __('message.success'));
             return redirect("/customer/user/manager?main_tab=profile");
         }
-        Toastr::error('Cập nhật thất bại :)',__('message.fail'));
+        Toastr::error('Cập nhật thất bại :)', __('message.fail'));
         return redirect("/customer/user/manager?main_tab=profile");
     }
 
-    public function get_district_by_province(Request $request) {
+    public function get_district_by_province(Request $request)
+    {
         $district = $this->districtService->get_district_by_province($request->code);
         if ($district) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $district);
@@ -109,7 +116,8 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function get_ward_by_district(Request $request) {
+    public function get_ward_by_district(Request $request)
+    {
         $ward = $this->wardService->get_ward_by_district($request->code);
         if ($ward) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $ward);
@@ -117,7 +125,8 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function auth(Request $request) {
+    public function auth(Request $request)
+    {
         $user = session()->get('customer');
         $userId = $user['id'];
         $auth = $this->userService->auth($userId);
