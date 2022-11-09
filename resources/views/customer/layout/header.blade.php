@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-2 col-12 order-lg-1 order-2 d-xl-block d-flex justify-content-between align-items-center">
-                <a href="" title="" class="d-block img logo">
+                <a href="{{route('home.index')}}" title="" class="d-block img logo">
                     <img src="{{asset('frontend/images/logo.png')}}" class="img-fluid" alt="" />
                 </a>
                 <button class="btn-menu d-xl-none ml-auto block">

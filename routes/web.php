@@ -66,6 +66,10 @@ Route::group(['middleware' => 'locale'], function () {
             });
         });
 
+        Route::prefix('/investment')->group(function () {
+            Route::get('/', "Customer\InvestmentController@investment")->name('investment');
+        });
+
     });
 
     //employee
@@ -90,6 +94,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_extend', "Admin\ProjectController@update_extend")->name('project.update_extend');
                 Route::post('/update_asset', "Admin\ProjectController@update_asset")->name('project.update_asset');
                 Route::post('/update_investor', "Admin\ProjectController@update_investor")->name('project.update_investor');
+                Route::post('/add_document', "Admin\ProjectController@add_document")->name('project.add_document');
+                Route::post('/edit_document', "Admin\ProjectController@update_document")->name('project.update_document');
+                Route::get('/show_document/{id}', "Admin\ProjectController@show_document")->name('project.show_document');
             });
 
             Route::prefix('/interest')->group(function () {
@@ -114,6 +121,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/auth/{id}','Admin\UserController@auth')->name('customer.customer.auth');
                 Route::post('/not_auth/{id}','Admin\UserController@not_auth')->name('customer.customer.not_auth');
             });
+
         });
     });
 

@@ -18,6 +18,6 @@ class Auth_customer
                 return $next($request);
             }
         }
-        return redirect()->route('home.index');
+        return redirect()->route('customer.login');
     }
 }

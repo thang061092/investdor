@@ -18,6 +18,8 @@ class DocumentProject extends BaseModel
     const LINK = 'link';
     const STATUS = 'status';
     const REAL_ESTATE_PROJECT_ID = 'real_estate_project_id';
+    const NAME_FILE_VI = 'name_file_vi';
+    const NAME_FILE_EN = 'name_file_en';
 
     //status
     const ACTIVE = 'active';
