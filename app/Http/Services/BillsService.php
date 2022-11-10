@@ -56,4 +56,11 @@ class BillsService
         ]);
         return $bill_new;
     }
+
+    public function get_bill_warning($request)
+    {
+        $bills = $this->billsRepository->get_bill_warning($request);
+        return $bills;
+
+    }
 }
