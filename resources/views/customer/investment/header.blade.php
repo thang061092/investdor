@@ -15,7 +15,7 @@
                         Estimated Hold Period
                     </p>
                     <div class="c-value-invest mb-3 text-left">
-                       0
+                        0
                     </div>
                     <p class="c-label-invest mb-1 d-block text-left">
                         Minimum Investment

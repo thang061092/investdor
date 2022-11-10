@@ -4,31 +4,41 @@
     @include('customer.investment.header')
     <section class="invest mt-lg-3 pt-2">
         <div class="container">
-            <form action="" method="" class="frm-set-invest invest-step-1 wow fadeInUp">
+            <form action="{{route('investment.step1_submit')}}" method="post"
+                  class="frm-set-invest invest-step-1 wow fadeInUp">
+                @csrf
                 <div class="wrapper-set-invest mx-auto">
                     <p class="title_lg">{{__('profile.personal_information')}}</p>
                     <label for="" class="d-block mb-2"> {{__('profile.full_name')}} </label>
-                    <input type="text" name="" placeholder="Nguyễn Phúc Vĩnh Thuỵ" class="form-control mb-3"/>
+                    <input type="text" name="" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['full_name'] ?? ''}}" disabled/>
                     <label for="" class="d-block mb-2"> {{__('profile.date_of_birth')}} </label>
-                    <input type="date" name="" placeholder="Chọn ngày" class="form-control mb-3"/>
+                    <input type="date" name="" placeholder="Chọn ngày" class="form-control mb-3" disabled
+                           value="{{session()->get('customer')['birthday'] ?? ''}}"/>
                     <label for="" class="d-block mb-2"> {{__('profile.gender')}} </label>
                     <div class="radios mb-3">
                         <label class="gender-choose" for="male">
-                            <input type="radio" checked value="1" name="gender"/>
+                            <input type="radio"
+                                   {{session()->get('customer')['gender'] == 'male' ? 'checked' : ''}} value="1"
+                                   name="gender" disabled/>
                             {{__('profile.male')}}
                         </label>
                         <label class="gender-choose" for="female">
-                            <input type="radio" value="2" name="gender"/>
+                            <input type="radio" value="2"
+                                   name="gender"
+                                   {{session()->get('customer')['gender'] == 'male' ? 'checked' : ''}} disabled/>
                             {{__('profile.female')}}
                         </label>
                     </div>
                     <label for="" class="d-block mb-2">
                         {{__('profile.phone_number')}}
                     </label>
-                    <input type="text" name="" placeholder=" {{__('profile.phone_number')}}" class="form-control mb-3"/>
+                    <input type="text" name="" placeholder=" {{__('profile.phone_number')}}" class="form-control mb-3"
+                           disabled
+                           value="{{!empty(session()->get('customer')['phone']) ? hide_phone(session()->get('customer')['phone']): ''}}"/>
                     <label for="" class="d-block mb-2"> {{__('profile.email')}} </label>
-                    <input disabled type="text" name="" placeholder="nguyenvtp2342@gmail.com"
-                           class="form-control mb-3"/>
+                    <input disabled type="text" name="" placeholder=""
+                           class="form-control mb-3" value="{{session()->get('customer')['email'] ?? ''}}"/>
                     <p class="title_lg">{{__('profile.bank_account')}}</p>
                     <label for="" class="d-block mb-2">
                         {{__('profile.bank_name')}}
@@ -60,12 +70,11 @@
                         </svg>
                         {{__('profile.warning_account')}}
                     </div>
-                    <a type="button" class="btn_all mt-xl-5 mt-lg-4 mt-3 step1"
-                       href="{{route('investment.step2',['slug'=> $project->slug_vi])}}" style="text-align: center">
-                        {{__('button.continue')}}
-                    </a>
+                    <input type="hidden" name="project_id" value="{{$project->id}}">
                 </div>
-
+                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3 step1" style="text-align: center">
+                    {{__('button.continue')}}
+                </button>
             </form>
         </div>
     </section>

@@ -87,4 +87,42 @@ function number_format_vn($number)
     return number_format($number, 0, ',', '.');
 }
 
+function hide_phone($phone, $role = "")
+{
+    $result = str_replace(substr($phone, 4, 4), stars($phone), $phone);
+    if ($role != "") {
+        return $phone;
+    } else {
+        return $result;
+    }
+}
+
+function stars($phone)
+{
+    $times = strlen(trim(substr($phone, 4, 4)));
+    $star = '';
+    for ($i = 0; $i < $times; $i++) {
+        $star .= '*';
+    }
+    return $star;
+}
+
+function encode($string, $key)
+{
+    $encode = openssl_encrypt($string, "AES-256-ECB", $key);
+    return $encode;
+}
+
+function decode($string, $key)
+{
+    $decode = openssl_decrypt($string, "AES-256-ECB", $key);
+    return $decode;
+}
+
+function random_string()
+{
+    $random = substr(strtoupper(md5(mt_rand())), 0, 6);
+    return $random;
+}
+
 

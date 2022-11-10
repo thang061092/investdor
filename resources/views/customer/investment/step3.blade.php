@@ -4,7 +4,8 @@
     @include('customer.investment.header')
     <section class="invest mt-lg-3 pt-5">
         <div class="container">
-            <form action="" method="" class="frm-set-invest wow fadeInUp">
+            <form action="{{route('investment.step3_submit')}}" method="post" class="frm-set-invest wow fadeInUp">
+                @csrf
                 <div class="wrapper-set-invest invest-step-3 mx-auto">
                     <p class="title_lg">Điều kiện và điều khoản sử dụng</p>
                     <div class="box-contents">
@@ -74,9 +75,9 @@
                         Đầu tư luôn đi kèm với rủi ro. Nhà đầu tư vui lòng
                         tự chịu trách nhiệm với khoản đầu tư của mình
                     </div>
-
+                    <input type="hidden" name="checksum" value="{{$checksum_new}}">
                     <label for="agree" class="check mt-lg-4 pt-lg-2 mt-3">
-                        <input type="checkbox" id="agree" name="agree"/>
+                        <input type="checkbox" id="agree" name="agree" value="agree"/>
                         <span class="text">Tôi đồng ý với điều khoản và điều kiện sử
                         dụng.</span>
                     </label>
