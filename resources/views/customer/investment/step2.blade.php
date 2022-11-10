@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.investment'))
 @section("content")
     <div class="banner banner-invest mb-3 d-md-block d-none">
         <img src="{{asset('frontend/images/banner-x.jpg')}}" class="img-fluid" alt="" />

@@ -18,4 +18,5 @@ return [
     'detail_account' => "Chi tiết tài khoản",
     'create_account' => "Tạo mới tài khoản",
     'update_account' => "Cập nhật tài khoản",
+    'investment' => "Đầu tư"
 ];
