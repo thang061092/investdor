@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.investment'))
 @section("content")
     <section class="invest-complete mt-lg-4 mt-3 pt-2">
         <div class="container">

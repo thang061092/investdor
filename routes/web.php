@@ -126,6 +126,7 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
     Route::post('/upload', "UploadController@upload");
+    Route::post('/qr', "Customer\PaymentController@link");
     Route::prefix('/address')->group(function () {
         Route::get('/district', "Admin\AddressController@district");
         Route::get('/ward', "Admin\AddressController@ward");
