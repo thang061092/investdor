@@ -170,31 +170,31 @@ abstract class BaseRepository
         return $query->get();
     }
 
-    public function get_district_by_province($code) {
-        $query = $this->model;
-        $query = $query->where(District::PARENT_CODE, "=" , $code);
-        return $query
-        ->select([District::NAME, District::CODE])
-        ->get();
-    }
-
-    public function get_ward_by_district($code) {
-        $query = $this->model;
-        $query = $query->where(Ward::PARENT_CODE, "=" , $code);
-        return $query
-        ->select([Ward::NAME, Ward::CODE])
-        ->get();
-    }
-
-    public function get_all_employee() {
-        $query = $this->model;
-        $query = $query->where(Users::TYPE, Users::EMPLOYEE);
-        return $query->orderBy("created_at", "DESC")->get();
-    }
-
-    public function get_all_customer() {
-        $query = $this->model;
-        $query = $query->where(Users::TYPE, Users::INVESTOR);
-        return $query->orderBy("created_at", "DESC")->get();
-    }
+//    public function get_district_by_province($code) {
+//        $query = $this->model;
+//        $query = $query->where(District::PARENT_CODE, "=" , $code);
+//        return $query
+//        ->select([District::NAME, District::CODE])
+//        ->get();
+//    }
+//
+//    public function get_ward_by_district($code) {
+//        $query = $this->model;
+//        $query = $query->where(Ward::PARENT_CODE, "=" , $code);
+//        return $query
+//        ->select([Ward::NAME, Ward::CODE])
+//        ->get();
+//    }
+//
+//    public function get_all_employee() {
+//        $query = $this->model;
+//        $query = $query->where(Users::TYPE, Users::EMPLOYEE);
+//        return $query->orderBy("created_at", "DESC")->get();
+//    }
+//
+//    public function get_all_customer() {
+//        $query = $this->model;
+//        $query = $query->where(Users::TYPE, Users::INVESTOR);
+//        return $query->orderBy("created_at", "DESC")->get();
+//    }
 }
