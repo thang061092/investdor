@@ -179,7 +179,7 @@
                                     </div>
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="Xem dự án"
-                                       class="btn_all medium d-block" target="_blank">
+                                       class="btn_all medium d-block">
                                         {{__('project.view_project')}}
                                         <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +275,7 @@
                                     </div>
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="Xem dự án"
-                                       class="btn_all medium d-block" target="_blank">
+                                       class="btn_all medium d-block" >
                                         {{__('project.view_project')}}
                                         <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">

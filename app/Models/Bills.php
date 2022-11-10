@@ -20,6 +20,12 @@ class Bills extends BaseModel
     const START = 'start';
     const END = 'end';
     const BANK_CODE = 'bank_code';
+    const PART = 'part';
+    const VALUE_PART = 'value_part';
+    const BANK_ACCOUNT = 'bank_account';
+    const NAME_ACCOUNT_BANK = 'name_account_bank';
+    const LINK_QR = 'link_qr';
+    const NAME_BANK = 'name_bank';
 
     //status
     const NEW = 'new';
