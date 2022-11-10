@@ -35,4 +35,9 @@ class Bills extends BaseModel
     const FAIL = 'fail';
 
     protected $table = 'bills';
+
+    public function realEstateProject()
+    {
+        return $this->belongsTo(RealEstateProject::class, self::REAL_ESTATE_PROJECT_ID);
+    }
 }
