@@ -67,7 +67,10 @@ Route::group(['middleware' => 'locale'], function () {
         });
 
         Route::prefix('/investment')->group(function () {
-            Route::get('/', "Customer\InvestmentController@investment")->name('investment');
+            Route::get('/step1/{slug}', "Customer\InvestmentController@step1")->name('investment.step1');
+            Route::get('/step2/{slug}', "Customer\InvestmentController@step2")->name('investment.step2');
+            Route::get('/step3/{slug}', "Customer\InvestmentController@step3")->name('investment.step3');
+            Route::get('/step4/{slug}', "Customer\InvestmentController@step4")->name('investment.step4');
         });
 
     });
@@ -118,8 +121,8 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/detail_customer/{id}', 'Admin\UserController@detail_customer')->name('customer.customer.detail_customer');
                 Route::get('/edit_customer/{id}', 'Admin\UserController@edit_customer')->name('customer.customer.edit_customer');
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
-                Route::post('/auth/{id}','Admin\UserController@auth')->name('customer.customer.auth');
-                Route::post('/not_auth/{id}','Admin\UserController@not_auth')->name('customer.customer.not_auth');
+                Route::post('/auth/{id}', 'Admin\UserController@auth')->name('customer.customer.auth');
+                Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
             });
 
         });

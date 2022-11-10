@@ -53,16 +53,18 @@ class WardService
         return $this->wardRepository->findMany(['district_id' => $request->id]);
     }
 
-    public function get_ward() {
-        $ward = $this->wardRepository->get_ward();
+    public function get_ward()
+    {
+        $ward = $this->wardRepository->getAll();
         if ($ward) {
             return $ward;
         }
         return false;
     }
 
-    public function get_ward_by_district($code) {
-        $ward = $this->wardRepository->findMany($code);
+    public function get_ward_by_district($code)
+    {
+        $ward = $this->wardRepository->findManySortColumn([Ward::PARENT_CODE => $code], Ward::CREATED_AT, 'DESC');
         if ($ward) {
             return $ward;
         }

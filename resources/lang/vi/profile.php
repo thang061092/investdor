@@ -11,7 +11,7 @@ return [
     'bank_account' => 'Tài khoản ngân hàng',
     'bank_name' => 'Tên ngân hàng',
     'account_number' => 'Số tài khoản',
-    'account holder' => 'Chủ tài khoản',
+    'account_holder' => 'Chủ tài khoản',
     'warning_account' => 'Bạn hãy đảm bảo nhập đúng số tài khoản của mình. InvestDor không chịu trách nghiêm khi bạn nhập sai số tài khoản.',
     'address' => 'Địa chỉ',
     'province' => 'Tỉnh/ thành phố',
@@ -36,4 +36,6 @@ return [
     'yet_auth' => "Chưa xác thực",
     'auth' => 'Xác thực',
     'not_auth' => 'Không xác thực',
+    'male' => 'Nam',
+    'female' => "Nữ"
 ];

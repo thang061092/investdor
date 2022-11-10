@@ -54,16 +54,18 @@ class DistrictService
         return $this->districtRepository->findMany(['city_id' => $request->id]);
     }
 
-    public function get_district() {
-        $district = $this->districtRepository->get_district();
+    public function get_district()
+    {
+        $district = $this->districtRepository->getAll();
         if ($district) {
             return $district;
         }
         return false;
     }
 
-    public function get_district_by_province($code) {
-        $district = $this->districtRepository->get_district_by_province($code);
+    public function get_district_by_province($code)
+    {
+        $district = $this->districtRepository->findManySortColumn([District::PARENT_CODE => $code], District::CREATED_AT, "DESC");
         if ($district) {
             return $district;
         }

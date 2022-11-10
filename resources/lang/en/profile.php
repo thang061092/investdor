@@ -11,13 +11,13 @@ return [
     'bank_account' => 'Bank account',
     'bank_name' => 'Bank name',
     'account_number' => 'Account number',
-    'account holder' => 'Account holder',
+    'account_holder' => 'Account holder',
     'warning_account' => 'Make sure you enter your account number correctly. InvestDor is not responsible when you enter the wrong account number.',
     'address' => 'Address',
     'province' => 'Province',
     'district' => 'District',
     'ward' => 'Ward',
-    'specific_address'=>'Specific address',
+    'specific_address' => 'Specific address',
     'type_employee' => 'Employee',
     'type_user' => 'User',
     'password' => 'Password',
@@ -36,4 +36,6 @@ return [
     'yet_auth' => "Authentication not yet",
     'auth' => 'Authentication',
     'not_auth' => 'Not Authenticated',
+    'male' => 'Male',
+    'female' => "Female"
 ];

@@ -182,9 +182,9 @@ class UserService
     }
 
     public function update_profile($request, $id)
-    {   
+    {
         $user = $this->userRepository->find($id);
-        if ($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $avatar = $this->uploadService->upload($request);
         }
         $data = [
@@ -192,7 +192,7 @@ class UserService
             Users::EMAIL => $request->email ?? "",
             Users::PHONE => $request->phone_number ?? "",
             Users::GENDER => $request->gender ?? "",
-            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BIRTHDAY => $request->birthday ?? "",
             Users::BANK_NAME => $request->bank_name ?? "",
             Users::ACCOUNT_NUMBER => $request->account_number ?? "",
             Users::ACCOUNT_NAME => $request->account_name ?? "",
@@ -205,11 +205,12 @@ class UserService
             Users::DATE_IDENTITY => $request->date_identity ?? "",
             Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
         ];
-        $user = $this->userRepository->update_profile($id, $data);
+        $user = $this->userRepository->update($id, $data);
         return $user;
     }
 
-    public function get_all_employee() {
+    public function get_all_employee()
+    {
         $employees = $this->userRepository->get_all_employee();
         if ($employees) {
             return $employees;
@@ -217,7 +218,8 @@ class UserService
         return false;
     }
 
-    public function update_employee($request, $id) {
+    public function update_employee($request, $id)
+    {
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -227,7 +229,8 @@ class UserService
         return $user;
     }
 
-    public function update_status($id) {
+    public function update_status($id)
+    {
         $detail = $this->userRepository->find($id);
         if ($detail[Users::STATUS] == Users::ACTIVE) {
             $data = [
@@ -242,7 +245,8 @@ class UserService
         return $user;
     }
 
-    public function get_all_customer() {
+    public function get_all_customer()
+    {
         $customer = $this->userRepository->get_all_customer();
         if ($customer) {
             return $customer;
@@ -250,7 +254,8 @@ class UserService
         return false;
     }
 
-    public function update_customer($request, $id) {
+    public function update_customer($request, $id)
+    {
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -260,7 +265,8 @@ class UserService
         return $user;
     }
 
-    public function auth($id) {
+    public function auth($id)
+    {
         $data = [
             Users::ACCURACY => Users::WARNING_AUTH
         ];
@@ -271,7 +277,8 @@ class UserService
         return false;
     }
 
-    public function confirm_auth($id) {
+    public function confirm_auth($id)
+    {
         $data = [
             Users::ACCURACY => Users::AUTH,
         ];
@@ -282,7 +289,8 @@ class UserService
         return false;
     }
 
-    public function not_confirm_auth($id) {
+    public function not_confirm_auth($id)
+    {
         $data = [
             Users::ACCURACY => Users::FAIL_AUTH,
         ];
