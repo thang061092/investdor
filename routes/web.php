@@ -125,6 +125,12 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
             });
 
+            Route::prefix('/transaction')->group(function () {
+                Route::get('/wait', "Admin\TransactionController@wait_pay")->name('transaction.wait_pay');
+                Route::get('/get_bill/{id}', "Admin\TransactionController@get_bill")->name('transaction.get_bill');
+                Route::post('/update_bill', "Admin\TransactionController@update_bill")->name('transaction.update_bill');
+            });
+
         });
     });
 

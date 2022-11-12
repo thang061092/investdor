@@ -36,4 +36,13 @@ class UploadService
 
         return $message;
     }
+
+    public function upload_param($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $fileName = time() . '-' . hash('SHA256', uniqid()) . '.' . $extension;
+        $path = $file->storeAs('uploads', $fileName, 'public');
+        $url = env('BASE_URL') . 'storage/' . $path;
+        return $url;
+    }
 }

@@ -79,4 +79,9 @@ class Users extends BaseModel
 
     //is_admin
     const ADMIN = 1;
+
+    public function bills()
+    {
+        return $this->hasMany(Bills::class, Bills::USER_ID);
+    }
 }
