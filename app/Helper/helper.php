@@ -145,4 +145,16 @@ if (!function_exists('status_bill')) {
     }
 }
 
+function check_undefined($value)
+{
+    if ($value) {
+        if ($value !== "undefined") {
+            return $value;
+        } else {
+            return "";
+        }
+    } else {
+        return "";
+    }
+}
 

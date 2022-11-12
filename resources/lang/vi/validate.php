@@ -39,4 +39,7 @@ return [
     'address_vi_not_null' => "Địa chỉ công ty chủ đầu tư không để trống",
     'description_vi_not_null' => "Mô tả công ty chủ đầu tư không để trống",
     'description_en_not_null' => "Mô tả công ty chủ đầu tư không để trống",
+    'status_not_null' => "Trạng thái không để trống",
+    'payment_date_not_null' => 'Ngày thanh toán không để trống',
+    'upload_fail'=> 'Upload thất bại'
 ];

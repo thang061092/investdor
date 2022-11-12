@@ -48,11 +48,16 @@ class TransactionController extends BaseController
 
     public function update_bill(Request $request)
     {
-        try {
-            $bill = $this->billsService->update_bill($request);
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $bill);
-        } catch (\Exception $exception) {
-            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $exception->getMessage());
+        $message = $this->billsService->validate_update_bill($request);
+        if (count($message) > 0) {
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $message[0]);
+        } else {
+            try {
+                $bill = $this->billsService->update_bill($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $bill);
+            } catch (\Exception $exception) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $exception->getMessage());
+            }
         }
 
     }

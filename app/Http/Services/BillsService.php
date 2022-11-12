@@ -92,4 +92,28 @@ class BillsService
         ]);
         return $bill_new;
     }
+
+    public function validate_update_bill($request)
+    {
+        $message = [];
+        if (empty($request->status)) {
+            $message[] = __('validate.status_not_null');
+        }
+
+        if ($request->status == Bills::SUCCESS) {
+            if (empty(check_undefined($request->file))) {
+                $message[] = __('validate.file_not_null');
+            } else {
+                $url = $this->uploadService->upload($request);
+                if (!$url) {
+                    $message[] = __('validate.upload_fail');
+                }
+            }
+
+            if (empty($request->payment_date)) {
+                $message[] = __('validate.payment_date_not_null');
+            }
+        }
+        return $message;
+    }
 }

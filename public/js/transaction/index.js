@@ -83,12 +83,12 @@ $(document).ready(function () {
                         window.location.reload();
                     }, 500);
                 } else {
-                    alert(data.message)
+                    toastr.error(data.message ?? 'Fail')
                 }
             },
             error: function () {
                 $(".theloading").hide();
-                alert('fail')
+                toastr.error('Fail')
             }
         })
     })
