@@ -125,4 +125,24 @@ function random_string()
     return $random;
 }
 
+if (!function_exists('status_bill')) {
+    function status_bill($status = null)
+    {
+        $leadstatus = [
+            'new' => 'new',
+            'pending' => 'pending',
+            'success' => 'success',
+            'warning' => 'warning',
+            'fail' => 'fail',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
 

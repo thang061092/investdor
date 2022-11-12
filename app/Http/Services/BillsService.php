@@ -12,12 +12,15 @@ class BillsService
 {
     protected $billsRepository;
     protected $vietQr;
+    protected $uploadService;
 
     public function __construct(BillsRepository $billsRepository,
-                                VietQr $vietQr)
+                                VietQr $vietQr,
+                                UploadService $uploadService)
     {
         $this->billsRepository = $billsRepository;
         $this->vietQr = $vietQr;
+        $this->uploadService = $uploadService;
     }
 
     public function create_step1($request)
@@ -61,6 +64,32 @@ class BillsService
     {
         $bills = $this->billsRepository->get_bill_warning($request);
         return $bills;
+    }
 
+    public function wait_pay($request)
+    {
+        $bills = $this->billsRepository->get_wait_pay($request);
+        return $bills;
+    }
+
+    public function find($id)
+    {
+        return $this->billsRepository->find($id);
+    }
+
+    public function update_bill($request)
+    {
+        if ($request->file) {
+            $url = $this->uploadService->upload($request);
+        } else {
+            $url = null;
+        }
+        $bill_new = $this->billsRepository->update($request->id, [
+            Bills::NOTE => $request->note,
+            Bills::IMAGE_LICENSE => $url,
+            Bills::PAYMENT_DATE => strtotime($request->payment_date),
+            Bills::STATUS => ($request->status),
+        ]);
+        return $bill_new;
     }
 }

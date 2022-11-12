@@ -26,6 +26,9 @@ class Bills extends BaseModel
     const NAME_ACCOUNT_BANK = 'name_account_bank';
     const LINK_QR = 'link_qr';
     const NAME_BANK = 'name_bank';
+    const NOTE = 'note';
+    const PAYMENT_DATE = 'payment_date';
+    const IMAGE_LICENSE = 'image_license';
 
     //status
     const NEW = 'new';
@@ -39,5 +42,10 @@ class Bills extends BaseModel
     public function realEstateProject()
     {
         return $this->belongsTo(RealEstateProject::class, self::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, self::USER_ID);
     }
 }
