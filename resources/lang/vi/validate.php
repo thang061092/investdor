@@ -41,5 +41,8 @@ return [
     'description_en_not_null' => "Mô tả công ty chủ đầu tư không để trống",
     'status_not_null' => "Trạng thái không để trống",
     'payment_date_not_null' => 'Ngày thanh toán không để trống',
-    'upload_fail'=> 'Upload thất bại'
+    'upload_fail'=> 'Upload thất bại',
+    'id_not_null' => 'ID không để trống',
+    'transaction_does_not_exist'=> 'Giao dịch không tồn tại',
+    'invalid_status' => 'Tình trạng không hợp lệ'
 ];

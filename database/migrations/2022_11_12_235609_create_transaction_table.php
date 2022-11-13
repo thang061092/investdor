@@ -26,12 +26,13 @@ class CreateTransactionTable extends Migration
             $table->decimal('money_interest', 50, 15)->nullable()->comment('tiền lãi');
             $table->decimal('total_principal_interest', 50, 15)->nullable()->comment('tổng gốc lãi');
             $table->string('created_by')->nullable();
-            $table->unsignedBigInteger('bill_id')->nullable();
+            $table->unsignedBigInteger('bills_id')->nullable();
             $table->bigInteger('date_pay')->nullable();
             $table->integer('form')->nullable()->comment('thanh toán tự động hay thủ công');
             $table->json('payment_info')->nullable()->comment('thông tin tài khoản thanh toán');
             $table->bigInteger('profit_before_tax')->nullable()->comment('lãi trước thuế');
             $table->integer('tax')->nullable()->comment('thuế áp dụng');
+            $table->longText('image')->nullable()->comment('chứng từ');
             $table->timestamps();
         });
     }

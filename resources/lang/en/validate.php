@@ -41,5 +41,8 @@ return [
     'description_en_not_null' => "Description company not null",
     'status_not_null' => "Status not null",
     'payment_date_not_null' => 'Payment date not null',
-    'upload_fail'=> 'Upload fail'
+    'upload_fail' => 'Upload fail',
+    'id_not_null' => 'ID not null',
+    'transaction_does_not_exist' => 'Transaction does not exist',
+    'invalid_status' => 'Invalid status'
 ];

@@ -79,6 +79,7 @@ $(document).ready(function () {
                 $(".theloading").hide();
                 if (data.status == 200) {
                     $('#confirm-bill').modal('hide')
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
