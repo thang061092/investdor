@@ -13,14 +13,20 @@ class BillsService
     protected $billsRepository;
     protected $vietQr;
     protected $uploadService;
+    protected $contractService;
+    protected $transactionService;
 
     public function __construct(BillsRepository $billsRepository,
                                 VietQr $vietQr,
-                                UploadService $uploadService)
+                                UploadService $uploadService,
+                                ContractService $contractService,
+                                TransactionService $transactionService)
     {
         $this->billsRepository = $billsRepository;
         $this->vietQr = $vietQr;
         $this->uploadService = $uploadService;
+        $this->contractService = $contractService;
+        $this->transactionService = $transactionService;
     }
 
     public function create_step1($request)
@@ -30,7 +36,7 @@ class BillsService
             Bills::REAL_ESTATE_PROJECT_ID => $request->project_id,
             Bills::CREATED_BY => Session::get('customer')['email'],
             Bills::STATUS => Bills::NEW,
-            Bills::ORDER_CODE => date('Ymd') . random_string()
+            Bills::ORDER_CODE => date('Ymd') . random_string(6)
         ]);
         return $bill;
     }
@@ -90,6 +96,54 @@ class BillsService
             Bills::PAYMENT_DATE => strtotime($request->payment_date),
             Bills::STATUS => ($request->status),
         ]);
+
+        if ($request->status == Bills::SUCCESS) {
+            $contract = $this->contractService->create_contract_invest($bill_new);
+            if ($contract) {
+                $transaction = $this->transactionService->create_transaction_invest($contract, $bill_new);
+                $this->billsRepository->update($request->id, [
+                    Bills::CONTRACT_ID => $contract['id'],
+                    Bills::TRANSACTION_ID => $transaction['id']
+                ]);
+            }
+        }
         return $bill_new;
+    }
+
+    public function validate_update_bill($request)
+    {
+        $message = [];
+        if (empty($request->status)) {
+            $message[] = __('validate.status_not_null');
+        }
+
+        if ($request->status == Bills::SUCCESS) {
+            if (empty(check_undefined($request->file))) {
+                $message[] = __('validate.file_not_null');
+            } else {
+                $url = $this->uploadService->upload($request);
+                if (!$url) {
+                    $message[] = __('validate.upload_fail');
+                }
+            }
+
+            if (empty($request->payment_date)) {
+                $message[] = __('validate.payment_date_not_null');
+            }
+        }
+
+        if (empty($request->id)) {
+            $message[] = __('validate.id_not_null');
+        } else {
+            $bill = $this->billsRepository->find($request->id);
+            if (!$bill) {
+                $message[] = __('validate.transaction_does_not_exist');
+            } else {
+                if ($bill['status'] == Bills::SUCCESS) {
+                    $message[] = __('validate.invalid_status');
+                }
+            }
+        }
+        return $message;
     }
 }

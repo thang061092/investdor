@@ -79,16 +79,17 @@ $(document).ready(function () {
                 $(".theloading").hide();
                 if (data.status == 200) {
                     $('#confirm-bill').modal('hide')
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
                 } else {
-                    alert(data.message)
+                    toastr.error(data.message ?? 'Fail')
                 }
             },
             error: function () {
                 $(".theloading").hide();
-                alert('fail')
+                toastr.error('Fail')
             }
         })
     })

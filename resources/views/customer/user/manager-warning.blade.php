@@ -50,7 +50,9 @@
             @foreach($bills as $bill)
                 <div class="row mx-0 item-project-invest complete">
                     <div class="col-lg-auto px-0">
-                        <a data-title="Tên dự án" href="" title="" class="name-project c-value">
+                        <a data-title="Tên dự án"
+                           href="{{route('customer.detail_project',['slug'=>$bill->realEstateProject->slug_vi])}}"
+                           title="" class="name-project c-value">
                             {{session()->get('lang') == 'en' ? $bill->realEstateProject->name_en : $bill->realEstateProject->name_vi}}</a>
                     </div>
                     <div class="col-lg-auto px-0">

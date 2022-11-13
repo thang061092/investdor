@@ -119,9 +119,9 @@ function decode($string, $key)
     return $decode;
 }
 
-function random_string()
+function random_string($end)
 {
-    $random = substr(strtoupper(md5(mt_rand())), 0, 6);
+    $random = substr(strtoupper(md5(mt_rand())), 0, $end);
     return $random;
 }
 
@@ -145,4 +145,16 @@ if (!function_exists('status_bill')) {
     }
 }
 
+function check_undefined($value)
+{
+    if ($value) {
+        if ($value !== "undefined") {
+            return $value;
+        } else {
+            return "";
+        }
+    } else {
+        return "";
+    }
+}
 
