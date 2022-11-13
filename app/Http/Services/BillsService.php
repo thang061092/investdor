@@ -100,7 +100,11 @@ class BillsService
         if ($request->status == Bills::SUCCESS) {
             $contract = $this->contractService->create_contract_invest($bill_new);
             if ($contract) {
-                $this->transactionService->create_transaction_invest($contract, $bill_new);
+                $transaction = $this->transactionService->create_transaction_invest($contract, $bill_new);
+                $this->billsRepository->update($request->id, [
+                    Bills::CONTRACT_ID => $contract['id'],
+                    Bills::TRANSACTION_ID => $transaction['id']
+                ]);
             }
         }
         return $bill_new;

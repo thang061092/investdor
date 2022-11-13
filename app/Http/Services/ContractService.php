@@ -34,9 +34,15 @@ class ContractService
             Contract::INTEREST_ID => $interest['id'],
             Contract::STATUS => Contract::EFFECT,
             Contract::PART => $bill['part'],
-            Contract::VALUE_PART => $bill['value_part']
+            Contract::VALUE_PART => $bill['value_part'],
+            Contract::REAL_ESTATE_PROJECT_ID=> $bill['real_estate_project_id']
         ];
         $contract = $this->contractRepository->create($data);
         return $contract;
+    }
+
+    public function get_contract_by_user($request, $status)
+    {
+        return $this->contractRepository->get_contract_by_user($request, $status);
     }
 }
