@@ -11,6 +11,7 @@ use App\Http\Services\UserService;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends BaseController
 {
@@ -63,5 +64,29 @@ class AuthController extends BaseController
     {
         Session::forget('customer');
         return redirect()->route('home.index');
+    }
+
+    public function google_redirect()
+    {
+        try {
+            return Socialite::driver('google')->redirect();
+        } catch (\Exception $exception) {
+            return $exception;
+        }
+    }
+
+    public function google_callback(Request $request)
+    {
+        $user = Socialite::driver('google')->user();
+        $data = $this->userService->login_google($user);
+        if (!empty($data['user'])) {
+            Session::put('customer', $data['user']);
+            return redirect()->route('customer.home_page');
+        } else {
+            $error = !empty($data['message']) ? $data['message'] : 'Login Fail';
+            return view('customer.auth.login', compact('error'));
+        }
+
+
     }
 }
