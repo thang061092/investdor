@@ -300,4 +300,34 @@ class UserService
         }
         return false;
     }
+
+    public function login_google($user_google)
+    {
+        $data = [];
+        $user = $this->userRepository->findOne([Users::EMAIL => $user_google->email]);
+        if ($user) {
+            if ($user['type'] == Users::EMPLOYEE) {
+                $data['message'] = __('auth.invalid_authentication');
+            } else {
+                if ($user['status'] == Users::ACTIVE) {
+                    $user_new = $this->userRepository->update($user['id'], [Users::LAST_LOGIN => Carbon::now()]);
+                    $data['user'] = $user_new;
+                } elseif ($user['status'] == Users::BLOCK) {
+                    $data['message'] = __('auth.account_is_locked');
+                }
+            }
+        } else {
+            $data = [
+                Users::STATUS => Users::ACTIVE,
+                Users::TYPE => Users::INVESTOR,
+                Users::ID_GOOGLE => $user_google->id,
+                Users::FULL_NAME => $user_google->name,
+                Users::EMAIL => $user_google->email,
+                Users::LAST_LOGIN => Carbon::now(),
+            ];
+            $user_new = $this->userRepository->create($data);
+            $data['user'] = $user_new;
+        }
+        return $data;
+    }
 }

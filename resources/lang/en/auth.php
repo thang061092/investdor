@@ -70,5 +70,7 @@ return [
     'date_identity_not_null' => 'Date of identity card is not empty',
     'address_identity_not_null' => 'Place of identity card is not empty',
     'authentication' => 'Authentication ?',
-    'not_authentication' => 'Authentication not verified'
+    'not_authentication' => 'Authentication not verified',
+    "account_is_locked" => 'Account is locked',
+    'email_account_already_exists' => 'Email account already exists'
 ];

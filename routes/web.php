@@ -47,6 +47,8 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('/login_submit', "Customer\AuthController@login_submit")->name('customer.login_submit');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
     Route::post('/register_submit', "Customer\AuthController@register_submit")->name('customer.register_submit');
+    Route::get('/google_redirect', "Customer\AuthController@google_redirect")->name('customer.google_redirect');
+    Route::get('/google_callback', "Customer\AuthController@google_callback")->name('customer.google_callback');
 
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
