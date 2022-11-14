@@ -221,7 +221,20 @@ class UserService
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
-            Users::PASSWORD => Hash::make($request->password) ?? "",
+            Users::PHONE => $request->phone_number ?? "",
+            Users::GENDER => $request->gender ?? "",
+            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BANK_NAME => $request->bank_name ?? "",
+            Users::ACCOUNT_NUMBER => $request->account_number ?? "",
+            Users::ACCOUNT_NAME => $request->account_name ?? "",
+            Users::CITY => $request->province ?? "",
+            Users::DISTRICT => $request->district ?? "",
+            Users::WARD => $request->ward ?? "",
+            Users::ADDRESS => $request->specific_address ?? "",
+            Users::AVATAR => $avatar ?? "",
+            Users::IDENTITY => $request->identity ?? "",
+            Users::DATE_IDENTITY => $request->date_identity ?? "",
+            Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
         ];
         $user = $this->userRepository->update($id, $data);
         return $user;
@@ -260,9 +273,14 @@ class UserService
         return $user;
     }
 
-    public function auth($id) {
+    public function auth($request, $id) {
+        if ($request->hasFile('file')){
+            $avatar = $this->uploadService->upload($request);
+        }
         $data = [
-            Users::ACCURACY => Users::WARNING_AUTH
+            Users::ACCURACY => Users::WARNING_AUTH,
+            Users::FRONT_FACING_CARD => $request->avatar ?? "",
+            Users::CARD_BACK => $request->avatar ?? "",
         ];
         $auth = $this->userRepository->update($id, $data);
         if ($auth) {
@@ -271,6 +289,7 @@ class UserService
         return false;
     }
 
+    //admin confirm
     public function confirm_auth($id) {
         $data = [
             Users::ACCURACY => Users::AUTH,
@@ -281,7 +300,7 @@ class UserService
         }
         return false;
     }
-
+    //admin không confirm
     public function not_confirm_auth($id) {
         $data = [
             Users::ACCURACY => Users::FAIL_AUTH,

@@ -36,7 +36,96 @@
                                                     disabled value="{{$user->email}}">
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="phone_number" id="phone_number"
+                                                    disabled value="{{$user->phone}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.identity')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="identity" id="identity"
+                                                    disabled value="{{$user->identity}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="date_identity" id="date_identity"
+                                                    disabled value="{{$user->date_identity}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="address_identity" id="address_identity"
+                                                    disabled value="{{$user->address_identity}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="gender" id="gender"
+                                                    disabled value="{{$user->birthday}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
+                                                <label class="gender-choose" for="male">
+                                                    @php
+                                                        if($user->gender == 1) {
+                                                            $check = " checked";
+                                                        } 
+                                                        else 
+                                                        {
+                                                            $check = "";
+                                                        }
+                                                    @endphp
+                                                        <input  type="radio" value="1" {{$check}} name="gender" />
+                                                        Nam
+                                                    </label>
+                                                    <label class="gender-choose" for="female">
+                                                    @php
+                                                        if($user->gender == 2) {
+                                                            $check = " checked";
+                                                        } 
+                                                        else 
+                                                        {
+                                                            $check = "";
+                                                        }
+                                                    @endphp
+                                                        <input  type="radio" value="2" {{$check}} name="gender" />
+                                                        Nữ
+                                                    </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="bank_name" id="bank_name"
+                                                    disabled value="{{$user->bank_name}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="account_number" id="account_number"
+                                                    disabled value="{{$user->account_number}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                            <div class="form-group mb-3">
+                                                <label for="email">{{__('profile.account holder')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="account_name" id="account_name"
+                                                    disabled value="{{$user->account_name}}">
+                                            </div>
+                                        </div>
+
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <a type="button" href="{{route('customer.employee.get_all')}}" class="btn btn-danger action">

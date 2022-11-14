@@ -18,4 +18,9 @@ return [
     'detail_account' => 'Account details',
     'create_account' => 'Create new account',
     'update_account' => 'Update account',
+    'detail_employee_account' => 'Detail employee account',
+    'list_news' => 'List post',
+    'update_news' => 'Update post',
+    'create_news' => 'Create post',
+    'list_category' => 'List category post',
 ];

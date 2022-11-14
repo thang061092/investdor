@@ -18,4 +18,9 @@ return [
     'detail_account' => "Chi tiết tài khoản",
     'create_account' => "Tạo mới tài khoản",
     'update_account' => "Cập nhật tài khoản",
+    'detail_employee_account' => 'Chi tiết tài khoản',
+    'list_news' => 'Danh sách bài viết',
+    'update_news' => 'Cập nhật bài viết',
+    'create_news' => 'Thêm mới bài viết',
+    'list_category' => 'Danh sách danh mục bài viết',
 ];

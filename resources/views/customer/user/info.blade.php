@@ -16,9 +16,9 @@
                             <img src="{{asset('frontend/images/sep.jpg')}}" class="img-fluid" alt=""/>
                         </div>
                         <div class="content text-lg-left text-center">
-                            <p class="title_lg">Nguyễn Phúc Vĩnh Thuỵ</p>
+                            <p class="title_lg">{{$detail->full_name}}</p>
                             <div class="desc">
-                                Số 12, phố Quan Hoa, quận Tây Hồ, thành phố Hà Nội
+                                {{$detail->address}}
                             </div>
                         </div>
                     </div>
@@ -58,37 +58,49 @@
                         thực tài khoản trước khi tiến hành đầu tư.
                     </div>
                     <div class="group-box mb-xl-4 mb-3">
-                        <p class="title_lg">Thông tin cá nhân</p>
-                        <p class="c-label mb-1">Họ và tên</p>
+                        <p class="title_lg">{{__('profile.personal_information')}}</p>
+                        <p class="c-label mb-1">{{__('profile.full_name')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            Nguyễn Phúc Vĩnh Thuỵ
+                            {{$detail->full_name}}
                         </div>
-                        <p class="c-label mb-1">Ngày sinh</p>
-                        <div class="c-value mb-lg-3 mb-2">12/11/1989</div>
-                        <p class="c-label mb-1">Giới tính</p>
-                        <div class="c-value mb-lg-3 mb-2">Nam</div>
-                        <p class="c-label mb-1">Số điện thoại</p>
-                        <div class="c-value mb-lg-3 mb-2">096678596</div>
-                        <p class="c-label mb-1">Email</p>
+                        <p class="c-label mb-1">{{__('profile.date_of_birth')}}</p>
+                        <div class="c-value mb-lg-3 mb-2">{{date('d/m/Y', strtotime($detail->birthday))}}</div>
+                        <p class="c-label mb-1">{{__('profile.gender')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            thuyvtp2342@gmail.com
+                            @if ($detail->gender == 1)
+                                Nam
+                            @elseif ($detail->gender == 2)
+                                Nữ
+                            @endif
+                        </div>
+                        <p class="c-label mb-1">{{__('profile.phone_number')}}</p>
+                        <div class="c-value mb-lg-3 mb-2">{{$detail->phone}}</div>
+                        <p class="c-label mb-1">{{__('profile.email')}}</p>
+                        <div class="c-value mb-lg-3 mb-2">
+                            {{$detail->email}}
                         </div>
                     </div>
                     <div class="group-box">
-                        <p class="title_lg">Tài khoản ngân hàng</p>
-                        <p class="c-label mb-1">Tên ngân hàng</p>
+                        <p class="title_lg">{{__('profile.bank_account')}}</p>
+                        <p class="c-label mb-1">{{__('profile.bank_name')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            ViettinBank - Ngân hàng Công thương Việt Nam
+                            @if (isset($banks))
+                                @foreach ($banks as $bank)
+                                    @if ($bank->code == $detail->bank_name)
+                                        {{$bank->name}}
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
-                        <p class="c-label mb-1">Số tài khoản</p>
-                        <div class="c-value mb-lg-3 mb-2">272110603</div>
-                        <p class="c-label mb-1">Chủ tài khoản</p>
-                        <div class="c-value">Nguyễn Phúc Vĩnh Thuỵ</div>
+                        <p class="c-label mb-1">{{__('profile.account_number')}}</p>
+                        <div class="c-value mb-lg-3 mb-2">{{$detail->account_number}}</div>
+                        <p class="c-label mb-1">{{__('profile.account holder')}}</p>
+                        <div class="c-value">{{$detail->account_name}}</div>
                     </div>
                 </div>
                 <div class="col-lg-7 wow fadeInUp">
                     <div class="group-box cmt">
-                        <p class="title_lg">Thông tin chứng từ</p>
+                        <p class="title_lg">{{__('profile.certificate_information')}}</p>
                         <div class="alert-note">
                             <svg class="mx-auto d-block mb-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                  viewBox="0 0 40 40" fill="none">
@@ -103,40 +115,62 @@
                                       fill="#FFC107"/>
                             </svg>
                             <p class="desc text-center mb-3 pb-2">
-                                Cập nhập thông tin chứng từ để xác thực tài khoản
+                            {{__('profile.update_certificate')}}
                             </p>
+                        <form action="{{route('customer.user.auth')}}" method="post" accept-charset="utf-8"
+                            enctype='multipart/form-data'>
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-before" class="img-cmt">
-                                        <input type="file" name="cmt-before" accept="image/*" class="d-none"
+                                        <input type="file" name="file" accept="image/*" class="d-none"
                                                id="img-cmt-before"
                                                onchange="document.getElementById('img-before').src = window.URL.createObjectURL(this.files[0])"/>
                                         <img id="img-before" src="{{asset('frontend/images/before-cmt.png')}}" class="img-fluid" alt=""/>
                                     </label>
-                                    <p class="c-cmt mt-3">Mặt trước chứng từ</p>
+                                    <p class="c-cmt mt-3">{{__('profile.facede')}}</p>
                                 </div>
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-after" class="img-cmt">
-                                        <input type="file" name="cmt-after" accept="image/*" class="d-none"
+                                        <input type="file" name="file" accept="image/*" class="d-none"
                                                id="img-cmt-after"
                                                onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
                                         <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
                                     </label>
-                                    <p class="c-cmt mt-3">Mặt trước chứng từ</p>
+                                    <p class="c-cmt mt-3">{{__('profile.backside')}}</p>
                                 </div>
                             </div>
                             <div class="text-right mt-xl-4 mt-3">
-                                <button type="button" class="btn_all reset mr-2">
-                                    Chọn lại
-                                </button>
-                                <button type="button" class="btn_all accept">
-                                    Xác nhận chứng từ
-                                </button>
+                                <a type="button" class="btn_all reset mr-2" id="reselect">
+                                {{__('profile.reselect')}}</a>
+                                <button type="submit" class="btn_all accept" id="auth">
+                                {{__('profile.auth')}}</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+            @elseif(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+        $(document).ajaxStart(function () {
+            $("#loading").show();
+            var loadingHeight = window.screen.height;
+            $("#loading, .right-col iframe").css('height', loadingHeight);
+        }).ajaxStop(function () {
+            $("#loading").hide();
+        });
+    </script>
+@endsection
 @stop

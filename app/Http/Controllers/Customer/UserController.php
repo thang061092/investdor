@@ -14,6 +14,7 @@ use App\Http\Services\DistrictService;
 use App\Http\Services\WardService;
 use App\Http\Services\UploadService;
 use App\Http\Requests\FormUpdateProfile;
+use App\Http\Requests\FormAuth;
 use Toastr;
 
 class UserController extends BaseController
@@ -88,7 +89,18 @@ class UserController extends BaseController
                     'ward' => $ward,
                 ]);
             } else {
-                return view('customer.user.info');
+                $user = session()->get('customer');
+                $allBankName = $this->bankService->getAllBank();
+                $province = $this->cityService->get_province();
+                $district = $this->districtService->get_district();
+                $ward = $this->wardService->get_ward();
+                return view('customer.user.info', [
+                    'detail' => $user,
+                    'banks' => $allBankName,
+                    'province' => $province,
+                    'district' => $district,
+                    'ward' => $ward,
+                ]);
             }
         }
         return view('customer.user.manager');
@@ -96,7 +108,7 @@ class UserController extends BaseController
 
     public function update_profile(FormUpdateProfile $request)
     {
-        $user = session()->get('customer');
+        $user = session()->get('customer'); 
         $userId = $user['id'];
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
@@ -125,11 +137,11 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function auth(Request $request)
+    public function auth(FormAuth $request)
     {
         $user = session()->get('customer');
         $userId = $user['id'];
-        $auth = $this->userService->auth($userId);
+        $auth = $this->userService->auth($request, $userId);
         if ($auth) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
         }
