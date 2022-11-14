@@ -1,12 +1,12 @@
 @extends('employee.layout.master')
-@section('page_name','- Danh sách đầu tư')
+@section('page_name','- Danh sách hợp đồng đầu tư')
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('contract.index')}}"
-                                                                   class="text-info">Danh sách đầu tư</a>
+                                                                   class="text-info">Danh sách hợp đồng đầu tư</a>
                 </li>
             </ol>
         </div>
@@ -18,8 +18,8 @@
                     {{-- Head --}}
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h1 class="d-inline-block">Danh sách đầu tư<span
-                                    style="color: red">({{count($contracts)}})</span></h1>
+                            <h1 class="d-inline-block">Danh sách hợp đồng đầu tư<span
+                                    style="color: red">({{$contracts->total()}})</span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-primary" href="#" data-bs-toggle="dropdown">
@@ -96,7 +96,7 @@
                                                 <td>{{++$key}}</td>
                                                 <td>{{$contract->user_full_name ?? ""}}</td>
                                                 <td>{{$contract->project_name_vi ?? ""}}</td>
-                                                <td>{{!empty($contract->amount) ? number_format_vn($contract->amount) : 0}}</td>
+                                                <td class="text-danger">{{!empty($contract->amount) ? number_format_vn($contract->amount) : 0}}</td>
                                                 <td>{{!empty($contract->part) ? number_format_vn($contract->part) : 0}}</td>
                                                 <td>{{number_format_vn($contract->value_part)}}</td>
                                                 <td>{{data_get(json_decode($contract->interest, true), 'detail.interest').'%/năm'}}</td>
@@ -121,13 +121,12 @@
                                                             </svg>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
-                                                            <button class="dropdown-item confirm-bill"
-                                                                    data-bs-target="#confirm-bill"
-                                                                    data-bs-toggle="modal"
-                                                                    data-id="{{$contract->id}}">
-                                                                <i class="fa fa-save"></i>&nbsp;
+                                                            <a class="dropdown-item"
+                                                               href="{{route('contract.detail', ['id'=> $contract->id])}}"
+                                                               target="_blank">
+                                                                <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>

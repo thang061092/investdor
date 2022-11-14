@@ -129,11 +129,11 @@ if (!function_exists('status_bill')) {
     function status_bill($status = null)
     {
         $leadstatus = [
-            'new' => 'new',
-            'pending' => 'pending',
-            'success' => 'success',
-            'warning' => 'warning',
-            'fail' => 'fail',
+            'new' => __('project.new'),
+            'pending' => __('project.pending'),
+            'success' => __('project.success'),
+            'warning' => __('project.warning'),
+            'fail' => __('project.fail'),
         ];
         if ($status === null) return $leadstatus;
         foreach ($leadstatus as $key => $item) {
@@ -163,8 +163,8 @@ if (!function_exists('status_contract')) {
     function status_contract($status = null)
     {
         $leadstatus = [
-            1 => 'Effect',
-            2 => 'Expire',
+            1 => __('project.effect'),
+            2 => __('project.expire'),
         ];
         if ($status === null) return $leadstatus;
         foreach ($leadstatus as $key => $item) {
@@ -176,3 +176,75 @@ if (!function_exists('status_contract')) {
     }
 }
 
+if (!function_exists('status_transaction')) {
+    function status_transaction($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.new'),
+            4 => __('project.pending'),
+            2 => __('project.success'),
+            5 => __('project.warning'),
+            3 => __('project.fail'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('type_method')) {
+    function type_method($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.investment'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('color_status_contract')) {
+    function color_status_contract($status = null)
+    {
+        $leadstatus = [
+            1 => 'bg-success',
+            2 => 'bg-danger',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('color_status_transaction')) {
+    function color_status_transaction($status = null)
+    {
+        $leadstatus = [
+            1 => 'bg-secondary',
+            4 => 'bg-danger',
+            2 => 'bg-success',
+            5 => 'bg-warning',
+            3 => 'bg-danger',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
