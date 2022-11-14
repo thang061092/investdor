@@ -29,7 +29,10 @@ class HomeController extends BaseController
 
     public function index(Request $request)
     {
-        return view('customer.home.index');
+        $interest = $this->interestService->get_current_interest();
+        $current_interest = $interest['detail']['interest'] ?? 12;
+        $projects = $this->realEstateProjectService->list_project_investor($request);
+        return view('customer.home.index', compact('projects', 'current_interest'));
     }
 
     public function home_page(Request $request)
