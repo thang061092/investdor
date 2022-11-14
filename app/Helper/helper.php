@@ -158,3 +158,21 @@ function check_undefined($value)
     }
 }
 
+
+if (!function_exists('status_contract')) {
+    function status_contract($status = null)
+    {
+        $leadstatus = [
+            1 => 'Effect',
+            2 => 'Expire',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+

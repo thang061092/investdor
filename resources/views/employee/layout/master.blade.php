@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 {{--    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">--}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
-    @toastr_css
     @yield('css')
 </head>
 <body class="antialiased right_col">
@@ -48,8 +47,6 @@
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script src="{{asset('js/toastr.js')}}"></script>
 @yield('js')
-@toastr_js
-@toastr_render
 </body>
 </html>
 
