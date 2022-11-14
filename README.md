@@ -15,5 +15,5 @@
 7. php artisan cron:ward
 ## bank
 8. php artisan cron:bank
-##upload
+## upload
 9. php artisan storage:link
