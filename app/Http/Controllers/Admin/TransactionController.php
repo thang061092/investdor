@@ -9,6 +9,7 @@ use App\Http\Services\BillsService;
 use App\Http\Services\CityService;
 use App\Http\Services\LogsService;
 use App\Http\Services\RealEstateProjectService;
+use App\Http\Services\TransactionService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -18,16 +19,19 @@ class TransactionController extends BaseController
     protected $realEstateProjectService;
     protected $billsService;
     protected $logsService;
+    protected $transactionService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 BillsService $billsService,
-                                LogsService $logsService)
+                                LogsService $logsService,
+                                TransactionService $transactionService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->billsService = $billsService;
         $this->logsService = $logsService;
+        $this->transactionService = $transactionService;
     }
 
     public function wait_pay(Request $request)

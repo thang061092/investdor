@@ -133,6 +133,10 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_bill', "Admin\TransactionController@update_bill")->name('transaction.update_bill');
             });
 
+            Route::prefix('/contract')->group(function () {
+                Route::get('/list', "Admin\ContractController@index")->name('contract.index');
+            });
+
         });
     });
 
