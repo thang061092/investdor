@@ -68,6 +68,12 @@ class TransactionController extends BaseController
                 return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $exception->getMessage());
             }
         }
+    }
 
+    public function index(Request $request)
+    {
+        $request->type_query = 'get';
+        $transactions = $this->transactionService->get_list($request);
+        return view('employee.transaction.list', compact('transactions'));
     }
 }

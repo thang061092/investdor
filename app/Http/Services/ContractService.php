@@ -51,4 +51,9 @@ class ContractService
         $contracts = $this->contractRepository->get_list($request);
         return $contracts;
     }
+
+    public function find($id)
+    {
+        return $this->contractRepository->find($id);
+    }
 }

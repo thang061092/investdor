@@ -33,4 +33,10 @@ class TransactionService
         ];
         return $this->transactionRepository->create($data);
     }
+
+    public function get_list($request)
+    {
+        $contracts = $this->transactionRepository->get_list($request);
+        return $contracts;
+    }
 }

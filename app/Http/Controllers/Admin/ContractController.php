@@ -23,4 +23,10 @@ class ContractController extends BaseController
         $contracts = $this->contractService->get_list($request);
         return view('employee.contract.list', compact('contracts'));
     }
+
+    public function detail($id)
+    {
+        $contract = $this->contractService->find($id);
+        return view('employee.contract.detail', compact('contract'));
+    }
 }

@@ -131,10 +131,12 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/wait', "Admin\TransactionController@wait_pay")->name('transaction.wait_pay');
                 Route::get('/get_bill/{id}', "Admin\TransactionController@get_bill")->name('transaction.get_bill');
                 Route::post('/update_bill', "Admin\TransactionController@update_bill")->name('transaction.update_bill');
+                Route::get('/list', "Admin\TransactionController@index")->name('transaction.index');
             });
 
             Route::prefix('/contract')->group(function () {
                 Route::get('/list', "Admin\ContractController@index")->name('contract.index');
+                Route::get('/detail/{id}', "Admin\ContractController@detail")->name('contract.detail');
             });
 
         });
