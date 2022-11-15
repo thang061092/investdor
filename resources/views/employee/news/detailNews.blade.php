@@ -36,11 +36,8 @@
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="category">{{__('profile.category')}}<span class="text-danger">*</span></label>
-                                                <select  disabled type="text" class="form-control" name="category" id="category">
-                                                    <option value="">--Chọn thể loại--</option>
-                                                    <option value="1" @if($detail->category == 1) selected @endif >a</option>
-                                                    <option value="2" @if($detail->category == 2) selected @endif>b</option>
-                                                </select>        
+                                                <input type="text" class="form-control" name="category" id="category"
+                                                    disabled value="{{$detail->category}}" >   
                                             </div>
                                             @if($errors->has('category'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('category') }}</p>

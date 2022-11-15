@@ -125,7 +125,12 @@
                                                     disabled value="{{$user->account_name}}">
                                             </div>
                                         </div>
-
+                                        <div class="col-md-7 col-sm-12 wow fadeInUp">
+                                                <label for="img_category">{{__('profile.photo')}}<span class="text-danger">*</span></label>
+                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
+                                                <img src='{{asset("$user->avatar")}}'>
+                                        </div>
+                                        
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <a type="button" href="{{route('customer.employee.get_all')}}" class="btn btn-danger action">

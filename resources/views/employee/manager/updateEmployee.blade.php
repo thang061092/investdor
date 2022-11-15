@@ -45,43 +45,57 @@
                                         </div>
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
+                                                <label for="phone_number">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="phone_number" id="phone_number"
                                                      value="{{$user->phone}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('phone_number'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.identity')}}<span class="text-danger">*</span></label>
+                                                <label for="identity">{{__('profile.identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="identity" id="identity"
                                                      value="{{$user->identity}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('identity'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
+                                                <label for="date_identity">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" name="date_identity" id="date_identity"
                                                      value="{{$user->date_identity}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('date_identity'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
+                                                <label for="address_identity">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="address_identity" id="address_identity"
                                                      value="{{$user->address_identity}}">
                                             </div>
                                         </div>
-
+                                        @if($errors->has('address_identity'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" name="gender" id="gender"
+                                                <label for="birthday">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" name="birthday" id="birthday"
                                                      value="{{$user->birthday}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('birthday'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
+                                                <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
                                                 <label class="gender-choose" for="male">
                                                     @php
                                                         if($user->gender == 1) {
@@ -110,29 +124,44 @@
                                                     </label>
                                             </div>
                                         </div>
-
+                                        @if($errors->has('gender'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('gender') }}</p>
+                                            @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
+                                                <label for="bank_name">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="bank_name" id="bank_name"
                                                      value="{{$user->bank_name}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('bank_name'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
+                                        @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
+                                                <label for="account_number">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_number" id="account_number"
                                                      value="{{$user->account_number}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('account_number'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
+                                        @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.account holder')}}<span class="text-danger">*</span></label>
+                                                <label for="account_name">{{__('profile.account holder')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_name" id="account_name"
                                                      value="{{$user->account_name}}">
                                             </div>
                                         </div>
-
+                                        @if($errors->has('account_name'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
+                                        @endif
+                                        <div class="col-md-7 col-sm-12 wow fadeInUp">
+                                                <label for="img_category">{{__('profile.photo')}}<span class="text-danger">*</span></label>
+                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
+                                                <img src='{{asset("$user->avatar")}}'>
+                                        </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="update" class="btn btn-success action">

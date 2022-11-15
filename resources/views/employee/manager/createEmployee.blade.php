@@ -54,7 +54,11 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>
                                             @endif
                                         </div>
-                                        
+                                        <div class="col-md-7 col-sm-12 wow fadeInUp">
+                                                <label for="file">{{__('profile.photo')}}<span class="text-danger">*</span></label>
+                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
+                                        </div>
+
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">

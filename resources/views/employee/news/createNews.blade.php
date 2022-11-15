@@ -38,8 +38,11 @@
                                                 <label for="category">{{__('profile.category')}}<span class="text-danger">*</span></label>
                                                 <select type="text" class="form-control" name="category" id="category">
                                                     <option value="">--Chọn thể loại--</option>
-                                                    <option value="1">a</option>
-                                                    <option value="2">b</option>
+                                                    @if ($categories)
+                                                        @foreach ($categories as $item)
+                                                            <option value="{{$item->slug}}">{{$item->name}}</option>
+                                                        @endforeach
+                                                    @endif 
                                                 </select>        
                                             </div>
                                             @if($errors->has('category'))

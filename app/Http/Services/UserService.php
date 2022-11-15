@@ -42,12 +42,16 @@ class UserService
 
     public function create_employee($request)
     {
+        if ($request->hasFile('file')){
+            $avatar = $this->uploadService->upload($request);
+        }
         $data = [
             Users::FULL_NAME => $request->full_name,
             Users::EMAIL => $request->email,
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::EMPLOYEE,
+            Users::AVATAR => $avatar ?? "",
             Users::BANK_NAME => "",
             Users::ACCOUNT_NAME => "",
             Users::ACCOUNT_NUMBER => "",
@@ -218,6 +222,9 @@ class UserService
     }
 
     public function update_employee($request, $id) {
+        if ($request->hasFile('file')){
+            $avatar = $this->uploadService->upload($request);
+        }
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -279,8 +286,8 @@ class UserService
         }
         $data = [
             Users::ACCURACY => Users::WARNING_AUTH,
-            Users::FRONT_FACING_CARD => $request->avatar ?? "",
-            Users::CARD_BACK => $request->avatar ?? "",
+            Users::FRONT_FACING_CARD => $avatar ?? "",
+            Users::CARD_BACK => $avatar ?? "",
         ];
         $auth = $this->userRepository->update($id, $data);
         if ($auth) {

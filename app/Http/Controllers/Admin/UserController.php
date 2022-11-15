@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\FormCreateEmployee;
 use App\Http\Requests\FormCreateNews;
 use App\Http\Requests\FormCategory;
+use App\Http\Requests\FormUpdateEmployee;
 
 class UserController extends BaseController
 {
@@ -99,7 +100,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function update_employee(FormCreateEmployee $request, $id) {
+    public function update_employee(FormUpdateEmployee $request, $id) {
         $user = $this->userService->update_employee($request, $id);
         if ($user) {
             toastr()->success(__("message.update_success"), __('message.success'));
@@ -184,7 +185,10 @@ class UserController extends BaseController
 
     public function create_news() 
     {
-        return view('employee.news.createNews');
+        $categories = $this->categoryService->get_all();
+        return view('employee.news.createNews', [
+            'categories' => $categories,
+        ]);
     }
 
     public function save_news(FormCreateNews $request) 
@@ -210,8 +214,10 @@ class UserController extends BaseController
 
     public function edit_news($id) {
         $detail = $this->newsService->find($id);
+        $categories = $this->categoryService->get_all();
         return view('employee.news.updateNews',[
             'detail' => $detail,
+            'categories' => $categories,
         ]);
     }
 

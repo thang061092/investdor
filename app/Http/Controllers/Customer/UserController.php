@@ -137,14 +137,16 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function auth(FormAuth $request)
+    public function auth(Request $request)
     {
         $user = session()->get('customer');
         $userId = $user['id'];
         $auth = $this->userService->auth($request, $userId);
         if ($auth) {
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
+            toastr()->success(__("message.send_auth_success"), __('message.success'));
+            return redirect("/customer/user/manager?main_tab=profile");
         }
-        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
+        toastr()->error(__("message.send_auth_fail"), __('message.fail'));
+        return redirect("/customer/user/manager?main_tab=profile");
     }
 }
