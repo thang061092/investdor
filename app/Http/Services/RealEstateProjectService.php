@@ -8,12 +8,14 @@ use App\Http\Repositories\AssetProjectRepository;
 use App\Http\Repositories\DocumentProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\InvestorProjectRepository;
+use App\Http\Repositories\MemberCompanyRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
 use App\Models\DocumentProject;
 use App\Models\ImageProject;
 use App\Models\InvestorProject;
+use App\Models\MemberCompany;
 use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
@@ -28,6 +30,7 @@ class RealEstateProjectService
     protected $investorProjectRepository;
     protected $documentProjectRepository;
     protected $uploadService;
+    protected $memberCompanyRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -36,7 +39,8 @@ class RealEstateProjectService
                                 AssetProjectRepository $assetProjectRepository,
                                 InvestorProjectRepository $investorProjectRepository,
                                 DocumentProjectRepository $documentProjectRepository,
-                                UploadService $uploadService)
+                                UploadService $uploadService,
+                                MemberCompanyRepository $memberCompanyRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -46,6 +50,7 @@ class RealEstateProjectService
         $this->investorProjectRepository = $investorProjectRepository;
         $this->documentProjectRepository = $documentProjectRepository;
         $this->uploadService = $uploadService;
+        $this->memberCompanyRepository = $memberCompanyRepository;
     }
 
     public function create($request)
@@ -202,7 +207,9 @@ class RealEstateProjectService
 
     public function add_document($request)
     {
-        $file = $this->uploadService->upload($request);
+        if ($request->file) {
+            $file = $this->uploadService->upload($request);
+        }
         $this->documentProjectRepository->create([
             DocumentProject::REAL_ESTATE_PROJECT_ID => $request->id,
             DocumentProject::TITLE_VI => $request->title_vi,
@@ -211,8 +218,22 @@ class RealEstateProjectService
             DocumentProject::NAME_FILE_EN => $request->name_file_en,
             DocumentProject::SLUG_VI => slugify($request->title_vi),
             DocumentProject::SLUG_EN => slugify($request->title_en),
-            DocumentProject::LINK => $file,
+            DocumentProject::LINK => $file ?? "",
             DocumentProject::STATUS => DocumentProject::ACTIVE
+        ]);
+    }
+
+    public function add_member_company($request)
+    {
+        if ($request->avatar) {
+            $file = $this->uploadService->upload_param($request->avatar);
+        }
+        $this->memberCompanyRepository->create([
+            MemberCompany::NAME_MEMBER => $request->name_member,
+            MemberCompany::POSITION_MEMBER_VI => $request->position_member_vi,
+            MemberCompany::POSITION_MEMBER_EN => $request->position_member_en,
+            MemberCompany::AVATAR_MEMBER => $file ?? '',
+            MemberCompany::INVESTOR_PROJECT_ID => $request->investor_project_id
         ]);
     }
 }

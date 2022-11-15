@@ -63,7 +63,7 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="">Thông tin địa điểm<span
-                                                        class="text-danger">(EN)*</span></label>
+                                                        class="text-danger">(VI)*</span></label>
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('address_project_vi'))is-invalid @endif"
                                                           name="address_project_vi"
@@ -89,7 +89,7 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="">Thông tin thị trường<span
-                                                        class="text-danger">(EN)*</span></label>
+                                                        class="text-danger">(VI)*</span></label>
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('market_project_vi'))is-invalid @endif"
                                                           name="market_project_vi"
@@ -115,7 +115,7 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="">Thông tin nền tảng<span
-                                                        class="text-danger">(EN)*</span></label>
+                                                        class="text-danger">(VI)*</span></label>
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('background_project_vi'))is-invalid @endif"
                                                           name="background_project_vi"
