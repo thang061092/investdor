@@ -143,12 +143,42 @@
                                         </div>
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.account holder')}}<span class="text-danger">*</span></label>
+                                                <label for="email">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_name" id="account_name"
                                                     disabled value="{{$customer->account_name}}">
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-7 col-sm-12 email">
+                                                <div class="form-group mb-3">
+                                                    <label for="avatar">{{__('profile.photo')}}<span class="text-danger">*</span></label>
+                                                    @if ($customer->avatar)
+                                                    <img src='{{asset("$customer->avatar")}}' id="avatar" class="img-fluid" alt=""/>
+                                                    @else
+                                                    <p class="text-danger">{{__('table.no_data')}}</p>
+                                                    @endif
+                                                </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 email">
+                                                <div class="form-group mb-3">
+                                                    <label for="img_before">{{__('profile.facede')}}<span class="text-danger">*</span></label>
+                                                    @if ($customer->front_facing_card)
+                                                    <img src='{{asset("$customer->front_facing_card")}}' id="img_before" class="img-fluid" alt=""/>
+                                                    @else
+                                                    <p class="text-danger">{{__('table.no_data')}}</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-7 col-sm-12 email">
+                                                <div class="form-group mb-3">
+                                                    <label for="img_after">{{__('profile.backside')}}<span class="text-danger">*</span></label>
+                                                    @if ($customer->card_back)
+                                                    <img src='{{asset("$customer->card_back")}}' id="img_after" class="img-fluid" alt=""/>
+                                                    @else
+                                                    <p class="text-danger">{{__('table.no_data')}}</p>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <a type="button" href="{{route('customer.customer.get_all')}}" class="btn btn-danger action">

@@ -47,17 +47,31 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <!-- <div class="col-md-7 col-sm-12 ">
                                             <div class="form-group mb-3">
-                                                <label for="img_category">{{__('profile.img_category')}}<span class="text-danger">*</span></label>
-                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.img_category')}}">
+                                                <label for="img_category">{{__('profile.img_category')}}<span class="text-danger">*</span>
+                                                <input type="file" name="img_category" class="form-control" id="file" value="{{$detail->image}}">
                                                 <img src='{{asset("$detail->image")}}'>
+                                                </label>
                                             </div>
                                             @if($errors->has('img_category'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_category') }}</p>
                                             @endif
+                                        </div> -->
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="img_category" class="img-ct">
+                                                    <input type="file" name="img_category" accept="image/*" class="d-none"
+                                                            id="img_category" value="{{!empty($detail->image) ? $detail->image : ''}}"
+                                                            onchange="document.getElementById('img-category').src = window.URL.createObjectURL(this.files[0])"/>
+                                                        <img id="img-category" src="{{!empty($detail->image) ? $detail->image : asset('frontend/images/default.png')}}"
+                                                            class="img-fluid" alt="" width="250px" height="250px"/>
+                                                </label>
+                                                <label class="form-label"><strong>{{__('profile.img_category')}}</strong><span
+                                                                class="text-danger">*</span></label>
+                                            </div>
                                         </div>
-  
+                                       
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">

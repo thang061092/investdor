@@ -29,6 +29,7 @@ class FormCreateNews extends FormRequest
             'title' => 'required',
             'category' => 'required',
             'content'  => 'required',
+            // 'img_news'  => 'required',
         ];
     }
 
@@ -38,6 +39,7 @@ class FormCreateNews extends FormRequest
             "title.required" => __('auth.title_not_null'),
             "category.required" => __('auth.category_not_null'),
             "content.required" => __('auth.content_not_null'),
+            // "img_news.required" => __('auth.image_news_not_null'),
         ];
 
     }

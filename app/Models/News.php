@@ -24,6 +24,7 @@ class News extends Model
     const CATEGORY = 'category';
     const CATEGORY_SLUG = 'category_slug';
     const CONTENT = 'content';
+    const IMAGE = 'image';
 
     const ACTIVE = 'active';
     const DEACTIVE = 'deactive';

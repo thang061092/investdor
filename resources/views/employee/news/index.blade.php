@@ -98,8 +98,8 @@
                                                 <td>{{++$key}}</td>
                                                 <td>{{$item->title}}</td>
                                                 <td>{{$item->category}}</td>
+                                                <td>{{date('Y-m-d',strtotime($item->created_at))}}</td>
                                                 <td>{{$item->created_by}}</td>
-                                                <td>{{$item->created_at}}</td>
                                                 <td>
                                                     <label class=" form-switch toggle-status" data-id="{{ $item['id'] }} ">
                                                         <input class="form-check-input"

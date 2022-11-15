@@ -224,10 +224,15 @@ class UserService
 
 
     public function update_employee($request, $id) {
-        if ($request->hasFile('file')){
-            $avatar = $this->uploadService->upload($request);
+        if ($request->avatar) {
+            $avatar = $this->uploadService->upload_param($request->avatar);
         }
-
+        if ($request->img_before) {
+            $img_before = $this->uploadService->upload_param($request->img_before);
+        }
+        if ($request->img_after) {
+            $img_after = $this->uploadService->upload_param($request->img_after);
+        }
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -245,6 +250,8 @@ class UserService
             Users::IDENTITY => $request->identity ?? "",
             Users::DATE_IDENTITY => $request->date_identity ?? "",
             Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
+            Users::FRONT_FACING_CARD => $img_before ?? "",
+            Users::CARD_BACK => $img_after ?? "",
         ];
         $user = $this->userRepository->update($id, $data);
         return $user;

@@ -44,7 +44,6 @@ class CategoryNewsService
             CategoryNews::IMAGE => $image ?? "",
             CategoryNews::DESCRIPTION => $request->desc_category ?? "",
             CategoryNews::STATUS   => CategoryNews::ACTIVE,
-            CategoryNews::CREATED_AT    => date('Y/m/d', time()),
             CategoryNews::CREATED_BY    => session()->get('employee')['email'],
         ];
         $create = $this->categoryRepo->create($data);
@@ -71,15 +70,14 @@ class CategoryNewsService
 
     public function update($request, $id) 
     {
-        if ($request->hasFile('file')){
-            $image = $this->uploadService->upload($request);
+        if ($request->img_category) {
+            $img_category = $this->uploadService->upload_param($request->img_category);
         }
         $data = [
             CategoryNews::NAME => $request->name_category ?? "",
             CategoryNews::SLUG => Str::slug($request->name_category) ?? "",
-            CategoryNews::IMAGE => $image ?? "",
+            CategoryNews::IMAGE => $img_category ?? "",
             CategoryNews::DESCRIPTION => $request->desc_category ?? "",
-            CategoryNews::CREATED_AT    => date('Y/m/d', time()),
             CategoryNews::CREATED_BY    => session()->get('employee')['email'],
         ];
         $update = $this->categoryRepo->update($id, $data);

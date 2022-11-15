@@ -35,14 +35,17 @@ class NewsService
 
     public function create($request) 
     {
+        if ($request->img_news) {
+            $image = $this->uploadService->upload_param($request->img_news);
+        }
         $data = [
             News::TITLE => $request->title ?? "",
             News::SLUG => Str::slug($request->title) ?? "",
             News::CATEGORY => $request->category ?? "",
             News::CATEGORY_SLUG => Str::slug($request->category) ?? "",
+            News::IMAGE => $image ?? "",
             News::CONTENT => $request->content ?? "",
             News::STATUS    => News::ACTIVE,
-            News::CREATED_AT    => date('Y/m/d', time()),
             News::CREATED_BY    => session()->get('employee')['email'],
         ];
         $create = $this->newsRepository->create($data);
@@ -70,11 +73,15 @@ class NewsService
 
     public function update_news($request, $id) 
     {
+        if ($request->img_news) {
+            $image = $this->uploadService->upload_param($request->img_news);
+        }
         $data = [
             News::TITLE => $request->title ?? "",
             News::SLUG => Str::slug($request->title) ?? "",
             News::CATEGORY => $request->category ?? "",
             News::CONTENT=>  $request->content ?? "",
+            News::IMAGE => $image ?? "",
         ];
         $news = $this->newsRepository->update($id, $data);
         return $news;

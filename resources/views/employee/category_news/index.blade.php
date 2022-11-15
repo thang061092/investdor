@@ -97,7 +97,7 @@
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
                                                 <td>{{$item->name}}</td>
-                                                <td><img src='{{asset("$item->image")}}'></td>
+                                                <td><img src='{{asset("$item->image")}}' with="100px" height="100px"></td>
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->created_by}}</td>
                                                 <td>

@@ -221,7 +221,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function update_news (FormCreateNews $request, $id)
+    public function update_news(FormCreateNews $request, $id)
     {
         $news = $this->newsService->update_news($request, $id);
         if ($news) {

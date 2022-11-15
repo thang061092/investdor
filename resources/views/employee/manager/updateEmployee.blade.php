@@ -149,7 +149,7 @@
                                         @endif
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
-                                                <label for="account_name">{{__('profile.account holder')}}<span class="text-danger">*</span></label>
+                                                <label for="account_name">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_name" id="account_name"
                                                      value="{{$user->account_name}}">
                                             </div>
@@ -157,10 +157,48 @@
                                         @if($errors->has('account_name'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
                                         @endif
-                                        <div class="col-md-7 col-sm-12 wow fadeInUp">
-                                                <label for="img_category">{{__('profile.photo')}}<span class="text-danger">*</span></label>
-                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
-                                                <img src='{{asset("$user->avatar")}}'>
+ 
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="avatar" class="img-ct">
+                                                <label class="form-label"><strong>{{__('profile.photo')}}</strong><span
+                                                                class="text-danger">*</span></label>
+                                                    <input type="file" name="avatar" accept="image/*" class="d-none"
+                                                            id="avatar" value="{{!empty($user->avatar) ? $user->avatar : ''}}"
+                                                            onchange="document.getElementById('img-avatar').src = window.URL.createObjectURL(this.files[0])"/>
+                                                        <img id="img-avatar" src="{{!empty($user->avatar) ? $user->avatar : asset('frontend/images/default.png')}}"
+                                                            class="img-fluid" alt="" width="250px" height="250px"/>
+                                                </label>
+  
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="img_before" class="img-ct">
+                                                <label class="form-label"><strong>{{__('profile.facede')}}</strong><span
+                                                                class="text-danger">*</span></label>
+                                                    <input type="file" name="img_before" accept="image/*" class="d-none"
+                                                            id="img_before" value="{{!empty($user->front_facing_card) ? $user->front_facing_card : ''}}"
+                                                            onchange="document.getElementById('img-before').src = window.URL.createObjectURL(this.files[0])"/>
+                                                        <img id="img-before" src="{{!empty($user->front_facing_card) ? $user->front_facing_card : asset('frontend/images/default.png')}}"
+                                                            class="img-fluid" alt="" width="250px" height="250px"/>
+                                                </label>
+                                            </div>
+                                        </div>
+                                                
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="img_after" class="img-ct">
+                                                <label class="form-label"><strong>{{__('profile.backside')}}</strong><span
+                                                                class="text-danger">*</span></label>
+                                                    <input type="file" name="img_after" accept="image/*" class="d-none"
+                                                            id="img_after" value="{{!empty($user->card_back) ? $user->card_back : ''}}"
+                                                            onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
+                                                        <img id="img-after" src="{{!empty($user->card_back) ? $user->card_back : asset('frontend/images/default.png')}}"
+                                                            class="img-fluid" alt="" width="250px" height="250px"/>
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">

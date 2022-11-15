@@ -54,7 +54,14 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content') }}</p>
                                             @endif
                                         </div>
-  
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="file">{{__('profile.img_news')}}<span class="text-danger">*</span></label>
+                                                <input disabled type="file" class="form-control" name="img_news" id="img_news"
+                                                        placeholder="{{__('profile.img_news')}}" >
+                                                <img src='{{asset("$detail->image")}}'>
+                                            </div>
+                                        </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">

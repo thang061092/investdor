@@ -33,6 +33,32 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title') }}</p>
                                             @endif
                                         </div>
+                                        <!-- <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="file">{{__('profile.img_news')}}<span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="img_news" id="img_news"
+                                                        placeholder="{{__('profile.img_news')}}" >
+                                            </div>
+                                            @if($errors->has('img_news'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_news') }}</p>
+                                            @endif
+                                        </div> -->
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="img_news" class="img-ct">
+                                                <label class="form-label"><strong>{{__('profile.img_news')}}</strong><span
+                                                                class="text-danger">*</span></label>
+                                                    <input type="file" name="img_news" accept="image/*" class="d-none"
+                                                            id="img_news" value="{{!empty($detail->image) ? $detail->image : ''}}"
+                                                            onchange="document.getElementById('img-news').src = window.URL.createObjectURL(this.files[0])"/>
+                                                        <img id="img-news" src="{{!empty($detail->image) ? $detail->image : asset('frontend/images/default.png')}}"
+                                                            class="img-fluid" alt="" width="250px" height="250px"/>
+                                                </label>
+                                                @if($errors->has('img_news'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_news') }}</p>
+                                                 @endif
+                                            </div>
+                                        </div>
                                         <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="category">{{__('profile.category')}}<span class="text-danger">*</span></label>
