@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <h1 class="d-inline-block">Danh sách giao dịch <span
-                                    style="color: red">({{$transactions->total()}}) </span></h1>
+                                    style="color: red">({{$transactions->total() ?? 0}}) </span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-primary" href="#" data-bs-toggle="dropdown">
