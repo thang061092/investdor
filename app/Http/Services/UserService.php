@@ -288,13 +288,12 @@ class UserService
 
 
     public function auth($request, $id) {
-        if ($request->hasFile('file')){
-            $avatar = $this->uploadService->upload($request);
-        }
+        $img_before = $this->uploadService->upload_param($request->img_before);
+        $img_after = $this->uploadService->upload_param($request->img_after);
         $data = [
-            Users::ACCURACY => Users::WARNING_AUTH,
-            Users::FRONT_FACING_CARD => $avatar ?? "",
-            Users::CARD_BACK => $avatar ?? "",
+            Users::ACCURACY => Users::WARNING_AUTH, 
+            Users::FRONT_FACING_CARD => $img_before ?? "",
+            Users::CARD_BACK => $img_after ?? "",
         ];
         $auth = $this->userRepository->update($id, $data);
         if ($auth) {

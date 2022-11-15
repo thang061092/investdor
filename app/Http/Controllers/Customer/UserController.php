@@ -150,8 +150,8 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function auth(Request $request)
-    {
+    public function auth(FormAuth $request)
+    {   
         $user = session()->get('customer');
         $userId = $user['id'];
         $auth = $this->userService->auth($request, $userId);

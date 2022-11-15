@@ -94,7 +94,7 @@
                         </div>
                         <p class="c-label mb-1">{{__('profile.account_number')}}</p>
                         <div class="c-value mb-lg-3 mb-2">{{$detail->account_number}}</div>
-                        <p class="c-label mb-1">{{__('profile.account holder')}}</p>
+                        <p class="c-label mb-1">{{__('profile.account_holder')}}</p>
                         <div class="c-value">{{$detail->account_name}}</div>
                     </div>
                 </div>
@@ -123,26 +123,40 @@
                             <div class="row">
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-before" class="img-cmt">
-                                        <input type="file" name="file" accept="image/*" class="d-none"
+                                        <input type="file" name="img_before" accept="image/*" class="d-none"
                                                id="img-cmt-before"
                                                onchange="document.getElementById('img-before').src = window.URL.createObjectURL(this.files[0])"/>
-                                        <img id="img-before" src="{{asset('frontend/images/before-cmt.png')}}" class="img-fluid" alt=""/>
+                                               @if ($detail->front_facing_card)
+                                                <img id="img-before" src='{{asset("$detail->front_facing_card")}}' class="img-fluid" alt=""/>
+                                               @else
+                                                <img id="img-before" src="{{asset('frontend/images/before-cmt.png')}}" class="img-fluid" alt=""/>
+                                                @endif
                                     </label>
                                     <p class="c-cmt mt-3">{{__('profile.facede')}}</p>
+                                    @if($errors->has('img_before'))
+                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_before') }}</p>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-after" class="img-cmt">
-                                        <input type="file" name="file" accept="image/*" class="d-none"
+                                        <input type="file" name="img_after" accept="image/*" class="d-none"
                                                id="img-cmt-after"
                                                onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
-                                        <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
+                                               @if ($detail->card_back)
+                                                <img id="img-before" src='{{asset("$detail->card_back")}}' class="img-fluid" alt=""/>
+                                                @else
+                                                <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
+                                                @endif
                                     </label>
                                     <p class="c-cmt mt-3">{{__('profile.backside')}}</p>
+                                    @if($errors->has('img_after'))
+                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_after') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="text-right mt-xl-4 mt-3">
-                                <a type="button" class="btn_all reset mr-2" id="reselect">
-                                {{__('profile.reselect')}}</a>
+                                <!-- <a type="button" class="btn_all reset mr-2" id="reselect">
+                                {{__('profile.reselect')}}</a> -->
                                 <button type="submit" class="btn_all accept" id="auth">
                                 {{__('profile.auth')}}</button>
                             </div>
@@ -170,6 +184,15 @@
             $("#loading, .right-col iframe").css('height', loadingHeight);
         }).ajaxStop(function () {
             $("#loading").hide();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#reselect").click(function (e) {
+                e.preventDefault();
+                $("#img-cmt-after").val('');
+                $("#img-cmt-before").val('');
+            });
         });
     </script>
 @endsection

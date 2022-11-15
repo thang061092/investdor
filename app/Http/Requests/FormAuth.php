@@ -26,16 +26,16 @@ class FormAuth extends FormRequest
     public function rules()
     {
         return [
-            'img_front' => 'required',
-            'img_back' => 'required',
+            'img_before' => 'required',
+            'img_after' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            "img_front.required" => __('auth.img_cmt_before_not_null'),
-            "img_back.required" => __('auth.img_cmt_after_not_null'),
+            "img_before.required" => __('auth.img_cmt_before_not_null'),
+            "img_after.required" => __('auth.img_cmt_after_not_null'),
         ];
 
     }
