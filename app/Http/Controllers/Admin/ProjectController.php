@@ -161,4 +161,16 @@ class ProjectController extends BaseController
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
         }
     }
+
+    public function add_member_company(Request $request)
+    {
+        try {
+            $this->realEstateProjectService->add_member_company($request);
+            toastr()->success(__('message.success'));
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
 }

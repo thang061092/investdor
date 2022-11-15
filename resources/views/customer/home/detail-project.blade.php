@@ -318,62 +318,26 @@
                     <div class="team_company mb-3">{{__('project.administrative_council')}}</div>
                     <div class="swiper swiper-teams">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="human">
-                                    <div class="img">
-                                        <img src="{{asset('frontend/images/hoidong.jpg')}}" class="img-fluid" alt=""/>
-                                    </div>
-                                    <div class="box">
-                                        <p class="name">Jennifer Shapiro</p>
-                                        <div class="desc">
-                                            Tổng giám đốc Tổng công ty xây
-                                            dựng Thanh Hoa
+                            @foreach($project->investorProject->memberCompanies as $key => $member)
+                                <div class="swiper-slide">
+                                    <div class="human">
+                                        <div class="img">
+                                            <img src="{{$member->avatar_member ?? asset('frontend/images/hoidong.jpg')}}" class="img-fluid"
+                                                 alt=""/>
+                                        </div>
+                                        <div class="box">
+                                            <p class="name">{{$member->name_member}}</p>
+                                            <div class="desc">
+                                                @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
+                                                    {{$member->position_member_en}}
+                                                @else
+                                                    {{$member->position_member_vi}}
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="human">
-                                    <div class="img">
-                                        <img src="{{asset('frontend/images/hoidong.jpg')}}" class="img-fluid" alt=""/>
-                                    </div>
-                                    <div class="box">
-                                        <p class="name">Jennifer Shapiro</p>
-                                        <div class="desc">
-                                            Tổng giám đốc Tổng công ty xây
-                                            dựng Thanh Hoa
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="human">
-                                    <div class="img">
-                                        <img src="{{asset('frontend/images/hoidong.jpg')}}" class="img-fluid" alt=""/>
-                                    </div>
-                                    <div class="box">
-                                        <p class="name">Jennifer Shapiro</p>
-                                        <div class="desc">
-                                            Tổng giám đốc Tổng công ty xây
-                                            dựng Thanh Hoa
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="human">
-                                    <div class="img">
-                                        <img src="{{asset('frontend/images/hoidong.jpg')}}" class="img-fluid" alt=""/>
-                                    </div>
-                                    <div class="box">
-                                        <p class="name">Jennifer Shapiro</p>
-                                        <div class="desc">
-                                            Tổng giám đốc Tổng công ty xây
-                                            dựng Thanh Hoa
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
