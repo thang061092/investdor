@@ -186,9 +186,9 @@ class UserService
     }
 
     public function update_profile($request, $id)
-    {   
+    {
         $user = $this->userRepository->find($id);
-        if ($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $avatar = $this->uploadService->upload($request);
         }
         $data = [
@@ -196,7 +196,7 @@ class UserService
             Users::EMAIL => $request->email ?? "",
             Users::PHONE => $request->phone_number ?? "",
             Users::GENDER => $request->gender ?? "",
-            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BIRTHDAY => $request->birthday ?? "",
             Users::BANK_NAME => $request->bank_name ?? "",
             Users::ACCOUNT_NUMBER => $request->account_number ?? "",
             Users::ACCOUNT_NAME => $request->account_name ?? "",
@@ -209,11 +209,12 @@ class UserService
             Users::DATE_IDENTITY => $request->date_identity ?? "",
             Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
         ];
-        $user = $this->userRepository->update_profile($id, $data);
+        $user = $this->userRepository->update($id, $data);
         return $user;
     }
 
-    public function get_all_employee() {
+    public function get_all_employee()
+    {
         $employees = $this->userRepository->get_all_employee();
         if ($employees) {
             return $employees;
@@ -221,10 +222,12 @@ class UserService
         return false;
     }
 
+
     public function update_employee($request, $id) {
         if ($request->hasFile('file')){
             $avatar = $this->uploadService->upload($request);
         }
+
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -247,7 +250,8 @@ class UserService
         return $user;
     }
 
-    public function update_status($id) {
+    public function update_status($id)
+    {
         $detail = $this->userRepository->find($id);
         if ($detail[Users::STATUS] == Users::ACTIVE) {
             $data = [
@@ -262,7 +266,8 @@ class UserService
         return $user;
     }
 
-    public function get_all_customer() {
+    public function get_all_customer()
+    {
         $customer = $this->userRepository->get_all_customer();
         if ($customer) {
             return $customer;
@@ -270,7 +275,8 @@ class UserService
         return false;
     }
 
-    public function update_customer($request, $id) {
+    public function update_customer($request, $id)
+    {
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
@@ -279,6 +285,7 @@ class UserService
         $user = $this->userRepository->update($id, $data);
         return $user;
     }
+
 
     public function auth($request, $id) {
         if ($request->hasFile('file')){
@@ -296,8 +303,10 @@ class UserService
         return false;
     }
 
+
     //admin confirm
     public function confirm_auth($id) {
+
         $data = [
             Users::ACCURACY => Users::AUTH,
         ];
@@ -307,8 +316,10 @@ class UserService
         }
         return false;
     }
+
     //admin không confirm
     public function not_confirm_auth($id) {
+
         $data = [
             Users::ACCURACY => Users::FAIL_AUTH,
         ];
@@ -317,5 +328,35 @@ class UserService
             return $auth;
         }
         return false;
+    }
+
+    public function login_google($user_google)
+    {
+        $data = [];
+        $user = $this->userRepository->findOne([Users::EMAIL => $user_google->email]);
+        if ($user) {
+            if ($user['type'] == Users::EMPLOYEE) {
+                $data['message'] = __('auth.invalid_authentication');
+            } else {
+                if ($user['status'] == Users::ACTIVE) {
+                    $user_new = $this->userRepository->update($user['id'], [Users::LAST_LOGIN => Carbon::now()]);
+                    $data['user'] = $user_new;
+                } elseif ($user['status'] == Users::BLOCK) {
+                    $data['message'] = __('auth.account_is_locked');
+                }
+            }
+        } else {
+            $data = [
+                Users::STATUS => Users::ACTIVE,
+                Users::TYPE => Users::INVESTOR,
+                Users::ID_GOOGLE => $user_google->id,
+                Users::FULL_NAME => $user_google->name,
+                Users::EMAIL => $user_google->email,
+                Users::LAST_LOGIN => Carbon::now(),
+            ];
+            $user_new = $this->userRepository->create($data);
+            $data['user'] = $user_new;
+        }
+        return $data;
     }
 }

@@ -86,4 +86,9 @@ class RealEstateProject extends BaseModel
     {
         return $this->belongsTo(Ward::class, self::WARD_ID);
     }
+
+    public function bills()
+    {
+        return $this->hasMany(Bills::class, Bills::REAL_ESTATE_PROJECT_ID);
+    }
 }

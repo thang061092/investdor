@@ -6,4 +6,6 @@ return [
     'back' => 'Quay lại',
     'create' => 'Thêm mới',
     'update' => 'Cập nhật',
+    'continue' => "Tiếp tục"
+
 ];

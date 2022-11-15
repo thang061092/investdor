@@ -1,4 +1,5 @@
 @extends("customer.layout.master")
+@section('page_name', __('page_name.investment'))
 @section("content")
     <section class="invest-complete mt-lg-4 mt-3 pt-2">
         <div class="container">
@@ -22,35 +23,37 @@
                                       fill="#A87F05"/>
                             </svg>
                             Vui lòng thanh toán trong vòng 24h. Bạn có thể theo dõi
-                            các chỉ số của dự án tại mục
-                            <a class="more" href="" title="Báo cáo của tôi.">Báo cáo của tôi.</a>
+                            các chỉ số của dự án
+                            <a class="more text-danger" href="{{route('customer.user.manager')}}"
+                               title="Báo cáo của tôi.">Tại đây</a>
                         </div>
                         <label for="" class="d-block mb-2 c-label">
                             Ngân hàng
                         </label>
-                        <input disabled type="text" name="" placeholder="VPBank"
+                        <input disabled type="text" name="" value="{{$bill->name_bank ?? ''}}"
                                class="form-control mb-lg-4 mb-3 pb-1"/>
                         <label for="" class="d-block mb-2 c-label">
                             Tên tài khoản nhận
                         </label>
-                        <p class="text mb-lg-3 mb-2 pb-1">Công ty InvestDor</p>
+                        <p class="text mb-lg-3 mb-2 pb-1">{{$bill->name_account_bank ?? ''}}</p>
                         <label for="" class="d-block mb-2 c-label">
                             Tên tài khoản
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
-                            <input disabled type="text" name="" value="003625698" placeholder="003625698"
+                            <input disabled type="text" name="" value="{{$bill->bank_account ?? ''}}"
                                    class="form-control"/>
                             <span class="copy" data-title-success="Copy thành công" data-title-fail="Copy thất bại !">Sao chép</span>
                         </div>
                         <label for="" class="d-block c-label">
                             Số tiền cần chuyển
                         </label>
-                        <p class="text mb-lg-3 mb-2 pb-1">XX.XXX.XXX $</p>
+                        <p class="text mb-lg-3 mb-2 pb-1">{{!empty($bill->amount_money) ? number_format_vn($bill->amount_money) : ''}}
+                            VND</p>
                         <label for="" class="d-block mb-2 c-label">
                             Nội dung chuyển khoản
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
-                            <input type="text" name="" value="noidungck0001639875" placeholder="noidungck0001639875"
+                            <input type="text" name="" value="{{$bill->order_code ?? ''}}"
                                    class="form-control"/>
                             <span class="copy" data-title-success="Copy thành công" data-title-fail="Copy thất bại !">Sao chép</span>
                         </div>
@@ -76,30 +79,18 @@
                     <div class="group-box">
                         <p class="title_lg">Hoặc scan mã QR code sau</p>
                         <div class="qr d-block">
-                            <a href="" title="Tải xuống Qrcode" class="dl-qrcode">Tải xuống Qrcode</a>
-                            <img src="{{asset('frontend/images/qr.png')}}" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
-                    <div class="group-box infomation-bank d-lg-none d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-lg-3 mb-2">
-                            <div class="c-label">Khách hàng</div>
-                            <div class="c-value">NGUYEN VAN HIEN</div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-lg-3 mb-2">
-                            <div class="c-label">Ngân hàng</div>
-                            <div class="c-value">VPBank</div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-lg-3 mb-2">
-                            <div class="c-label">Số tài khoản</div>
-                            <div class="c-value">34209123012930</div>
+                            <a href="{{$bill->link_qr ?? ''}}" title="Tải xuống Qrcode" class="dl-qrcode"
+                               download="Qrcode">Tải xuống Qrcode</a>
+                            <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3">
+                <a href="{{route('customer.user.manager').'?main_tab=manager&tab=warning'}}" type="button"
+                   class="btn_all mt-xl-5 mt-lg-4 mt-3">
                     Tôi đã chuyển khoản
-                </button>
+                </a>
             </div>
         </div>
     </section>

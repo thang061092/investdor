@@ -48,5 +48,11 @@ return [
     'administrative_council' => 'Hội đồng quản trị',
     'investor' => 'Chủ đầu tư',
     'other_documents'=>'Các tài liệu khác',
+    'effect' => 'Đang gửi',
+    'expire' => 'Đã đáo hạn',
+    'success' => "Thành công",
+    'warning' => 'Chờ xử lý',
+    'fail' => 'Thất bại',
+    'investment'=> 'Đầu tư'
 
 ];

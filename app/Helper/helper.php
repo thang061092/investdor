@@ -87,4 +87,164 @@ function number_format_vn($number)
     return number_format($number, 0, ',', '.');
 }
 
+function hide_phone($phone, $role = "")
+{
+    $result = str_replace(substr($phone, 4, 4), stars($phone), $phone);
+    if ($role != "") {
+        return $phone;
+    } else {
+        return $result;
+    }
+}
 
+function stars($phone)
+{
+    $times = strlen(trim(substr($phone, 4, 4)));
+    $star = '';
+    for ($i = 0; $i < $times; $i++) {
+        $star .= '*';
+    }
+    return $star;
+}
+
+function encode($string, $key)
+{
+    $encode = openssl_encrypt($string, "AES-256-ECB", $key);
+    return $encode;
+}
+
+function decode($string, $key)
+{
+    $decode = openssl_decrypt($string, "AES-256-ECB", $key);
+    return $decode;
+}
+
+function random_string($end)
+{
+    $random = substr(strtoupper(md5(mt_rand())), 0, $end);
+    return $random;
+}
+
+if (!function_exists('status_bill')) {
+    function status_bill($status = null)
+    {
+        $leadstatus = [
+            'new' => __('project.new'),
+            'pending' => __('project.pending'),
+            'success' => __('project.success'),
+            'warning' => __('project.warning'),
+            'fail' => __('project.fail'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+function check_undefined($value)
+{
+    if ($value) {
+        if ($value !== "undefined") {
+            return $value;
+        } else {
+            return "";
+        }
+    } else {
+        return "";
+    }
+}
+
+
+if (!function_exists('status_contract')) {
+    function status_contract($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.effect'),
+            2 => __('project.expire'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('status_transaction')) {
+    function status_transaction($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.new'),
+            4 => __('project.pending'),
+            2 => __('project.success'),
+            5 => __('project.warning'),
+            3 => __('project.fail'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('type_method')) {
+    function type_method($status = null)
+    {
+        $leadstatus = [
+            1 => __('project.investment'),
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('color_status_contract')) {
+    function color_status_contract($status = null)
+    {
+        $leadstatus = [
+            1 => 'bg-success',
+            2 => 'bg-danger',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('color_status_transaction')) {
+    function color_status_transaction($status = null)
+    {
+        $leadstatus = [
+            1 => 'bg-secondary',
+            4 => 'bg-danger',
+            2 => 'bg-success',
+            5 => 'bg-warning',
+            3 => 'bg-danger',
+        ];
+        if ($status === null) return $leadstatus;
+        foreach ($leadstatus as $key => $item) {
+            if ($key == $status) {
+                $result = $item;
+            }
+        }
+        return $result;
+    }
+}

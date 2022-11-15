@@ -47,6 +47,8 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('/login_submit', "Customer\AuthController@login_submit")->name('customer.login_submit');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
     Route::post('/register_submit', "Customer\AuthController@register_submit")->name('customer.register_submit');
+    Route::get('/google_redirect', "Customer\AuthController@google_redirect")->name('customer.google_redirect');
+    Route::get('/google_callback', "Customer\AuthController@google_callback")->name('customer.google_callback');
 
     Route::get('/', "Customer\HomeController@index")->name('home.index');
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
@@ -67,7 +69,10 @@ Route::group(['middleware' => 'locale'], function () {
         });
 
         Route::prefix('/investment')->group(function () {
-            Route::get('/', "Customer\InvestmentController@investment")->name('investment');
+            Route::get('/step1/{slug}', "Customer\InvestmentController@step1")->name('investment.step1');
+            Route::post('/step2', "Customer\InvestmentController@step1_submit")->name('investment.step1_submit');
+            Route::post('/step3', "Customer\InvestmentController@step2_submit")->name('investment.step2_submit');
+            Route::post('/step4', "Customer\InvestmentController@step3_submit")->name('investment.step3_submit');
         });
 
     });
@@ -132,14 +137,27 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/detail_customer/{id}', 'Admin\UserController@detail_customer')->name('customer.customer.detail_customer');
                 Route::get('/edit_customer/{id}', 'Admin\UserController@edit_customer')->name('customer.customer.edit_customer');
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
-                Route::post('/auth/{id}','Admin\UserController@auth')->name('customer.customer.auth');
-                Route::post('/not_auth/{id}','Admin\UserController@not_auth')->name('customer.customer.not_auth');
+                Route::post('/auth/{id}', 'Admin\UserController@auth')->name('customer.customer.auth');
+                Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
+            });
+
+            Route::prefix('/transaction')->group(function () {
+                Route::get('/wait', "Admin\TransactionController@wait_pay")->name('transaction.wait_pay');
+                Route::get('/get_bill/{id}', "Admin\TransactionController@get_bill")->name('transaction.get_bill');
+                Route::post('/update_bill', "Admin\TransactionController@update_bill")->name('transaction.update_bill');
+                Route::get('/list', "Admin\TransactionController@index")->name('transaction.index');
+            });
+
+            Route::prefix('/contract')->group(function () {
+                Route::get('/list', "Admin\ContractController@index")->name('contract.index');
+                Route::get('/detail/{id}', "Admin\ContractController@detail")->name('contract.detail');
             });
 
         });
     });
 
     Route::post('/upload', "UploadController@upload");
+    Route::post('/qr', "Customer\PaymentController@link");
     Route::prefix('/address')->group(function () {
         Route::get('/district', "Admin\AddressController@district");
         Route::get('/ward', "Admin\AddressController@ward");

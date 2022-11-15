@@ -23,4 +23,5 @@ return [
     'update_news' => 'Cập nhật bài viết',
     'create_news' => 'Thêm mới bài viết',
     'list_category' => 'Danh sách danh mục bài viết',
+    'investment' => "Đầu tư"
 ];

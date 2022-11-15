@@ -6,7 +6,10 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Requests\FormRegister;
+use App\Http\Services\BillsService;
+use App\Http\Services\ContractService;
 use App\Http\Services\UserService;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 use App\Http\Services\BankService;
 use App\Http\Services\CityService;
@@ -25,13 +28,18 @@ class UserController extends BaseController
     protected $districtService;
     protected $wardService;
     protected $uploadService;
+    protected $billsService;
+    protected $contractService;
 
     public function __construct(
         UserService $userService,
-        BankService $bankService, CityService $cityService,
+        BankService $bankService,
+        CityService $cityService,
         DistrictService $districtService,
         WardService $wardService,
-        UploadService $uploadService
+        UploadService $uploadService,
+        BillsService $billsService,
+        ContractService $contractService
     )
     {
         $this->userService = $userService;
@@ -40,6 +48,8 @@ class UserController extends BaseController
         $this->districtService = $districtService;
         $this->wardService = $wardService;
         $this->uploadService = $uploadService;
+        $this->billsService = $billsService;
+        $this->contractService = $contractService;
     }
 
     public function find(Request $request)
@@ -66,11 +76,14 @@ class UserController extends BaseController
         $action = !empty($request->action) ? $request->action : 'show';
         if ($main_tab == 'manager') {
             if ($tab == 'active') {
-                return view('customer.user.manager');
+                $contracts = $this->contractService->get_contract_by_user($request, Contract::EFFECT);
+                return view('customer.user.manager', compact('contracts'));
             } elseif ($tab == 'complete') {
-                return view('customer.user.manager-complete');
+                $contracts = $this->contractService->get_contract_by_user($request, Contract::EXPIRE);
+                return view('customer.user.manager-complete', compact('contracts'));
             } elseif ($tab == 'warning') {
-                return view('customer.user.manager-warning');
+                $bills = $this->billsService->get_bill_warning($request);
+                return view('customer.user.manager-warning', compact('bills'));
             }
         } elseif ($main_tab == 'history') {
             return view('customer.user.history-investor');
@@ -112,10 +125,10 @@ class UserController extends BaseController
         $userId = $user['id'];
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
-            Toastr::success('Cập nhật thành công :)', __('message.success'));
+            toastr()->success('Cập nhật thành công :)', __('message.success'));
             return redirect("/customer/user/manager?main_tab=profile");
         }
-        Toastr::error('Cập nhật thất bại :)', __('message.fail'));
+        toastr()->error('Cập nhật thất bại :)', __('message.fail'));
         return redirect("/customer/user/manager?main_tab=profile");
     }
 

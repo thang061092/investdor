@@ -7,4 +7,5 @@ return [
     'back' => 'Back',
     'create' => 'Create',
     'update' => 'Update',
+    'continue' => "Continue",
 ];

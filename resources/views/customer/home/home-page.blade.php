@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 aside mb-lg-0 mb-3 wow fadeInLeft">
                     <div class="filter_mobile d-lg-none d-flex align-items-center justify-content-between">
-                        <p class="title">{{__('project.chance_for_you', ['total'=> count($projects)])}}</p>
+                        <p class="title">{{__('project.chance_for_you', ['total'=> $projects->total()])}}</p>
                         <div class="box">
                         <span class="show-filter mr-2">
                             {{__('project.search')}}
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="box-filter">
-                        <p class="title_lg">{{__('project.chance_for_you', ['total'=> count($projects)])}}</p>
+                        <p class="title_lg">{{__('project.chance_for_you', ['total'=> $projects->total()])}}</p>
                         <div class="desc font-weight-bold">
                             {{__('project.search')}}
                         </div>
@@ -179,7 +179,7 @@
                                     </div>
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="Xem dự án"
-                                       class="btn_all medium d-block" target="_blank">
+                                       class="btn_all medium d-block">
                                         {{__('project.view_project')}}
                                         <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +275,7 @@
                                     </div>
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="Xem dự án"
-                                       class="btn_all medium d-block" target="_blank">
+                                       class="btn_all medium d-block" >
                                         {{__('project.view_project')}}
                                         <svg class="ml-2" width="21" height="20" viewBox="0 0 21 20" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">

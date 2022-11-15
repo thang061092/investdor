@@ -42,9 +42,9 @@ return [
     'personal_information' => "Thông tin cá nhân",
     'notification' => 'Thông báo',
     'login_fail' => 'Thông tin đăng nhập chưa chính xác',
-    'save_login'=> "Lưu thông tin đăng nhập",
-    'account'=>'Tài khoản',
-    'all_notification'=> 'Xem tất cả thông báo',
+    'save_login' => "Lưu thông tin đăng nhập",
+    'account' => 'Tài khoản',
+    'all_notification' => 'Xem tất cả thông báo',
     'birthday_not_null' => "Ngày sinh không để trống",
     'gender_not_null' => "Giới tính không để trống",
     'phone_number_not_null' => "Số điện thoại không để trống",
@@ -67,4 +67,8 @@ return [
     'image_news_not_null' => 'Ảnh bài viết không để trống',
     'name_category_not_null' => 'Tên danh mục không để trống',
     'desc_category_not_null' => 'Mô tả danh mục không để trống',
+    'not_authentication' => "Không xác thực tài khoản ?",
+    "account_is_locked" => 'Tài khoản đang bị khóa',
+    'email_account_already_exists' => 'Tài khoản email đã tồn tại'
+
 ];

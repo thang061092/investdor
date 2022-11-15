@@ -46,5 +46,11 @@ return [
     'address_company' => "Address company",
     'administrative_council' => 'Administrative Council',
     'investor' => 'Investor',
-    'other_documents'=>'Other documents',
+    'other_documents' => 'Other documents',
+    'effect' => 'Effect',
+    'expire' => 'Expire',
+    'success' => 'Success',
+    'warning' => 'Warning',
+    'fail' => 'Fail',
+    'investment'=> 'Investment'
 ];
