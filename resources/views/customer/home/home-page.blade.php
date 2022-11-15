@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 aside mb-lg-0 mb-3 wow fadeInLeft">
                     <div class="filter_mobile d-lg-none d-flex align-items-center justify-content-between">
-                        <p class="title">{{__('project.chance_for_you', ['total'=> $projects->total()])}}</p>
+                        <p class="title">{{__('project.chance_for_you', ['total'=> $projects->total() ?? 0])}}</p>
                         <div class="box">
                         <span class="show-filter mr-2">
                             {{__('project.search')}}
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="box-filter">
-                        <p class="title_lg">{{__('project.chance_for_you', ['total'=> $projects->total()])}}</p>
+                        <p class="title_lg">{{__('project.chance_for_you', ['total'=> $projects->total() ?? 0])}}</p>
                         <div class="desc font-weight-bold">
                             {{__('project.search')}}
                         </div>
