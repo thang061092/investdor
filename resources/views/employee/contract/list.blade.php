@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <h1 class="d-inline-block">Danh sách hợp đồng đầu tư<span
-                                    style="color: red">({{$contracts->total() ?? 0}})</span></h1>
+                                    style="color: red">({{count($contracts) > 0 ? $contracts->total() : 0}})</span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-primary" href="#" data-bs-toggle="dropdown">
