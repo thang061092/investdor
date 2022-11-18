@@ -25,12 +25,22 @@
                                     <div class="row">
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="title">{{__('profile.title')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="title" id="title"
-                                                        placeholder="{{__('profile.title')}}" >
+                                                <label for="title">{{__('profile.title_vi')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="title_vi" id="title_vi"
+                                                        placeholder="{{__('profile.title_vi')}}" >
                                             </div>
-                                            @if($errors->has('title'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title') }}</p>
+                                            @if($errors->has('title_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title_vi') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="title">{{__('profile.title_en')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="title_en" id="title_en"
+                                                        placeholder="{{__('profile.title_en')}}" >
+                                            </div>
+                                            @if($errors->has('title_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title_en') }}</p>
                                             @endif
                                         </div>
                                         <!-- <div class="col-md-7 col-sm-12">
@@ -77,13 +87,25 @@
                                         </div>
                                         <div class="col-md-7 col-sm-12 content">
                                             <div class="form-group mb-3">
-                                                <label for="content">{{__('profile.content')}}<span
+                                                <label for="content">{{__('profile.content_vi')}}<span
                                                         class="text-danger">*</span></label>
-                                                <textarea type="text" class="form-control" name="content" id="content"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.content')}}"></textarea>
+                                                <textarea type="text" class="form-control" name="content_vi" id="content_vi"
+                                                    rows="4" cols="50"    placeholder="{{__('profile.content_vi')}}"></textarea>
                                             </div>
-                                            @if($errors->has('content'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content') }}</p>
+                                            @if($errors->has('content_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content_vi') }}</p>
+                                            @endif
+                                        </div>
+
+                                        <div class="col-md-7 col-sm-12 content">
+                                            <div class="form-group mb-3">
+                                                <label for="content">{{__('profile.content_en')}}<span
+                                                        class="text-danger">*</span></label>
+                                                <textarea type="text" class="form-control" name="content_en" id="content_en"
+                                                    rows="4" cols="50"    placeholder="{{__('profile.content_en')}}"></textarea>
+                                            </div>
+                                            @if($errors->has('content_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content_en') }}</p>
                                             @endif
                                         </div>
  
@@ -110,5 +132,14 @@
     </div>
 @endsection
 @section('js')
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/tinymce.min.js'></script>
+<script>
+tinymce.init({
+    selector: '#content_en',
+});
+tinymce.init({
+    selector: '#content_vi',
+});
 
+</script>
 @endsection

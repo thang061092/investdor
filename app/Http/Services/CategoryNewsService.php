@@ -39,10 +39,13 @@ class CategoryNewsService
             $image = $this->uploadService->upload($request);
         }
         $data = [
-            CategoryNews::NAME => $request->name_category ?? "",
+            CategoryNews::NAME => $request->name_category_vi ?? "",
+            CategoryNews::NAME_EN => $request->name_category_en ?? "",
             CategoryNews::SLUG => Str::slug($request->name_category) ?? "",
+            CategoryNews::SLUG_EN => Str::slug($request->name_category_en) ?? "",
             CategoryNews::IMAGE => $image ?? "",
-            CategoryNews::DESCRIPTION => $request->desc_category ?? "",
+            CategoryNews::DESCRIPTION => $request->desc_category_vi ?? "",
+            CategoryNews::DESCRIPTION_EN => $request->desc_category_en ?? "",
             CategoryNews::STATUS   => CategoryNews::ACTIVE,
             CategoryNews::CREATED_BY    => session()->get('employee')['email'],
         ];
@@ -74,10 +77,13 @@ class CategoryNewsService
             $img_category = $this->uploadService->upload_param($request->img_category);
         }
         $data = [
-            CategoryNews::NAME => $request->name_category ?? "",
-            CategoryNews::SLUG => Str::slug($request->name_category) ?? "",
+            CategoryNews::NAME => $request->name_category_vi ?? "",
+            CategoryNews::NAME_EN => $request->name_category_en ?? "",
+            CategoryNews::SLUG => Str::slug($request->name_category_vi) ?? "",
+            CategoryNews::SLUG_EN => Str::slug($request->name_category_en) ?? "",
             CategoryNews::IMAGE => $img_category ?? "",
-            CategoryNews::DESCRIPTION => $request->desc_category ?? "",
+            CategoryNews::DESCRIPTION => $request->desc_category_vi ?? "",
+            CategoryNews::DESCRIPTION_EN => $request->desc_category_en ?? "",
             CategoryNews::CREATED_BY    => session()->get('employee')['email'],
         ];
         $update = $this->categoryRepo->update($id, $data);

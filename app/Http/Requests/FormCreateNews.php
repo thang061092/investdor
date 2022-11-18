@@ -26,9 +26,9 @@ class FormCreateNews extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title_vi' => 'required',
             'category' => 'required',
-            'content'  => 'required',
+            'content_vi'  => 'required',
             // 'img_news'  => 'required',
         ];
     }
@@ -36,9 +36,9 @@ class FormCreateNews extends FormRequest
     public function messages()
     {
         return [
-            "title.required" => __('auth.title_not_null'),
+            "title_vi.required" => __('auth.title_not_null'),
             "category.required" => __('auth.category_not_null'),
-            "content.required" => __('auth.content_not_null'),
+            "content_vi.required" => __('auth.content_not_null'),
             // "img_news.required" => __('auth.image_news_not_null'),
         ];
 

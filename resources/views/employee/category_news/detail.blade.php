@@ -6,7 +6,7 @@
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">{{__('page_name.update_news')}}</a>
+                                                                   class="text-info">{{__('page_name.detail_category')}}</a>
                 </li>
             </ol>
         </div>
@@ -24,39 +24,50 @@
                                 @csrf 
                                 <div class="card-body ">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-12">
+                                    <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="title">{{__('profile.name_category')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="name_category" id="name_category"
-                                                    value="{{$detail->name}}" disabled>
+                                                <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_vi" id="name_category_vi" disabled
+                                                    value="{{$detail->name}}" >
                                                         
                                             </div>
-                                            @if($errors->has('name_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category') }}</p>
+                                            @if($errors->has('name_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_en" id="name_category_en" disabled
+                                                    value="{{$detail->name_en}}" >
+                                                        
+                                            </div>
+                                            @if($errors->has('name_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-7 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
-                                                <label for="desc_category">{{__('profile.desc_category')}}<span
+                                                <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
-                                                <textarea disabled type="text" class="form-control" name="desc_category" id="desc_category"
+                                                <textarea type="text" class="form-control" name="desc_category_vi" id="desc_category_vi" disabled
                                                     rows="4" cols="50">{{$detail->description}}</textarea>
                                             </div>
-                                            @if($errors->has('desc_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category') }}</p>
+                                            @if($errors->has('desc_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
                                             @endif
                                         </div>
-
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
-                                                <label for="img_category">{{__('profile.img_category')}}<span class="text-danger">*</span></label>
-                                                <img src='{{asset("$detail->image")}}'>
+                                                <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
+                                                        class="text-danger">*</span></label>
+                                                <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en" disabled
+                                                    rows="4" cols="50">{{$detail->desc_category_en}}</textarea>
                                             </div>
-                                            @if($errors->has('img_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_category') }}</p>
+                                            @if($errors->has('desc_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>
                                             @endif
                                         </div>
-  
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">

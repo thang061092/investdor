@@ -23,6 +23,8 @@ return [
     'update_news' => 'Update post',
     'create_news' => 'Create post',
     'list_category' => 'List category post',
-    'investment' => "Investment"
+    'investment' => "Investment",
+    'update_category' => "Update category",
+    'detail_category' => "Detail category",
 
 ];

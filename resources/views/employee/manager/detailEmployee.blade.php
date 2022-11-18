@@ -107,8 +107,15 @@
                                         <div class="col-md-7 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="bank_name" id="bank_name"
-                                                    disabled value="{{$user->bank_name}}">
+                                                <select disabled name="bank_name" class="form-control mb-3" id="banks" data-text="Chọn ngân hàng"
+                                                    data-default="Chọn">
+                                                @if(isset($banks))
+                                                    @foreach ($banks as $bank)
+                                                        <option value="{{$bank->code}}"
+                                                                @if($user->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
+                                                    @endforeach
+                                                @endif
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7 col-sm-12">

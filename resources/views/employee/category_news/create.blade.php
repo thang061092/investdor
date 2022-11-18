@@ -26,33 +26,44 @@
                                     <div class="row">
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="name_category">{{__('profile.name_category')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="name_category" id="name_category"
-                                                        placeholder="{{__('profile.name_category')}}" >
+                                                <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_vi" id="name_category_vi"
+                                                        placeholder="{{__('profile.name_category_vi')}}" >
                                             </div>
-                                            @if($errors->has('name_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category') }}</p>
+                                            @if($errors->has('name_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_en" id="name_category_en"
+                                                        placeholder="{{__('profile.name_category_en')}}" >
+                                            </div>
+                                            @if($errors->has('name_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-7 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
-                                                <label for="contedesc_categorynt">{{__('profile.desc_category')}}<span
+                                                <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
-                                                <textarea type="text" class="form-control" name="desc_category" id="desc_category"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category')}}"></textarea>
+                                                <textarea type="text" class="form-control" name="desc_category_vi" id="desc_category_vi"
+                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category_vi')}}"></textarea>
                                             </div>
-                                            @if($errors->has('desc_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category') }}</p>
+                                            @if($errors->has('desc_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
                                             @endif
                                         </div>
-
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
-                                                <label for="img_category">{{__('profile.img_category')}}<span class="text-danger">*</span></label>
-                                                <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.img_category')}}">
+                                                <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
+                                                        class="text-danger">*</span></label>
+                                                <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en"
+                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category_en')}}"></textarea>
                                             </div>
-                                            @if($errors->has('img_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_category') }}</p>
+                                            @if($errors->has('desc_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>
                                             @endif
                                         </div>
 

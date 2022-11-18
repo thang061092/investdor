@@ -75,6 +75,8 @@ Route::group(['middleware' => 'locale'], function () {
             Route::post('/step4', "Customer\InvestmentController@step3_submit")->name('investment.step3_submit');
         });
 
+        Route::post('/question','Customer\UserController@question')->name('question');
+
     });
 
     //employee

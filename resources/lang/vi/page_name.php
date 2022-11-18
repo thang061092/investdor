@@ -22,6 +22,8 @@ return [
     'list_news' => 'Danh sách bài viết',
     'update_news' => 'Cập nhật bài viết',
     'create_news' => 'Thêm mới bài viết',
-    'list_category' => 'Danh sách danh mục bài viết',
-    'investment' => "Đầu tư"
+    'list_category' => 'Danh sách danh mục',
+    'investment' => "Đầu tư",
+    'update_category' => "Cập nhật danh mục",
+    'detail_category' => "Chi tiết danh mục",
 ];

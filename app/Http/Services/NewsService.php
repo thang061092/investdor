@@ -39,12 +39,14 @@ class NewsService
             $image = $this->uploadService->upload_param($request->img_news);
         }
         $data = [
-            News::TITLE => $request->title ?? "",
-            News::SLUG => Str::slug($request->title) ?? "",
+            News::TITLE => $request->title_vi ?? "",
+            News::TITLE_EN => $request->title_en ?? "",
+            News::SLUG => Str::slug($request->title_vi) ?? Str::slug($request->title_en),
             News::CATEGORY => $request->category ?? "",
             News::CATEGORY_SLUG => Str::slug($request->category) ?? "",
             News::IMAGE => $image ?? "",
-            News::CONTENT => $request->content ?? "",
+            News::CONTENT => $request->content_vi ?? "",
+            News::CONTENT_EN => $request->content_en ?? "",
             News::STATUS    => News::ACTIVE,
             News::CREATED_BY    => session()->get('employee')['email'],
         ];
@@ -77,11 +79,15 @@ class NewsService
             $image = $this->uploadService->upload_param($request->img_news);
         }
         $data = [
-            News::TITLE => $request->title ?? "",
-            News::SLUG => Str::slug($request->title) ?? "",
+            News::TITLE => $request->title_vi ?? "",
+            News::TITLE_EN => $request->title_en ?? "",
+            News::SLUG => Str::slug($request->title_vi) ?? Str::slug($request->title_en),
             News::CATEGORY => $request->category ?? "",
-            News::CONTENT=>  $request->content ?? "",
+            News::CATEGORY_SLUG => Str::slug($request->category) ?? "",
+            News::CONTENT => $request->content_vi ?? "",
+            News::CONTENT_EN => $request->content_en ?? "",
             News::IMAGE => $image ?? "",
+            News::UPDATED_BY    => session()->get('employee')['email'],
         ];
         $news = $this->newsRepository->update($id, $data);
         return $news;

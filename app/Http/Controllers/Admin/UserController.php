@@ -10,24 +10,30 @@ use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Http\Services\NewsService;
 use App\Http\Services\CategoryNewsService;
+use App\Http\Services\QuestionService;
 use App\Models\Users;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\FormCreateEmployee;
 use App\Http\Requests\FormCreateNews;
 use App\Http\Requests\FormCategory;
 use App\Http\Requests\FormUpdateEmployee;
+use App\Http\Services\BankService;
 
 class UserController extends BaseController
 {
     protected $userService;
     protected $newsService;
     protected $categoryService;
+    protected $bankService;
+    protected $questionService;
 
-    public function __construct(UserService $userService, NewsService $newsService, CategoryNewsService $categoryService)
+    public function __construct(UserService $userService, NewsService $newsService, CategoryNewsService $categoryService, BankService $bankService, QuestionService $questionService)
     {
         $this->userService = $userService;
         $this->newsService = $newsService;
         $this->categoryService = $categoryService;
+        $this->bankService = $bankService;
+        $this->questionService = $questionService;
     }
 
     public function find(Request $request)
@@ -94,9 +100,11 @@ class UserController extends BaseController
     }
 
     public function edit_employee($id) {
+        $allBankName = $this->bankService->getAllBank();
         $user = $this->userService->find($id);
         return view('employee.manager.updateEmployee', [
             'user' => $user,
+            'banks' => $allBankName,
         ]);
     }
 
@@ -112,8 +120,10 @@ class UserController extends BaseController
 
     public function detail_employee($id) {
         $user = $this->userService->find($id);
+        $allBankName = $this->bankService->getAllBank();
         return view('employee.manager.detailEmployee', [
             'user' => $user,
+            'banks' => $allBankName,
         ]);
     }
 
@@ -297,5 +307,15 @@ class UserController extends BaseController
         return view('employee.category_news.detail',[
             'detail' => $detail,
         ]);
+    }
+
+    public function question(FormQuest $request) {
+        $create = $this->questionService->create($request);
+        if ($create) {
+            toastr()->success(__("message.send_question_success"), __('message.success'));
+            return redirect()->route('customer.user.manager');
+        }
+        toastr()->error(__("message.send_question_fail"), __('message.fail'));
+        return redirect()->route('customer.user.manager');
     }
 }

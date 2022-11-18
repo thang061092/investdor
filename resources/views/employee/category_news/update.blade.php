@@ -6,7 +6,7 @@
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">{{__('page_name.update_news')}}</a>
+                                                                   class="text-info">{{__('page_name.update_category')}}</a>
                 </li>
             </ol>
         </div>
@@ -26,24 +26,46 @@
                                     <div class="row">
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="title">{{__('profile.name_category')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="name_category" id="name_category"
+                                                <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_vi" id="name_category_vi"
                                                     value="{{$detail->name}}" >
                                                         
                                             </div>
-                                            @if($errors->has('name_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category') }}</p>
+                                            @if($errors->has('name_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-7 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name_category_en" id="name_category_en"
+                                                    value="{{$detail->name_en}}" >
+                                                        
+                                            </div>
+                                            @if($errors->has('name_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-7 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
-                                                <label for="desc_category">{{__('profile.desc_category')}}<span
+                                                <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
-                                                <textarea type="text" class="form-control" name="desc_category" id="desc_category"
+                                                <textarea type="text" class="form-control" name="desc_category_vi" id="desc_category_vi"
                                                     rows="4" cols="50">{{$detail->description}}</textarea>
                                             </div>
-                                            @if($errors->has('desc_category'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category') }}</p>
+                                            @if($errors->has('desc_category_vi'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 desc_category">
+                                            <div class="form-group mb-3">
+                                                <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
+                                                        class="text-danger">*</span></label>
+                                                <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en"
+                                                    rows="4" cols="50">{{$detail->desc_category_en}}</textarea>
+                                            </div>
+                                            @if($errors->has('desc_category_en'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>
                                             @endif
                                         </div>
 
@@ -58,19 +80,6 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_category') }}</p>
                                             @endif
                                         </div> -->
-                                        <div class="col-md-7 col-sm-12">
-                                            <div class="mb-3">
-                                                <label for="img_category" class="img-ct">
-                                                    <input type="file" name="img_category" accept="image/*" class="d-none"
-                                                            id="img_category" value="{{!empty($detail->image) ? $detail->image : ''}}"
-                                                            onchange="document.getElementById('img-category').src = window.URL.createObjectURL(this.files[0])"/>
-                                                        <img id="img-category" src="{{!empty($detail->image) ? $detail->image : asset('frontend/images/default.png')}}"
-                                                            class="img-fluid" alt="" width="250px" height="250px"/>
-                                                </label>
-                                                <label class="form-label"><strong>{{__('profile.img_category')}}</strong><span
-                                                                class="text-danger">*</span></label>
-                                            </div>
-                                        </div>
                                        
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">

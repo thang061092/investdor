@@ -45,10 +45,16 @@ return [
     'category' => "Category",
     'content' => "Content",
     'img_news' => "Post photo",
-    'name_category' => "Category name",
+    'name_category_vi' => "Category name (Vietnamese)",
+    'name_category_en' => "Category name (English)",
     'img_category' => "Category photo",
-    'desc_category' => "Category description",
+    'desc_category_vi' => "Category description (Vietnamese)",
+    'desc_category_en' => "Category description (English)",
     'male' => 'Male',
-    'female' => "Female"
+    'female' => "Female",
+    'content_vi' => "Content (Vietnamese)",
+    'content_en' => "Content (English)",
+    'title_vi' => "Title post (Vietnamese)",
+    'title_en' => "Title post (English)",
 
 ];

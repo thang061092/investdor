@@ -76,7 +76,6 @@
                                     <tr>
                                         <th style="text-align: center">STT</th>
                                         <th style="text-align: center">Tên danh mục</th>
-                                        <th style="text-align: center">Ảnh danh mục</th>
                                         <th style="text-align: center">Ngày tạo</th>
                                         <th style="text-align: center">Người tạo</th>
                                         <th style="text-align: center">Trạng thái</th>
@@ -97,7 +96,6 @@
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
                                                 <td>{{$item->name}}</td>
-                                                <td><img src='{{asset("$item->image")}}' with="100px" height="100px"></td>
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->created_by}}</td>
                                                 <td>
