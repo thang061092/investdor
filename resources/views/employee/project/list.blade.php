@@ -83,7 +83,6 @@
                                         <th style="text-align: center">Loại dự án</th>
                                         <th style="text-align: center">Trạng thái</th>
                                         <th style="text-align: center">Địa chỉ</th>
-                                        <th style="text-align: center">Ngày tạo</th>
                                         <th style="text-align: center">Người tạo</th>
                                     </tr>
                                     </thead>
@@ -101,7 +100,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <button class="btn btn-info">Thao tác</button>
+                                                            <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
@@ -143,7 +143,8 @@
                                                 <td>{{number_format_vn($project->value_part)}}</td>
                                                 <td>{{type_project($project->type)}}</td>
                                                 <td>
-                                                    <select class="form-control status_project">
+                                                    <select class="form-control status_project" name="status_project"
+                                                            data-id="{{$project->id}}">
                                                         @foreach(status_project() as $k => $v)
                                                             <option
                                                                 value="{{$k}}" {{$k == $project->status ? "selected" : ''}}>{{$v}}</option>
@@ -151,10 +152,14 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    {{$project->address_vi. ', '. $project->ward->name.', '. $project->district->name .', '. $project->city->name}}
+                                                    {{$project->address_vi}}<br>{{$project->ward->name}}
+                                                    <br>{{ $project->district->name }}<br>{{ $project->city->name}}
                                                 </td>
-                                                <td>{{$project->created_at}}</td>
-                                                <td>{{$project->created_by}}</td>
+                                                <td>
+                                                    {{$project->created_at}}
+                                                    <br>
+                                                    {{$project->created_by}}
+                                                </td>
                                             </tr>
                                         @endforeach
                                         <div class="col-12 col-md-12">
@@ -182,6 +187,6 @@
             </div>
         </div>
     </div>
-
+    <script src="{{asset('js/project/index.js')}}"></script>
 @endsection
 
