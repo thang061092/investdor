@@ -201,6 +201,7 @@ if (!function_exists('type_method')) {
     {
         $leadstatus = [
             1 => __('project.investment'),
+            2 => __('project.expiration'),
         ];
         if ($status === null) return $leadstatus;
         foreach ($leadstatus as $key => $item) {

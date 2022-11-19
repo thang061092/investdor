@@ -134,6 +134,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/get_bill/{id}', "Admin\TransactionController@get_bill")->name('transaction.get_bill');
                 Route::post('/update_bill', "Admin\TransactionController@update_bill")->name('transaction.update_bill');
                 Route::get('/list', "Admin\TransactionController@index")->name('transaction.index');
+                Route::post('/payment_contract', "Admin\TransactionController@payment_contract")->name('transaction.payment_contract');
             });
 
             Route::prefix('/contract')->group(function () {

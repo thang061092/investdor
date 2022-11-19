@@ -22,6 +22,15 @@
                     <div class="row mb-2">
                         <div class="col-12">
                             <h1 class="d-inline-block">Chi tiết</h1>
+                            <div class="float-right d-inline-block" id="filter-data">
+                                @if($contract->status == \App\Models\Contract::EFFECT)
+                                    <a class="btn btn-success" data-bs-toggle="modal"
+                                       data-bs-target="#payment_contract" data-id="{{$contract->id}}">
+                                        <i class="fas fa-credit-card"></i>&nbsp;
+                                        Thanh toán
+                                    </a>
+                                @endif
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -55,11 +64,11 @@
                                     <tr>
                                         <th>Ngày bắt đầu</th>
                                         <td>{{!empty($contract->date_init) ? date('d-m-Y', $contract->date_init) : ''}}</td>
-                                        <th>Dự án</th>
+                                        <th>Ngày kết thúc dự kiến</th>
                                         <td>{{!empty($contract->due_date) ? date('d-m-Y', $contract->due_date) : ''}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Ngày kết thúc dự kiến</th>
+                                        <th>Ngày kết thúc thực tế</th>
                                         <td>{{!empty($contract->expire_date) ? date('d-m-Y', $contract->expire_date) : ''}}</td>
                                         <th>Trạng thái</th>
                                         <td><span
@@ -120,4 +129,59 @@
             </div>
         </div>
     </div>
+    <div class="modal modal-blur" id="payment_contract" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="modal-header">
+                    <h5 class="modal-title d-inline-block title-update-period">{{$contract->realEstateProject->name_vi}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiền gốc thanh toán :<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control tien_goc" type="text"
+                               placeholder="Nhập số tiền"
+                               name="tien_goc">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Tiền lãi thanh toán<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control tien_lai" type="text"
+                               placeholder="Nhập số tiền"
+                               name="tien_lai">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-bold">Ngày thanh toán<span
+                                class="text-danger">*</span></label>
+                        <input class="form-control ngay_thanh_toan" type="date"
+                               placeholder=""
+                               name="ngay_thanh_toan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="avatar" class="img-ct">
+                            <input type="file" name="chung_tu" accept="image/*" class="d-none"
+                                   id="avatar"
+                                   onchange="document.getElementById('img-avatar').src = window.URL.createObjectURL(this.files[0])"/>
+                            <img id="img-avatar" src="{{asset('frontend/images/default.png')}}"
+                                 class="img-fluid" alt="" width="250px" height="250px"/>
+                        </label>
+                        <label class="form-label"><strong>Chứng từ</strong><span
+                                class="text-danger">*</span></label>
+                    </div>
+                    <input class="form-control interest_period_id" type="hidden"
+                           name="contract_id" value="{{$contract->id ?? ''}}">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn_payment_contract">
+                        Xác
+                        nhận
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{asset('js/transaction/index.js')}}"></script>
 @endsection

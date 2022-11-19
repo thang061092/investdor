@@ -93,4 +93,49 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('.btn_payment_contract').click(function () {
+        let id = $("input[name='contract_id']").val()
+        let tien_goc = $("input[name='tien_goc']").val()
+        let tien_lai = $("input[name='tien_lai']").val()
+        let ngay_thanh_toan = $("input[name='ngay_thanh_toan']").val()
+        let file = $("input[name='chung_tu']")[0].files[0]
+        let formData = new FormData();
+        formData.append('id', id);
+        formData.append('principal', tien_goc);
+        formData.append('payment_date', ngay_thanh_toan);
+        formData.append('money_interest', tien_lai);
+        formData.append('file', file);
+        $.ajax({
+            dataType: 'json',
+            enctype: 'multipart/form-data',
+            url: window.origin + '/admin/transaction/payment_contract',
+            type: 'POST',
+            data: formData,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $(".theloading").show();
+            },
+            success: function (data) {
+                $(".theloading").hide();
+                if (data.status == 200) {
+                    $('#confirm-bill').modal('hide')
+                    toastr.success(data.message ?? 'Success')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                } else {
+                    toastr.error(data.message ?? 'Fail')
+                }
+            },
+            error: function () {
+                $(".theloading").hide();
+                toastr.error('Fail')
+            }
+        })
+    })
 });
