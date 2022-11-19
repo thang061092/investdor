@@ -34,7 +34,8 @@ class Transaction extends BaseModel
     const WARNING = 5;
 
     //type_method
-    const INVESTMENT = 1;
+    const INVESTMENT = 1; //đầu tư
+    const EXPIRATION = 2; // đáo hạn
 
     protected $table = 'transaction';
 

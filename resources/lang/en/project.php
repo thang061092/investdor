@@ -52,5 +52,6 @@ return [
     'success' => 'Success',
     'warning' => 'Warning',
     'fail' => 'Fail',
-    'investment'=> 'Investment'
+    'investment' => 'Investment',
+    'expiration' => 'Expiration'
 ];

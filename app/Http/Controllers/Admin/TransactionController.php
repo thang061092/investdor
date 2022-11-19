@@ -76,4 +76,20 @@ class TransactionController extends BaseController
         $transactions = $this->transactionService->get_list($request);
         return view('employee.transaction.list', compact('transactions'));
     }
+
+    public function payment_contract(Request $request)
+    {
+        $message = $this->transactionService->validate_payment_contract($request);
+        if (count($message) > 0) {
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $message[0]);
+        } else {
+            try {
+                $transaction = $this->transactionService->payment_contract($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $transaction);
+            } catch (\Exception $exception) {
+                $this->logsService->create($request->all(), 'TransactionController/update_bill', $exception);
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $exception->getMessage());
+            }
+        }
+    }
 }

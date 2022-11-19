@@ -53,6 +53,7 @@ return [
     'success' => "Thành công",
     'warning' => 'Chờ xử lý',
     'fail' => 'Thất bại',
-    'investment'=> 'Đầu tư'
+    'investment'=> 'Đầu tư',
+    'expiration' => 'Đáo hạn'
 
 ];

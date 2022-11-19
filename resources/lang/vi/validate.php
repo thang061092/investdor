@@ -44,5 +44,7 @@ return [
     'upload_fail'=> 'Upload thất bại',
     'id_not_null' => 'ID không để trống',
     'transaction_does_not_exist'=> 'Giao dịch không tồn tại',
-    'invalid_status' => 'Tình trạng không hợp lệ'
+    'invalid_status' => 'Tình trạng không hợp lệ',
+    'principal_not_null'=> 'Tiền gốc không để trống',
+    'money_interest_not_null'=> 'Tiền lãi không để trống',
 ];
