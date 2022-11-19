@@ -41,7 +41,8 @@ class DocumentProjectService
             $data['name_file_en'] = $request->name_file_en;
         }
         if (!empty($request->file) && $request->file != 'undefined') {
-            $data['link'] = $this->uploadService->upload($request);
+            $data['link'] = $this->uploadService->upload_param($request->file);
+            $data['type_file']=  $request->file->getClientOriginalExtension();
         }
         $this->documentProjectRepository->update($request->id, $data);
         return;

@@ -61,7 +61,21 @@
                                                 <td>{{++$key}}</td>
                                                 <td>{{$document->title_vi}}</td>
                                                 <td>{{$document->name_file_vi}}</td>
-                                                <td>{{$document->link}}</td>
+                                                <td>
+                                                    <a href="{{$document->link}}" target="_blank">
+                                                        @if(in_array($document->type_file, ['xlsx', 'cvs']))
+                                                            <img src="{{asset('image/file/filexls.png')}}">
+                                                        @elseif(in_array($document->type_file, ['jpg', 'jpeg','png']))
+                                                            <img src="{{asset('image/file/file_image.png')}}">
+                                                        @elseif(in_array($document->type_file, ['mp3', 'mp4']))
+                                                            <img src="{{asset('image/file/file_audio.png')}}">
+                                                        @elseif(in_array($document->type_file, ['pdf']))
+                                                            <img src="{{asset('image/file/file_pdf.png')}}">
+                                                        @else
+                                                            <img src="{{asset('image/file/file_adđf.png')}}">
+                                                        @endif
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-success edit_document" data-bs-toggle="modal"
                                                        data-bs-target="#edit_document" data-id="{{$document->id}}"><i

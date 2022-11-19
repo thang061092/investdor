@@ -32,16 +32,17 @@ $(document).ready(function () {
                 $(".theloading").hide();
                 if (data.status == 200) {
                     $('#add_document').modal('hide')
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
                 } else {
-                    alert(data.message)
+                    toastr.error(data.message ?? 'error')
                 }
             },
             error: function () {
                 $(".theloading").hide();
-                alert('error')
+                toastr.error('error')
             }
         })
     })
@@ -109,16 +110,17 @@ $(document).ready(function () {
                 $(".theloading").hide();
                 if (data.status == 200) {
                     $('#add_document').modal('hide')
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
                 } else {
-                    alert(data.message)
+                    toastr.error(data.message ?? 'error')
                 }
             },
             error: function () {
                 $(".theloading").hide();
-                alert('error')
+                toastr.error('error')
             }
         })
     })

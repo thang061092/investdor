@@ -71,4 +71,9 @@ class DistrictService
         }
         return false;
     }
+
+    public function get_district_by_city($id)
+    {
+        return $this->districtRepository->findMany(['city_id' => $id]);
+    }
 }

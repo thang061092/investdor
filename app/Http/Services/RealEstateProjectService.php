@@ -236,4 +236,25 @@ class RealEstateProjectService
             MemberCompany::INVESTOR_PROJECT_ID => $request->investor_project_id
         ]);
     }
+
+    public function update($request, $id)
+    {
+        $data = [
+            RealEstateProject::NAME_VI => $request->project_name_vi ?? null,
+            RealEstateProject::NAME_EN => $request->project_name_en ?? null,
+            RealEstateProject::SLUG_VI => slugify($request->project_name_vi),
+            RealEstateProject::SLUG_EN => slugify($request->project_name_en),
+            RealEstateProject::CITY_ID => $request->city_project ?? null,
+            RealEstateProject::DISTRICT_ID => $request->district_project ?? null,
+            RealEstateProject::WARD_ID => $request->ward_project ?? null,
+            RealEstateProject::ADDRESS_VI => $request->address_project ?? null,
+            RealEstateProject::TOTAL_VALUE => $request->total_value_project ?? null,
+            RealEstateProject::PART => $request->total_part_project ?? null,
+            RealEstateProject::VALUE_PART => $request->value_part_project ?? null,
+            RealEstateProject::DESCRIPTION_VI => $request->description_project_vi ?? null,
+            RealEstateProject::DESCRIPTION_EN => $request->description_project_en ?? null,
+            RealEstateProject::UPDATED_BY => Session::get('employee')['email'] ?? null
+        ];
+        $this->estateProjectRepository->update($id, $data);
+    }
 }

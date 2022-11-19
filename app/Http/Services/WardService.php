@@ -71,4 +71,9 @@ class WardService
         return false;
 
     }
+
+    public function get_ward_by_district_id($id)
+    {
+        return $this->wardRepository->findMany(['district_id' => $id]);
+    }
 }

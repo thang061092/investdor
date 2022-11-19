@@ -100,7 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="" title="" class="btn_all lg mt-lg-4 mt-4 mb-lg-0 mb-4">Xem ngay các khoản đầu tư</a>
+                    <a href="{{route('customer.home_page')}}" title="" class="btn_all lg mt-lg-4 mt-4 mb-lg-0 mb-4">Xem ngay các khoản đầu tư</a>
                 </div>
                 <div class="col-lg-6 max-w wow fadeInRight">
                     <p class="title_small">OUR GROWTH BUSINESS</p>
@@ -494,7 +494,7 @@
                 took a galley of type and scrambled it to make a type specimen
                 book.of Lorem Ipsum. ”
             </div>
-            <a href="" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem ngay các khoản đầu tư</a>
+            <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem ngay các khoản đầu tư</a>
         </div>
     </section>
     <section class="feel section_all">
