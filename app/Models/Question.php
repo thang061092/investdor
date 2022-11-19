@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     //
-    protected $table = 'news';
+    protected $table = 'question';
     protected $primaryKey = 'id';
 
     const ID = 'id';

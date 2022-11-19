@@ -56,5 +56,9 @@ return [
     'content_en' => "Content (English)",
     'title_vi' => "Title post (Vietnamese)",
     'title_en' => "Title post (English)",
+    'yet_answer' => "Yet answer",
+    'answered' => "Answered",
+    'type_question' => "Status",
+    'question' => "Question",
 
 ];

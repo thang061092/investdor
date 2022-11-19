@@ -55,4 +55,8 @@ return [
     'female' => "Nữ",
     'title_vi' => "Tiêu đề bài đăng (Tiếng Việt)",
     'title_en' => "Tiêu đề bài đăng (Tiếng Anh)",
+    'yet_answer' => "Chưa trả lời",
+    'answered' => "Đã trả lời",
+    'type_question' => "Trạng thái",
+    'question' => "Câu hỏi",
 ];

@@ -26,23 +26,25 @@
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="accuracy">{{__('profile.status_auth')}}<span class="text-danger">*</span></label>
-                                                @if ($customer->accuracy == 0)
-                                                    <span class="bg bg-danger">
-                                                    {{__('profile.yet_auth')}}
-                                                    </span>
-                                                @elseif ($customer->accuracy == 1)
-                                                    <span class="bg bg-success">
-                                                    {{__('profile.success_auth')}}
-                                                    </span>
-                                                @elseif ($customer->accuracy == 2)
-                                                    <span class="bg bg-warning">
-                                                    {{__('profile.wait_auth')}}
-                                                    </span>
-                                                @else 
-                                                    <span class="bg bg-danger">
-                                                    {{__('profile.fail_auth')}}
-                                                    </span>
-                                                @endif
+                                                <p class="form-control">
+                                                    @if ($customer->accuracy == 0)
+                                                        <span class="bg bg-danger">
+                                                        {{__('profile.yet_auth')}}
+                                                        </span>
+                                                    @elseif ($customer->accuracy == 1)
+                                                        <span class="bg bg-success">
+                                                        {{__('profile.success_auth')}}
+                                                        </span>
+                                                    @elseif ($customer->accuracy == 2)
+                                                        <span class="bg bg-warning">
+                                                        {{__('profile.wait_auth')}}
+                                                        </span>
+                                                    @else 
+                                                        <span class="bg bg-danger">
+                                                        {{__('profile.fail_auth')}}
+                                                        </span>
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="col-md-7 col-sm-12">

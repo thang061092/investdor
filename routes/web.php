@@ -75,7 +75,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::post('/step4', "Customer\InvestmentController@step3_submit")->name('investment.step3_submit');
         });
 
-        Route::post('/question','Customer\UserController@question')->name('question');
+        // Route::post('/question','Customer\UserController@question')->name('question');
 
     });
 
@@ -133,6 +133,10 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_category/{id}', 'Admin\UserController@update_category')->name('customer.employee.update_category');
                 Route::get('/detail_category/{id}', 'Admin\UserController@detail_category')->name('customer.employee.detail_category');
                 Route::post('/update_status_category', 'Admin\UserController@update_status_category')->name('customer.employee.update_status_category');
+                Route::post('/question','Customer\UserController@question')->name('question');
+                Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
+                Route::get('/detail/{id}','Admin\UserController@detail_question')->name('detail_question');
+                Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
             });
 
             Route::prefix('/customer')->group(function () {

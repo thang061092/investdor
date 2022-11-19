@@ -200,7 +200,7 @@
                                                 <label class="form-label"><strong>{{__('profile.backside')}}</strong><span
                                                                 class="text-danger">*</span></label>
                                                     <input type="file" name="img_after" accept="image/*" class="d-none"
-                                                            id="img_after" value="{{!empty($user->card_back) ? $user->card_back : ''}}"
+                                                            id="img_after" value=""
                                                             onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
                                                         <img id="img-after" src="{{!empty($user->card_back) ? $user->card_back : asset('frontend/images/default.png')}}"
                                                             class="img-fluid" alt="" width="250px" height="250px"/>

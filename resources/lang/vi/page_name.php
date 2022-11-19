@@ -26,4 +26,5 @@ return [
     'investment' => "Đầu tư",
     'update_category' => "Cập nhật danh mục",
     'detail_category' => "Chi tiết danh mục",
+    'list_question' => "Danh sách câu hỏi",
 ];

@@ -43,20 +43,21 @@
                         </div>
                     </div>
                     <div class="col-md-7 col-12">
-                        <form action="{{route('question')}}" class="form_footer" method="" accept-charset="utf-8">
-                            <input type="text" class="form-control" placeholder="{{__('messsage.full_name')}}" name="name"
-                                @if($errors->has('name'))
-                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name') }}</p>
-                                @endif/>
-                            <input type="text" class="form-control" placeholder="{{__('messsage.email')}}" name="email"                            
-                                @if($errors->has('email'))
-                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
-                                @endif/>
-                            <textarea name="question" class="form-control" placeholder="{{__('messsage.question')}}"                                 
-                                @if($errors->has('question'))
-                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('question') }}</p>
-                                @endif></textarea>
-                            <button class="btn_all lg bg-white" type="submit">
+                        <form action="{{route('question')}}" class="form_footer" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+                            @csrf
+                            <input type="text" class="form-control" placeholder="{{__('profile.full_name')}}" name="name"/>
+                            @if($errors->has('name'))
+                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name') }}</p>
+                            @endif
+                            <input type="text" class="form-control" placeholder="{{__('profile.email')}}" name="email"/>
+                            @if($errors->has('email'))
+                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
+                            @endif
+                            <textarea name="question" class="form-control" placeholder="{{__('messsage.question')}}"></textarea>
+                            @if($errors->has('question'))
+                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('question') }}</p>
+                            @endif>
+                            <button class="btn_all lg bg-white" type="submit" name="submit">
                                 Gửi phản hồi
                             </button>
                         </form>

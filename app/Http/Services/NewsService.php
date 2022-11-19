@@ -75,6 +75,7 @@ class NewsService
 
     public function update_news($request, $id) 
     {
+        $detail = $this->newsRepository->find($id);
         if ($request->img_news) {
             $image = $this->uploadService->upload_param($request->img_news);
         }
@@ -86,7 +87,7 @@ class NewsService
             News::CATEGORY_SLUG => Str::slug($request->category) ?? "",
             News::CONTENT => $request->content_vi ?? "",
             News::CONTENT_EN => $request->content_en ?? "",
-            News::IMAGE => $image ?? "",
+            News::IMAGE => !empty($request->img_news) ? $image : $detail['image'],
             News::UPDATED_BY    => session()->get('employee')['email'],
         ];
         $news = $this->newsRepository->update($id, $data);

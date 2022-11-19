@@ -111,6 +111,7 @@ class UserController extends BaseController
     public function update_employee(FormUpdateEmployee $request, $id) {
         $user = $this->userService->update_employee($request, $id);
         if ($user) {
+            Session::put('employee', $user);
             toastr()->success(__("message.update_success"), __('message.success'));
             return redirect()->route('customer.employee.edit_employee',['id' => $id]);
         }
@@ -309,13 +310,21 @@ class UserController extends BaseController
         ]);
     }
 
-    public function question(FormQuest $request) {
-        $create = $this->questionService->create($request);
-        if ($create) {
-            toastr()->success(__("message.send_question_success"), __('message.success'));
-            return redirect()->route('customer.user.manager');
+    public function list_question() 
+    {
+        $questions = $this->questionService->get_all();
+        if ($questions) {
+            return view('employee.question.index', [
+                'questions' => $questions,
+            ]);
         }
-        toastr()->error(__("message.send_question_fail"), __('message.fail'));
-        return redirect()->route('customer.user.manager');
+    }
+
+    public function detail_question($id)
+    {
+        $detail = $this->questionService->find($id);
+        return view('employee.question.detail',[
+            'detail' => $detail,
+        ]);
     }
 }

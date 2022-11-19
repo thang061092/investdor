@@ -246,12 +246,12 @@ class UserService
             Users::DISTRICT => $request->district ?? "",
             Users::WARD => $request->ward ?? "",
             Users::ADDRESS => $request->specific_address ?? "",
-            Users::AVATAR => $avatar ?? "",
+            Users::AVATAR => !empty($request->avatar) ? $avatar : session()->get('employee')['avatar'],
             Users::IDENTITY => $request->identity ?? "",
             Users::DATE_IDENTITY => $request->date_identity ?? "",
             Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
-            Users::FRONT_FACING_CARD => $img_before ?? "",
-            Users::CARD_BACK => $img_after ?? "",
+            Users::FRONT_FACING_CARD => !empty($request->img_before) ? $img_before : session()->get('employee')['front_facing_card'],
+            Users::CARD_BACK => !empty($request->img_after) ? $img_after : session()->get('employee')['card_back'],
         ];
         $user = $this->userRepository->update($id, $data);
         return $user;

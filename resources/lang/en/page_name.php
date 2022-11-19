@@ -26,5 +26,6 @@ return [
     'investment' => "Investment",
     'update_category' => "Update category",
     'detail_category' => "Detail category",
+    'list_question' => "List questions"
 
 ];

@@ -19,6 +19,8 @@ use App\Http\Services\UploadService;
 use App\Http\Requests\FormUpdateProfile;
 use App\Http\Requests\FormAuth;
 use Toastr;
+use App\Http\Requests\FormQuestion;
+use App\Http\Services\QuestionService;
 
 class UserController extends BaseController
 {
@@ -30,6 +32,7 @@ class UserController extends BaseController
     protected $uploadService;
     protected $billsService;
     protected $contractService;
+    protected $questionService;
 
     public function __construct(
         UserService $userService,
@@ -39,7 +42,8 @@ class UserController extends BaseController
         WardService $wardService,
         UploadService $uploadService,
         BillsService $billsService,
-        ContractService $contractService
+        ContractService $contractService,
+        QuestionService $questionService
     )
     {
         $this->userService = $userService;
@@ -50,6 +54,7 @@ class UserController extends BaseController
         $this->uploadService = $uploadService;
         $this->billsService = $billsService;
         $this->contractService = $contractService;
+        $this->questionService = $questionService;
     }
 
     public function find(Request $request)
@@ -125,6 +130,7 @@ class UserController extends BaseController
         $userId = $user['id'];
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
+            Session::put('customer', $update_profile);
             toastr()->success('Cập nhật thành công :)', __('message.success'));
             return redirect("/customer/user/manager?main_tab=profile");
         }
@@ -161,5 +167,16 @@ class UserController extends BaseController
         }
         toastr()->error(__("message.send_auth_fail"), __('message.fail'));
         return redirect("/customer/user/manager?main_tab=profile");
+    }
+
+    public function question(Request $request) {
+        dd('hre');
+        $create = $this->questionService->create($request);
+        if ($create) {
+            toastr()->success(__("message.send_question_success"), __('message.success'));
+            return redirect()->route('customer.home_page');
+        }
+        toastr()->error(__("message.send_question_fail"), __('message.fail'));
+        return redirect()->route("customer.home_page");
     }
 }
