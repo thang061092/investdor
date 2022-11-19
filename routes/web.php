@@ -103,6 +103,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/edit_document', "Admin\ProjectController@update_document")->name('project.update_document');
                 Route::get('/show_document/{id}', "Admin\ProjectController@show_document")->name('project.show_document');
                 Route::post('/add_member_company', "Admin\ProjectController@add_member_company")->name('project.add_member_company');
+                Route::post('/update_post/{id}', "Admin\ProjectController@update_post")->name('project.update_post');
             });
 
             Route::prefix('/interest')->group(function () {

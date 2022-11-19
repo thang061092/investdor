@@ -75,15 +75,16 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">STT</th>
+                                        <th style="text-align: center"></th>
                                         <th style="text-align: center">Tên dự án</th>
                                         <th style="text-align: center">Giá trị dự án</th>
                                         <th style="text-align: center">Số phần</th>
                                         <th style="text-align: center">Giá trị 1 phần</th>
                                         <th style="text-align: center">Loại dự án</th>
                                         <th style="text-align: center">Trạng thái</th>
+                                        <th style="text-align: center">Địa chỉ</th>
                                         <th style="text-align: center">Ngày tạo</th>
                                         <th style="text-align: center">Người tạo</th>
-                                        <th style="text-align: center"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -97,44 +98,14 @@
                                         @foreach($projects as $key => $project)
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
-                                                <td>{{$project->name_vi}}</td>
-                                                <td>{{number_format_vn($project->total_value)}}</td>
-                                                <td>{{number_format_vn($project->part)}}</td>
-                                                <td>{{number_format_vn($project->value_part)}}</td>
-                                                <td>{{type_project($project->type)}}</td>
-                                                <td>
-                                                    <select class="form-control status_project">
-                                                        @foreach(status_project() as $k => $v)
-                                                            <option
-                                                                value="{{$k}}" {{$k == $project->status ? "selected" : ''}}>{{$v}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </td>
-                                                <td>{{$project->created_at}}</td>
-                                                <td>{{$project->created_by}}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                 width="24"
-                                                                 height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                 stroke="currentColor" fill="none"
-                                                                 stroke-linecap="round"
-                                                                 stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <circle cx="12" cy="12" r="1"/>
-                                                                <circle cx="12" cy="19" r="1"/>
-                                                                <circle cx="12" cy="5" r="1"/>
-                                                            </svg>
+                                                            <button class="btn btn-info">Thao tác</button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                               href="{{route('project.action',['id'=> $project->id])}}?action=detail">
-                                                                <i class="fa fa-info-circle"></i>&nbsp;
-                                                                Chi tiết dự án
-                                                            </a>
-                                                            <a class="dropdown-item" target="_blank"
-                                                               href="">
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=basic">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin cơ bản
                                                             </a>
@@ -166,6 +137,24 @@
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td>{{$project->name_vi}}</td>
+                                                <td>{{number_format_vn($project->total_value)}}</td>
+                                                <td>{{number_format_vn($project->part)}}</td>
+                                                <td>{{number_format_vn($project->value_part)}}</td>
+                                                <td>{{type_project($project->type)}}</td>
+                                                <td>
+                                                    <select class="form-control status_project">
+                                                        @foreach(status_project() as $k => $v)
+                                                            <option
+                                                                value="{{$k}}" {{$k == $project->status ? "selected" : ''}}>{{$v}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    {{$project->address_vi. ', '. $project->ward->name.', '. $project->district->name .', '. $project->city->name}}
+                                                </td>
+                                                <td>{{$project->created_at}}</td>
+                                                <td>{{$project->created_by}}</td>
                                             </tr>
                                         @endforeach
                                         <div class="col-12 col-md-12">

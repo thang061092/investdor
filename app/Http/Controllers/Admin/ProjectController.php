@@ -9,10 +9,13 @@ use App\Http\Requests\FormAssetProject;
 use App\Http\Requests\FormCreateProject;
 use App\Http\Requests\FormExtendProject;
 use App\Http\Requests\FormInvestorProject;
+use App\Http\Requests\FormUpdateBasicProject;
 use App\Http\Requests\FormUpdateImageProject;
 use App\Http\Services\CityService;
+use App\Http\Services\DistrictService;
 use App\Http\Services\DocumentProjectService;
 use App\Http\Services\RealEstateProjectService;
+use App\Http\Services\WardService;
 use Illuminate\Http\Request;
 
 class ProjectController extends BaseController
@@ -20,14 +23,20 @@ class ProjectController extends BaseController
     protected $cityService;
     protected $realEstateProjectService;
     protected $documentProjectService;
+    protected $districtService;
+    protected $wardService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
-                                DocumentProjectService $documentProjectService)
+                                DocumentProjectService $documentProjectService,
+                                DistrictService $districtService,
+                                WardService $wardService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->documentProjectService = $documentProjectService;
+        $this->districtService = $districtService;
+        $this->wardService = $wardService;
     }
 
     function index_create_project()
@@ -74,6 +83,11 @@ class ProjectController extends BaseController
                 return view('employee.project.asset', compact('project'));
             } elseif ($request->action == 'investor') {
                 return view('employee.project.investor', compact('project'));
+            } elseif ($request->action == 'basic') {
+                $cities = $this->cityService->city();
+                $districts = $this->districtService->get_district_by_city($project['city_id']);
+                $wards = $this->wardService->get_ward_by_district_id($project['district_id']);
+                return view('employee.project.basic', compact('project', 'cities', 'districts', 'wards'));
             } else {
                 return view('employee.project.detail', compact('project'));
             }
@@ -171,6 +185,19 @@ class ProjectController extends BaseController
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
+
+    public function update_post(FormUpdateBasicProject $request, $id)
+    {
+        try {
+            $this->realEstateProjectService->update($request, $id);
+            toastr()->success(__('message.success'));
+            return redirect()->route('project.list');
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            toastr()->error($error);
+            return redirect()->route('project.list');
         }
     }
 }
