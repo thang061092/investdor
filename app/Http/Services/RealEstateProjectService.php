@@ -203,6 +203,7 @@ class RealEstateProjectService
                 InvestorProject::REAL_ESTATE_PROJECT_ID => $request->id
             ]);
         }
+        return;
     }
 
     public function add_document($request)
@@ -221,6 +222,7 @@ class RealEstateProjectService
             DocumentProject::LINK => $file ?? "",
             DocumentProject::STATUS => DocumentProject::ACTIVE
         ]);
+        return;
     }
 
     public function add_member_company($request)
@@ -235,6 +237,7 @@ class RealEstateProjectService
             MemberCompany::AVATAR_MEMBER => $file ?? '',
             MemberCompany::INVESTOR_PROJECT_ID => $request->investor_project_id
         ]);
+        return;
     }
 
     public function update($request, $id)
@@ -255,6 +258,15 @@ class RealEstateProjectService
             RealEstateProject::DESCRIPTION_EN => $request->description_project_en ?? null,
             RealEstateProject::UPDATED_BY => Session::get('employee')['email'] ?? null
         ];
-        $this->estateProjectRepository->update($id, $data);
+        $project = $this->estateProjectRepository->update($id, $data);
+        return $project;
+    }
+
+    public function update_status_project($request, $id)
+    {
+        $this->estateProjectRepository->update($id, [
+            RealEstateProject::STATUS => $request->status
+        ]);
+        return;
     }
 }

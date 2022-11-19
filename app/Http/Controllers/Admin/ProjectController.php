@@ -200,4 +200,15 @@ class ProjectController extends BaseController
             return redirect()->route('project.list');
         }
     }
+
+    public function update_status_project(Request $request, $id)
+    {
+        try {
+            $this->realEstateProjectService->update_status_project($request, $id);
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
 }
