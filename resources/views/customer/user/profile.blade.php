@@ -34,7 +34,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="file" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src="{{asset('frontend/images/pl.jpg')}}" id="avatar" class="img-fluid" alt=""/>
+                            <img src='{{asset("$detail->avatar")}}' id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     @if( isset($error) && $error )
@@ -182,7 +182,7 @@
                                style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
                         @endif
                         <label for="" class="d-block mb-2">
-                            {{__('profile.account holder')}}<span class="text-danger">*</span>
+                            {{__('profile.account_holder')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="account_name" placeholder="Nhập tên chủ tài khoản"
                                class="form-control mb-3" value="{{$detail->account_name}}"/>
@@ -275,6 +275,7 @@
                     @if(session()->get('customer')['accuracy'] == 0)
                         <a type="button" id="auth" class="btn_all">{{__('button.auth')}}</a>
                     @endif
+
                 </div>
             </form>
         </div>

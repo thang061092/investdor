@@ -55,6 +55,7 @@ return [
     'are_you_sure' => "Are you sure",
     'yes' => 'Yes',
     'no' => 'No!',
+    'question' => "Questions for us ?"'
 
 
 

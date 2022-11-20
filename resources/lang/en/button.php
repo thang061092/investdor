@@ -5,5 +5,7 @@ return [
     'see_more' => "See more",
     'auth' => "Account verification",
     'back' => 'Back',
-    'continue' => "Continue"
+    'create' => 'Create',
+    'update' => 'Update',
+    'continue' => "Continue",
 ];

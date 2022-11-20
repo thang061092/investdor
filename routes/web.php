@@ -75,6 +75,8 @@ Route::group(['middleware' => 'locale'], function () {
             Route::post('/step4', "Customer\InvestmentController@step3_submit")->name('investment.step3_submit');
         });
 
+        // Route::post('/question','Customer\UserController@question')->name('question');
+
     });
 
     //employee
@@ -119,6 +121,24 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/edit_employee/{id}', 'Admin\UserController@edit_employee')->name('customer.employee.edit_employee');
                 Route::post('/update_employee/{id}', 'Admin\UserController@update_employee')->name('customer.employee.update_employee');
                 Route::post('/update_status', 'Admin\UserController@update_status')->name('customer.employee.update_status');
+                Route::get('/list_news', 'Admin\UserController@list_news')->name('customer.employee.list_news');
+                Route::get('/create_news', 'Admin\UserController@create_news')->name('customer.employee.create_news');
+                Route::post('/save_news', 'Admin\UserController@save_news')->name('customer.employee.save_news');
+                Route::post('/update_status_news', 'Admin\UserController@update_status_news')->name('customer.employee.update_status_news');
+                Route::get('/edit_news/{id}', 'Admin\UserController@edit_news')->name('customer.employee.edit_news');
+                Route::post('/update_news/{id}', 'Admin\UserController@update_news')->name('customer.employee.update_news');
+                Route::get('/detail_news/{id}', 'Admin\UserController@detail_news')->name('customer.employee.detail_news');
+                Route::get('/list_category', 'Admin\UserController@list_category')->name('customer.employee.list_category');
+                Route::get('/create_category', 'Admin\UserController@create_category')->name('customer.employee.create_category');
+                Route::post('/save_category', 'Admin\UserController@save_category')->name('customer.employee.save_category');
+                Route::get('/edit_category/{id}', 'Admin\UserController@edit_category')->name('customer.employee.edit_category');
+                Route::post('/update_category/{id}', 'Admin\UserController@update_category')->name('customer.employee.update_category');
+                Route::get('/detail_category/{id}', 'Admin\UserController@detail_category')->name('customer.employee.detail_category');
+                Route::post('/update_status_category', 'Admin\UserController@update_status_category')->name('customer.employee.update_status_category');
+                Route::post('/question','Customer\UserController@question')->name('question');
+                Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
+                Route::get('/detail/{id}','Admin\UserController@detail_question')->name('detail_question');
+                Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
             });
 
             Route::prefix('/customer')->group(function () {
