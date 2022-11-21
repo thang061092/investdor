@@ -269,4 +269,32 @@ class RealEstateProjectService
         ]);
         return;
     }
+
+    public function validate_create($request)
+    {
+        $message = [];
+        $project_slug_vi = $this->estateProjectRepository->findOne(['slug_vi' => slugify($request->project_name_vi)]);
+        if ($project_slug_vi) {
+            $message[] = __('validate.project_name_already_exists');
+        }
+        $project_slug_en = $this->estateProjectRepository->findOne(['slug_vi' => slugify($request->project_name_en)]);
+        if ($project_slug_en) {
+            $message[] = __('validate.project_name_already_exists');
+        }
+        return $message;
+    }
+
+    public function validate_update($request, $id)
+    {
+        $message = [];
+        $project_slug_vi = $this->estateProjectRepository->findOne(['slug_vi' => slugify($request->project_name_vi)]);
+        if ($project_slug_vi && $project_slug_vi['id'] != $id) {
+            $message[] = __('validate.project_name_already_exists');
+        }
+        $project_slug_en = $this->estateProjectRepository->findOne(['slug_vi' => slugify($request->project_name_en)]);
+        if ($project_slug_en && $project_slug_vi['id'] != $id) {
+            $message[] = __('validate.project_name_already_exists');
+        }
+        return $message;
+    }
 }

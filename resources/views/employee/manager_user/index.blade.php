@@ -85,15 +85,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @if (@empty($customer))
-                                            <tr>
-                                                <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
-                                                    liệu
-                                                </td>
-                                            </tr>
-                                        @endif
-                                        @if (isset($customer))
-                                            @foreach ($customer as $key => $item)
+                                    @if (empty($customer))
+                                        <tr style="text-align: center">
+                                            <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
+                                                liệu
+                                            </td>
+                                        </tr>
+                                    @else
+                                        @foreach ($customer as $key => $item)
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
                                                 <td>{{$item->full_name}}</td>
@@ -108,11 +107,12 @@
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->created_by}}</td>
                                                 <td>
-                                                    <label class=" form-switch toggle-status" data-id="{{ $item['id'] }} ">
+                                                    <label class=" form-switch toggle-status"
+                                                           data-id="{{ $item['id'] }} ">
                                                         <input class="form-check-input"
-                                                            style="margin-top: 6px"
-                                                            type="checkbox" name="status"
-                                                            id="status" {{ ($item['status'] == 'active') ? 'checked' : '' }}>
+                                                               style="margin-top: 6px"
+                                                               type="checkbox" name="status"
+                                                               id="status" {{ ($item['status'] == 'active') ? 'checked' : '' }}>
                                                     </label>
                                                     @if($item['status'] == 'active')
                                                         <label></label>
@@ -123,26 +123,17 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                    width="24"
-                                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                    stroke="currentColor" fill="none"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <circle cx="12" cy="12" r="1"/>
-                                                                <circle cx="12" cy="19" r="1"/>
-                                                                <circle cx="12" cy="5" r="1"/>
-                                                            </svg>
+                                                            <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.customer.detail_customer",["id" => $item->id])}}'>
+                                                               href='{{route("customer.customer.detail_customer",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết tài khoản
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.customer.edit_customer",["id" => $item->id])}}'>
+                                                               href='{{route("customer.customer.edit_customer",["id" => $item->id])}}'>
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>
@@ -150,17 +141,17 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        @endif
-                                        <div class="col-12 col-md-12">
-                                            <div class="row">
-                                                <div class="col-12 col-md-10"></div>
-                                                <div
-                                                    class=" col-12 col-md-2">
-                                                </div>
+                                        @endforeach
+                                    @endif
+                                    <div class="col-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-12 col-md-10"></div>
+                                            <div
+                                                class=" col-12 col-md-2">
                                             </div>
                                         </div>
-                                   
+                                    </div>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -181,46 +172,46 @@
 @endsection
 
 @section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(function () {
-    $('.toggle-status').click(function (event) {
-        event.preventDefault();
-        var id = $(this).attr('data-id');
-        var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
-         var formData = new FormData();
-         formData.append('status', status);
-         formData.append('id', id);
-         if (confirm("Bạn chắc chắn muốn thay đổi?")) {
-            $.ajax({
-                url: "{{route('customer.employee.update_status')}}",
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == 200) {
-                        $('#modal-success').modal('show');
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 1500)
-                    } else {
-                        $('#modal-danger').modal('show');
-                    }
-                },
-                error: function () {
-                    $(".theloading").hide();
-                    alert('error');
-                    setTimeout(function () {
-                        window.location.reload()
-                    }, 1500);
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('.toggle-status').click(function (event) {
+                event.preventDefault();
+                var id = $(this).attr('data-id');
+                var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
+                var formData = new FormData();
+                formData.append('status', status);
+                formData.append('id', id);
+                if (confirm("Bạn chắc chắn muốn thay đổi?")) {
+                    $.ajax({
+                        url: "{{route('customer.employee.update_status')}}",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.status == 200) {
+                                $('#modal-success').modal('show');
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 1500)
+                            } else {
+                                $('#modal-danger').modal('show');
+                            }
+                        },
+                        error: function () {
+                            $(".theloading").hide();
+                            alert('error');
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1500);
+                        }
+                    })
                 }
             })
-        }
-    })
-})
-</script>
+        })
+    </script>
 @endsection
 
