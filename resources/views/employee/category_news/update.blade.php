@@ -62,7 +62,7 @@
                                                 <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en"
-                                                    rows="4" cols="50">{{$detail->desc_category_en}}</textarea>
+                                                    rows="4" cols="50">{{$detail->description_en}}</textarea>
                                             </div>
                                             @if($errors->has('desc_category_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>

@@ -26,6 +26,9 @@ return [
     'investment' => "Investment",
     'update_category' => "Update category",
     'detail_category' => "Detail category",
-    'list_question' => "List questions"
+    'list_question' => "List questions",
+    'investment_and_real_estate' => "Investment and real estate",
+    'BUILD_THE_FUTURE_YOU_WANT' => 'BUILD THE FUTURE YOU WANT',
+    'quick_access_investments' => 'Quick access to high-quality investments',
 
 ];

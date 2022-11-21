@@ -272,9 +272,6 @@
                     <a href='{{route('customer.user.manager').'?main_tab=profile'}}' title="{{__('button.cancel')}}"
                        class="btn_all cancle d-inline-block">{{__('button.cancel')}}</a>
                     <button type="submit" class="btn_all">{{__('button.save')}}</button>
-                    @if(session()->get('customer')['accuracy'] == 0)
-                        <a type="button" id="auth" class="btn_all">{{__('button.auth')}}</a>
-                    @endif
 
                 </div>
             </form>
