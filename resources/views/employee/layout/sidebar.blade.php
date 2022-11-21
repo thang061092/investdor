@@ -12,16 +12,35 @@
         </h1>
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
-
-                            <li class="nav-item mb-2">
-                                <a class="nav-link dropdown-toggle mb-2" data-bs-toggle="dropdown" role="button"
-                                   aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
+                       aria-expanded="false">
                                     <span class="nav-link-title"
                                           style="position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px">
                                                         {{ __('page_name.dashboard') }}
                                                 </span>
-                                </a>
-                            </li>
+                    </a>
+                    <a class="nav-link " href="{{route('project.list')}}">
+                        <span class="nav-link-title"
+                              style='position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px'>Danh sách dự án</span>
+                    </a>
+                    <a class="nav-link " href="{{route('contract.index')}}">
+                        <span class="nav-link-title"
+                              style='position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px'>Danh sách hợp đồng</span>
+                    </a>
+                    <a class="nav-link " href="{{route('transaction.index')}}">
+                        <span class="nav-link-title"
+                              style='position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px'>Danh sách giao dịch</span>
+                    </a>
+                    <a class="nav-link " href="{{route('customer.employee.get_all')}}">
+                        <span class="nav-link-title"
+                              style='position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px'>Danh sách nhân viên</span>
+                    </a>
+                    <a class="nav-link " href="{{route('customer.customer.get_all')}}">
+                        <span class="nav-link-title"
+                              style='position: relative;min-width: 2rem;border-radius: 4px;font-size: 15px'>Danh sách khách hàng</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

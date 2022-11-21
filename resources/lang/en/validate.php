@@ -45,6 +45,7 @@ return [
     'id_not_null' => 'ID not null',
     'transaction_does_not_exist' => 'Transaction does not exist',
     'invalid_status' => 'Invalid status',
-    'principal_not_null'=> 'Principal not null',
-    'money_interest_not_null'=> 'Money interest not null',
+    'principal_not_null' => 'Principal not null',
+    'money_interest_not_null' => 'Money interest not null',
+    'project_name_already_exists' => 'Project name already exists'
 ];

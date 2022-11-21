@@ -58,13 +58,19 @@ class ProjectController extends BaseController
 
     public function create_post(FormCreateProject $request)
     {
+        $cities = $this->cityService->city();
         try {
-            $this->realEstateProjectService->create($request);
-            toastr()->success(__('message.success'));
-            return redirect()->route('project.list');
+            $message = $this->realEstateProjectService->validate_create($request);
+            if (count($message) > 0) {
+                toastr()->error($message[0]);
+                return redirect()->back()->withInput();
+            } else {
+                $this->realEstateProjectService->create($request);
+                toastr()->success(__('message.success'));
+                return redirect()->route('project.list');
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
-            $cities = $this->cityService->city();
             return view('employee.project.create', compact('cities', 'error'));
         }
     }
@@ -191,9 +197,15 @@ class ProjectController extends BaseController
     public function update_post(FormUpdateBasicProject $request, $id)
     {
         try {
-            $this->realEstateProjectService->update($request, $id);
-            toastr()->success(__('message.success'));
-            return redirect()->route('project.list');
+            $message = $this->realEstateProjectService->validate_update($request, $id);
+            if (count($message) > 0) {
+                toastr()->error($message[0]);
+                return redirect()->back()->withInput();
+            } else {
+                $this->realEstateProjectService->update($request, $id);
+                toastr()->success(__('message.success'));
+                return redirect()->route('project.list');
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             toastr()->error($error);

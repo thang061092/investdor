@@ -47,4 +47,5 @@ return [
     'invalid_status' => 'Tình trạng không hợp lệ',
     'principal_not_null'=> 'Tiền gốc không để trống',
     'money_interest_not_null'=> 'Tiền lãi không để trống',
+    'project_name_already_exists' => 'Tên dự án đã tồn tại'
 ];
