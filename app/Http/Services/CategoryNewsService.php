@@ -41,7 +41,7 @@ class CategoryNewsService
         $data = [
             CategoryNews::NAME => $request->name_category_vi ?? "",
             CategoryNews::NAME_EN => $request->name_category_en ?? "",
-            CategoryNews::SLUG => Str::slug($request->name_category) ?? "",
+            CategoryNews::SLUG => Str::slug($request->name_category_vi) ?? "",
             CategoryNews::SLUG_EN => Str::slug($request->name_category_en) ?? "",
             CategoryNews::IMAGE => $image ?? "",
             CategoryNews::DESCRIPTION => $request->desc_category_vi ?? "",
@@ -86,6 +86,7 @@ class CategoryNewsService
             CategoryNews::DESCRIPTION_EN => $request->desc_category_en ?? "",
             CategoryNews::CREATED_BY    => session()->get('employee')['email'],
         ];
+
         $update = $this->categoryRepo->update($id, $data);
         return $update;
     }

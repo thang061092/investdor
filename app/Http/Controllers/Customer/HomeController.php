@@ -11,20 +11,28 @@ use App\Http\Services\RealEstateProjectService;
 use App\Models\DetailInterest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Services\NewsService;
+use App\Http\Services\CategoryNewsService;
 
 class HomeController extends BaseController
 {
     protected $cityService;
     protected $realEstateProjectService;
     protected $interestService;
+    protected $newsService;
+    protected $categoryService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
-                                InterestService $interestService)
+                                InterestService $interestService,
+                                NewsService $newsService, 
+                                CategoryNewsService $categoryService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->interestService = $interestService;
+        $this->newsService = $newsService;
+        $this->categoryService = $categoryService;
     }
 
     public function index(Request $request)
@@ -45,7 +53,12 @@ class HomeController extends BaseController
 
     public function knowledge(Request $request)
     {
-        return view('customer.home.knowledge');
+        $news = $this->newsService->get_all();
+        $category = $this->categoryService->get_all();
+        return view('customer.home.knowledge',[
+            'news' => $news,
+            'category' => $category,
+        ]);
     }
 
     public function detail_project($lug)
