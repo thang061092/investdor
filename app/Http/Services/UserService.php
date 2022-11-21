@@ -42,7 +42,7 @@ class UserService
 
     public function create_employee($request)
     {
-        if ($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $avatar = $this->uploadService->upload($request);
         }
         $data = [
@@ -70,9 +70,9 @@ class UserService
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::INVESTOR,
-            Users::BANK_NAME => "",
-            Users::ACCOUNT_NAME => "",
-            Users::ACCOUNT_NUMBER => "",
+            Users::BANK_NAME => null,
+            Users::ACCOUNT_NAME => null,
+            Users::ACCOUNT_NUMBER => null,
         ];
         $user = $this->userRepository->create($data);
         return $user;
@@ -223,7 +223,8 @@ class UserService
     }
 
 
-    public function update_employee($request, $id) {
+    public function update_employee($request, $id)
+    {
         if ($request->avatar) {
             $avatar = $this->uploadService->upload_param($request->avatar);
         }
@@ -238,7 +239,7 @@ class UserService
             Users::EMAIL => $request->email ?? "",
             Users::PHONE => $request->phone_number ?? "",
             Users::GENDER => $request->gender ?? "",
-            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BIRTHDAY => $request->birthday ?? "",
             Users::BANK_NAME => $request->bank_name ?? "",
             Users::ACCOUNT_NUMBER => $request->account_number ?? "",
             Users::ACCOUNT_NAME => $request->account_name ?? "",
@@ -294,11 +295,12 @@ class UserService
     }
 
 
-    public function auth($request, $id) {
+    public function auth($request, $id)
+    {
         $img_before = $this->uploadService->upload_param($request->img_before);
         $img_after = $this->uploadService->upload_param($request->img_after);
         $data = [
-            Users::ACCURACY => Users::WARNING_AUTH, 
+            Users::ACCURACY => Users::WARNING_AUTH,
             Users::FRONT_FACING_CARD => $img_before ?? "",
             Users::CARD_BACK => $img_after ?? "",
         ];
@@ -311,7 +313,8 @@ class UserService
 
 
     //admin confirm
-    public function confirm_auth($id) {
+    public function confirm_auth($id)
+    {
 
         $data = [
             Users::ACCURACY => Users::AUTH,
@@ -324,7 +327,8 @@ class UserService
     }
 
     //admin không confirm
-    public function not_confirm_auth($id) {
+    public function not_confirm_auth($id)
+    {
 
         $data = [
             Users::ACCURACY => Users::FAIL_AUTH,
