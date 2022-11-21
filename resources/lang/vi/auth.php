@@ -58,7 +58,17 @@ return [
     'date_identity_not_null' => 'Ngày cấp CMND/CCCD không để trống',
     'address_identity_not_null' => 'Nơi cấp CMND/CCCD không để trống',
     'authentication' => "Xác thực tài khoản ?",
+    'not_authentication' => "Không xác thực tài khoản ?" ,
+    "img_cmt_before_not_null" => "Mặt trước chứng từ không để trống",
+    "img_cmt_after_not_null" => "Mặt sau chứng từ không để trống",
+    'title_not_null' => "Tiêu đề không để trống",
+    'category_not_null' => "Thể loại không để trống",
+    'content_not_null' => "Nội dung không để trống",
+    'image_news_not_null' => 'Ảnh bài viết không để trống',
+    'name_category_not_null' => 'Tên danh mục không để trống',
+    'desc_category_not_null' => 'Mô tả danh mục không để trống',
     'not_authentication' => "Không xác thực tài khoản ?",
     "account_is_locked" => 'Tài khoản đang bị khóa',
     'email_account_already_exists' => 'Tài khoản email đã tồn tại'
+
 ];

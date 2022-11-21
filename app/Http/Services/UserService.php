@@ -42,12 +42,16 @@ class UserService
 
     public function create_employee($request)
     {
+        if ($request->hasFile('file')){
+            $avatar = $this->uploadService->upload($request);
+        }
         $data = [
             Users::FULL_NAME => $request->full_name,
             Users::EMAIL => $request->email,
             Users::PASSWORD => Hash::make($request->password),
             Users::STATUS => Users::ACTIVE,
             Users::TYPE => Users::EMPLOYEE,
+            Users::AVATAR => $avatar ?? "",
             Users::BANK_NAME => "",
             Users::ACCOUNT_NAME => "",
             Users::ACCOUNT_NUMBER => "",
@@ -218,12 +222,36 @@ class UserService
         return false;
     }
 
-    public function update_employee($request, $id)
-    {
+
+    public function update_employee($request, $id) {
+        if ($request->avatar) {
+            $avatar = $this->uploadService->upload_param($request->avatar);
+        }
+        if ($request->img_before) {
+            $img_before = $this->uploadService->upload_param($request->img_before);
+        }
+        if ($request->img_after) {
+            $img_after = $this->uploadService->upload_param($request->img_after);
+        }
         $data = [
             Users::FULL_NAME => $request->full_name ?? "",
             Users::EMAIL => $request->email ?? "",
-            Users::PASSWORD => Hash::make($request->password) ?? "",
+            Users::PHONE => $request->phone_number ?? "",
+            Users::GENDER => $request->gender ?? "",
+            Users::BIRTHDAY =>  $request->birthday ?? "",
+            Users::BANK_NAME => $request->bank_name ?? "",
+            Users::ACCOUNT_NUMBER => $request->account_number ?? "",
+            Users::ACCOUNT_NAME => $request->account_name ?? "",
+            Users::CITY => $request->province ?? "",
+            Users::DISTRICT => $request->district ?? "",
+            Users::WARD => $request->ward ?? "",
+            Users::ADDRESS => $request->specific_address ?? "",
+            Users::AVATAR => !empty($request->avatar) ? $avatar : session()->get('employee')['avatar'],
+            Users::IDENTITY => $request->identity ?? "",
+            Users::DATE_IDENTITY => $request->date_identity ?? "",
+            Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
+            Users::FRONT_FACING_CARD => !empty($request->img_before) ? $img_before : session()->get('employee')['front_facing_card'],
+            Users::CARD_BACK => !empty($request->img_after) ? $img_after : session()->get('employee')['card_back'],
         ];
         $user = $this->userRepository->update($id, $data);
         return $user;
@@ -265,10 +293,14 @@ class UserService
         return $user;
     }
 
-    public function auth($id)
-    {
+
+    public function auth($request, $id) {
+        $img_before = $this->uploadService->upload_param($request->img_before);
+        $img_after = $this->uploadService->upload_param($request->img_after);
         $data = [
-            Users::ACCURACY => Users::WARNING_AUTH
+            Users::ACCURACY => Users::WARNING_AUTH, 
+            Users::FRONT_FACING_CARD => $img_before ?? "",
+            Users::CARD_BACK => $img_after ?? "",
         ];
         $auth = $this->userRepository->update($id, $data);
         if ($auth) {
@@ -277,8 +309,10 @@ class UserService
         return false;
     }
 
-    public function confirm_auth($id)
-    {
+
+    //admin confirm
+    public function confirm_auth($id) {
+
         $data = [
             Users::ACCURACY => Users::AUTH,
         ];
@@ -289,8 +323,9 @@ class UserService
         return false;
     }
 
-    public function not_confirm_auth($id)
-    {
+    //admin không confirm
+    public function not_confirm_auth($id) {
+
         $data = [
             Users::ACCURACY => Users::FAIL_AUTH,
         ];

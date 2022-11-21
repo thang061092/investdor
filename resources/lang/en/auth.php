@@ -71,6 +71,15 @@ return [
     'address_identity_not_null' => 'Place of identity card is not empty',
     'authentication' => 'Authentication ?',
     'not_authentication' => 'Authentication not verified',
+    "img_cmt_before_not_null" => "The front of the certificate is not empty",
+    "img_cmt_after_not_null" => "The back of the certificate is not empty",
+    'title_not_null' => "Title not empty",
+    'category_not_null' => "Category not empty",
+    'content_not_null' => "Content not empty",
+    'image_news_not_null' => 'Post photo not empty',
+    'name_category_not_null' => 'Name category not empty',
+    'desc_category_not_null' => 'Description category not empty',
     "account_is_locked" => 'Account is locked',
     'email_account_already_exists' => 'Email account already exists'
+
 ];
