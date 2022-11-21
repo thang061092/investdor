@@ -81,6 +81,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', "Admin\UserController@login")->name('admin');
         Route::post('/login', "Admin\UserController@employee_login")->name('admin.login');
+        Route::post('/create_admin', "Admin\UserController@create_admin")->name('admin.create_admin');
 
         Route::group(['middleware' => 'auth_admin'], function () {
             Route::get('/logout', "Admin\UserController@logout")->name('admin.logout');
