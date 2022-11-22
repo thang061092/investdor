@@ -13,7 +13,7 @@
                     <p class="title auth__tit mb-2">{{__('auth.login')}}</p>
                     <div class="desc auth__note"><span
                             class="note d-inline-block text-bdy">{{__('auth.not_have_account')}}</span>
-                        <a href="" title="" class="d-inline-block ml-2 auth__reg-now">{{__('auth.register_now')}}</a>
+                        <a href="{{route('customer.register')}}" title="" class="d-inline-block ml-2 auth__reg-now">{{__('auth.register_now')}}</a>
                     </div>
                     @if( isset($error) && $error )
                         <div class="mb-3">
@@ -28,7 +28,7 @@
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
                         <input type="email"
                                class="form-control auth__inp border-0 p-0 @if($errors->has('email'))is-invalid @endif"
-                               placeholder="{{__('auth.enter_email')}}" name="email"/>
+                               placeholder="{{__('auth.enter_email')}}" name="email" value="{{old('email')}}"/>
                         <div class="auth__ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
                         <input type="password"
                                class="form-control auth__inp frm-pwd border-0 p-0 @if($errors->has('password'))is-invalid @endif"
-                               placeholder="{{__('auth.enter_password')}}" name="password"/>
+                               placeholder="{{__('auth.enter_password')}}" name="password" {{old('password')}}/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
                             <span class="checkbox auth__checkbox my-checkbox__lbl mr-2"></span>
                             <span class="text text-bdy my-checkbox__txt">{{__('auth.save_password')}}</span>
                         </label>
-                        <a href="" title="Quên mật khẩu" class="forgot_password auth__forgot d-inline-block">
+                        <a href="" title="{{__('auth.forgot_password')}}" class="forgot_password auth__forgot d-inline-block">
                             {{__('auth.forgot_password')}}
                         </a>
                     </div>
