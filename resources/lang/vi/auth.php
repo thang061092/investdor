@@ -67,8 +67,8 @@ return [
     'image_news_not_null' => 'Ảnh bài viết không để trống',
     'name_category_not_null' => 'Tên danh mục không để trống',
     'desc_category_not_null' => 'Mô tả danh mục không để trống',
-    'not_authentication' => "Không xác thực tài khoản ?",
     "account_is_locked" => 'Tài khoản đang bị khóa',
-    'email_account_already_exists' => 'Tài khoản email đã tồn tại'
+    'email_account_already_exists' => 'Tài khoản email đã tồn tại',
+    "password_min" => 'Mật khẩu tối thiểu 6 ký tự'
 
 ];

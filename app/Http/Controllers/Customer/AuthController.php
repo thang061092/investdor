@@ -51,12 +51,17 @@ class AuthController extends BaseController
 
     public function register_submit(FormRegister $request)
     {
-        $user = $this->userService->customer_register($request);
-        if ($user) {
-            Session::put('customer', $user);
-            return redirect()->route('customer.home_page');
+        if ($request->password != $request->password_confirmation) {
+            $error = __('auth.repassword_mismatched');
+            return redirect()->back()->withInput()->with(['error' => $error]);
         } else {
-            return redirect()->route('customer.register');
+            $user = $this->userService->customer_register($request);
+            if ($user) {
+                Session::put('customer', $user);
+                return redirect()->route('customer.home_page');
+            } else {
+                return redirect()->back()->withInput();
+            }
         }
     }
 
