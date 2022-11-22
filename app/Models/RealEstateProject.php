@@ -29,6 +29,7 @@ class RealEstateProject extends BaseModel
     const DESCRIPTION_EN = 'description_en';
     const STATUS = 'status';
     const TYPE = 'type';
+    const CURRENT_PART = 'current_part';
 
     //status
     const NEW = 1; //nháp
@@ -90,5 +91,10 @@ class RealEstateProject extends BaseModel
     public function bills()
     {
         return $this->hasMany(Bills::class, Bills::REAL_ESTATE_PROJECT_ID);
+    }
+
+    public function interests()
+    {
+        return $this->hasMany(Interest::class, Interest::REAL_ESTATE_PROJECT_ID);
     }
 }

@@ -25,7 +25,7 @@ class HomeController extends BaseController
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 InterestService $interestService,
-                                NewsService $newsService, 
+                                NewsService $newsService,
                                 CategoryNewsService $categoryService)
     {
         $this->cityService = $cityService;
@@ -37,18 +37,14 @@ class HomeController extends BaseController
 
     public function index(Request $request)
     {
-        $interest = $this->interestService->get_current_interest();
-        $current_interest = $interest['detail']['interest'] ?? 12;
         $projects = $this->realEstateProjectService->list_project_investor($request);
-        return view('customer.home.index', compact('projects', 'current_interest'));
+        return view('customer.home.index', compact('projects'));
     }
 
     public function home_page(Request $request)
     {
-        $interest = $this->interestService->get_current_interest();
-        $current_interest = $interest['detail']['interest'] ?? 12;
         $projects = $this->realEstateProjectService->list_project_investor($request);
-        return view('customer.home.home-page', compact('projects', 'current_interest'));
+        return view('customer.home.home-page', compact('projects'));
     }
 
     public function knowledge(Request $request)
@@ -63,9 +59,7 @@ class HomeController extends BaseController
 
     public function detail_project($lug)
     {
-        $interest = $this->interestService->get_current_interest();
-        $current_interest = $interest['detail']['interest'] ?? 12;
         $project = $this->realEstateProjectService->detail_project($lug);
-        return view('customer.home.detail-project', compact('project', 'current_interest'));
+        return view('customer.home.detail-project', compact('project'));
     }
 }

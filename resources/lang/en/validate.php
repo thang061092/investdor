@@ -47,5 +47,6 @@ return [
     'invalid_status' => 'Invalid status',
     'principal_not_null' => 'Principal not null',
     'money_interest_not_null' => 'Money interest not null',
-    'project_name_already_exists' => 'Project name already exists'
+    'project_name_already_exists' => 'Project name already exists',
+    'month_project_not_null'=> "Month project not null",
 ];

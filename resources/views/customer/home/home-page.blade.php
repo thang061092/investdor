@@ -107,6 +107,7 @@
                         @else
                             @foreach($projects as $k => $v)
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-12 mb-lg-4 mb-5 wow fadeInUp"
+                                     style="padding-top: 20px;"
                                      data-wow-delay="0.3s"
                                      data-wow-duration="0.5s">
                                     <div class="item_project">
@@ -162,7 +163,7 @@
                                                         </defs>
                                                     </svg>
                                                     {{__('project.expected_profit')}}
-                                                    <span class="num-profit ml-3">{{$current_interest}}%</span>
+                                                    <span class="num-profit ml-3">{{$v->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
                                                 </p>
                                             </div>
                                             <div class="project_desc mb-lg-3 mb-2">
@@ -204,7 +205,7 @@
                             @foreach($projects as $k => $v)
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-12 mb-lg-4 mb-5 wow fadeInUp"
                                      data-wow-delay="0.3s"
-                                     data-wow-duration="0.5s">
+                                     data-wow-duration="0.5s" style="padding-top: 20px;">
                                     <div class="item_project">
                             <span class="status d-block w-100">
                                 {{__('project.on_sale')}}
@@ -258,7 +259,7 @@
                                                         </defs>
                                                     </svg>
                                                     {{__('project.expected_profit')}}
-                                                    <span class="num-profit ml-3">{{$current_interest}}%</span>
+                                                    <span class="num-profit ml-3">{{$v->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
                                                 </p>
                                             </div>
                                             <div class="project_desc mb-lg-3 mb-2">
