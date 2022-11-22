@@ -18,7 +18,8 @@ class RealEstateProjectRepository extends BaseRepository
     public function getAllPaginate($request)
     {
         $model = $this->model
-            ->paginate(20);
+            ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
+            ->paginate(30);
         return $model;
     }
 

@@ -31,7 +31,7 @@
                                 {{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $project->name_en : $project->name_vi}}
                             </p>
                             <div class="box p-lg-3 p-2 wow fadeInUp wow fadeInUp">
-                                <span class="invest-percent d-block w-100 text-center">{{$current_interest}}%</span>
+                                <span class="invest-percent d-block w-100 text-center">{{$project->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
                                 <span class="c-label mb-xl-4 mb-3">{{__('project.expected_profit')}}</span>
                                 <div class="index index-1">
                                     <span class="c-label">{{__('project.total_investment')}}</span>
@@ -78,7 +78,7 @@
                     {{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $project->name_en : $project->name_vi}}
                 </p>
                 <div class="box p-lg-3 p-2 wow fadeInUp">
-                    <span class="invest-percent d-block w-100 text-center">{{$current_interest}}%</span>
+                    <span class="invest-percent d-block w-100 text-center">{{$project->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
                     <span class="c-label mb-xl-4 mb-3">{{__('project.expected_profit')}}</span>
                     <div class="index index-1">
                         <span class="c-label">{{__('project.total_investment')}}</span>
@@ -139,18 +139,19 @@
         </div>
     </section>
     <section class="tabs-project-detail">
-        <div class="container">
-            <p class="title_small">Intercontinatal</p>
-            <p class="title_lg">{{__('project.project_information')}}</p>
-            <div class="navv-tabs p-2">
-                <a href="#tongquan" title="{{__('project.project_overview')}}"
-                   class="d-inline-block">{{__('project.project_overview')}}</a>
-                <a href="#taisan" title="Tài sản" class="d-inline-block">Tài sản</a>
-                <a href="#chudautu" title="Chủ đầu từ" class="d-inline-block">Chủ đầu từ</a>
-                <a href="#kehoachkinhdoanh" title="Kế hoạch kinh doanh" class="d-inline-block">Kế hoạch kinh doanh</a>
-                <a href="#financial" title="Financials" class="d-inline-block">Financials</a>
-                <a href="#tailieuduan" title="Tài liệu dự án" class="d-inline-block">Tài liệu dự án</a>
-            </div>
+        <div class="container
+            <p class=" title_small
+        ">Intercontinatal</p>
+        <p class="title_lg">{{__('project.project_information')}}</p>
+        <div class="navv-tabs p-2">
+            <a href="#tongquan" title="{{__('project.project_overview')}}"
+               class="d-inline-block">{{__('project.project_overview')}}</a>
+            <a href="#taisan" title="Tài sản" class="d-inline-block">Tài sản</a>
+            <a href="#chudautu" title="Chủ đầu từ" class="d-inline-block">Chủ đầu từ</a>
+            <a href="#kehoachkinhdoanh" title="Kế hoạch kinh doanh" class="d-inline-block">Kế hoạch kinh doanh</a>
+            <a href="#financial" title="Financials" class="d-inline-block">Financials</a>
+            <a href="#tailieuduan" title="Tài liệu dự án" class="d-inline-block">Tài liệu dự án</a>
+        </div>
         </div>
     </section>
     <section id="#tongquan" class="project-main wow fadeInUp">
@@ -318,26 +319,30 @@
                     <div class="team_company mb-3">{{__('project.administrative_council')}}</div>
                     <div class="swiper swiper-teams">
                         <div class="swiper-wrapper">
-                            @foreach($project->investorProject->memberCompanies as $key => $member)
-                                <div class="swiper-slide">
-                                    <div class="human">
-                                        <div class="img">
-                                            <img src="{{$member->avatar_member ?? asset('frontend/images/hoidong.jpg')}}" class="img-fluid"
-                                                 alt=""/>
-                                        </div>
-                                        <div class="box">
-                                            <p class="name">{{$member->name_member}}</p>
-                                            <div class="desc">
-                                                @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
-                                                    {{$member->position_member_en}}
-                                                @else
-                                                    {{$member->position_member_vi}}
-                                                @endif
+                            @if(!empty($project->investorProject->memberCompanies))
+                                @foreach($project->investorProject->memberCompanies as $key => $member)
+                                    <div class="swiper-slide">
+                                        <div class="human">
+                                            <div class="img">
+                                                <img
+                                                    src="{{$member->avatar_member ?? asset('frontend/images/hoidong.jpg')}}"
+                                                    class="img-fluid"
+                                                    alt=""/>
+                                            </div>
+                                            <div class="box">
+                                                <p class="name">{{$member->name_member}}</p>
+                                                <div class="desc">
+                                                    @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
+                                                        {{$member->position_member_en}}
+                                                    @else
+                                                        {{$member->position_member_vi}}
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

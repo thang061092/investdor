@@ -420,7 +420,7 @@
                                         <div class="line_share mb-2">
                                             <div class="text mb-1">
                                                 {{__('project.total_investment')}}
-                                                <span class="number ml-3">{{number_format_vn($v->part)}}</span>
+                                                <span class="number ml-3">{{number_format_vn($v->total_value)}}</span>
                                             </div>
                                             <div class="process d-flex flex-nowrap">
                                                 <span class="d-block text-center" style="width: 20%">20.000</span>
@@ -446,7 +446,7 @@
                                                     </defs>
                                                 </svg>
                                                 {{__('project.expected_profit')}}
-                                                <span class="num-profit ml-3">{{$current_interest}}%</span>
+                                                <span class="num-profit ml-3 text-danger">{{$v->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
                                             </p>
                                         </div>
                                         <div class="project_desc mb-lg-3 mb-2">

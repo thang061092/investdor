@@ -5,24 +5,34 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\ContractRepository;
+use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\Contract;
+use App\Models\Interest;
+use App\Models\RealEstateProject;
 use Carbon\Carbon;
 
 class ContractService
 {
     protected $contractRepository;
     protected $interestService;
+    protected $realEstateProjectRepository;
 
     public function __construct(ContractRepository $contractRepository,
-                                InterestService $interestService)
+                                InterestService $interestService,
+                                RealEstateProjectRepository $realEstateProjectRepository)
     {
         $this->contractRepository = $contractRepository;
         $this->interestService = $interestService;
+        $this->realEstateProjectRepository = $realEstateProjectRepository;
     }
 
     public function create_contract_invest($bill)
     {
-        $interest = $this->interestService->get_current_interest();
+        $project = $this->realEstateProjectRepository->find($bill['real_estate_project_id']);
+        $this->realEstateProjectRepository->update($bill['real_estate_project_id'], [
+            RealEstateProject::CURRENT_PART => $project['part'] - $bill['part']
+        ]);
+        $interest = $project->interests()->where(Interest::STATUS, Interest::ACTIVE)->first();
         $data = [
             Contract::USER_ID => $bill['user_id'],
             Contract::CODE => random_string(12),

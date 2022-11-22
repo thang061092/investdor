@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use App\Http\Repositories\AssetProjectRepository;
 use App\Http\Repositories\DocumentProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
+use App\Http\Repositories\InterestRepository;
 use App\Http\Repositories\InvestorProjectRepository;
 use App\Http\Repositories\MemberCompanyRepository;
 use App\Http\Repositories\OverviewRepository;
@@ -14,6 +15,7 @@ use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
 use App\Models\DocumentProject;
 use App\Models\ImageProject;
+use App\Models\Interest;
 use App\Models\InvestorProject;
 use App\Models\MemberCompany;
 use App\Models\OverviewProject;
@@ -31,6 +33,7 @@ class RealEstateProjectService
     protected $documentProjectRepository;
     protected $uploadService;
     protected $memberCompanyRepository;
+    protected $interestRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -40,7 +43,8 @@ class RealEstateProjectService
                                 InvestorProjectRepository $investorProjectRepository,
                                 DocumentProjectRepository $documentProjectRepository,
                                 UploadService $uploadService,
-                                MemberCompanyRepository $memberCompanyRepository)
+                                MemberCompanyRepository $memberCompanyRepository,
+                                InterestRepository $interestRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -51,6 +55,7 @@ class RealEstateProjectService
         $this->documentProjectRepository = $documentProjectRepository;
         $this->uploadService = $uploadService;
         $this->memberCompanyRepository = $memberCompanyRepository;
+        $this->interestRepository = $interestRepository;
     }
 
     public function create($request)
@@ -71,9 +76,17 @@ class RealEstateProjectService
             RealEstateProject::DESCRIPTION_EN => $request->description_project_en ?? null,
             RealEstateProject::TYPE => $request->type_project ?? null,
             RealEstateProject::STATUS => RealEstateProject::NEW,
-            RealEstateProject::CREATED_BY => Session::get('employee')['email'] ?? null
+            RealEstateProject::CREATED_BY => Session::get('employee')['email'] ?? null,
+            RealEstateProject::CURRENT_PART => $request->total_part_project ?? null,
         ];
-        $this->estateProjectRepository->create($data);
+        $project = $this->estateProjectRepository->create($data);
+        $this->interestRepository->create([
+            Interest::REAL_ESTATE_PROJECT_ID => $project['id'],
+            Interest::STATUS => Interest::ACTIVE,
+            Interest::INTEREST => $request->interest,
+            Interest::PERIOD => $request->month_project
+        ]);
+        return $project;
     }
 
     public function getAllPaginate($request)

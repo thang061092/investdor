@@ -38,6 +38,8 @@ class FormCreateProject extends FormRequest
             'type_project' => 'required',
             'description_project_vi' => 'required',
             'description_project_en' => 'required',
+            'month_project' => 'required',
+            'interest' => 'required',
         ];
     }
 
@@ -56,6 +58,8 @@ class FormCreateProject extends FormRequest
             "type_project.required" => __('validate.type_project_not_null'),
             "description_project_vi.required" => __('validate.description_project_vi_not_null'),
             "description_project_en.required" => __('validate.description_project_en_not_null'),
+            "month_project.required" => __('validate.month_project_not_null'),
+            "interest.required" => __('validate.interest_not_null'),
         ];
 
     }

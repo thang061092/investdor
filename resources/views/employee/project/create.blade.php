@@ -168,6 +168,32 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
+                                                <label for="">Thời gian đầu tư<span class="text-danger">*</span></label>
+                                                <input type="number"
+                                                       class="form-control @if($errors->has('month_project'))is-invalid @endif"
+                                                       placeholder="Nhập số tháng" name="month_project"
+                                                       value="{{old('month_project')}}">
+                                                @if($errors->has('month_project'))
+                                                    <p class="text-danger">{{ $errors->first('month_project') }}</p>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="">Lãi suất<span class="text-danger">*</span></label>
+                                                <input type="number"
+                                                       class="form-control @if($errors->has('interest'))is-invalid @endif"
+                                                       placeholder="Nhập lãi suất" name="interest"
+                                                       value="{{old('interest')}}">
+                                                @if($errors->has('interest'))
+                                                    <p class="text-danger">{{ $errors->first('interest') }}</p>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group mb-3">
                                                 <label for="">Mô tả dự án<span class="text-danger">(VI)*</span></label>
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('description_project_vi'))is-invalid @endif"
