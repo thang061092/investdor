@@ -16,6 +16,13 @@
                         <a href="{{route('customer.login')}}" title=""
                            class="d-inline-block ml-2 auth__reg-now">{{__('auth.login_now')}}</a>
                     </div>
+                    @if( isset($error) && $error )
+                        <div class="mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-title">{{ $error }}</h4>
+                            </div>
+                        </div>
+                    @endif
                     <label for="" class="label w-100 auth__lbl mb-2 d-block">
                         {{__('auth.your_name')}} <span class="require">*</span>
                     </label>

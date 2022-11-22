@@ -80,6 +80,6 @@ return [
     'name_category_not_null' => 'Name category not empty',
     'desc_category_not_null' => 'Description category not empty',
     "account_is_locked" => 'Account is locked',
-    'email_account_already_exists' => 'Email account already exists'
-
+    'email_account_already_exists' => 'Email account already exists',
+    "password_min" => 'Password minimum 6 characters'
 ];

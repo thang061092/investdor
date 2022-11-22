@@ -27,8 +27,8 @@ class FormRegister extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|min:6',
             'full_name' => 'required'
         ];
     }
@@ -42,7 +42,8 @@ class FormRegister extends FormRequest
             "password.required" => __('auth.password_not_null'),
             "full_name.required" => __('auth.name_not_null'),
             "password_confirmation.required" => __('auth.repassword_not_null'),
-            "password.confirmed" => __('auth.repassword_mismatched'),
+            "password.min" => __('auth.password_min'),
+            "password_confirmation.min" => __('auth.password_min'),
         ];
 
     }
