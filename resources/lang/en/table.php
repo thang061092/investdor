@@ -13,5 +13,5 @@ return [
     'list_of_investments' => 'List of investments',
     'completed_list' => 'Completed list',
     'year' => 'Year',
-    'month' => 'Month'
+    'month' => 'Months'
 ];

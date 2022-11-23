@@ -35,4 +35,17 @@ class BillsRepository extends BaseRepository
             ->paginate(30);
         return $model;
     }
+
+    public function report_bill_by_user($request, $type_query)
+    {
+        $model = $this->model;
+        $model = $model
+            ->where(Bills::USER_ID, Session::get('customer')['id'])
+            ->where(Bills::STATUS, Bills::WARNING);
+        if ($type_query == 'total_money') {
+            return $model->sum(Bills::AMOUNT_MONEY);
+        } elseif ($type_query == 'count') {
+            return $model->count();
+        }
+    }
 }

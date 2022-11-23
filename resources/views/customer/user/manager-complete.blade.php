@@ -4,37 +4,43 @@
     @include('customer.user.header-your-manager')
     <div class="manager-panel">
         <div class="container">
-            <div class="row ls-index mb-xl-4 mb-3 wow fadeInUp">
+            <div class="row ls-index mb-xl-4 mb-3 wow justify-content-center fadeInUp">
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số tiền đầu tư</p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_investment')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_money_invest'])  ? number_format_vn($report['total_money_invest']) : 0}}
+                            VND
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số dự án</p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_project')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_invest'])  ? number_format_vn($report['total_invest']) : 0}}</div>
                     </div>
                 </div>
-                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
-                    <div class="box-index">
-                        <p class="title mb-2">
-                            Giá trị khoản đầu tư
-                        </p>
-                        <div class="index">XX.000.000$</div>
-                    </div>
-                </div>
+                {{--                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">--}}
+                {{--                    <div class="box-index">--}}
+                {{--                        <p class="title mb-2">--}}
+                {{--                            Giá trị khoản đầu tư--}}
+                {{--                        </p>--}}
+                {{--                        <div class="index">XX.000.000$</div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
+                {{--                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">--}}
+                {{--                    <div class="box-index">--}}
+                {{--                        <p class="title mb-2">{{__('table.profit')}}</p>--}}
+                {{--                        <div class="index">XX.000.000$</div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
                         <p class="title mb-2">{{__('table.profit')}}</p>
-                        <div class="index">XX.000.000$</div>
-                    </div>
-                </div>
-                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
-                    <div class="box-index">
-                        <p class="title mb-2">{{__('table.profit')}}</p>
-                        <div class="index">XX.000.000$</div>
+                        <div class="index">{{!empty($report['profit'])  ? number_format_vn($report['profit']) : 0}}
+                            VND
+                        </div>
                     </div>
                 </div>
             </div>

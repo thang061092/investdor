@@ -98,7 +98,7 @@ class BillsService
         ]);
 
         if ($request->status == Bills::SUCCESS) {
-            $contract = $this->contractService->create_contract_invest($bill_new);
+            $contract = $this->contractService->create_contract_invest($bill_new, $request);
             if ($contract) {
                 $transaction = $this->transactionService->create_transaction_invest($contract, $bill_new);
                 $this->billsRepository->update($request->id, [
@@ -145,5 +145,13 @@ class BillsService
             }
         }
         return $message;
+    }
+
+    public function report_bill_by_user($request)
+    {
+        $data = [];
+        $data['total_money_invest'] = $this->billsRepository->report_bill_by_user($request, 'total_money');
+        $data['total_invest'] = $this->billsRepository->report_bill_by_user($request, 'count');
+        return $data;
     }
 }

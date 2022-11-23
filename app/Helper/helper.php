@@ -121,7 +121,7 @@ function decode($string, $key)
 
 function random_string($end)
 {
-    $random = substr(strtoupper(md5(mt_rand())), 0, $end);
+    $random = substr(strtoupper(md5(uniqid())), 0, $end);
     return $random;
 }
 

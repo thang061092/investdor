@@ -54,6 +54,7 @@ return [
     'warning' => 'Chờ xử lý',
     'fail' => 'Thất bại',
     'investment'=> 'Đầu tư',
-    'expiration' => 'Đáo hạn'
+    'expiration' => 'Đáo hạn',
+    'total_project'=> 'Tổng dự án'
 
 ];

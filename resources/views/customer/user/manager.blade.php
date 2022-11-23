@@ -4,35 +4,41 @@
     @include('customer.user.header-your-manager')
     <div class="manager-panel">
         <div class="container">
-            <div class="row ls-index mb-xl-4 mb-3 wow fadeInUp">
+            <div class="row ls-index mb-xl-4 mb-3 wow justify-content-center fadeInUp">
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số tiền đầu tư</p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_investment')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_money_invest'])  ? number_format_vn($report['total_money_invest']) : 0}}
+                            VND
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số dự án </p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_project')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_invest'])  ? number_format_vn($report['total_invest']) : 0}}</div>
                     </div>
                 </div>
-                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
-                    <div class="box-index">
-                        <p class="title mb-2">Giá trị khoản đầu tư tạm tính</p>
-                        <div class="index">XX.000.000$</div>
-                    </div>
-                </div>
+                {{--                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">--}}
+                {{--                    <div class="box-index">--}}
+                {{--                        <p class="title mb-2">Giá trị khoản đầu tư tạm tính</p>--}}
+                {{--                        <div class="index">XX.000.000$</div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
+                {{--                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">--}}
+                {{--                    <div class="box-index">--}}
+                {{--                        <p class="title mb-2">{{__('table.temporary_profit')}}</p>--}}
+                {{--                        <div class="index">XX.000.000$</div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
                         <p class="title mb-2">{{__('table.temporary_profit')}}</p>
-                        <div class="index">XX.000.000$</div>
-                    </div>
-                </div>
-                <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
-                    <div class="box-index">
-                        <p class="title mb-2">{{__('table.temporary_profit')}}</p>
-                        <div class="index">XX.000.000$</div>
+                        <div class="index">{{!empty($report['provisional_profit'])  ? number_format_vn($report['provisional_profit']) : 0}}
+                            VND
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,13 +99,14 @@
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Lợi nhuận tạm tính" style="text-align: center">
-                            xx.xxx.xxx
+                            {{number_format_vn(($contract['amount'] * (data_get(json_decode($contract->interest, true), 'interest')/12) / 100) * $contract['month'])}}
+                            VND
                         </p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value"
                            data-title="Lợi nhuận tạm tính"
-                           style="text-align: center"> {{data_get(json_decode($contract->interest, true), 'detail.interest')}}
+                           style="text-align: center"> {{data_get(json_decode($contract->interest, true), 'interest')}}
                             %/{{__('table.year')}}</p>
                     </div>
                     <div class="col-lg-auto px-0">

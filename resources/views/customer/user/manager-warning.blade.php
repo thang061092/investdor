@@ -7,14 +7,18 @@
             <div class="row ls-index mb-xl-4 mb-3 justify-content-center wow fadeInUp">
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số tiền đầu tư</p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_investment')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_money_invest'])  ? number_format_vn($report['total_money_invest']) : 0}}
+                            VND
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
-                        <p class="title mb-2">Tổng số dự án</p>
-                        <div class="index">XX.000.000$</div>
+                        <p class="title mb-2">{{__('project.total_project')}}</p>
+                        <div
+                            class="index">{{!empty($report['total_invest'])  ? number_format_vn($report['total_invest']) : 0}}</div>
                     </div>
                 </div>
             </div>
