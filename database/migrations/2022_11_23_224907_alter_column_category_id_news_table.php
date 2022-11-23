@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddContentToNewsTable extends Migration
+class AlterColumnCategoryIdNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddContentToNewsTable extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            //
-            $table->longText('content')->nullable();
+            $table->unsignedBigInteger('category_news_id')->nullable();
         });
     }
 
@@ -27,8 +26,7 @@ class AddContentToNewsTable extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            //
-            $table->dropColumn('content');
+            $table->dropColumn('category_news_id');
         });
     }
 }

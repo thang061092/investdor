@@ -134,7 +134,7 @@
                 </a>
                 <div class="group-box group-user toggle-content">
                     <a href="#" title="{{__('auth.personal_information')}}" class="btn_user unconfirmed mr-3">
-                        <img src="{{!empty(session()->get('customer')['avatar']) ? session()->get('customer')['avatar']: asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt="" />
+                        <img src="{{!empty(session()->get('customer')['avatar']) ? asset(session()->get('customer')['avatar']): asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt="" />
                     </a>
                     <!--CHÚ Ý CLASS unconfirmed khi chưa xác thực - confirmed cho xác thực-->
                     <div class="group-action-user">

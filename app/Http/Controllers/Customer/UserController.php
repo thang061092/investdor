@@ -21,6 +21,7 @@ use App\Http\Requests\FormAuth;
 use Toastr;
 use App\Http\Requests\FormQuestion;
 use App\Http\Services\QuestionService;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends BaseController
 {
