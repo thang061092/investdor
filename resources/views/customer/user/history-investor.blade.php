@@ -5,7 +5,7 @@
     <div class="manager-panel">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <p class="title_lg pt-2 wow fadeInUp">Lịch sử đầu tư</p>
+                <p class="title_lg pt-2 wow fadeInUp">{{__('page_name.investment_history')}}</p>
                 <form action="" method="" accept-charset="utf-8" class="frm-filter">
                     <div class="group-filter group-text wow fadeInUp">
                         <div class="group position-relative">
@@ -22,48 +22,52 @@
             </div>
             <div class="row mx-0 item-project-invest history d-lg-flex d-none wow fadeInUp">
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Dự án</p>
+                    <p class="c-label" style="text-align: center">{{__('table.project')}}</p>
                 </div>
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Tổng số tiền đầu tư dự án</p>
+                    <p class="c-label" style="text-align: center">{{__('table.project_investment_amount')}}</p>
                 </div>
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Ngày đầu tư</p>
+                    <p class="c-label" style="text-align: center">{{__('table.provisional_interest_rate')}}</p>
                 </div>
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Ngày bắt đầu</p>
+                    <p class="c-label" style="text-align: center">{{__('table.start_date')}}</p>
                 </div>
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Thời gian đầu tư</p>
+                    <p class="c-label" style="text-align: center">{{__('table.investment_time')}}</p>
                 </div>
             </div>
-            <div class="row mx-0 item-project-invest history wow fadeInUp">
-                <div class="col-lg-auto px-0">
-                    <a data-title="Tên dự án" href="" title="" class="name-project c-value">
-                        Khách sạn Intercontinatal</a>
+            @foreach($contracts as $contract)
+                <div class="row mx-0 item-project-invest flex-lg-nowrap wow fadeInUp d-lg-flex">
+                    <div class="col-lg-auto px-0">
+                        <a data-title="Tên dự án"
+                           href="{{route('customer.detail_project',['slug'=>$contract->realEstateProject->slug_vi])}}"
+                           title="" class="name-project c-value">
+                            {{session()->get('lang') == 'en' ? $contract->realEstateProject->name_en : $contract->realEstateProject->name_vi}}</a>
+                    </div>
+                    <div class="col-lg-auto px-0">
+                        <p class="c-value" data-title="Tổng số tiền đầu tư dự án" style="text-align: center">
+                            {{number_format_vn($contract['amount'])}} VND
+                        </p>
+                    </div>
+                    <div class="col-lg-auto px-0">
+                        <p class="c-value"
+                           data-title="Lợi nhuận tạm tính"
+                           style="text-align: center"> {{data_get(json_decode($contract->interest, true), 'interest')}}
+                            %/{{__('table.year')}}</p>
+                    </div>
+                    <div class="col-lg-auto px-0">
+                        <p class="c-value" data-title="Ngày bắt đầu"
+                           style="text-align: center">{{date('d/m/Y'), $contract->date_init}}</p>
+                    </div>
+                    <div class="col-lg-auto px-0">
+                        <p class="c-value" data-title="Thời gian đầu tư"
+                           style="text-align: center">{{$contract['month']}} {{__('table.month')}}</p>
+                    </div>
                 </div>
-                <div class="col-lg-auto px-0">
-                    <p class="c-value" data-title="Tổng số tiền đầu tư dự án">
-                        xx.xxx.xxx$
-                    </p>
-                </div>
-                <div class="col-lg-auto px-0">
-                    <p class="c-value" data-title="Ngày đầu tư">xx%</p>
-                </div>
-                <div class="col-lg-auto px-0">
-                    <p class="c-value" data-title="Ngày bắt đầu">
-                        12/11/2021
-                    </p>
-                </div>
-                <div class="col-lg-auto px-0">
-                    <p class="c-value" data-title="Thời gian đầu tư">
-                        12 tháng
-                    </p>
-                </div>
-            </div>
+            @endforeach
             <div class="pagi text-center wow fadeInUp">
-                <a href="">1</a>
-                <strong>2</strong>
+                {{$contracts->appends(request()->query())}}
             </div>
         </div>
     </div>

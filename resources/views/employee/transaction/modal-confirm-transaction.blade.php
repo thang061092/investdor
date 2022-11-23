@@ -59,7 +59,7 @@
                             <div class="mb-3">
                                 <label class="form-label"><strong>Ngày thanh toán</strong><span
                                         class="text-danger">*</span></label>
-                                <input type="datetime-local" class="form-control payment_date" name="payment_date">
+                                <input type="date" class="form-control payment_date" name="payment_date">
                             </div>
                         </div>
                         <div class="col-sm-12">

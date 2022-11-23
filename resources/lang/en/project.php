@@ -53,5 +53,6 @@ return [
     'warning' => 'Warning',
     'fail' => 'Fail',
     'investment' => 'Investment',
-    'expiration' => 'Expiration'
+    'expiration' => 'Expiration',
+    'total_project' => 'Total project'
 ];

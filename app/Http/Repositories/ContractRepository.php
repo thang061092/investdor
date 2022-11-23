@@ -16,12 +16,15 @@ class ContractRepository extends BaseRepository
         return Contract::class;
     }
 
-    public function get_contract_by_user($request, $status)
+    public function get_contract_by_user($request, $status = '')
     {
         $model = $this->model;
-        $model = $model->where(Contract::USER_ID, Session::get('customer')['id'])
-            ->where(Contract::STATUS, $status)
-            ->orderBy(Contract::CREATED_AT, self::DESC)
+        $model = $model->where(Contract::USER_ID, Session::get('customer')['id']);
+        if (!empty($status)) {
+            $model = $model->where(Contract::STATUS, $status);
+        }
+
+        $model = $model->orderBy(Contract::CREATED_AT, self::DESC)
             ->paginate(10);
         return $model;
     }
@@ -39,6 +42,19 @@ class ContractRepository extends BaseRepository
             return $query->count();
         } else {
             return $query->get();
+        }
+    }
+
+    public function report_contract_by_user($request, $status, $type_query)
+    {
+        $model = $this->model;
+        $model = $model->where(Contract::USER_ID, Session::get('customer')['id'])
+            ->where(Contract::STATUS, $status);
+
+        if ($type_query == 'total_money') {
+            return $model->sum(Contract::AMOUNT);
+        } elseif ($type_query == 'count') {
+            return $model->count();
         }
     }
 }

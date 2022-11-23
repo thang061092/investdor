@@ -81,17 +81,21 @@ class UserController extends BaseController
         $action = !empty($request->action) ? $request->action : 'show';
         if ($main_tab == 'manager') {
             if ($tab == 'active') {
+                $report = $this->contractService->report_contract_by_user($request, Contract::EFFECT);
                 $contracts = $this->contractService->get_contract_by_user($request, Contract::EFFECT);
-                return view('customer.user.manager', compact('contracts'));
+                return view('customer.user.manager', compact('contracts', 'report'));
             } elseif ($tab == 'complete') {
+                $report = $this->contractService->report_contract_by_user($request, Contract::EXPIRE);
                 $contracts = $this->contractService->get_contract_by_user($request, Contract::EXPIRE);
-                return view('customer.user.manager-complete', compact('contracts'));
+                return view('customer.user.manager-complete', compact('contracts', 'report'));
             } elseif ($tab == 'warning') {
+                $report = $this->billsService->report_bill_by_user($request);
                 $bills = $this->billsService->get_bill_warning($request);
-                return view('customer.user.manager-warning', compact('bills'));
+                return view('customer.user.manager-warning', compact('bills', 'report'));
             }
         } elseif ($main_tab == 'history') {
-            return view('customer.user.history-investor');
+            $contracts = $this->contractService->get_contract_by_user($request, '');
+            return view('customer.user.history-investor', compact('contracts'));
         } elseif ($main_tab == 'profile') {
             if ($action == 'update') {
                 $user = session()->get('customer');
@@ -126,7 +130,7 @@ class UserController extends BaseController
 
     public function update_profile(FormUpdateProfile $request)
     {
-        $user = session()->get('customer'); 
+        $user = session()->get('customer');
         $userId = $user['id'];
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
@@ -157,7 +161,7 @@ class UserController extends BaseController
     }
 
     public function auth(FormAuth $request)
-    {   
+    {
         $user = session()->get('customer');
         $userId = $user['id'];
         $auth = $this->userService->auth($request, $userId);
@@ -169,7 +173,8 @@ class UserController extends BaseController
         return redirect("/customer/user/manager?main_tab=profile");
     }
 
-    public function question(Request $request) {
+    public function question(Request $request)
+    {
         $create = $this->questionService->create($request);
         if ($create) {
             toastr()->success(__("message.send_question_success"), __('message.success'));
