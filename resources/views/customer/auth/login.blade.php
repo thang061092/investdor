@@ -50,7 +50,7 @@
                     <div class="form-group auth__wrap d-flex align-items-center px-md-3 px-2">
                         <input type="password"
                                class="form-control auth__inp frm-pwd border-0 p-0 @if($errors->has('password'))is-invalid @endif"
-                               placeholder="{{__('auth.enter_password')}}" name="password" {{old('password')}}/>
+                               placeholder="{{__('auth.enter_password')}}" name="password" value="{{old('password')}}"/>
                         <div class="auth__ico show-ico">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">

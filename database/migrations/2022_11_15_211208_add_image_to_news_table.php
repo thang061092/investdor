@@ -15,7 +15,7 @@ class AddImageToNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
             //
-            $table->string('image');
+            $table->string('image')->nullable();
         });
     }
 

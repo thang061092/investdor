@@ -15,8 +15,8 @@ class AddTitleEnToNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
             //
-            $table->longText('title_en');
-            $table->string('category_en');
+            $table->longText('title_en')->nullable();
+            $table->string('category_en')->nullable();
         });
     }
 

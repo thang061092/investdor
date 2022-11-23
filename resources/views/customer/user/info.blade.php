@@ -13,7 +13,7 @@
                     <div
                         class="col-md-9 mb-md-0 mb-5 d-flex flex-wrap align-items-center justify-content-lg-start justify-content-center wow fadeInUp">
                         <div class="img mr-3 pr-1 mb-sm-0 mb-3">
-                            <img src="{{asset('frontend/images/sep.jpg')}}" class="img-fluid" alt=""/>
+                            <img src='{{asset("$detail->avatar")}}' class="img-fluid" alt=""/>
                         </div>
                         <div class="content text-lg-left text-center">
                             <p class="title_lg">{{$detail->full_name}}</p>
@@ -64,7 +64,11 @@
                             {{$detail->full_name}}
                         </div>
                         <p class="c-label mb-1">{{__('profile.date_of_birth')}}</p>
+                        @if (!empty($detail->birthday))
                         <div class="c-value mb-lg-3 mb-2">{{date('d/m/Y', strtotime($detail->birthday))}}</div>
+                        @else
+                        <div class="c-value mb-lg-3 mb-2"></div>
+                        @endif
                         <p class="c-label mb-1">{{__('profile.gender')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
                             @if ($detail->gender == 1)

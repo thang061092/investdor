@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class News extends BaseModel
 {
     //
     protected $table = 'news';
@@ -28,8 +27,13 @@ class News extends Model
     const CONTENT = 'content';
     const CONTENT_EN = 'content_en';
     const IMAGE = 'image';
+    const CATEGORY_NEWS_ID = 'category_news_id';
 
     const ACTIVE = 'active';
     const DEACTIVE = 'deactive';
-    protected $guarded = [];  
+
+    public function categoryNews()
+    {
+        return $this->belongsTo(CategoryNews::class, self::CATEGORY_NEWS_ID);
+    }
 }

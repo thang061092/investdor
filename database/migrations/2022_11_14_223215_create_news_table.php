@@ -18,14 +18,14 @@ class CreateNewsTable extends Migration
             $table->longText('category')->nullable();
             $table->longText('title')->nullable();
             $table->longText('slug')->nullable();
-            $table->longText('sumary_vi');
-            $table->longText('sumary_en');
+            $table->longText('sumary_vi')->nullable();
+            $table->longText('sumary_en')->nullable();
             $table->longText('content_vi')->nullable();
             $table->longText('content_en')->nullable();
             $table->longText('description_vi')->nullable();
             $table->longText('description_en')->nullable();
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->smallInteger('level')->default(0);
             $table->string('status');
             $table->timestamps();

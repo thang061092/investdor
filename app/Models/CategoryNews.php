@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class CategoryNews extends Model
+class CategoryNews extends BaseModel
 {
     //
     protected $table = 'category_news';
@@ -26,6 +25,9 @@ class CategoryNews extends Model
     const ACTIVE = 'active';
     const DEACTIVE = 'deactive';
 
-    protected $guarded = [];  
+    public function news()
+    {
+        return $this->hasMany(News::class, News::CATEGORY_NEWS_ID);
+    }
 
 }

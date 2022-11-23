@@ -160,7 +160,7 @@
                         <label for="bank_name" class="d-block mb-2">
                             {{__('profile.bank_name')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="bank_name" class="e-select nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
+                        <select style="color:#676767;" name="bank_name" class="nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
                                 data-default="Chọn">
                             @if(isset($banks))
                                 @foreach ($banks as $bank)
@@ -209,10 +209,10 @@
                         <label for="province" class="d-block mb-2">
                             {{__('profile.province')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="province" class="e-select nice-select mb-3" id="city" data-text="Chọn thành phố"
+                        <select style="color:#676767;" name="province" class="nice-select mb-3" id="city" data-text="{{__('profile.province')}}"
                                 data-default="Chọn">
                             <option value="">
-                                Chọn thành phố
+                            {{__('profile.province')}}
                             </option>
                             @if(isset($province))
                                 @foreach($province as $i)
@@ -227,11 +227,11 @@
                         <label for="district" class="d-block mb-2">
                             {{__('profile.district')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="district" class="nice-select mb-3 district" id="district"
-                                data-text="Chọn quận/ huyện"
+                        <select style="color:#676767;" name="district" class="nice-select mb-3 district" id="district"
+                                data-text="{{__('profile.district')}}"
                                 data-default="Chọn">
                             <option value="">
-                                Chọn quận/ huyện
+                            {{__('profile.district')}}
                             </option>
                             @if(isset($district))
                                 @foreach($district as $k)
@@ -246,10 +246,10 @@
                         <label for="ward" class="d-block mb-2">
                             {{__('profile.ward')}}<span class="text-danger">*</span>
                         </label>
-                        <select name="ward" class="nice-select mb-3" id="ward"
+                        <select style="color:#676767;" name="ward" class="nice-select mb-3" id="ward"
                                 data-text="Chọn xã/ phường/ thị trấn" data-default="Chọn">
                             <option value="">
-                                Chọn xã/ phường/ thị trấn
+                            {{__('profile.ward')}}
                             </option>
                             @if(isset($ward))
                                 @foreach($ward as $j)
@@ -264,7 +264,7 @@
                         <label for="specific_address" class="d-block mb-2">
                             {{__('profile.specific_address')}}
                         </label>
-                        <input type="text" name="specific_address" placeholder="Nhập địa chỉ cụ thể"
+                        <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
                                class="form-control mb-3" value="{{$detail->address}}"/>
                     </div>
                 </div>

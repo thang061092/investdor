@@ -15,9 +15,9 @@ class AddSlugEnToCategoryNewsTable extends Migration
     {
         Schema::table('category_news', function (Blueprint $table) {
             //
-            $table->string('slug_en');
-            $table->string('name_en');
-            $table->longText('description_en');
+            $table->string('slug_en')->nullable();
+            $table->string('name_en')->nullable();
+            $table->longText('description_en')->nullable();
         });
     }
 

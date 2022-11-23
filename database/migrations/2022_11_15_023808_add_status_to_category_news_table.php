@@ -15,9 +15,9 @@ class AddStatusToCategoryNewsTable extends Migration
     {
         Schema::table('category_news', function (Blueprint $table) {
             //
-            $table->string('status');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('status')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
         });
     }
 
