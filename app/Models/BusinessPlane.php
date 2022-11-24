@@ -6,7 +6,7 @@ namespace App\Models;
 
 class BusinessPlane extends BaseModel
 {
-    protected $table = 'business_plan';
+    protected $table = 'business_plane';
 
     //column
     const TITLE_VI = 'title_vi';

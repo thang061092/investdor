@@ -54,5 +54,9 @@ return [
     'fail' => 'Fail',
     'investment' => 'Investment',
     'expiration' => 'Expiration',
-    'total_project' => 'Total project'
+    'total_project' => 'Total project',
+    'business_plan' => 'Business plan',
+    'financial' => 'Financial',
+    'document' => 'Document',
+    'evaluate'=> 'Evaluate'
 ];

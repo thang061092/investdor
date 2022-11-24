@@ -36,7 +36,7 @@ return [
     'basis' => 'Nền tảng',
     'project_information' => 'Thông tin dự án',
     'asset' => 'Tài sản',
-    'year_built'=>'Năm xây dựng',
+    'year_built' => 'Năm xây dựng',
     'estimated_capacity' => 'Công suất dự kiến ​​(bao gồm hợp đồng thuê MTM)',
     'total_building_area' => 'Tổng diện tích xây dựng',
     'target_stable_return_on_cost' => 'Mục tiêu Lợi tức ổn định trên Chi phí',
@@ -47,14 +47,18 @@ return [
     'address_company' => "Địa chỉ công ty",
     'administrative_council' => 'Hội đồng quản trị',
     'investor' => 'Chủ đầu tư',
-    'other_documents'=>'Các tài liệu khác',
+    'other_documents' => 'Các tài liệu khác',
     'effect' => 'Đang gửi',
     'expire' => 'Đã đáo hạn',
     'success' => "Thành công",
     'warning' => 'Chờ xử lý',
     'fail' => 'Thất bại',
-    'investment'=> 'Đầu tư',
+    'investment' => 'Đầu tư',
     'expiration' => 'Đáo hạn',
-    'total_project'=> 'Tổng dự án'
+    'total_project' => 'Tổng dự án',
+    'business_plan' => 'Kế hoạch kinh doanh',
+    'financial' => 'Tài chính',
+    'document' => 'Tài liệu',
+    'evaluate'=> 'Đánh giá'
 
 ];
