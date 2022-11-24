@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}"/>
-    @yield('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+@yield('css')
 <body>
 @include('customer.layout.header')
 @yield('content')
@@ -33,6 +34,9 @@
 <script src="{{asset('frontend/js/char.js')}}"></script>
 <script src="{{asset('frontend/js/auth.js')}}"></script>
 <script src="{{asset('frontend/js/script.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script src="{{asset('frontend/js/fslightbox.js')}}"></script>
+
 @yield('js')
 </body>
 
