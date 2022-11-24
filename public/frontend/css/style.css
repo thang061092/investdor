@@ -2919,3 +2919,18 @@ header.header.fixed.scroll .group-action-user .btn_user_link {
 .notification-link svg path {
   fill: rgba(103, 103, 103, 1);
 }
+.img-top{
+  position: relative;
+  z-index: 1;
+  padding-top: 70%;
+}
+.img-top img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  z-index: 1;
+}

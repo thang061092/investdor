@@ -151,6 +151,7 @@
             <p class="title_lg">Thông tin về dự án</p>
             <div class="navv-tabs p-2">
                 <a href="#tongquan" title="Tổng quan dự án" class="d-inline-block">Tổng quan dự án</a>
+                <a href="#thu-vien-anh" title="Thư viện ảnh" class="d-inline-block">Thư viện ảnh</a>
                 <a href="#taisan" title="Tài sản" class="d-inline-block">Tài sản</a>
                 <a href="#chudautu" title="Chủ đầu từ" class="d-inline-block">Chủ đầu từ</a>
                 <a href="#kehoachkinhdoanh" title="Kế hoạch kinh doanh" class="d-inline-block">Kế hoạch kinh doanh</a>
@@ -260,6 +261,20 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="#thu-vien-anh" class="project-main wow fadeInUp">
+        <div class="container">
+            <p class="title_lg text-center">Thư viện ảnh</p>
+            <div class="row">
+                <?php for($i = 0;$i<12;$i++): ?>
+                <div class="col-lg-2">
+                    <a data-fslightbox="lightbox" class="img-top" href="https://via.placeholder.com/450x450">
+                        <img src="https://via.placeholder.com/450x450" class="img-fluid" alt="">
+                    </a>
+                </div>
+                <?php endfor; ?>
             </div>
         </div>
     </section>
