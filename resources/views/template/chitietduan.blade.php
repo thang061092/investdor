@@ -118,27 +118,42 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            <a href="{{asset('frontend/images/img-1.jpg')}}" data-fancybox="gallery"
+                               data-caption="First image">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            <a href="{{asset('frontend/images/img-1.jpg')}}" data-fancybox="gallery"
+                               data-caption="First image">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            <a href="{{asset('frontend/images/img-1.jpg')}}" data-fancybox="gallery"
+                               data-caption="First image">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            <a href="{{asset('frontend/images/img-1.jpg')}}" data-fancybox="gallery"
+                               data-caption="First image">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="img">
-                            <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            <a href="{{asset('frontend/images/img-1.jpg')}}" data-fancybox="gallery"
+                               data-caption="First image">
+                                <img src="{{asset('frontend/images/img-1.jpg')}}" class="img-fluid" alt=""/>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -268,7 +283,7 @@
         <div class="container">
             <p class="title_lg text-center">Thư viện ảnh</p>
             <div class="row">
-                <?php for($i = 0;$i<12;$i++): ?>
+                <?php for($i = 0;$i < 12;$i++): ?>
                 <div class="col-lg-2">
                     <a data-fslightbox="lightbox" class="img-top" href="https://via.placeholder.com/450x450">
                         <img src="https://via.placeholder.com/450x450" class="img-fluid" alt="">
