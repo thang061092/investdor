@@ -50,7 +50,7 @@ class HomeController extends BaseController
     public function knowledge(Request $request)
     {
         $categories = $this->categoryService->get_all();
-        return view('customer.home.knowledge',[
+        return view('customer.home.knowledge', [
             'categories' => $categories,
         ]);
     }

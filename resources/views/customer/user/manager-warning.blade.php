@@ -23,11 +23,11 @@
                 </div>
             </div>
             <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <p class="title_lg pt-2 wow fadeInUp">Danh sách dự án chờ xác nhận</p>
+                <p class="title_lg pt-2 wow fadeInUp">{{__('project.waiting_approval')}}</p>
                 <form action="" method="" accept-charset="utf-8" class="frm-filter">
                     <div class="group-filter group-text wow fadeInUp">
                         <div class="group position-relative">
-                            <input type="text" placeholder="Nhập tên dự án" class="form-control"/>
+                            <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"/>
                             <button type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                      fill="none">
@@ -45,10 +45,10 @@
             </div>
             <div class="row mx-0 item-project-invest complete d-lg-flex d-none wow fadeInUp">
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Dự án</p>
+                    <p class="c-label">{{__('table.project')}}</p>
                 </div>
                 <div class="col-lg-auto px-0">
-                    <p class="c-label">Tổng số tiền đầu tư dự án</p>
+                    <p class="c-label">{{__('table.project_investment_amount')}}</p>
                 </div>
             </div>
             @foreach($bills as $bill)
@@ -60,7 +60,7 @@
                             {{session()->get('lang') == 'en' ? $bill->realEstateProject->name_en : $bill->realEstateProject->name_vi}}</a>
                     </div>
                     <div class="col-lg-auto px-0">
-                        <p class="c-value" data-title="Tổng số tiền đầu tư dự án">
+                        <p class="c-value" data-title="{{__('table.project_investment_amount')}}">
                             {{number_format_vn($bill->amount_money)}} VND
                         </p>
                     </div>

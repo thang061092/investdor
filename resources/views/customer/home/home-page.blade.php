@@ -112,7 +112,7 @@
                                      data-wow-duration="0.5s">
                                     <div class="item_project">
                             <span class="status d-block w-100">
-                                {{__('project.on_sale')}}
+                                {{ status_project($v->status) }}
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
@@ -139,8 +139,10 @@
                                                         class="number ml-3">{{number_format_vn($v->part)}}</span>
                                                 </div>
                                                 <div class="process d-flex flex-nowrap">
-                                                    <span class="d-block text-center" style="width: 20%">20.000</span>
-                                                    <span class="d-block text-center" style="width: 80%">80.000</span>
+                                                <span class="d-block text-center"
+                                                      style="width: {{($v->part - $v->current_part)/ $v->part * 100}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
+                                                    <span class="d-block text-center"
+                                                          style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
                                                 </div>
                                             </div>
                                             <div class="ls-profit">
@@ -208,7 +210,7 @@
                                      data-wow-duration="0.5s" style="padding-top: 20px;">
                                     <div class="item_project">
                             <span class="status d-block w-100">
-                                {{__('project.on_sale')}}
+                                {{ status_project($v->status) }}
                             </span>
                                         <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                            title="" class="d-block img">
@@ -235,8 +237,10 @@
                                                         class="number ml-3">{{number_format_vn($v->part)}}</span>
                                                 </div>
                                                 <div class="process d-flex flex-nowrap">
-                                                    <span class="d-block text-center" style="width: 20%">20.000</span>
-                                                    <span class="d-block text-center" style="width: 80%">80.000</span>
+                                                <span class="d-block text-center"
+                                                      style="width: {{($v->part - $v->current_part)/ $v->part * 100}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
+                                                    <span class="d-block text-center"
+                                                          style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
                                                 </div>
                                             </div>
                                             <div class="ls-profit">

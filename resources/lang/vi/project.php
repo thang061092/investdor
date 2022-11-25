@@ -59,6 +59,8 @@ return [
     'business_plan' => 'Kế hoạch kinh doanh',
     'financial' => 'Tài chính',
     'document' => 'Tài liệu',
-    'evaluate'=> 'Đánh giá'
+    'evaluate'=> 'Đánh giá',
+    'waiting_approval' => 'Danh sách chờ phê duyệt',
+    'enter_name_project' => "Nhập tên dự án"
 
 ];

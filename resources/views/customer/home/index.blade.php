@@ -100,7 +100,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{route('customer.home_page')}}" title="" class="btn_all lg mt-lg-4 mt-4 mb-lg-0 mb-4">Xem ngay các khoản đầu tư</a>
+                    <a href="{{route('customer.home_page')}}" title="" class="btn_all lg mt-lg-4 mt-4 mb-lg-0 mb-4">Xem
+                        ngay các khoản đầu tư</a>
                 </div>
                 <div class="col-lg-6 max-w wow fadeInRight">
                     <p class="title_small">OUR GROWTH BUSINESS</p>
@@ -399,7 +400,7 @@
                             <div class="swiper-slide pb-lg-4 pb-3">
                                 <div class="item_project">
                         <span class="status d-block w-100">
-                            {{__('project.on_sale')}}
+                             {{ status_project($v->status) }}
                         </span>
                                     <a href="{{route('customer.detail_project',session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $v->slug_en : $v->slug_vi)}}"
                                        title="" class="d-block img">
@@ -423,8 +424,10 @@
                                                 <span class="number ml-3">{{number_format_vn($v->total_value)}}</span>
                                             </div>
                                             <div class="process d-flex flex-nowrap">
-                                                <span class="d-block text-center" style="width: 20%">20.000</span>
-                                                <span class="d-block text-center" style="width: 80%">80.000</span>
+                                                <span class="d-block text-center"
+                                                      style="width: {{($v->part - $v->current_part)/ $v->part * 100}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
+                                                <span class="d-block text-center"
+                                                      style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
                                             </div>
                                         </div>
                                         <div class="ls-profit">
@@ -446,7 +449,7 @@
                                                     </defs>
                                                 </svg>
                                                 {{__('project.expected_profit')}}
-                                                <span class="num-profit ml-3 text-danger">{{$v->interests()->where('status', 'active')->first()->interest ?? 10}}%</span>
+                                                <span class="num-profit ml-3 text-danger">{{$v->interests()->where('status', 'active')->first()->interest ?? 12}}%</span>
                                             </p>
                                         </div>
                                         <div class="project_desc mb-lg-3 mb-2">
@@ -494,7 +497,8 @@
                 took a galley of type and scrambled it to make a type specimen
                 book.of Lorem Ipsum. ”
             </div>
-            <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem ngay các khoản đầu tư</a>
+            <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem
+                ngay các khoản đầu tư</a>
         </div>
     </section>
     <section class="feel section_all">

@@ -9,6 +9,7 @@ return [
     'pending' => 'Pending',
     'close_investment' => 'Close investment',
     'search' => "Search",
+    'see_more' => "See more",
     'expected_profit' => 'Expected profit',
     'total_investment' => "Total investment",
     'part' => 'Part',
@@ -58,5 +59,7 @@ return [
     'business_plan' => 'Business plan',
     'financial' => 'Financial',
     'document' => 'Document',
-    'evaluate'=> 'Evaluate'
+    'evaluate' => 'Evaluate',
+    'waiting_approval' => 'Waiting list for approval',
+    'enter_name_project' => "Enter name project"
 ];
