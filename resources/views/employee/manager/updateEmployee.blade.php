@@ -20,10 +20,10 @@
                             <div class="card-header text-primary">
                                 Thông tin chi tiết:
                             </div>
-                            <form action='{{route("customer.employee.update_employee",["id" => $user->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'> 
+                            <form action='{{route("customer.employee.update_employee",["id" => $user->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="full_name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="full_name" id="full_name"
@@ -33,7 +33,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
@@ -43,7 +43,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="phone_number">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="phone_number" id="phone_number"
@@ -53,7 +53,7 @@
                                         @if($errors->has('phone_number'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="identity">{{__('profile.identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="identity" id="identity"
@@ -63,7 +63,7 @@
                                         @if($errors->has('identity'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="date_identity">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" name="date_identity" id="date_identity"
@@ -73,7 +73,7 @@
                                         @if($errors->has('date_identity'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="address_identity">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="address_identity" id="address_identity"
@@ -83,7 +83,7 @@
                                         @if($errors->has('address_identity'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="birthday">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" name="birthday" id="birthday"
@@ -93,15 +93,15 @@
                                         @if($errors->has('birthday'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
                                                 <label class="gender-choose" for="male">
                                                     @php
                                                         if($user->gender == 1) {
                                                             $check = " checked";
-                                                        } 
-                                                        else 
+                                                        }
+                                                        else
                                                         {
                                                             $check = "";
                                                         }
@@ -113,8 +113,8 @@
                                                     @php
                                                         if($user->gender == 2) {
                                                             $check = " checked";
-                                                        } 
-                                                        else 
+                                                        }
+                                                        else
                                                         {
                                                             $check = "";
                                                         }
@@ -127,7 +127,7 @@
                                         @if($errors->has('gender'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('gender') }}</p>
                                             @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="bank_name">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                 <select name="bank_name" class="form-control mb-3" id="banks" data-text="Chọn ngân hàng"
@@ -144,7 +144,7 @@
                                         @if($errors->has('bank_name'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
                                         @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="account_number">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_number" id="account_number"
@@ -154,7 +154,7 @@
                                         @if($errors->has('account_number'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
                                         @endif
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="account_name">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_name" id="account_name"
@@ -164,8 +164,8 @@
                                         @if($errors->has('account_name'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
                                         @endif
- 
-                                        <div class="col-md-7 col-sm-12">
+
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="avatar" class="img-ct">
                                                 <label class="form-label"><strong>{{__('profile.photo')}}</strong><span
@@ -176,11 +176,11 @@
                                                         <img id="img-avatar" src="{{!empty($user->avatar) ? $user->avatar : asset('frontend/images/default.png')}}"
                                                             class="img-fluid" alt="" width="250px" height="250px"/>
                                                 </label>
-  
+
                                             </div>
                                         </div>
 
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="img_before" class="img-ct">
                                                 <label class="form-label"><strong>{{__('profile.facede')}}</strong><span
@@ -193,8 +193,8 @@
                                                 </label>
                                             </div>
                                         </div>
-                                                
-                                        <div class="col-md-7 col-sm-12">
+
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="img_after" class="img-ct">
                                                 <label class="form-label"><strong>{{__('profile.backside')}}</strong><span
