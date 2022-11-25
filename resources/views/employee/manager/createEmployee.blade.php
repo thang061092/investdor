@@ -20,9 +20,9 @@
                             <div class="card-header text-primary">
                                 Thông tin chi tiết:
                             </div>
-                            <form action="{{route('customer.employee.create_employee')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'> 
+                            <form action="{{route('customer.employee.create_employee')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
-                                    <div class="row">
+                                    <div class="row justify-content-center">
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="full_name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
@@ -59,7 +59,7 @@
                                                 <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
                                         </div>
 
-                                        <div class="text-center" style="text-align: right !important;">
+                                        <div class="text-center pt-3">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">
                                                     Thêm mới &nbsp;

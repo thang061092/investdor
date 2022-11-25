@@ -20,10 +20,10 @@
                             <div class="card-header text-primary">
                             {{__('auth.personal_information')}}:
                             </div>
-                            <form action='{{route("customer.customer.update_customer",["id" => $customer->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'> 
+                            <form action='{{route("customer.customer.update_customer",["id" => $customer->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="accuracy">{{__('profile.status_auth')}}<span class="text-danger">*</span></label>
                                                 @if ($customer->accuracy == 0)
@@ -38,49 +38,49 @@
                                                     <span class="bg bg-warning">
                                                     {{__('profile.wait_auth')}}
                                                     </span>
-                                                @else 
+                                                @else
                                                     <span class="bg bg-danger">
                                                     {{__('profile.fail_auth')}}
                                                     </span>
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="full_name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="full_name" id="full_name"
                                                             value="{{$customer->full_name}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="email" id="email"
                                                          value="{{$customer->email}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="phone_number">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="phone_number" id="phone_number"
                                                          value="{{$customer->phone}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="identity">{{__('profile.identity')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="identity" id="identity"
                                                          value="{{$customer->identity}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="date_identity">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
                                                     <input type="date" class="form-control" name="date_identity" id="date_identity"
                                                          value="{{$customer->date_identity}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="address_identity">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="address_identity" id="address_identity"
@@ -88,22 +88,22 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="gender">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="gender" id="gender"
                                                          value="{{$customer->birthday}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
                                                     <label class="gender-choose" for="male">
                                                         @php
                                                             if($customer->gender == 1) {
                                                                 $check = " checked";
-                                                            } 
-                                                            else 
+                                                            }
+                                                            else
                                                             {
                                                                 $check = "";
                                                             }
@@ -115,8 +115,8 @@
                                                         @php
                                                             if($customer->gender == 2) {
                                                                 $check = " checked";
-                                                            } 
-                                                            else 
+                                                            }
+                                                            else
                                                             {
                                                                 $check = "";
                                                             }
@@ -127,28 +127,28 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="bank_name">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="bank_name" id="bank_name"
                                                         disabled value="{{$customer->bank_name}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="account_number">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="account_number" id="account_number"
                                                          value="{{$customer->account_number}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="account_name">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="account_name" id="account_name"
                                                          value="{{$customer->account_name}}">
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-8 col-sm-12 email">
                                                 <div class="form-group mb-3">
                                                     <label for="avatar">{{__('profile.photo')}}<span class="text-danger">*</span></label>
