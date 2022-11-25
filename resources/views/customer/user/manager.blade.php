@@ -47,7 +47,7 @@
                 <form action="" method="" accept-charset="utf-8" class="frm-filter">
                     <div class="group-filter group-text wow fadeInUp">
                         <div class="group position-relative">
-                            <input type="text" placeholder="Nhập tên dự án" class="form-control"/>
+                            <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"/>
                             <button type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                      fill="none">

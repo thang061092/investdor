@@ -12,7 +12,7 @@ return [
     'bank_name' => 'Tên ngân hàng',
     'account_number' => 'Số tài khoản',
     'account_holder' => 'Chủ tài khoản',
-    'warning_account' => 'Bạn hãy đảm bảo nhập đúng số tài khoản của mình. InvestDor không chịu trách nghiêm khi bạn nhập sai số tài khoản.',
+    'warning_account' => 'Bạn hãy đảm bảo nhập đúng số tài khoản của mình. InvestDor không chịu trách nhiệm khi bạn nhập sai số tài khoản.',
     'address' => 'Địa chỉ',
     'province' => 'Tỉnh/ thành phố',
     'district' => 'Quận/ huyện',
