@@ -18,15 +18,15 @@ $(document).ready(function () {
     }
 
     $(".btn_update_role").on("click", function () {
-        let role_id = $(this).attr('data-id')
+        let id = $(this).attr('data-id')
         let users = getDataUser();
         let menus = getDataMenu();
         let formData = new FormData();
-        formData.append('role_id', role_id);
+        formData.append('id', id);
         formData.append('users', users)
         formData.append('menus', menus)
         $.ajax({
-            url: window.origin + '/role/update',
+            url: window.origin + '/admin/group/update',
             type: "POST",
             data: formData,
             dataType: 'json',
@@ -37,15 +37,16 @@ $(document).ready(function () {
             contentType: false,
             success: function (data) {
                 if (data.status != 200) {
-                    alert(data.message);
+                    toastr.error(data.message ?? 'Error')
                 } else {
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
                 }
             },
             error: function (error) {
-                alert('error');
+                toastr.error('Error')
             }
         });
     });
@@ -77,7 +78,7 @@ $(document).ready(function () {
                         {data: 'email'},
                         {
                             mRender: function (data, type, row) {
-                                return '<input type="checkbox" class="check_id_user" name="check_id_user" value="' + row._id + '" >'
+                                return '<input type="checkbox" class="check_id_user" name="check_id_user" value="' + row.id + '" >'
                             }
                         }
                     ]
@@ -94,7 +95,7 @@ $(document).ready(function () {
         $('#tbl_modal_user').DataTable().rows().iterator('row', function (context, index) {
             let section = {};
             // haveDivSection = true;
-            let id = $(this.row(index).data())[0]._id;
+            let id = $(this.row(index).data())[0].id;
             var node = $(this.row(index).node());
             var isChecked = $(node).closest("tr").find("input[type='checkbox']").prop("checked");
             if (isChecked) {
@@ -122,7 +123,6 @@ $(document).ready(function () {
 
     $('.show_model_menu').click(function () {
         let menuids = getDataMenu();
-        console.log(menuids)
         $.ajax({
             method: "POST",
             url: window.origin + "/admin/menu/get_menu_add_role",
@@ -134,17 +134,16 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (data) {
-                console.log(data)
                 $("#tbl_modal_menu").DataTable().destroy();
                 $('#tbl_modal_menu').DataTable({
                     "info": false,
                     data: data.data,
                     columns: [
-                        {data: 'id', visible: false},
+                        {data: 'slug', visible: false},
                         {data: 'name'},
                         {
                             mRender: function (data, type, row) {
-                                return '<input type="checkbox" class="check_id_user" name="check_id_user" value="' + row._id + '" >'
+                                return '<input type="checkbox" class="check_id_user" name="check_id_user" value="' + row.slug + '" >'
                             }
                         }
                     ]
@@ -161,25 +160,26 @@ $(document).ready(function () {
         $('#tbl_modal_menu').DataTable().rows().iterator('row', function (context, index) {
             var section = {};
             // haveDivSection = true;
-            var id = $(this.row(index).data())[0]._id;
+            var slug = $(this.row(index).data())[0].slug;
             var node = $(this.row(index).node());
             var isChecked = $(node).closest("tr").find("input[type='checkbox']").prop("checked");
             if (isChecked) {
                 var des = $(node).closest("tr").find("td").html();
-                section['id'] = id;
+                section['slug'] = slug;
                 section['name'] = des;
                 arrUsers.push(section);
             }
         });
+        console.log(arrUsers)
         //Init data for tables
         var temp = "";
         if (arrUsers.length > 0) {
             for (var i = 0; i < arrUsers.length; i++) {
-                temp += "<tr class='clear_tr_" + arrUsers[i].id + "'>";
+                temp += "<tr class='clear_tr_" + arrUsers[i].slug + "'>";
                 temp += "<input type='hidden' id='name' value='" + arrUsers[i].name + "'>";
-                temp += "<input type='hidden' id='menu_id' value='" + arrUsers[i].id + "'>";
+                temp += "<input type='hidden' id='menu_id' value='" + arrUsers[i].slug + "'>";
                 temp += "<td>" + arrUsers[i].name + "</td>";
-                temp += "<td style='color: red'><a class='nav-link clear_tr' data-id='" + arrUsers[i].id + "'><i class='fa fa-times'></i></a></td>";
+                temp += "<td style='color: red'><a class='nav-link clear_tr' data-id='" + arrUsers[i].slug + "'><i class='fa fa-times'></i></a></td>";
                 temp += "</tr>";
             }
             //Append HTML
@@ -191,13 +191,12 @@ $(document).ready(function () {
         var name = $("input[name='name']").val()
         var users = getDataUser();
         var menus = getDataMenu();
-        console.log(users)
         var formData = new FormData();
         formData.append('name', name);
         formData.append('users', users)
         formData.append('menus', menus)
         $.ajax({
-            url: window.origin + '/admin/role/store',
+            url: window.origin + '/admin/group/store',
             type: "POST",
             data: formData,
             dataType: 'json',
@@ -208,15 +207,16 @@ $(document).ready(function () {
             contentType: false,
             success: function (data) {
                 if (data.status != 200) {
-                    alert(data.message);
+                    toastr.error(data.message ?? 'Error')
                 } else {
+                    toastr.success(data.message ?? 'Success')
                     setTimeout(function () {
-                        window.location.href = window.origin + '/role/get_all';
+                        window.location.href = window.origin + '/admin/group/list';
                     }, 500);
                 }
             },
             error: function (error) {
-                alert('error');
+                toastr.error('Error')
             }
         });
     });

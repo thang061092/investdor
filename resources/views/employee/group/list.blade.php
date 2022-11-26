@@ -55,7 +55,9 @@
                                                 <td>{{++$key}}</td>
                                                 <td>{{$group->name}}</td>
                                                 <td>
-                                                    <a class="btn btn-info">Cập nhật</a>
+                                                    <a class="btn btn-info"
+                                                       href="{{route('group.detail', ['id'=>$group->id])}}"><i
+                                                            class="fas fa-edit"></i> &nbsp;Cập nhật</a>
                                                 </td>
 
                                             </tr>

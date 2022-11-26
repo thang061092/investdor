@@ -173,6 +173,9 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/group')->group(function () {
                 Route::get('/list', "Admin\GroupRoleController@index")->name('group.index');
                 Route::get('/create', "Admin\GroupRoleController@create")->name('group.create');
+                Route::post('/store', "Admin\GroupRoleController@store")->name('group.store');
+                Route::get('/detail/{id}', "Admin\GroupRoleController@detail")->name('group.detail');
+                Route::post('/update', "Admin\GroupRoleController@update")->name('group.update');
             });
 
             Route::prefix('/user')->group(function () {

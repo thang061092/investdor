@@ -1,5 +1,5 @@
 @extends('employee.layout.master')
-@section('page_name','- Thêm mới nhóm quyền')
+@section('page_name','- Cập nhật nhóm quyền')
 @section('css')
     <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"/>
 @endsection
@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('group.index')}}"
                                                                    class="text-info">Danh sách nhóm quyền</a>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-success">Thêm mới nhóm quyền</a>
+                                                                   class="text-success">Cập nhật nhóm quyền</a>
                 </li>
             </ol>
         </div>
@@ -27,16 +27,13 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
                                         <div class="title_head">
-                                            <input class="form-control" name="name" type="text"
-                                                   placeholder="Nhập tên nhóm quyền"
-                                                   required>
-
+                                            <h2 class="">{{$group->name ?? ""}}
+                                                <button style="margin-left: 50px;"
+                                                        class="btn btn-success btn_update_role"
+                                                        data-id="{{$group->id}}">Cập nhật
+                                                </button>
+                                            </h2>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-12">
-                                        <button style="margin-left: 50px;" class="btn btn-success btn_create_role"><i
-                                                class="fas fa-plus"></i>&nbsp;Thêm mới
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +71,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-
+                                            @foreach($group->users as $user)
+                                                <tr class="clear_tr_{{$user->id}}">
+                                                    <td>{{$user->email}}
+                                                        <input type="hidden" id="user_id" value="{{$user->id}}">
+                                                    </td>
+                                                    <td style="color: red"><a class="nav-link clear_tr"
+                                                                              data-id='{{$user->id}}'><i
+                                                                class="fas fa-times"></i></a></td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -101,7 +107,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-
+                                            @foreach($group->menus as $menu)
+                                                <tr class="clear_tr_{{$menu->slug}}">
+                                                    <td>{{!empty($menu->parent_id) ? $menu->menu->name . ' / '. $menu->name : $menu->name}}
+                                                        <input type="hidden" id="menu_id" value="{{$menu->slug}}">
+                                                    </td>
+                                                    <td style="color: red"><a class="nav-link clear_tr"
+                                                                              data-id='{{$menu->slug}}'><i
+                                                                class="fas fa-times"></i></a></td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -38,4 +38,21 @@ class GroupRoleController extends BaseController
             return BaseController::send_response(self::HTTP_OK, __('message.success'));
         }
     }
+
+    public function detail($id)
+    {
+        $group = $this->groupRoleService->find($id);
+        return view('employee.group.update', compact('group'));
+    }
+
+    public function update(Request $request)
+    {
+        $group = $this->groupRoleService->find($request->id);
+        if (!$group) {
+            return BaseController::send_response(self::HTTP_BAD_REQUEST, __('message.fail'));
+        } else {
+            $this->groupRoleService->update($request);
+            return BaseController::send_response(self::HTTP_OK, __('message.success'));
+        }
+    }
 }
