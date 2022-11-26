@@ -20,4 +20,18 @@ class MenuRepository extends BaseRepository
             ->whereNull(Menu::PARENT_ID)
             ->get();
     }
+
+    public function get_user_add_role($menuIds)
+    {
+        return $this->model
+            ->whereNotIn(Menu::SLUG, $menuIds)
+            ->get();
+    }
+
+    public function getIds($menus)
+    {
+        return $this->model
+            ->whereIn(Menu::SLUG, $menus)
+            ->pluck(Menu::ID);
+    }
 }

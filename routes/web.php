@@ -167,6 +167,19 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/menu')->group(function () {
                 Route::get('/list', "Admin\MenuController@index")->name('menu.index');
                 Route::post('/create', "Admin\MenuController@create")->name('menu.create');
+                Route::post('/get_menu_add_role', "Admin\MenuController@get_menu_add_role");
+            });
+
+            Route::prefix('/group')->group(function () {
+                Route::get('/list', "Admin\GroupRoleController@index")->name('group.index');
+                Route::get('/create', "Admin\GroupRoleController@create")->name('group.create');
+                Route::post('/store', "Admin\GroupRoleController@store")->name('group.store');
+                Route::get('/detail/{id}', "Admin\GroupRoleController@detail")->name('group.detail');
+                Route::post('/update', "Admin\GroupRoleController@update")->name('group.update');
+            });
+
+            Route::prefix('/user')->group(function () {
+                Route::post('/get_user_add_role', "Admin\UserController@get_user_add_role");
             });
 
         });

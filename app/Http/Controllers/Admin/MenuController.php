@@ -34,4 +34,10 @@ class MenuController extends BaseController
             return BaseController::send_response(self::HTTP_OK, __('message.success'));
         }
     }
+
+    public function get_menu_add_role(Request $request)
+    {
+        $menus = $this->menuService->get_menu_add_role($request);
+        return BaseController::send_response(self::HTTP_OK, __('message.success'), $menus);
+    }
 }

@@ -369,4 +369,11 @@ class UserService
         }
         return $data;
     }
+
+    public function get_user_add_role($request)
+    {
+        $userIds = json_decode($request->user_ids);
+        $users = $this->userRepository->get_user_add_role($userIds);
+        return $users;
+    }
 }

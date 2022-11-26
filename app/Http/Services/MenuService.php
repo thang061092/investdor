@@ -46,8 +46,21 @@ class MenuService
             Menu::SLUG => slugify($request->name),
             Menu::URL => $request->part_menu,
             Menu::PARENT_ID => $request->parent_menu,
+            Menu::STATUS => Menu::ACTIVE,
             Menu::CREATED_BY => Session::get('employee')['email']
         ]);
         return $menu;
+    }
+
+    public function get_menu_add_role($request)
+    {
+        $menuIds = json_decode($request->menuids);
+        $menus = $this->menuRepository->get_user_add_role($menuIds);
+        foreach ($menus as $menu) {
+            if (!empty($menu['parent_id'])) {
+                $menu['name'] = $menu->menu->name . ' / ' . $menu['name'];
+            }
+        }
+        return $menus;
     }
 }

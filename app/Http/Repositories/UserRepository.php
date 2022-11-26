@@ -29,4 +29,14 @@ class UserRepository extends BaseRepository
             ->get();
         return $model;
     }
+
+    public function get_user_add_role($userIds)
+    {
+        $model = $this->model;
+        $model = $model
+            ->where(Users::TYPE, Users::EMPLOYEE)
+            ->whereNotIn(Users::ID, $userIds)
+            ->get();
+        return $model;
+    }
 }
