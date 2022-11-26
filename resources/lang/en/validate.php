@@ -48,5 +48,8 @@ return [
     'principal_not_null' => 'Principal not null',
     'money_interest_not_null' => 'Money interest not null',
     'project_name_already_exists' => 'Project name already exists',
-    'month_project_not_null'=> "Month project not null",
+    'month_project_not_null' => "Month project not null",
+    'menu_not_null' => "Menu not null",
+    'url_not_null' => "Url not null",
+    'menu_already_exists' => "Url already exists",
 ];

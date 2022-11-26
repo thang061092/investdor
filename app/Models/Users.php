@@ -84,4 +84,9 @@ class Users extends BaseModel
     {
         return $this->hasMany(Bills::class, Bills::USER_ID);
     }
+
+    public function actions()
+    {
+        return $this->belongsToMany(Action::class, 'user_action', 'user_id', 'action_id');
+    }
 }
