@@ -49,5 +49,8 @@ return [
     'money_interest_not_null'=> 'Tiền lãi không để trống',
     'project_name_already_exists' => 'Tên dự án đã tồn tại',
     'month_project_not_null'=> "Thời gian đầu tư dự án không để trống",
+    'menu_not_null' => "Menu không để trống",
+    'url_not_null' => "Đường dẫn không để trống",
+    'menu_already_exists' => "Menu đã tồn tại",
 
 ];

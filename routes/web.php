@@ -164,6 +164,11 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/detail/{id}', "Admin\ContractController@detail")->name('contract.detail');
             });
 
+            Route::prefix('/menu')->group(function () {
+                Route::get('/list', "Admin\MenuController@index")->name('menu.index');
+                Route::post('/create', "Admin\MenuController@create")->name('menu.create');
+            });
+
         });
     });
 
