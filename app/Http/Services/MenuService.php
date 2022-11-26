@@ -50,4 +50,11 @@ class MenuService
         ]);
         return $menu;
     }
+
+    public function get_menu_add_role($request)
+    {
+        $menuIds = json_decode($request->menuids);
+        $menus = $this->menuRepository->get_user_add_role($menuIds);
+        return $menus;
+    }
 }

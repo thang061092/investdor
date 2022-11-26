@@ -88,18 +88,21 @@ class UserController extends BaseController
 
     }
 
-    public function get_all_employee() {
+    public function get_all_employee()
+    {
         $employees = $this->userService->get_all_employee();
         return view('employee.manager.index', [
             'employees' => $employees,
         ]);
     }
 
-    public function store_employee() {
+    public function store_employee()
+    {
         return view('employee.manager.createEmployee');
     }
 
-    public function edit_employee($id) {
+    public function edit_employee($id)
+    {
         $allBankName = $this->bankService->getAllBank();
         $user = $this->userService->find($id);
         return view('employee.manager.updateEmployee', [
@@ -108,18 +111,20 @@ class UserController extends BaseController
         ]);
     }
 
-    public function update_employee(FormUpdateEmployee $request, $id) {
+    public function update_employee(FormUpdateEmployee $request, $id)
+    {
         $user = $this->userService->update_employee($request, $id);
         if ($user) {
             Session::put('employee', $user);
             toastr()->success(__("message.update_success"), __('message.success'));
-            return redirect()->route('customer.employee.edit_employee',['id' => $id]);
+            return redirect()->route('customer.employee.edit_employee', ['id' => $id]);
         }
         toastr()->error(__("message.update_fail"), __('message.fail'));
-        return redirect()->route('customer.employee.edit_employee',['id' => $id]);
+        return redirect()->route('customer.employee.edit_employee', ['id' => $id]);
     }
 
-    public function detail_employee($id) {
+    public function detail_employee($id)
+    {
         $user = $this->userService->find($id);
         $allBankName = $this->bankService->getAllBank();
         return view('employee.manager.detailEmployee', [
@@ -128,7 +133,8 @@ class UserController extends BaseController
         ]);
     }
 
-    public function update_status(Request $request) {
+    public function update_status(Request $request)
+    {
         $id = $request->input("id");
         $status = $this->userService->update_status($id);
         if ($status) {
@@ -137,21 +143,24 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function get_all_customer() {
+    public function get_all_customer()
+    {
         $customer = $this->userService->get_all_customer();
         return view('employee.manager_user.index', [
             'customer' => $customer,
         ]);
     }
 
-    public function detail_customer($id) {
+    public function detail_customer($id)
+    {
         $customer = $this->userService->find($id);
         return view('employee.manager_user.detailUser', [
             'customer' => $customer,
         ]);
     }
 
-    public function edit_customer($id) {
+    public function edit_customer($id)
+    {
         $customer = $this->userService->find($id);
         return view('employee.manager_user.updateUser', [
             'customer' => $customer,
@@ -168,33 +177,33 @@ class UserController extends BaseController
     //     return redirect()->route('customer.customer.edit_customer',['id' => $id]);
     // }
 
-    public function auth(Request $request, $id) 
+    public function auth(Request $request, $id)
     {
-        $auth =  $this->userService->confirm_auth($id);
+        $auth = $this->userService->confirm_auth($id);
         if ($auth) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
         }
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'));
     }
 
-    public function not_auth(Request $request, $id) 
+    public function not_auth(Request $request, $id)
     {
-        $auth =  $this->userService->not_confirm_auth($id);
+        $auth = $this->userService->not_confirm_auth($id);
         if ($auth) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $auth);
         }
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'));
     }
 
-    public function list_news() 
+    public function list_news()
     {
         $list = $this->newsService->get_all();
-        return view('employee.news.index',[
+        return view('employee.news.index', [
             'list' => $list,
         ]);
     }
 
-    public function create_news() 
+    public function create_news()
     {
         $categories = $this->categoryService->get_all();
         return view('employee.news.createNews', [
@@ -202,7 +211,7 @@ class UserController extends BaseController
         ]);
     }
 
-    public function save_news(FormCreateNews $request) 
+    public function save_news(FormCreateNews $request)
     {
         $create = $this->newsService->create($request);
         if ($create) {
@@ -213,7 +222,7 @@ class UserController extends BaseController
         return redirect()->route('customer.employee.create_news');
     }
 
-    public function update_status_news(Request $request) 
+    public function update_status_news(Request $request)
     {
         $id = $request->input("id");
         $status = $this->newsService->update_status($id);
@@ -223,10 +232,11 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function edit_news($id) {
+    public function edit_news($id)
+    {
         $detail = $this->newsService->find($id);
         $categories = $this->categoryService->get_all();
-        return view('employee.news.updateNews',[
+        return view('employee.news.updateNews', [
             'detail' => $detail,
             'categories' => $categories,
         ]);
@@ -237,15 +247,16 @@ class UserController extends BaseController
         $news = $this->newsService->update_news($request, $id);
         if ($news) {
             toastr()->success(__("message.update_success"), __('message.success'));
-            return redirect()->route('customer.employee.edit_news',['id' => $id]);
+            return redirect()->route('customer.employee.edit_news', ['id' => $id]);
         }
         toastr()->error(__("message.update_fail"), __('message.fail'));
-        return redirect()->route('customer.employee.edit_news',['id' => $id]);
+        return redirect()->route('customer.employee.edit_news', ['id' => $id]);
     }
 
-    public function detail_news($id) {
+    public function detail_news($id)
+    {
         $detail = $this->newsService->find($id);
-        return view('employee.news.detailNews',[
+        return view('employee.news.detailNews', [
             'detail' => $detail,
         ]);
     }
@@ -253,7 +264,7 @@ class UserController extends BaseController
     public function list_category()
     {
         $list = $this->categoryService->get_all();
-        return view('employee.category_news.index',[
+        return view('employee.category_news.index', [
             'list' => $list,
         ]);
     }
@@ -277,7 +288,7 @@ class UserController extends BaseController
     public function edit_category($id)
     {
         $detail = $this->categoryService->find($id);
-        return view('employee.category_news.update',[
+        return view('employee.category_news.update', [
             'detail' => $detail,
         ]);
     }
@@ -287,13 +298,14 @@ class UserController extends BaseController
         $update = $this->categoryService->update($request, $id);
         if ($update) {
             toastr()->success(__("message.update_success"), __('message.success'));
-            return redirect()->route('customer.employee.edit_category',['id' => $id]);
+            return redirect()->route('customer.employee.edit_category', ['id' => $id]);
         }
         toastr()->error(__("message.update_fail"), __('message.fail'));
-        return redirect()->route('customer.employee.edit_category',['id' => $id]);
+        return redirect()->route('customer.employee.edit_category', ['id' => $id]);
     }
 
-    public function update_status_category(Request $request) {
+    public function update_status_category(Request $request)
+    {
         $id = $request->input("id");
         $status = $this->categoryService->update_status($id);
         if ($status) {
@@ -302,15 +314,15 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function detail_category($id) 
+    public function detail_category($id)
     {
         $detail = $this->categoryService->find($id);
-        return view('employee.category_news.detail',[
+        return view('employee.category_news.detail', [
             'detail' => $detail,
         ]);
     }
 
-    public function list_question() 
+    public function list_question()
     {
         $questions = $this->questionService->get_all();
         if ($questions) {
@@ -323,8 +335,14 @@ class UserController extends BaseController
     public function detail_question($id)
     {
         $detail = $this->questionService->find($id);
-        return view('employee.question.detail',[
+        return view('employee.question.detail', [
             'detail' => $detail,
         ]);
+    }
+
+    public function get_user_add_role(Request $request)
+    {
+        $users = $this->userService->get_user_add_role($request);
+        return BaseController::send_response(self::HTTP_OK, __('message.success'), $users);
     }
 }
