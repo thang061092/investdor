@@ -51,5 +51,7 @@ return [
     'month_project_not_null' => "Month project not null",
     'menu_not_null' => "Menu not null",
     'url_not_null' => "Url not null",
-    'menu_already_exists' => "Url already exists",
+    'menu_already_exists' => "Menu already exists",
+    'role_not_null' => "role not null",
+    'role_already_exists' => "Role already exists",
 ];

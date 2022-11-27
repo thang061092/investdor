@@ -52,5 +52,7 @@ return [
     'menu_not_null' => "Menu không để trống",
     'url_not_null' => "Đường dẫn không để trống",
     'menu_already_exists' => "Menu đã tồn tại",
+    'role_not_null' => "Tên quyền không để trống",
+    'role_already_exists' => "Tên quyền đã tồn tại",
 
 ];

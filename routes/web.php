@@ -180,6 +180,14 @@ Route::group(['middleware' => 'locale'], function () {
 
             Route::prefix('/user')->group(function () {
                 Route::post('/get_user_add_role', "Admin\UserController@get_user_add_role");
+                Route::post('/update_role_employee', "Admin\UserController@update_role_employee");
+            });
+
+            Route::prefix('/role')->group(function () {
+                Route::get('/list', "Admin\RoleController@index")->name('role.index');
+                Route::post('/create', "Admin\RoleController@create")->name('role.create');
+                Route::post('/get_action_add_user', "Admin\RoleController@get_action_add_user")->name('role.get_action_add_user');
+                Route::get('/role_employee/{id}', "Admin\UserController@role_employee")->name('role.role_employee');
             });
 
         });

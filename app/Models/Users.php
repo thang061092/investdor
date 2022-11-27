@@ -89,4 +89,9 @@ class Users extends BaseModel
     {
         return $this->belongsToMany(Action::class, 'user_action', 'user_id', 'action_id');
     }
+
+    public function groupRoles()
+    {
+        return $this->belongsToMany(GroupRole::class, 'user_group_role', 'user_id', 'group_role_id');
+    }
 }

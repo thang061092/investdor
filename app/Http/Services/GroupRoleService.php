@@ -46,16 +46,19 @@ class GroupRoleService
             GroupRole::STATUS => GroupRole::ACTIVE,
             GroupRole::CREATED_BY => Session::get('employee')['email']
         ]);
+
+        $users = [];
         if (!empty($request->users)) {
             $users = explode(',', $request->users);
-            $group->users()->sync($users);
         }
+        $group->users()->sync($users);
 
+        $menuIds = [];
         if (!empty($request->menus)) {
             $menus = explode(',', $request->menus);
             $menuIds = $this->menuRepository->getIds($menus);
-            $group->menus()->sync($menuIds);
         }
+        $group->menus()->sync($menuIds);
         return $group;
     }
 
@@ -67,16 +70,18 @@ class GroupRoleService
     public function update($request)
     {
         $group = $this->groupRoleRepository->find($request->id);
+        $users = [];
         if (!empty($request->users)) {
             $users = explode(',', $request->users);
-            $group->users()->sync($users);
         }
+        $group->users()->sync($users);
 
+        $menuIds = [];
         if (!empty($request->menus)) {
             $menus = explode(',', $request->menus);
             $menuIds = $this->menuRepository->getIds($menus);
-            $group->menus()->sync($menuIds);
         }
+        $group->menus()->sync($menuIds);
         return $group;
     }
 }

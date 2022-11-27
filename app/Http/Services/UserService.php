@@ -376,4 +376,15 @@ class UserService
         $users = $this->userRepository->get_user_add_role($userIds);
         return $users;
     }
+
+    public function update_role_employee($request)
+    {
+        $user = $this->userRepository->find($request->user_id);
+        $actions = [];
+        if (!empty($request->actions)) {
+            $actions = explode(',', $request->actions);
+        }
+        $user->actions()->sync($actions);
+        return $user;
+    }
 }
