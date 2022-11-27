@@ -345,4 +345,16 @@ class UserController extends BaseController
         $users = $this->userService->get_user_add_role($request);
         return BaseController::send_response(self::HTTP_OK, __('message.success'), $users);
     }
+
+    public function role_employee(Request $request, $id)
+    {
+        $user = $this->userService->find($id);
+        return view('employee.role.role_user', compact('user'));
+    }
+
+    public function update_role_employee(Request $request)
+    {
+        $this->userService->update_role_employee($request);
+        return BaseController::send_response(self::HTTP_OK, __('message.success'));
+    }
 }
