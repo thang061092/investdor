@@ -49,12 +49,14 @@
                         <div class="desc font-weight-bold">
                             {{__('project.search')}}
                         </div>
-                        <form action="" method="" class="frm_filter" accept-charset="utf-8">
+                        <form action="{{route('customer.home_page')}}" method="get" class="frm_filter"
+                              accept-charset="utf-8">
                             <div class="group-filter group-text">
                                 <label for="name_project"
                                        class="name_group label">{{__('project.name_project')}}</label>
                                 <div class="group position-relative">
-                                    <input type="text" placeholder="Nhập tên dự án" class="form-control"/>
+                                    <input type="text" placeholder="Nhập tên dự án" class="form-control"
+                                           name="name_project" value="{{request()->get('name_project')}}"/>
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              viewBox="0 0 16 16" fill="none">
@@ -88,11 +90,13 @@
                                     {{__('project.project_status')}}
                                 </div>
                                 <label for="state-3" class="check">
-                                    <input type="checkbox" id="state-3" name=""/>
+                                    <input type="checkbox" id="state-3" name="status"
+                                           value="2" {{request()->get('status') == 2 ? 'checked' : ''}}/>
                                     <span class="text">{{__('project.open')}}</span>
                                 </label>
                                 <label for="state-4" class="check">
-                                    <input type="checkbox" id="state-4" name=""/>
+                                    <input type="checkbox" id="state-4" name="status"
+                                           value="5" {{request()->get('status') == 5 ? 'checked' : ''}}/>
                                     <span class="text">{{__('project.close')}}</span>
                                 </label>
                             </div>
@@ -305,4 +309,12 @@
             </div>
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            let name_project = $("input[name='name_project']").val();
+            $('#state-3').on('click', function () {
+                let status = $(this).val();
+            })
+        })
+    </script>
 @endsection
