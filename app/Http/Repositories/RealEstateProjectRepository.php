@@ -27,8 +27,20 @@ class RealEstateProjectRepository extends BaseRepository
     {
         $limit = $request->limit ?? 6;
         $offset = $request->offset ?? 0;
-        $model = $this->model
-            ->limit((int)$limit)
+        $model = $this->model;
+        if (!empty($request->name_project)) {
+            $name = $request->name_project;
+            $model = $model->where(function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, 'LIKE', "%$name%")
+                    ->orWhere(RealEstateProject::NAME_EN, 'LIKE', "%$name%");
+            });
+        }
+
+        if (!empty($request->status)) {
+            $model = $model->where(RealEstateProject::STATUS, (int)$request->status);
+        }
+
+        $model = $model->limit((int)$limit)
             ->offset((int)$offset)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->get();
