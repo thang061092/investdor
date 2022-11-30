@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\AssetProjectRepository;
+use App\Http\Repositories\BusinessPlanRepository;
 use App\Http\Repositories\DocumentProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\InterestRepository;
@@ -13,6 +14,7 @@ use App\Http\Repositories\MemberCompanyRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
+use App\Models\BusinessPlane;
 use App\Models\DocumentProject;
 use App\Models\ImageProject;
 use App\Models\Interest;
@@ -21,6 +23,7 @@ use App\Models\MemberCompany;
 use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class RealEstateProjectService
 {
@@ -34,6 +37,7 @@ class RealEstateProjectService
     protected $uploadService;
     protected $memberCompanyRepository;
     protected $interestRepository;
+    protected $businessPlanRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -44,7 +48,8 @@ class RealEstateProjectService
                                 DocumentProjectRepository $documentProjectRepository,
                                 UploadService $uploadService,
                                 MemberCompanyRepository $memberCompanyRepository,
-                                InterestRepository $interestRepository)
+                                InterestRepository $interestRepository,
+                                BusinessPlanRepository $businessPlanRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -56,6 +61,7 @@ class RealEstateProjectService
         $this->uploadService = $uploadService;
         $this->memberCompanyRepository = $memberCompanyRepository;
         $this->interestRepository = $interestRepository;
+        $this->businessPlanRepository = $businessPlanRepository;
     }
 
     public function create($request)
@@ -309,5 +315,52 @@ class RealEstateProjectService
             $message[] = __('validate.project_name_already_exists');
         }
         return $message;
+    }
+
+    public function add_plan($request)
+    {
+        $this->businessPlanRepository->create([
+            BusinessPlane::REAL_ESTATE_PROJECT_ID => $request->id,
+            BusinessPlane::TITLE_VI => $request->title_vi,
+            BusinessPlane::TITLE_EN => $request->title_en,
+            BusinessPlane::SLUG_VI => slugify($request->title_vi),
+            BusinessPlane::SLUG_EN => slugify($request->title_en),
+            BusinessPlane::DESCRIPTION_VI => $request->description_vi,
+            BusinessPlane::DESCRIPTION_EN => $request->description_en,
+            BusinessPlane::STATUS => BusinessPlane::ACTIVE
+        ]);
+        return;
+    }
+
+    public function validate_add_plan($request)
+    {
+        $validate = Validator::make($request->all(), [
+            'title_vi' => 'required',
+            'title_en' => 'required',
+            'description_vi' => 'required',
+            'description_en' => 'required',
+        ], [
+            'title_vi.required' => __('validate.title_vi_not_null'),
+            'title_en.required' => __('validate.title_en_not_null'),
+            'description_vi.required' => __('validate.description_vi_not_null'),
+            'description_en.required' => __('validate.description_en_not_null'),
+        ]);
+        return $validate;
+    }
+
+    public function validate_add_document($request)
+    {
+        $validate = Validator::make($request->all(), [
+            'title_vi' => 'required',
+            'title_en' => 'required',
+            'name_file_vi' => 'required',
+            'name_file_en' => 'required',
+        ], [
+            'title_vi.required' => __('validate.title_vi_not_null'),
+            'title_en.required' => __('validate.title_en_not_null'),
+            'name_file_vi.required' => __('validate.name_file_not_nul'),
+            'name_file_en.required' => __('validate.name_file_not_nul'),
+        ]);
+        return $validate;
     }
 }
