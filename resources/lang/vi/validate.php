@@ -37,8 +37,8 @@ return [
     'project_highlights_en_not_null' => 'Đặc điểm nổi bật dự án tiếng anh không để trống',
     'name_company_vi_not_null' => "Tên công ty chủ đầu tư không để trống",
     'address_vi_not_null' => "Địa chỉ công ty chủ đầu tư không để trống",
-    'description_vi_not_null' => "Mô tả công ty chủ đầu tư không để trống",
-    'description_en_not_null' => "Mô tả công ty chủ đầu tư không để trống",
+    'description_vi_not_null' => "Mô tả không để trống",
+    'description_en_not_null' => "Mô tả không để trống",
     'status_not_null' => "Trạng thái không để trống",
     'payment_date_not_null' => 'Ngày thanh toán không để trống',
     'upload_fail'=> 'Upload thất bại',
@@ -54,5 +54,8 @@ return [
     'menu_already_exists' => "Menu đã tồn tại",
     'role_not_null' => "Tên quyền không để trống",
     'role_already_exists' => "Tên quyền đã tồn tại",
+    'title_vi_not_null' => "Tiêu đề không để trống",
+    'title_en_not_null' => "Tiêu đề không để trống",
+    'name_file_not_nul' => "Tên file không để trống",
 
 ];

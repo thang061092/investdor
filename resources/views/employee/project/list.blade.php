@@ -130,6 +130,11 @@
                                                                 Cập nhật thông tin chủ đầu tư
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
+                                                               href="{{route('project.action',['id'=> $project->id])}}?action=plan">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                Cập nhật kế hoạch dự án
+                                                            </a>
+                                                            <a class="dropdown-item" target="_blank"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=document">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài liệu

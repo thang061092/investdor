@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\DocumentProjectRepository;
+use Illuminate\Support\Facades\Validator;
 
 class DocumentProjectService
 {
@@ -46,6 +47,21 @@ class DocumentProjectService
         }
         $this->documentProjectRepository->update($request->id, $data);
         return;
+    }
 
+    public function validate_update_document($request)
+    {
+        $validate = Validator::make($request->all(), [
+            'title_vi' => 'required',
+            'title_en' => 'required',
+            'name_file_vi' => 'required',
+            'name_file_en' => 'required',
+        ], [
+            'title_vi.required' => __('validate.title_vi_not_null'),
+            'title_en.required' => __('validate.title_en_not_null'),
+            'name_file_vi.required' => __('validate.name_file_not_nul'),
+            'name_file_en.required' => __('validate.name_file_not_nul'),
+        ]);
+        return $validate;
     }
 }

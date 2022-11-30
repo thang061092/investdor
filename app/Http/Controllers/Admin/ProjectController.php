@@ -11,6 +11,7 @@ use App\Http\Requests\FormExtendProject;
 use App\Http\Requests\FormInvestorProject;
 use App\Http\Requests\FormUpdateBasicProject;
 use App\Http\Requests\FormUpdateImageProject;
+use App\Http\Services\BusinessPlanService;
 use App\Http\Services\CityService;
 use App\Http\Services\DistrictService;
 use App\Http\Services\DocumentProjectService;
@@ -25,18 +26,21 @@ class ProjectController extends BaseController
     protected $documentProjectService;
     protected $districtService;
     protected $wardService;
+    protected $businessPlanService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 DocumentProjectService $documentProjectService,
                                 DistrictService $districtService,
-                                WardService $wardService)
+                                WardService $wardService,
+                                BusinessPlanService $businessPlanService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->documentProjectService = $documentProjectService;
         $this->districtService = $districtService;
         $this->wardService = $wardService;
+        $this->businessPlanService = $businessPlanService;
     }
 
     function index_create_project()
@@ -94,6 +98,8 @@ class ProjectController extends BaseController
                 $districts = $this->districtService->get_district_by_city($project['city_id']);
                 $wards = $this->wardService->get_ward_by_district_id($project['district_id']);
                 return view('employee.project.basic', compact('project', 'cities', 'districts', 'wards'));
+            } elseif ($request->action == 'plan') {
+                return view('employee.project.plan', compact('project'));
             } else {
                 return view('employee.project.detail', compact('project'));
             }
@@ -157,8 +163,13 @@ class ProjectController extends BaseController
     public function add_document(Request $request)
     {
         try {
-            $this->realEstateProjectService->add_document($request);
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            $validate = $this->realEstateProjectService->validate_add_document($request);
+            if ($validate->fails()) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
+            } else {
+                $this->realEstateProjectService->add_document($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
@@ -174,8 +185,13 @@ class ProjectController extends BaseController
     public function update_document(Request $request)
     {
         try {
-            $this->documentProjectService->update_document($request);
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            $validate = $this->documentProjectService->validate_update_document($request);
+            if ($validate->fails()) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
+            } else {
+                $this->documentProjectService->update_document($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
@@ -218,6 +234,44 @@ class ProjectController extends BaseController
         try {
             $this->realEstateProjectService->update_status_project($request, $id);
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
+
+    public function add_plan(Request $request)
+    {
+        try {
+            $validate = $this->realEstateProjectService->validate_add_plan($request);
+            if ($validate->fails()) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
+            } else {
+                $this->realEstateProjectService->add_plan($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            }
+        } catch (\Exception $exception) {
+            $error = $exception->getMessage();
+            return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
+        }
+    }
+
+    public function show_plan($id)
+    {
+        $plan = $this->businessPlanService->find($id);
+        return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $plan);
+    }
+
+    public function update_plan(Request $request)
+    {
+        try {
+            $validate = $this->businessPlanService->validate_update_plan($request);
+            if ($validate->fails()) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
+            } else {
+                $this->businessPlanService->update_plan($request);
+                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);

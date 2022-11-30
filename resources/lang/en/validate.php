@@ -37,8 +37,8 @@ return [
     'project_highlights_en_not_null' => 'Project highlights en not null',
     'name_company_vi_not_null' => "Name company not null",
     'address_vi_not_null' => "Address company not null",
-    'description_vi_not_null' => "Description company not null",
-    'description_en_not_null' => "Description company not null",
+    'description_vi_not_null' => "Description not null",
+    'description_en_not_null' => "Description not null",
     'status_not_null' => "Status not null",
     'payment_date_not_null' => 'Payment date not null',
     'upload_fail' => 'Upload fail',
@@ -54,4 +54,7 @@ return [
     'menu_already_exists' => "Menu already exists",
     'role_not_null' => "role not null",
     'role_already_exists' => "Role already exists",
+    'title_vi_not_null' => "Title not null",
+    'title_en_not_null' => "Title not null",
+    'name_file_not_nul' => "Name File not null",
 ];
