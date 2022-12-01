@@ -102,6 +102,9 @@ class RealEstateProjectService
 
     public function list_project_investor($request)
     {
+        if (!empty($request->status)) {
+            $request->arr_status = is_array($request->status) ? $request->status : explode(',', $request->status);
+        }
         $projects = $this->estateProjectRepository->list_project_investor($request);
         return $projects;
     }

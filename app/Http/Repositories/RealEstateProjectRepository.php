@@ -36,8 +36,8 @@ class RealEstateProjectRepository extends BaseRepository
             });
         }
 
-        if (!empty($request->status)) {
-            $model = $model->where(RealEstateProject::STATUS, (int)$request->status);
+        if (!empty($request->arr_status)) {
+            $model = $model->whereIn(RealEstateProject::STATUS, $request->arr_status);
         }
 
         $model = $model->limit((int)$limit)

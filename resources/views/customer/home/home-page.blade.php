@@ -70,18 +70,23 @@
                                     </button>
                                 </div>
                             </div>
+
                             @if(!empty(session()->get('customer')))
                                 <div class="group-filter group-checkbox">
                                     <div class="name_group desc font-weight-bold">
                                         {{__('project.investment_status')}}
                                     </div>
-                                    <label for="state-1" class="check">
-                                        <input type="checkbox" id="state-1" name=""/>
-                                        <span class="text">{{__('project.not_invested')}}</span>
-                                    </label>
                                     <label for="state-2" class="check">
-                                        <input type="checkbox" id="state-2" name=""/>
+                                        <input type="checkbox" id="state-2" name="investment[]"
+                                               class="investment_status"
+                                               value="1"/>
                                         <span class="text">{{__('project.invested')}}</span>
+                                    </label>
+                                    <label for="state-1" class="check">
+                                        <input type="checkbox" id="state-1" name="investment[]"
+                                               class="investment_status"
+                                               value="2"/>
+                                        <span class="text">{{__('project.not_invested')}}</span>
                                     </label>
                                 </div>
                             @endif
@@ -90,13 +95,27 @@
                                     {{__('project.project_status')}}
                                 </div>
                                 <label for="state-3" class="check">
-                                    <input type="checkbox" id="state-3" name="status"
-                                           value="2" {{request()->get('status') == 2 ? 'checked' : ''}}/>
+                                    <input type="checkbox" id="state-3" name="status[]" class="status_project"
+                                           @if(request()->get('status'))
+                                               @if(is_array(request()->get('status')))
+                                                    {{in_array('2', request()->get('status')) ? 'checked' : ''}}
+                                               @else
+                                                    {{in_array('2', explode(',', request()->get('status'))) ? 'checked' : ''}}
+                                               @endif
+                                           @endif
+                                           value="2"/>
                                     <span class="text">{{__('project.open')}}</span>
                                 </label>
                                 <label for="state-4" class="check">
-                                    <input type="checkbox" id="state-4" name="status"
-                                           value="5" {{request()->get('status') == 5 ? 'checked' : ''}}/>
+                                    <input type="checkbox" id="state-4" name="status[]" class="status_project"
+                                           @if(request()->get('status'))
+                                               @if(is_array(request()->get('status')))
+                                                    {{in_array('5', request()->get('status')) ? 'checked' : ''}}
+                                               @else
+                                                    {{in_array('5', explode(',', request()->get('status'))) ? 'checked' : ''}}
+                                               @endif
+                                           @endif
+                                           value="5"/>
                                     <span class="text">{{__('project.close')}}</span>
                                 </label>
                             </div>
@@ -309,11 +328,35 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
     <script>
         $(document).ready(function () {
-            let name_project = $("input[name='name_project']").val();
-            $('#state-3').on('click', function () {
-                let status = $(this).val();
+            var name_project = $("input[name='name_project']").val();
+            $('.status_project').on('click', function (event) {
+                let status = [];
+                $(".status_project:checked").each(function () {
+                    status.push($(this).val());
+                });
+
+                let investment = [];
+                $(".investment_status:checked").each(function () {
+                    investment.push($(this).val());
+                });
+                window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
+            })
+
+            $('.investment_status').on('click', function (event) {
+                let status = [];
+                $(".status_project:checked").each(function () {
+                    status.push($(this).val());
+                });
+
+                let investment = [];
+                $(".investment_status:checked").each(function () {
+                    investment.push($(this).val());
+                });
+                window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
             })
         })
     </script>
