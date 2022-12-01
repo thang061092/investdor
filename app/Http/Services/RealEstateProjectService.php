@@ -6,6 +6,7 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\AssetProjectRepository;
 use App\Http\Repositories\BusinessPlanRepository;
+use App\Http\Repositories\ContractRepository;
 use App\Http\Repositories\DocumentProjectRepository;
 use App\Http\Repositories\ImageProjectRepository;
 use App\Http\Repositories\InterestRepository;
@@ -15,6 +16,7 @@ use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
 use App\Models\BusinessPlane;
+use App\Models\Contract;
 use App\Models\DocumentProject;
 use App\Models\ImageProject;
 use App\Models\Interest;
@@ -38,6 +40,7 @@ class RealEstateProjectService
     protected $memberCompanyRepository;
     protected $interestRepository;
     protected $businessPlanRepository;
+    protected $contractRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -49,7 +52,8 @@ class RealEstateProjectService
                                 UploadService $uploadService,
                                 MemberCompanyRepository $memberCompanyRepository,
                                 InterestRepository $interestRepository,
-                                BusinessPlanRepository $businessPlanRepository)
+                                BusinessPlanRepository $businessPlanRepository,
+                                ContractRepository $contractRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -62,6 +66,7 @@ class RealEstateProjectService
         $this->memberCompanyRepository = $memberCompanyRepository;
         $this->interestRepository = $interestRepository;
         $this->businessPlanRepository = $businessPlanRepository;
+        $this->contractRepository = $contractRepository;
     }
 
     public function create($request)
@@ -104,6 +109,13 @@ class RealEstateProjectService
     {
         if (!empty($request->status)) {
             $request->arr_status = is_array($request->status) ? $request->status : explode(',', $request->status);
+        }
+        if (!empty($request->investment)) {
+            $arr_project_user = $this->contractRepository
+                ->findMany([Contract::USER_ID => Session::get('customer')['id']])
+                ->pluck(Contract::REAL_ESTATE_PROJECT_ID)
+                ->toArray();
+            $request->arr_project_user = array_unique($arr_project_user);
         }
         $projects = $this->estateProjectRepository->list_project_investor($request);
         return $projects;
