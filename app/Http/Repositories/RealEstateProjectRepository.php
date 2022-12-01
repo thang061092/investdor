@@ -40,6 +40,14 @@ class RealEstateProjectRepository extends BaseRepository
             $model = $model->whereIn(RealEstateProject::STATUS, $request->arr_status);
         }
 
+        if (!empty($request->investment) && !empty($request->arr_project_user)) {
+            if ($request->investment == 1) {
+                $model = $model->whereIn(RealEstateProject::ID, $request->arr_project_user);
+            } elseif ($request->investment == 2) {
+                $model = $model->whereNotIn(RealEstateProject::ID, $request->arr_project_user);
+            }
+        }
+
         $model = $model->limit((int)$limit)
             ->offset((int)$offset)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
