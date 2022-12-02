@@ -45,4 +45,17 @@ class QuestionService
         }
         return false;
     }
+
+    public function send_answer($request, $id)
+    {
+        $data = [
+            Question::ANSWER_QUESTION => $request->answer ?? "",
+            Question::TYPE => Question::ANSWER,
+        ];
+        $update = $this->questionRepository->update($id, $data);
+        if ($update) {
+            return $update;
+        }
+        return false;
+    }
 }

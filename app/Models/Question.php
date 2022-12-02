@@ -16,6 +16,7 @@ class Question extends Model
     const NAME = 'name';
     const EMAIL = 'email';
     const QUESTION = 'question';
+    const ANSWER_QUESTION = 'answer_question';
     
     const NO_ANSWER = 1;
     const ANSWER = 2;

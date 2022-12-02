@@ -309,8 +309,11 @@
             </div>
         </div>
     </section>
-    <script>
-        $(document).ready(function () {
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $("document").ready(function () {
             let name_project = $("input[name='name_project']").val();
             $('#state-3').on('click', function () {
                 let status = $(this).val();

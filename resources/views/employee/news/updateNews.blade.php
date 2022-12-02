@@ -131,7 +131,7 @@
     </div>
 @endsection
 @section('js')
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.2.0/tinymce.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.2/tinymce.min.js'></script>
 <script>
 tinymce.init({
     selector: '#content_en',

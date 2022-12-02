@@ -147,7 +147,7 @@
                                                id="img-cmt-after"
                                                onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
                                                @if ($detail->card_back)
-                                                <img id="img-before" src='{{asset("$detail->card_back")}}' class="img-fluid" alt=""/>
+                                                <img id="img-after" src='{{asset("$detail->card_back")}}' class="img-fluid" alt=""/>
                                                 @else
                                                 <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
                                                 @endif
@@ -194,8 +194,10 @@
         $(document).ready(function () {
             $("#reselect").click(function (e) {
                 e.preventDefault();
-                $("#img-cmt-after").val('');
-                $("#img-cmt-before").val('');
+                $("#img-before").removeAttr('src');
+                $("#img-before").attr('src', "{{asset('frontend/images/after-cmt.png')}}")
+                $("#img-after").removeAttr('src');
+                $("#img-after").attr('src', "{{asset('frontend/images/after-cmt.png')}}")
             });
         });
     </script>

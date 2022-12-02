@@ -30,4 +30,7 @@ return [
     'investment_and_real_estate' => "Đầu tư và bất động sản",
     'BUILD_THE_FUTURE_YOU_WANT' => 'XÂY DỰNG TƯƠNG LAI BẠN MONG MUỐN',
     'quick_access_investments' => 'Tiếp cận nhanh chóng các khoản đầu tư có chất lượng cao',
+    'detail_question' => 'Chi tiết câu hỏi',
+    'details' => "Thông tin chi tiết",
+    'serial' => "STT",
 ];

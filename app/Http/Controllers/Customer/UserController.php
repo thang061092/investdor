@@ -167,6 +167,7 @@ class UserController extends BaseController
         $userId = $user['id'];
         $auth = $this->userService->auth($request, $userId);
         if ($auth) {
+            Session::put('customer', $auth);
             toastr()->success(__("message.send_auth_success"), __('message.success'));
             return redirect("/customer/user/manager?main_tab=profile");
         }
@@ -174,14 +175,14 @@ class UserController extends BaseController
         return redirect("/customer/user/manager?main_tab=profile");
     }
 
-    public function question(Request $request)
+    public function question(FormQuestion $request)
     {
         $create = $this->questionService->create($request);
         if ($create) {
             toastr()->success(__("message.send_question_success"), __('message.success'));
-            return redirect()->route('customer.home_page?');
+            return redirect()->route('customer.home_page');
         }
         toastr()->error(__("message.send_question_fail"), __('message.fail'));
-        return redirect()->route("customer.home_page?");
+        return redirect()->route("customer.home_page");
     }
 }

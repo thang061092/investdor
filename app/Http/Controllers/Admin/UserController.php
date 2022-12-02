@@ -18,6 +18,7 @@ use App\Http\Requests\FormCreateNews;
 use App\Http\Requests\FormCategory;
 use App\Http\Requests\FormUpdateEmployee;
 use App\Http\Services\BankService;
+use App\Http\Requests\FormAnswer;
 
 class UserController extends BaseController
 {
@@ -356,5 +357,15 @@ class UserController extends BaseController
     {
         $this->userService->update_role_employee($request);
         return BaseController::send_response(self::HTTP_OK, __('message.success'));
+    }
+
+    public function send_answer(FormAnswer $request, $id) {
+        $answer = $this->questionService->send_answer($request, $id);
+        if ($answer) {
+            toastr()->success(__("message.answer_success"), __('message.success'));
+            return redirect()->route('detail_question', ['id' => $id]);
+        }
+        toastr()->error(__("message.answer_fail"), __('message.fail'));
+        return redirect()->route('detail_question', ['id' => $id]);
     }
 }
