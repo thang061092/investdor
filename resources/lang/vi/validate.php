@@ -57,5 +57,5 @@ return [
     'title_vi_not_null' => "Tiêu đề không để trống",
     'title_en_not_null' => "Tiêu đề không để trống",
     'name_file_not_nul' => "Tên file không để trống",
-
+    'part_investment_not_nul'=> "Số phần đầu tư không để trống"
 ];
