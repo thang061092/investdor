@@ -58,5 +58,9 @@ return [
     'yet_answer' => "Chưa trả lời",
     'answered' => "Đã trả lời",
     'type_question' => "Trạng thái",
-    'question' => "Câu hỏi",
+    'question' => "Câu hỏi cho chúng tôi ?",
+    'answer_question' => "Trả lời câu hỏi",
+    'status' => "Trạng thái",
+    'created_at' => "Ngày tạo",
+    'function' => "Chức năng",
 ];

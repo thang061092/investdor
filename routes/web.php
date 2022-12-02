@@ -139,6 +139,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_category/{id}', 'Admin\UserController@update_category')->name('customer.employee.update_category');
                 Route::get('/detail_category/{id}', 'Admin\UserController@detail_category')->name('customer.employee.detail_category');
                 Route::post('/update_status_category', 'Admin\UserController@update_status_category')->name('customer.employee.update_status_category');
+                Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
+                Route::get('/detail/{id}','Admin\UserController@detail_question')->name('detail_question');
+                Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
                 Route::post('/question', 'Customer\UserController@question')->name('question');
                 Route::get('/list_question', 'Admin\UserController@list_question')->name('list_question');
                 Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
@@ -152,6 +155,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
                 Route::post('/auth/{id}', 'Admin\UserController@auth')->name('customer.customer.auth');
                 Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
+                Route::post('/question','Customer\UserController@question')->name('customer.question');
             });
 
             Route::prefix('/transaction')->group(function () {

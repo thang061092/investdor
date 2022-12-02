@@ -81,5 +81,7 @@ return [
     'desc_category_not_null' => 'Description category not empty',
     "account_is_locked" => 'Account is locked',
     'email_account_already_exists' => 'Email account already exists',
-    "password_min" => 'Password minimum 6 characters'
+    "password_min" => 'Password minimum 6 characters',
+    'answer_not_null' => "Answers is not empty",
+    'question_not_null' => 'Please enter a question',
 ];

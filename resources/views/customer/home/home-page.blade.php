@@ -231,6 +231,8 @@
         </div>
     </section>
 @endsection
+<<<<<<< HEAD
+
 @section('js')
     <script>
         $(document).ready(function () {
@@ -243,7 +245,6 @@
                 let investment = $("input[name='investment']:checked").val();
                 window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
             })
-
             $('.investment_status').on('click', function (event) {
                 let status = [];
                 $(".status_project:checked").each(function () {

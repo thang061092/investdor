@@ -55,7 +55,6 @@ return [
     'are_you_sure' => "Bạn có chắc chắn thông tin xác thực chính xác ?",
     'yes' => "Có",
     'no' => "Không!",
-    'question' => "Câu hỏi cho chúng tôi ?",
     'send_question_success' => 'Gửi phản hồi thành công',
     'send_question_fail' => 'Gửi phản hồi thất bại',
 

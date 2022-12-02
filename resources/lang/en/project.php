@@ -61,5 +61,5 @@ return [
     'document' => 'Document',
     'evaluate' => 'Evaluate',
     'waiting_approval' => 'Waiting list for approval',
-    'enter_name_project' => "Enter name project"
+    'enter_name_project' => "Enter name project",
 ];

@@ -30,5 +30,7 @@ return [
     'investment_and_real_estate' => "Investment and real estate",
     'BUILD_THE_FUTURE_YOU_WANT' => 'BUILD THE FUTURE YOU WANT',
     'quick_access_investments' => 'Quick access to high-quality investments',
-
+    'detail_question' => 'Detail question',
+    'details' => "Details",
+    'serial' => 'Serial',
 ];

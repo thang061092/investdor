@@ -59,6 +59,10 @@ return [
     'yet_answer' => "Yet answer",
     'answered' => "Answered",
     'type_question' => "Status",
-    'question' => "Question",
+    'question' => "Questions for us ?",
+    'answer_question' => "Answer the question",
+    'status' => "Status",
+    'created_at' => "Created at",
+    'function' => "Function",
 
 ];

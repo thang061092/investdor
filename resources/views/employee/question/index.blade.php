@@ -68,12 +68,12 @@
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="text-align: center">STT</th>
-                                        <th style="text-align: center">Họ tên</th>
-                                        <th style="text-align: center">Email</th>
-                                        <th style="text-align: center">Trạng thái</th>
-                                        <th style="text-align: center">Ngày tạo</th>
-                                        <th style="text-align: center">Chức năng</th>
+                                        <th style="text-align: center">{{__('page_name.serial')}}</th>
+                                        <th style="text-align: center">{{__('profile.full_name')}}</th>
+                                        <th style="text-align: center">{{__('profile.email')}}</th>
+                                        <th style="text-align: center">{{__('profile.status')}}</th>
+                                        <th style="text-align: center">{{__('profile.created_at')}}</th>
+                                        <th style="text-align: center">{{__('profile.function')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -92,9 +92,9 @@
                                                 <td>{{$question->email}}</td>
                                                 <td>
                                                     @if($question->type == 1)
-                                                        {{__('profile.yet_answer')}}
+                                                        <p class="text-danger">{{__('profile.yet_answer')}}</p>
                                                     @elseif($question->type == 2)
-                                                        {{__('profile.answered')}}
+                                                    <p class="text-success">{{__('profile.answered')}}</p>
                                                     @endif
                                                 </td>
                                                 <td>{{$question->created_at}}</td>

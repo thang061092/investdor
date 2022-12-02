@@ -18,15 +18,16 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card" style="border-radius: 10px;">
                             <div class="card-header text-primary">
-                                Thông tin chi tiết:
+                            {{__('page_name.details')}}:
                             </div>
+                            <form action='{{route("send_answer",["id" => $detail->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name" id="name"
-                                                    disabled    value="{{$detail->full_name}}">
+                                                    disabled value="{{$detail->name}}">
                                             </div>
                                         </div>
                                         <div class="col-md-7 col-sm-12 ">
@@ -46,18 +47,28 @@
                                         <div class="col-md-7 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="question">{{__('profile.type_question')}}<span class="text-danger">*</span></label>
-                                                <p class="form-control">
                                                     @if($detail->type == 1)
-                                                        {{__('profile.yet_answer')}}
+                                                    <input type="text" class="form-control" name="type" id="type" disabled value="{{__('profile.yet_answer')}}">
                                                     @elseif($detail->type == 2)
-                                                        {{__('profile.answered')}}
+                                                    <input type="text" class="form-control" name="type" id="type" disabled value="{{__('profile.answered')}}">
                                                     @endif
-                                                </p>
                                             </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 ">
+                                            <div class="form-group mb-3">
+                                                <label for="question">{{__('profile.answer_question')}}<span class="text-danger">*</span></label>
+                                                <textarea id="answer" name="answer" class="form-control" placehodel="{{__('profile.answer_question')}}"></textarea>
+                                            </div>
+                                            @if($errors->has('answer'))
+                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('answer') }}</p>
+                                            @endif
                                         </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
-                                                <a type="button" href="{{route('customer.employee.get_all')}}" class="btn btn-danger action">
+                                                <button type="submit" class="btn btn-success">
+                                                    {{__('profile.answer_question')}}
+                                                </button>
+                                                <a type="button" href="{{route('list_question')}}" class="btn btn-danger action">
                                                     Quay lại &nbsp;
                                                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
                                                 </a>
@@ -65,6 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -74,4 +86,12 @@
 @endsection
 @section('js')
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.2/tinymce.min.js'></script>
+<script>
+tinymce.init({
+    selector: '#answer',
+});
+
+</script>
 @endsection
+
