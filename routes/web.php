@@ -108,6 +108,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/add_member_company', "Admin\ProjectController@add_member_company")->name('project.add_member_company');
                 Route::post('/update_post/{id}', "Admin\ProjectController@update_post")->name('project.update_post');
                 Route::post('/update_status_project/{id}', "Admin\ProjectController@update_status_project")->name('project.update_status_project');
+                Route::post('/add_plan', "Admin\ProjectController@add_plan")->name('project.add_plan');
+                Route::get('/show_plan/{id}', "Admin\ProjectController@show_plan")->name('project.show_plan');
+                Route::post('/update_plan', "Admin\ProjectController@update_plan")->name('project.update_plan');
             });
 
             Route::prefix('/interest')->group(function () {
@@ -139,6 +142,10 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
                 Route::get('/detail/{id}','Admin\UserController@detail_question')->name('detail_question');
                 Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
+                Route::post('/question', 'Customer\UserController@question')->name('question');
+                Route::get('/list_question', 'Admin\UserController@list_question')->name('list_question');
+                Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
+                Route::post('/send_answer/{id}', 'Admin\UserController@send_answer')->name('send_answer');
             });
 
             Route::prefix('/customer')->group(function () {
