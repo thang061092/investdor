@@ -154,4 +154,14 @@ class BillsService
         $data['total_invest'] = $this->billsRepository->report_bill_by_user($request, 'count');
         return $data;
     }
+
+    public function validate_step2($request)
+    {
+        $message = [];
+        if (empty($request->part_investment)) {
+            $message[] = __('validate.part_investment_not_nul');
+        }
+
+        return $message;
+    }
 }
