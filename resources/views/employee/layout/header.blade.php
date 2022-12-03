@@ -34,7 +34,7 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="" class="dropdown-item">{{__('auth.account')}}</a>
+                    <a href='{{route("customer.employee.detail_employee",["id" => session()->get("employee")["id"]])}}' class="dropdown-item">{{__('auth.account')}}</a>
                     <div class="dropdown-divider"></div>
                     <a href="{{route('admin.logout')}}" class="dropdown-item">{{__('auth.logout')}}</a>
                 </div>

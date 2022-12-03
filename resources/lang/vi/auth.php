@@ -71,6 +71,7 @@ return [
     'email_account_already_exists' => 'Tài khoản email đã tồn tại',
     "password_min" => 'Mật khẩu tối thiểu 6 ký tự',
     'answer_not_null' => "Câu trả lời không để trống",
-    'question_not_null' => "Vui lòng nhập câu hỏi"
+    'question_not_null' => "Vui lòng nhập câu hỏi",
+    'new_password_not_null' => 'Mật khẩu mới không để trống',
 
 ];

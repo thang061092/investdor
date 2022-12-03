@@ -368,4 +368,12 @@ class UserController extends BaseController
         toastr()->error(__("message.answer_fail"), __('message.fail'));
         return redirect()->route('detail_question', ['id' => $id]);
     }
+
+    public function change_password(Request $request, $id) {
+        $pass = $this->userService->change_password_employee($request, $id);
+        if ($pass) {
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $pass);
+        }
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
+    }
 }

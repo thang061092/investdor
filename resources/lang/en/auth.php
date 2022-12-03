@@ -84,4 +84,5 @@ return [
     "password_min" => 'Password minimum 6 characters',
     'answer_not_null' => "Answers is not empty",
     'question_not_null' => 'Please enter a question',
+    'new_password_not_null' => 'New password not null',
 ];
