@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Customer;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Services\Authorization;
+use App\Http\Services\BankService;
 use App\Http\Services\BillsService;
 use App\Http\Services\CityService;
 use App\Http\Services\RealEstateProjectService;
 use App\Http\Services\VietQr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InvestmentController extends BaseController
@@ -17,49 +20,105 @@ class InvestmentController extends BaseController
     protected $realEstateProjectService;
     protected $vietQr;
     protected $billsService;
+    protected $bankService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 VietQr $vietQr,
-                                BillsService $billsService)
+                                BillsService $billsService,
+                                BankService $bankService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->vietQr = $vietQr;
         $this->billsService = $billsService;
+        $this->bankService = $bankService;
     }
 
     public function step1($slug)
     {
         $project = $this->realEstateProjectService->detail_project($slug);
-        return view('customer.investment.step1', compact('project'));
+        $banks = $this->bankService->getAllBank();
+        return view('customer.investment.step1', compact('project', 'banks'));
     }
 
     public function step1_submit(Request $request)
     {
-        $project = $this->realEstateProjectService->find($request->project_id);
-        $bill = $this->billsService->create_step1($request);
-        $str = $project['id'] . '+' . $bill['id'] . '+' . uniqid();
-        $checksum = encode($str, env('KEY_ENCRYPT'));
-        return view('customer.investment.step2', compact('project', 'bill', 'checksum'));
+        $message = $this->realEstateProjectService->validate_step1($request);
+        if (count($message) > 0) {
+            return BaseController::send_response(self::HTTP_BAD_REQUEST, $message[0]);
+        } else {
+            $project = $this->realEstateProjectService->find($request->project_id);
+            $bill = $this->billsService->create_step1($request);
+            $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
+            $data = [
+                'project_id' => $project['id'],
+                'project_name' => $project['slug_vi'],
+                'bill_id' => $bill['id'],
+                'checksum' => $checksum
+            ];
+            return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
+        }
+    }
+
+    public function step2(Request $request, $slug)
+    {
+        $project = $this->realEstateProjectService->detail_project($slug);
+        $checksum = $request->checksum;
+        return view('customer.investment.step2', compact('project', 'checksum'));
     }
 
     public function step2_submit(Request $request)
     {
-        $checksum = decode($request->checksum, env('KEY_ENCRYPT'));
-        $arr = explode('+', $checksum);
-        $project = $this->realEstateProjectService->find($arr[0]);
-        $bill = $this->billsService->create_step2($request, $project, $arr[1]);
-        $str = $project['id'] . '+' . $bill['id'] . '+' . uniqid();
-        $checksum_new = encode($str, env('KEY_ENCRYPT'));
-        return view('customer.investment.step3', compact('project', 'bill', 'checksum_new'));
+        $message = $this->realEstateProjectService->validate_step2($request);
+        if (count($message) > 0) {
+            return BaseController::send_response(self::HTTP_BAD_REQUEST, $message[0]);
+        } else {
+            $checksum = Authorization::validateToken($request->checksum);
+            $project = $this->realEstateProjectService->find($checksum->project_id);
+            $bill = $this->billsService->create_step2($request, $project, $checksum->bill_id);
+            $checksum_new = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
+            $data = [
+                'project_id' => $project['id'],
+                'project_name' => $project['slug_vi'],
+                'bill_id' => $bill['id'],
+                'checksum' => $checksum_new
+            ];
+            return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
+        }
+    }
+
+    public function step3(Request $request, $slug)
+    {
+        $project = $this->realEstateProjectService->detail_project($slug);
+        $checksum_new = $request->checksum;
+        return view('customer.investment.step3', compact('project', 'checksum_new'));
     }
 
     public function step3_submit(Request $request)
     {
-        $checksum = decode($request->checksum, env('KEY_ENCRYPT'));
-        $arr = explode('+', $checksum);
-        $bill = $this->billsService->create_step3($arr[1]);
+        $message = $this->realEstateProjectService->validate_step3($request);
+        if (count($message) > 0) {
+            return BaseController::send_response(self::HTTP_BAD_REQUEST, $message[0]);
+        } else {
+            $checksum = Authorization::validateToken($request->checksum);
+            $project = $this->realEstateProjectService->find($checksum->project_id);
+            $bill = $this->billsService->create_step3($checksum->bill_id);
+            $checksum_new = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
+            $data = [
+                'project_id' => $project['id'],
+                'project_name' => $project['slug_vi'],
+                'bill_id' => $bill['id'],
+                'checksum' => $checksum_new
+            ];
+            return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
+        }
+    }
+
+    public function step4(Request $request, $slug)
+    {
+        $checksum = Authorization::validateToken($request->checksum);
+        $bill = $this->billsService->find($checksum->bill_id);
         return view('customer.investment.step4', compact('bill'));
     }
 }

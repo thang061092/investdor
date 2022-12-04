@@ -231,8 +231,6 @@
         </div>
     </section>
 @endsection
-<<<<<<< HEAD
-
 @section('js')
     <script>
         $(document).ready(function () {

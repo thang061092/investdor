@@ -4,8 +4,7 @@
     @include('customer.investment.header')
     <section class="invest mt-lg-3 pt-5">
         <div class="container">
-            <form action="{{route('investment.step2_submit')}}" method="post" class="frm-set-invest invest-step-2 wow fadeInUp">
-                @csrf
+            <div class="frm-set-invest invest-step-2 wow fadeInUp">
                 <div class="wrapper-set-invest mx-auto">
                     <p class="title_lg">Số tiền bạn muốn đầu tư</p>
                     <label for="" class="d-block mb-2">
@@ -28,14 +27,15 @@
                     <input type="hidden" name="checksum" value="{{$checksum}}">
                     <input type="hidden" name="value_part" value="{{$project->value_part}}">
                 </div>
-                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3">
+                <button type="button" class="btn_all mt-xl-5 mt-lg-4 mt-3 step2">
                     Tiếp tục
                 </button>
-            </form>
+            </div>
         </div>
     </section>
 @endsection
 @section('js')
+    <script src="{{asset('js/investment/step1.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.part_investment').on('keyup', function () {
