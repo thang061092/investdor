@@ -62,4 +62,7 @@ return [
     'evaluate' => 'Evaluate',
     'waiting_approval' => 'Waiting list for approval',
     'enter_name_project' => "Enter name project",
+    'Terms_and_Conditions_of_Use' => 'Terms and Conditions of Use',
+    'Investing_always_comes_with_risks' => 'Investing always comes with risks. Investors are responsible for their own investment',
+    'I_agree' => 'I agree to the terms and conditions of use.'
 ];

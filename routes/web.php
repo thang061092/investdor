@@ -71,8 +71,11 @@ Route::group(['middleware' => 'locale'], function () {
         Route::prefix('/investment')->group(function () {
             Route::get('/step1/{slug}', "Customer\InvestmentController@step1")->name('investment.step1');
             Route::post('/step2', "Customer\InvestmentController@step1_submit")->name('investment.step1_submit');
+            Route::get('/step2/{slug}', "Customer\InvestmentController@step2")->name('investment.step2');
             Route::post('/step3', "Customer\InvestmentController@step2_submit")->name('investment.step2_submit');
+            Route::get('/step3/{slug}', "Customer\InvestmentController@step3")->name('investment.step3');
             Route::post('/step4', "Customer\InvestmentController@step3_submit")->name('investment.step3_submit');
+            Route::get('/step4/{slug}', "Customer\InvestmentController@step4")->name('investment.step4');
         });
 
         // Route::post('/question','Customer\UserController@question')->name('question');

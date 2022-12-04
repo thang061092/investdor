@@ -378,4 +378,44 @@ class RealEstateProjectService
         ]);
         return $validate;
     }
+
+    public function validate_step1($request)
+    {
+        $message = [];
+        if (empty($request->project_id)) {
+            $message[] = __('validate.id_project_not_null');
+            return $message;
+        }
+        return $message;
+    }
+
+    public function validate_step2($request)
+    {
+        $message = [];
+        if (empty($request->checksum)) {
+            $message[] = __('validate.request_illegal');
+            return $message;
+        }
+
+        if (empty($request->part_investment)) {
+            $message[] = __('validate.part_investment_not_nul');
+            return $message;
+        } else {
+            if ($request->part_investment < 10) {
+                $message[] = __('validate.part_min', ['part' => 10]);
+                return $message;
+            }
+        }
+        return $message;
+    }
+
+    public function validate_step3($request)
+    {
+        $message = [];
+        if (empty($request->checksum)) {
+            $message[] = __('validate.request_illegal');
+            return $message;
+        }
+        return $message;
+    }
 }

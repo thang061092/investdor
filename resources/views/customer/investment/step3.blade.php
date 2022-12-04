@@ -7,7 +7,7 @@
             <form action="{{route('investment.step3_submit')}}" method="post" class="frm-set-invest wow fadeInUp">
                 @csrf
                 <div class="wrapper-set-invest invest-step-3 mx-auto">
-                    <p class="title_lg">Điều kiện và điều khoản sử dụng</p>
+                    <p class="title_lg">{{__('project.Terms_and_Conditions_of_Use')}}</p>
                     <div class="box-contents">
                         <div class="s-content">
                             <p>
@@ -36,27 +36,7 @@
                                 Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, when an unknown
                                 printerLorem Ipsum is simply dummy text of
-                                the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy
-                                text ever since the 1500s, when an unknown
-                                printerLorem Ipsum is simply dummy text of
-                                the printing and typesetting industry. Lorem
-                                Ipsum an unknown printer( giới thiệu về đự
-                                án)Lorem Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy
-                                text ever since the 1500s, when an unknown
-                                printer Lorem Ipsum is simply dummy text of
-                                the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy
-                                text ever since the 1500s, when an unknown
-                                printerLorem Ipsum is simply dummy text of
-                                the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy
-                                text ever since the 1500s, when an unknown
-                                printerLorem Ipsum is simply dummy text of
-                                the printing and typesetting industry. Lorem
-                                Ipsum an unknown printer
+                                the printing and typesetting industry.
                             </p>
                         </div>
                     </div>
@@ -72,20 +52,21 @@
                                   d="M12 8C12.5523 8 13 8.44772 13 9V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V9C11 8.44772 11.4477 8 12 8Z"
                                   fill="#A87F05"/>
                         </svg>
-                        Đầu tư luôn đi kèm với rủi ro. Nhà đầu tư vui lòng
-                        tự chịu trách nhiệm với khoản đầu tư của mình
+                        {{__('project.Investing_always_comes_with_risks')}}
                     </div>
                     <input type="hidden" name="checksum" value="{{$checksum_new}}">
                     <label for="agree" class="check mt-lg-4 pt-lg-2 mt-3">
                         <input type="checkbox" id="agree" name="agree" value="agree"/>
-                        <span class="text">Tôi đồng ý với điều khoản và điều kiện sử
-                        dụng.</span>
+                        <span class="text">{{__('project.I_agree')}}</span>
                     </label>
                 </div>
-                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3">
-                    Tiến hành đầu tư
+                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3 step3">
+                    {{__('project.investment')}}
                 </button>
             </form>
         </div>
     </section>
-@stop
+@endsection
+@section('js')
+    <script src="{{asset('js/investment/step1.js')}}"></script>
+@endsection

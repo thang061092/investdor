@@ -59,8 +59,11 @@ return [
     'business_plan' => 'Kế hoạch kinh doanh',
     'financial' => 'Tài chính',
     'document' => 'Tài liệu',
-    'evaluate'=> 'Đánh giá',
+    'evaluate' => 'Đánh giá',
     'waiting_approval' => 'Danh sách chờ phê duyệt',
-    'enter_name_project' => "Nhập tên dự án"
+    'enter_name_project' => "Nhập tên dự án",
+    'Terms_and_Conditions_of_Use' => 'Điều kiện và điều khoản sử dụng',
+    'Investing_always_comes_with_risks' => 'Đầu tư luôn đi kèm với rủi ro. Nhà đầu tư vui lòng tự chịu trách nhiệm với khoản đầu tư của mình',
+    'I_agree' => 'Tôi đồng ý với điều khoản và điều kiện sử dụng.'
 
 ];
