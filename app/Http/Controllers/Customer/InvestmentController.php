@@ -49,13 +49,12 @@ class InvestmentController extends BaseController
             return BaseController::send_response(self::HTTP_BAD_REQUEST, $message[0]);
         } else {
             $project = $this->realEstateProjectService->find($request->project_id);
-            $bill = $this->billsService->create_step1($request);
-            $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
+            $bill = $this->billsService->create_step1($request, $project);
             $data = [
                 'project_id' => $project['id'],
                 'project_name' => $project['slug_vi'],
                 'bill_id' => $bill['id'],
-                'checksum' => $checksum
+                'checksum' => $bill['checksum']
             ];
             return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
         }
@@ -77,12 +76,11 @@ class InvestmentController extends BaseController
             $checksum = Authorization::validateToken($request->checksum);
             $project = $this->realEstateProjectService->find($checksum->project_id);
             $bill = $this->billsService->create_step2($request, $project, $checksum->bill_id);
-            $checksum_new = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
             $data = [
                 'project_id' => $project['id'],
                 'project_name' => $project['slug_vi'],
                 'bill_id' => $bill['id'],
-                'checksum' => $checksum_new
+                'checksum' => $bill['checksum']
             ];
             return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
         }
@@ -104,12 +102,11 @@ class InvestmentController extends BaseController
             $checksum = Authorization::validateToken($request->checksum);
             $project = $this->realEstateProjectService->find($checksum->project_id);
             $bill = $this->billsService->create_step3($checksum->bill_id);
-            $checksum_new = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
             $data = [
                 'project_id' => $project['id'],
                 'project_name' => $project['slug_vi'],
                 'bill_id' => $bill['id'],
-                'checksum' => $checksum_new
+                'checksum' => $bill['checksum']
             ];
             return BaseController::send_response(self::HTTP_OK, __('message.success'), $data);
         }

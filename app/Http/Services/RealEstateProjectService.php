@@ -15,6 +15,7 @@ use App\Http\Repositories\MemberCompanyRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
 use App\Models\AssetProject;
+use App\Models\Bills;
 use App\Models\BusinessPlane;
 use App\Models\Contract;
 use App\Models\DocumentProject;
@@ -41,6 +42,7 @@ class RealEstateProjectService
     protected $interestRepository;
     protected $businessPlanRepository;
     protected $contractRepository;
+    protected $billsService;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -53,7 +55,8 @@ class RealEstateProjectService
                                 MemberCompanyRepository $memberCompanyRepository,
                                 InterestRepository $interestRepository,
                                 BusinessPlanRepository $businessPlanRepository,
-                                ContractRepository $contractRepository)
+                                ContractRepository $contractRepository,
+                                BillsService $billsService)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -67,6 +70,7 @@ class RealEstateProjectService
         $this->interestRepository = $interestRepository;
         $this->businessPlanRepository = $businessPlanRepository;
         $this->contractRepository = $contractRepository;
+        $this->billsService = $billsService;
     }
 
     public function create($request)
@@ -395,6 +399,27 @@ class RealEstateProjectService
         if (empty($request->checksum)) {
             $message[] = __('validate.request_illegal');
             return $message;
+        } else {
+            $checksum = Authorization::validateToken($request->checksum);
+            if (!$checksum) {
+                $message[] = __('validate.request_illegal');
+                return $message;
+            } else {
+                $bill = $this->billsService->find($checksum->bill_id);
+                if (!$bill) {
+                    $message[] = __('validate.request_illegal');
+                    return $message;
+                } else {
+                    if ($bill['user_id'] != Session::get('customer')['id']) {
+                        $message[] = __('validate.request_illegal');
+                        return $message;
+                    }
+                    if ($bill['status'] != Bills::NEW) {
+                        $message[] = __('validate.request_illegal');
+                        return $message;
+                    }
+                }
+            }
         }
 
         if (empty($request->part_investment)) {
@@ -415,6 +440,37 @@ class RealEstateProjectService
         if (empty($request->checksum)) {
             $message[] = __('validate.request_illegal');
             return $message;
+        } else {
+            $checksum = Authorization::validateToken($request->checksum);
+            if (!$checksum) {
+                $message[] = __('validate.request_illegal');
+                return $message;
+            } else {
+                $bill = $this->billsService->find($checksum->bill_id);
+                if (!$bill) {
+                    $message[] = __('validate.request_illegal');
+                    return $message;
+                } else {
+                    if ($bill['user_id'] != Session::get('customer')['id']) {
+                        $message[] = __('validate.request_illegal');
+                        return $message;
+                    }
+                    if ($bill['status'] != Bills::NEW) {
+                        $message[] = __('validate.request_illegal');
+                        return $message;
+                    }
+                }
+            }
+        }
+
+        if (empty($request->agree)) {
+            $message[] = __('validate.agree');
+            return $message;
+        } else {
+            if ($request->agree != 'agree') {
+                $message[] = __('validate.agree');
+                return $message;
+            }
         }
         return $message;
     }

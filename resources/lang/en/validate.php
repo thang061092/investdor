@@ -61,4 +61,5 @@ return [
     'request_illegal' => 'Request illegal',
     'part_not_null'=> 'Part invest not null',
     'part_min'=> 'Part min :part',
+    'agree'  => "You need to tick to agree"
 ];

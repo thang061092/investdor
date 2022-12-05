@@ -61,5 +61,6 @@ return [
     'request_illegal' => 'Yêu cầu không họp lệ',
     'part_not_null'=> 'Số phần đầu tư không để trống',
     'part_min'=> 'Số phần đầu tư tối thiểu :part',
+    'agree'  => "Bạn cần tích chọn đồng ý"
 
 ];
