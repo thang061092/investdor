@@ -15,11 +15,15 @@ class UserService
 {
     protected $userRepository;
     protected $uploadService;
+    protected $mailService;
 
-    public function __construct(UserRepository $userRepository, UploadService $uploadService)
+    public function __construct(UserRepository $userRepository,
+                                UploadService $uploadService,
+                                MailService $mailService)
     {
         $this->userRepository = $userRepository;
         $this->uploadService = $uploadService;
+        $this->mailService = $mailService;
     }
 
     public function find($id)
@@ -64,18 +68,38 @@ class UserService
 
     public function customer_register($request)
     {
-        $data = [
-            Users::FULL_NAME => $request->full_name,
-            Users::EMAIL => $request->email,
-            Users::PASSWORD => Hash::make($request->password),
-            Users::STATUS => Users::ACTIVE,
-            Users::TYPE => Users::INVESTOR,
-            Users::BANK_NAME => null,
-            Users::ACCOUNT_NAME => null,
-            Users::ACCOUNT_NUMBER => null,
-        ];
-        $user = $this->userRepository->create($data);
-        return $user;
+        $otp = rand(100000, 999999);
+        $user = $this->userRepository->findOne([Users::EMAIL => $request->email]);
+        if ($user['status'] == Users::NEW) {
+            $data = [
+                Users::FULL_NAME => $request->full_name,
+                Users::EMAIL => $request->email,
+                Users::PASSWORD => Hash::make($request->password),
+                Users::STATUS => Users::NEW,
+                Users::TYPE => Users::INVESTOR,
+                Users::BANK_NAME => null,
+                Users::ACCOUNT_NAME => null,
+                Users::ACCOUNT_NUMBER => null,
+                Users::OTP => $otp,
+                Users::EXPIRE_OTP => Carbon::now()->addMinutes(5)->unix()
+            ];
+            $user_new = $this->userRepository->update($user['id'], $data);
+        } else {
+            $data = [
+                Users::FULL_NAME => $request->full_name,
+                Users::EMAIL => $request->email,
+                Users::PASSWORD => Hash::make($request->password),
+                Users::STATUS => Users::NEW,
+                Users::TYPE => Users::INVESTOR,
+                Users::BANK_NAME => null,
+                Users::ACCOUNT_NAME => null,
+                Users::ACCOUNT_NUMBER => null,
+                Users::OTP => $otp,
+                Users::EXPIRE_OTP => Carbon::now()->addMinutes(5)->unix()
+            ];
+            $user_new = $this->userRepository->create($data);
+        }
+        return $user_new;
     }
 
     public function validate_login_social($request)
@@ -386,5 +410,114 @@ class UserService
         }
         $user->actions()->sync($actions);
         return $user;
+    }
+
+    public function check_email($request)
+    {
+        $message = [];
+        $user = $this->userRepository->findOne([Users::EMAIL => $request->email]);
+        if ($user) {
+            if ($user['status'] == Users::ACTIVE) {
+                $message[] = __('auth.email_exist');
+            } elseif ($user['status'] == Users::BLOCK) {
+                $message[] = __('auth.email_block');
+            }
+        }
+        return $message;
+    }
+
+    public function otp_register($request)
+    {
+        $user = $this->userRepository->update($request->id, [
+            Users::STATUS => Users::ACTIVE,
+            Users::OTP => null,
+            Users::EXPIRE_OTP => null
+        ]);
+        return $user;
+    }
+
+    public function check_otp_register($request)
+    {
+        $message = [];
+        $user = $this->userRepository->find($request->id);
+        if ($user) {
+            if (empty($request->otp)) {
+                $message[] = __('auth.otp_not_null');
+                return $message;
+            }
+            if ($user['otp'] != $request->otp) {
+                $message[] = __('auth.invalid_authentication');
+            }
+        } else {
+            $message[] = __('auth.invalid_authentication');
+        }
+        return $message;
+    }
+
+    public function check_send_email_forgot_pass($request)
+    {
+        $message = [];
+        if (empty($request->email)) {
+            $message[] = __('auth.email_not_null');
+            return $message;
+        } else {
+            $user = $this->userRepository->findOne([Users::EMAIL => $request->email, Users::STATUS => Users::ACTIVE]);
+            if (!$user) {
+                $message[] = __('auth.email_not_exist');
+                return $message;
+            }
+        }
+        return $message;
+    }
+
+    public function send_email_forgot_pass($request)
+    {
+        $user = $this->userRepository->findOne([Users::EMAIL => $request->email, Users::STATUS => Users::ACTIVE]);
+        $token = Authorization::generateToken([
+            'id' => $user['id'],
+            'time' => Carbon::now()->addMinutes(5)->unix()
+        ]);
+        $link = env('BASE_URL') . 'new_password?e=' . $token;
+        $html = view('email.quenmatkhau', compact('user', 'link'))->render();
+        $this->mailService->sendMail('Quên mật khẩu', $user['email'], $user['full_name'], $html);
+        return $user;
+    }
+
+    public function check_new_password($request)
+    {
+        $message = [];
+        if (empty($request->password)) {
+            $message[] = __('auth.password_not_null');
+            return $message;
+        } else {
+            if (strlen($request->password) < 6) {
+                $message[] = __('auth.password_min');
+                return $message;
+            }
+        }
+
+        if (empty($request->re_password)) {
+            $message[] = __('auth.repassword_not_null');
+            return $message;
+        } else {
+            if (strlen($request->re_password) < 6) {
+                $message[] = __('auth.password_min');
+                return $message;
+            }
+        }
+
+        if ($request->password != $request->re_password) {
+            $message[] = __('auth.repassword_mismatched');
+            return $message;
+        }
+        return $message;
+    }
+
+    public function new_password($request)
+    {
+        $token = Authorization::validateToken($request->token);
+        $user = $this->userRepository->update($token->id, [Users::PASSWORD => Hash::make($request->password)]);
+        return $user;
+
     }
 }

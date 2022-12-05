@@ -35,6 +35,8 @@ return [
     'email_not_null' => "Email not null",
     'email_malformed' => "Email malformed",
     'email_exist' => "Email already exist",
+    'email_not_exist' => "Email not exist",
+    'email_block' => "Email block",
     'password_not_null' => "Password not null",
     'name_not_null' => "Name not null",
     'repassword_not_null' => "Repassword not null",
@@ -84,4 +86,12 @@ return [
     "password_min" => 'Password minimum 6 characters',
     'answer_not_null' => "Answers is not empty",
     'question_not_null' => 'Please enter a question',
+    'otp_not_null' => "OTP not null",
+    'Confirm_the_confirmation_code' => 'Confirm the confirmation code',
+    'We_have_sent_you_a_6_digit_confirmation_code_via_email' => 'We have sent you a 6-digit confirmation code via email',
+    'Please_check_your_email_and_enter_the_confirmation_code_to_complete_the_registration' => 'Please check your email and enter the confirmation code to complete the registration.',
+    'Verification' => 'Verification',
+    'Enter_the_confirmation_code' => 'Enter the confirmation code',
+    'Password_retrieval' => 'Password retrieval',
+    'Please_check_your_mailbox_for_a_new_password' => 'Please check your mailbox for a new password'
 ];
