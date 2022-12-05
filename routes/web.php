@@ -47,6 +47,11 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('/login_submit', "Customer\AuthController@login_submit")->name('customer.login_submit');
     Route::get('/register', "Customer\AuthController@register")->name('customer.register');
     Route::post('/register_submit', "Customer\AuthController@register_submit")->name('customer.register_submit');
+    Route::post('/otp_register', "Customer\AuthController@otp_register")->name('customer.otp_register');
+    Route::post('/send_email_forgot_pass', "Customer\AuthController@send_email_forgot_pass")->name('customer.send_email_forgot_pass');
+    Route::post('/new_password_post', "Customer\AuthController@new_password_post")->name('customer.new_password_post');
+    Route::get('/forgot_password', "Customer\AuthController@forgot_password")->name('customer.re_password');
+    Route::get('/new_password', "Customer\AuthController@new_password")->name('customer.new_password');
     Route::get('/google_redirect', "Customer\AuthController@google_redirect")->name('customer.google_redirect');
     Route::get('/google_callback', "Customer\AuthController@google_callback")->name('customer.google_callback');
 
@@ -204,6 +209,7 @@ Route::group(['middleware' => 'locale'], function () {
     });
 
     Route::post('/upload', "UploadController@upload");
+    Route::post('/sendMail', "SendMailController@sendMail");
     Route::post('/qr', "Customer\PaymentController@link");
     Route::prefix('/address')->group(function () {
         Route::get('/district', "Admin\AddressController@district");

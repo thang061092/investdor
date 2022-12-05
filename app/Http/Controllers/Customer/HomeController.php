@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Services\NewsService;
 use App\Http\Services\CategoryNewsService;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class HomeController extends BaseController
 {

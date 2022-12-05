@@ -8,4 +8,6 @@ return [
     'create' => 'Create',
     'update' => 'Update',
     'continue' => "Continue",
+    'confirm' => 'Confirm',
+    'send' => 'Send'
 ];

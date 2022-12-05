@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'register' => "Đăng ký",
@@ -23,6 +23,8 @@ return [
     'email_not_null' => "Email không được để trống",
     'email_malformed' => "Email không đúng định dạng",
     'email_exist' => "Email đã tồn tại",
+    'email_not_exist' => "Email không tồn tại",
+    'email_block' => "Email đang bị khóa",
     'password_not_null' => "Mật khẩu không được để trống",
     'name_not_null' => "Họ tên không được để trống",
     'repassword_not_null' => "Xác nhận mật khẩu không được để trống",
@@ -58,7 +60,7 @@ return [
     'date_identity_not_null' => 'Ngày cấp CMND/CCCD không để trống',
     'address_identity_not_null' => 'Nơi cấp CMND/CCCD không để trống',
     'authentication' => "Xác thực tài khoản ?",
-    'not_authentication' => "Không xác thực tài khoản ?" ,
+    'not_authentication' => "Không xác thực tài khoản ?",
     "img_cmt_before_not_null" => "Mặt trước chứng từ không để trống",
     "img_cmt_after_not_null" => "Mặt sau chứng từ không để trống",
     'title_not_null' => "Tiêu đề không để trống",
@@ -71,6 +73,14 @@ return [
     'email_account_already_exists' => 'Tài khoản email đã tồn tại',
     "password_min" => 'Mật khẩu tối thiểu 6 ký tự',
     'answer_not_null' => "Câu trả lời không để trống",
-    'question_not_null' => "Vui lòng nhập câu hỏi"
+    'question_not_null' => "Vui lòng nhập câu hỏi",
+    'otp_not_null' => "Mã xác thực không để trống",
+    'Confirm_the_confirmation_code' => 'Xác nhận mã xác nhận',
+    'We_have_sent_you_a_6_digit_confirmation_code_via_email' => 'Chúng tôi đã gửi cho bạn một mã xác nhận 6 số qua email',
+    'Please_check_your_email_and_enter_the_confirmation_code_to_complete_the_registration' => 'Hãy kiểm tra email của bạn và nhập mã xác nhận để hoàn tất đăng ký.',
+    'Verification' => 'Mã xác nhận',
+    'Enter_the_confirmation_code' => 'Nhập mã xác nhận',
+    'Password_retrieval' => 'Lấy lại mật khẩu',
+    'Please_check_your_mailbox_for_a_new_password' => 'Vui lòng kiểm tra hòm thư để lấy mật khẩu mới'
 
-];
+);
