@@ -29,6 +29,7 @@ class Bills extends BaseModel
     const NOTE = 'note';
     const PAYMENT_DATE = 'payment_date';
     const IMAGE_LICENSE = 'image_license';
+    const CHECKSUM = 'checksum';
 
     //status
     const NEW = 'new';

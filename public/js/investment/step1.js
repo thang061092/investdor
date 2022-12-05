@@ -59,8 +59,10 @@ $(document).ready(function () {
 
     $('.step3').on('click', function () {
         let checksum = $("input[name='checksum']").val();
+        let agree = $("input[name='agree']:checked").val();
         let formData = new FormData();
         formData.append('checksum', checksum);
+        formData.append('agree', agree);
         $.ajax({
             dataType: 'json',
             enctype: 'multipart/form-data',

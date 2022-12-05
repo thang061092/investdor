@@ -60,7 +60,7 @@
                         <span class="text">{{__('project.I_agree')}}</span>
                     </label>
                 </div>
-                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3 step3">
+                <button type="button" class="btn_all mt-xl-5 mt-lg-4 mt-3 step3">
                     {{__('project.investment')}}
                 </button>
             </form>
