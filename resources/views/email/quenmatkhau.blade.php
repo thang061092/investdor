@@ -13,8 +13,10 @@
     style="max-width: 565px;margin: auto;color: #676767;font-family: 'Roboto';font-size: 14px;line-height: 1.35;background-color: #fff;">
     <div style="padding: 20px 16px 16px 16px; margin-bottom: 16px">
         <div style="margin-bottom: 24px">
-            <img src="{{asset('frontend/images/banner-email.jpg')}}" alt=""
-                 style="object-fit: cover; width: auto; max-width: 100%"/>
+            <img
+                src="{{env('APP_ENV') == 'production' ? asset('frontend/images/banner-email.jpg') : 'https://service.tienngay.vn/uploads/avatar/1670298547-5b411af2242a651c637d84cd7a7471ac.jpg'}}"
+                alt=""
+                style="object-fit: cover; width: auto; max-width: 100%"/>
         </div>
         <h1 style="
                         font-size: 24px;

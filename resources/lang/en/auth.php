@@ -93,5 +93,7 @@ return [
     'Verification' => 'Verification',
     'Enter_the_confirmation_code' => 'Enter the confirmation code',
     'Password_retrieval' => 'Password retrieval',
-    'Please_check_your_mailbox_for_a_new_password' => 'Please check your mailbox for a new password'
+    'Please_check_your_mailbox_for_a_new_password' => 'Please check your mailbox for a new password',
+    'Invalid_request' => 'Invalid request',
+    'Time_out' => 'Time out'
 ];
