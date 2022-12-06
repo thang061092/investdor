@@ -83,6 +83,20 @@ return array(
     'Password_retrieval' => 'Lấy lại mật khẩu',
     'Please_check_your_mailbox_for_a_new_password' => 'Vui lòng kiểm tra hòm thư để lấy mật khẩu mới',
     'Invalid_request' => 'Yêu cầu không hợp lệ',
-    'Time_out' => 'Hết thời gian chờ'
-
+    'Time_out' => 'Hết thời gian chờ',
+    'Change_password_successfully' => 'Đổi mật khẩu thành công',
+    'Transfer_the_investment_to_the_following_account_number' => 'Chuyển khoản đầu tư tới số tài khoản sau',
+    'Please_pay_within_24_hours' => 'Vui lòng thanh toán trong vòng 24h',
+    'You_can_track_the_project_is_metrics' => 'Bạn có thể theo dõi các chỉ số của dự án',
+    'here' => "Tại đây",
+    'bank' => "Ngân hàng",
+    'Receiver_account_name' => 'Tên tài khoản nhận',
+    "Account_number" => 'Số tài khoản',
+    'money' => 'Số tiền',
+    'Transfer_Contents' => 'Nội dung chuyển khoản',
+    'If_the_transfer_content_is_missing_or_incorrect' => 'Nếu nội dung chuyển khoản thiếu hoặc không chính xác. Chúng tôi sẽ không thể nhận ra giao dịch của bạn.',
+    'Or_scan_the_following_QR_code' => 'Hoặc scan mã QR code sau:',
+    'download' => 'Tải xuống',
+    'I_made_a_transfer' => 'Tôi đã chuyển khoản',
+    'copy' => 'Sao chép'
 );

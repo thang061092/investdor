@@ -7,7 +7,7 @@
                 <div class="col-lg-auto mb-lg-0 mb-3 wow fadeInLeft">
                     <div class="group-box">
                         <p class="title_lg">
-                            Chuyển khoản đầu tư tới số tài khoản sau
+                            {{__('auth.Transfer_the_investment_to_the_following_account_number')}}
                         </p>
                         <div class="ping-alert-note ping mt-lg-4 pt-lg-2 mt-3 mb-lg-4 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -22,40 +22,41 @@
                                       d="M12 8C12.5523 8 13 8.44772 13 9V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V9C11 8.44772 11.4477 8 12 8Z"
                                       fill="#A87F05"/>
                             </svg>
-                            Vui lòng thanh toán trong vòng 24h. Bạn có thể theo dõi
-                            các chỉ số của dự án
+                            {{__('auth.Please_pay_within_24_hours')}}
+                            . {{__('auth.You_can_track_the_project_is_metrics')}}
                             <a class="more text-danger" href="{{route('customer.user.manager')}}"
-                               title="Báo cáo của tôi.">Tại đây</a>
+                               title="Báo cáo của tôi.">{{__('auth.here')}}</a>
                         </div>
                         <label for="" class="d-block mb-2 c-label">
-                            Ngân hàng
+                            {{__('auth.bank')}}
                         </label>
                         <input disabled type="text" name="" value="{{$bill->name_bank ?? ''}}"
                                class="form-control mb-lg-4 mb-3 pb-1"/>
                         <label for="" class="d-block mb-2 c-label">
-                            Tên tài khoản nhận
+                            {{__('auth.Receiver_account_name')}}
                         </label>
                         <p class="text mb-lg-3 mb-2 pb-1">{{$bill->name_account_bank ?? ''}}</p>
                         <label for="" class="d-block mb-2 c-label">
-                            Tên tài khoản
+                            {{__('auth.Account_number')}}
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
                             <input disabled type="text" name="" value="{{$bill->bank_account ?? ''}}"
                                    class="form-control"/>
-                            <span class="copy" data-title-success="Copy thành công" data-title-fail="Copy thất bại !">Sao chép</span>
+                            <span class="copy" data-title-success="{{__('message.success')}}" data-title-fail="{{__('message.fail')}}">{{__('auth.copy')}}</span>
                         </div>
                         <label for="" class="d-block c-label">
-                            Số tiền cần chuyển
+                            {{__('auth.money')}}
                         </label>
                         <p class="text mb-lg-3 mb-2 pb-1">{{!empty($bill->amount_money) ? number_format_vn($bill->amount_money) : ''}}
                             VND</p>
                         <label for="" class="d-block mb-2 c-label">
-                            Nội dung chuyển khoản
+                            {{__('auth.Transfer_Contents')}}
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
                             <input type="text" name="" value="{{$bill->order_code ?? ''}}"
                                    class="form-control"/>
-                            <span class="copy" data-title-success="Copy thành công" data-title-fail="Copy thất bại !">Sao chép</span>
+                            <span class="copy" data-title-success="{{__('message.success')}}"
+                                  data-title-fail="{{__('message.fail')}}">{{__('auth.copy')}}</span>
                         </div>
                         <div class="ping-alert-note">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -70,17 +71,16 @@
                                       d="M11 16C11 15.4477 11.4477 15 12 15H12.01C12.5623 15 13.01 15.4477 13.01 16C13.01 16.5523 12.5623 17 12.01 17H12C11.4477 17 11 16.5523 11 16Z"
                                       fill="#C70404"/>
                             </svg>
-                            Nếu nội dung chuyển khoản thiếu hoặc không chính xác.
-                            Chúng tôi sẽ không thể nhận ra giao dịch của bạn.
+                            {{__('auth.If_the_transfer_content_is_missing_or_incorrect')}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-auto wow fadeInRight">
                     <div class="group-box">
-                        <p class="title_lg">Hoặc scan mã QR code sau</p>
+                        <p class="title_lg">{{__('auth.Or_scan_the_following_QR_code')}}</p>
                         <div class="qr d-block">
-                            <a href="{{$bill->link_qr ?? ''}}" title="Tải xuống Qrcode" class="dl-qrcode"
-                               download="Qrcode">Tải xuống Qrcode</a>
+                            <a href="{{$bill->link_qr ?? ''}}" title="{{__('auth.download')}}" class="dl-qrcode"
+                               download="Qrcode">{{__('auth.download')}}</a>
                             <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
             <div class="text-center">
                 <a href="{{route('customer.user.manager').'?main_tab=manager&tab=warning'}}" type="button"
                    class="btn_all mt-xl-5 mt-lg-4 mt-3">
-                    Tôi đã chuyển khoản
+                    {{__('auth.I_made_a_transfer')}}
                 </a>
             </div>
         </div>

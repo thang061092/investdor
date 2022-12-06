@@ -55,7 +55,5 @@ return [
     'are_you_sure' => "Are you sure",
     'yes' => 'Yes',
     'no' => 'No!',
-
-
-
+    'Change_password_successfully' => 'Change password successfully'
 ];

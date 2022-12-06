@@ -480,8 +480,8 @@ class UserService
         $this->userRepository->update($user['id'], [Users::TOKEN_RESET => $token]);
         $link = env('BASE_URL') . 'new_password?e=' . $token;
         $html = view('email.quenmatkhau', compact('user', 'link'))->render();
-        $this->mailService->sendMail('Quên mật khẩu', $user['email'], $user['full_name'], $html);
-        return $user;
+        $result = $this->mailService->sendMail('Quên mật khẩu', $user['email'], $user['full_name'], $html);
+        return $result;
     }
 
     public function check_new_password($request)
@@ -516,7 +516,7 @@ class UserService
             $message[] = __('auth.Invalid_request');
             return $message;
         } else {
-            $user = $this->userRepository->findOne([Users::ID => $token->id, Users::TOKEN_RESET => $token]);
+            $user = $this->userRepository->findOne([Users::ID => (int)$token->id, Users::TOKEN_RESET => $request->token]);
             if (!$user) {
                 $message[] = __('auth.Invalid_request');
                 return $message;
