@@ -81,6 +81,8 @@ return array(
     'Verification' => 'Mã xác nhận',
     'Enter_the_confirmation_code' => 'Nhập mã xác nhận',
     'Password_retrieval' => 'Lấy lại mật khẩu',
-    'Please_check_your_mailbox_for_a_new_password' => 'Vui lòng kiểm tra hòm thư để lấy mật khẩu mới'
+    'Please_check_your_mailbox_for_a_new_password' => 'Vui lòng kiểm tra hòm thư để lấy mật khẩu mới',
+    'Invalid_request' => 'Yêu cầu không hợp lệ',
+    'Time_out' => 'Hết thời gian chờ'
 
 );

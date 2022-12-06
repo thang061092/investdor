@@ -477,6 +477,7 @@ class UserService
             'id' => $user['id'],
             'time' => Carbon::now()->addMinutes(5)->unix()
         ]);
+        $this->userRepository->update($user['id'], [Users::TOKEN_RESET, $token]);
         $link = env('BASE_URL') . 'new_password?e=' . $token;
         $html = view('email.quenmatkhau', compact('user', 'link'))->render();
         $this->mailService->sendMail('Quên mật khẩu', $user['email'], $user['full_name'], $html);
@@ -510,13 +511,29 @@ class UserService
             $message[] = __('auth.repassword_mismatched');
             return $message;
         }
+        $token = Authorization::validateToken($request->token);
+        if (!$token) {
+            $message[] = __('auth.Invalid_request');
+            return $message;
+        } else {
+            $user = $this->userRepository->findOne([Users::ID => $token->id, Users::TOKEN_RESET => $token]);
+            if (!$user) {
+                $message[] = __('auth.Invalid_request');
+                return $message;
+            } else {
+                if (time() > $token->time) {
+                    $message[] = __('auth.Time_out');
+                    return $message;
+                }
+            }
+        }
         return $message;
     }
 
     public function new_password($request)
     {
         $token = Authorization::validateToken($request->token);
-        $user = $this->userRepository->update($token->id, [Users::PASSWORD => Hash::make($request->password)]);
+        $user = $this->userRepository->update($token->id, [Users::PASSWORD => Hash::make($request->password), Users::TOKEN_RESET => null]);
         return $user;
 
     }
