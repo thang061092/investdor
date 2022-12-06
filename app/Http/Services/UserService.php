@@ -477,7 +477,7 @@ class UserService
             'id' => $user['id'],
             'time' => Carbon::now()->addMinutes(5)->unix()
         ]);
-        $this->userRepository->update($user['id'], [Users::TOKEN_RESET, $token]);
+        $this->userRepository->update($user['id'], [Users::TOKEN_RESET => $token]);
         $link = env('BASE_URL') . 'new_password?e=' . $token;
         $html = view('email.quenmatkhau', compact('user', 'link'))->render();
         $this->mailService->sendMail('Quên mật khẩu', $user['email'], $user['full_name'], $html);
