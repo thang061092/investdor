@@ -95,5 +95,20 @@ return [
     'Password_retrieval' => 'Password retrieval',
     'Please_check_your_mailbox_for_a_new_password' => 'Please check your mailbox for a new password',
     'Invalid_request' => 'Invalid request',
-    'Time_out' => 'Time out'
+    'Time_out' => 'Time out',
+    'Transfer_the_investment_to_the_following_account_number' => 'Transfer the investment to the following account number',
+    'Please_pay_within_24_hours' => 'Please pay within 24 hours',
+    'You_can_track_the_project_is_metrics' => 'You can track the project is metrics',
+    'here' => "Here",
+    'bank' => "Bank",
+    'Receiver_account_name' => 'Receiver account name',
+    "Account_number" => 'Account number',
+    'money' => 'Amount money',
+    'Transfer_Contents' => 'Transfer contents',
+    'If_the_transfer_content_is_missing_or_incorrect' => 'If the transfer content is missing or incorrect. We will not be able to recognize your transaction.',
+    'Or_scan_the_following_QR_code' => 'Or scan the following QR code:',
+    'download' => 'Download',
+    'I_made_a_transfer' => 'I made a transfer',
+    'copy' => 'Copy'
+
 ];

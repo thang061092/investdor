@@ -13,6 +13,8 @@ use App\Http\Services\RealEstateProjectService;
 use App\Http\Services\VietQr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class InvestmentController extends BaseController
 {
@@ -116,6 +118,10 @@ class InvestmentController extends BaseController
     {
         $checksum = Authorization::validateToken($request->checksum);
         $bill = $this->billsService->find($checksum->bill_id);
+        if ($bill['user_id'] != Session::get('customer')['id']) {
+            Toastr::error(__('validate.request_illegal'));
+            return redirect()->route('customer.home_page');
+        }
         return view('customer.investment.step4', compact('bill'));
     }
 }

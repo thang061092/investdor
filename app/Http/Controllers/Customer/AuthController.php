@@ -133,8 +133,8 @@ class AuthController extends BaseController
         if (count($check) > 0) {
             return BaseController::send_response(self::HTTP_BAD_REQUEST, $check[0]);
         } else {
-            $user = $this->userService->send_email_forgot_pass($request);
-            if ($user) {
+            $result = $this->userService->send_email_forgot_pass($request);
+            if ($result->statusCode() == 202) {
                 $message = __('auth.Please_check_your_mailbox_for_a_new_password');
                 return BaseController::send_response(self::HTTP_OK, $message);
             } else {
@@ -151,7 +151,7 @@ class AuthController extends BaseController
         } else {
             $user = $this->userService->new_password($request);
             if ($user) {
-                return BaseController::send_response(self::HTTP_OK, __('message.success'));
+                return BaseController::send_response(self::HTTP_OK, __('message.Change_password_successfully'));
             } else {
                 return BaseController::send_response(self::HTTP_BAD_REQUEST, __('message.fail'));
             }
