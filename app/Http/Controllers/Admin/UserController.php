@@ -89,11 +89,12 @@ class UserController extends BaseController
 
     }
 
-    public function get_all_employee()
+    public function get_all_employee(Request $request)
     {
-        $employees = $this->userService->get_all_employee();
+        $employees = $this->userService->get_all_employee($request);
         return view('employee.manager.index', [
             'employees' => $employees,
+            'dataSearch' => $request->all(),
         ]);
     }
 
@@ -144,27 +145,50 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 
-    public function get_all_customer()
+    public function get_all_customer(Request $request)
     {
-        $customer = $this->userService->get_all_customer();
+        $customer = $this->userService->get_all_customer($request);
         return view('employee.manager_user.index', [
             'customer' => $customer,
+            'dataSearch' => $request->all(),
         ]);
     }
 
     public function detail_customer($id)
     {
         $customer = $this->userService->find($id);
+        $bank = $this->bankService->getAllBank();
+        if ($bank) {
+            foreach ($bank as $item) {
+                if ($item['code'] == $customer['bank_name']) {
+                    $bank_name = $item['name'];
+                } else {
+                    continue;
+                }
+            }
+        }
         return view('employee.manager_user.detailUser', [
             'customer' => $customer,
+            'bank_name' => $bank_name,
         ]);
     }
 
     public function edit_customer($id)
     {
         $customer = $this->userService->find($id);
+        $bank = $this->bankService->getAllBank();
+        if ($bank) {
+            foreach ($bank as $item) {
+                if ($item['code'] == $customer['bank_name']) {
+                    $bank_name = $item['name'];
+                } else {
+                    continue;
+                }
+            }
+        }
         return view('employee.manager_user.updateUser', [
             'customer' => $customer,
+            'bank_name' => $bank_name,
         ]);
     }
 
@@ -196,11 +220,14 @@ class UserController extends BaseController
         return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'));
     }
 
-    public function list_news()
+    public function list_news(Request $request)
     {
-        $list = $this->newsService->get_all();
+        $list = $this->newsService->filter($request);
+        $categories = $this->categoryService->get_all();
         return view('employee.news.index', [
             'list' => $list,
+            'categories' => $categories,
+            'dataSearch' => $request->all(),
         ]);
     }
 
@@ -257,16 +284,19 @@ class UserController extends BaseController
     public function detail_news($id)
     {
         $detail = $this->newsService->find($id);
+        $categories = $this->categoryService->get_all();
         return view('employee.news.detailNews', [
             'detail' => $detail,
+            'categories' => $categories,
         ]);
     }
 
-    public function list_category()
+    public function list_category(Request $request)
     {
-        $list = $this->categoryService->get_all();
+        $list = $this->categoryService->filter($request);
         return view('employee.category_news.index', [
             'list' => $list,
+            'dataSearch' => $request->all(),
         ]);
     }
 
@@ -323,12 +353,13 @@ class UserController extends BaseController
         ]);
     }
 
-    public function list_question()
+    public function list_question(Request $request)
     {
-        $questions = $this->questionService->get_all();
+        $questions = $this->questionService->filter($request);
         if ($questions) {
             return view('employee.question.index', [
                 'questions' => $questions,
+                'dataSearch' => $request->all(),
             ]);
         }
     }

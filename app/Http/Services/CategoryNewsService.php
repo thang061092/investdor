@@ -27,6 +27,12 @@ class CategoryNewsService
     {
         return $this->categoryRepo->getAll();
     }
+    
+    public function filter($request) 
+    {
+        $search = $request->all();
+        return $this->categoryRepo->get_all($search);
+    }
 
     public function find($id)
     {

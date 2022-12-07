@@ -42,7 +42,8 @@ class BankService
         return;
     }
 
-    public function getAllBank() {
+    public function getAllBank()
+    {
         $getAllBank = $this->bankRepository->getAllBank();
         if ($getAllBank) {
             return $getAllBank;

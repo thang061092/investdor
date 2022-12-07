@@ -237,9 +237,10 @@ class UserService
         return $user;
     }
 
-    public function get_all_employee()
+    public function get_all_employee($request)
     {
-        $employees = $this->userRepository->get_all_employee();
+        $search = $request->all();
+        $employees = $this->userRepository->get_all_employee($search);
         if ($employees) {
             return $employees;
         }
@@ -298,9 +299,10 @@ class UserService
         return $user;
     }
 
-    public function get_all_customer()
+    public function get_all_customer($request)
     {
-        $customer = $this->userRepository->get_all_customer();
+        $search = $request->all();
+        $customer = $this->userRepository->get_all_customer($search);
         if ($customer) {
             return $customer;
         }

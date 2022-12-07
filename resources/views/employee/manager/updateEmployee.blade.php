@@ -37,7 +37,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
-                                                        placeholder="{{__('profile.enter_email')}}" value="{{$user->email}}">
+                                                    disabled placeholder="{{__('profile.enter_email')}}" value="{{$user->email}}">
                                             </div>
                                             @if($errors->has('email'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>

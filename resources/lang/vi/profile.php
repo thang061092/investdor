@@ -63,4 +63,5 @@ return [
     'status' => "Trạng thái",
     'created_at' => "Ngày tạo",
     'function' => "Chức năng",
+    'category' => "Danh mục",
 ];

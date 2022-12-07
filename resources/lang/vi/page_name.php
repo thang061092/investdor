@@ -33,4 +33,6 @@ return [
     'detail_question' => 'Chi tiết câu hỏi',
     'details' => "Thông tin chi tiết",
     'serial' => "STT",
+    'create_category' => "Thêm mới danh mục",
+    'detail_news' => "Chi tiết bài viết",
 ];

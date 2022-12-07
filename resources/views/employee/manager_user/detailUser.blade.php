@@ -94,32 +94,11 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
-                                                <label class="gender-choose" for="male">
-                                                    @php
-                                                        if($customer->gender == 1) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="1" {{$check}} name="gender" />
-                                                        Nam
-                                                    </label>
-                                                    <label class="gender-choose" for="female">
-                                                    @php
-                                                        if($customer->gender == 2) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="2" {{$check}} name="gender" />
-                                                        Nữ
-                                                    </label>
+                                                @if($customer->gender == 1)
+                                                    <input disabled class="form-control" type="text"  value="Nam">
+                                                @else
+                                                    <input disabled class="form-control" type="text"  value="Nữ">
+                                                @endif
                                             </div>
                                         </div>
 
@@ -127,7 +106,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="bank_name" id="bank_name"
-                                                    disabled value="{{$customer->bank_name}}">
+                                                    disabled value="{{$bank_name}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">

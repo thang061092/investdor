@@ -36,21 +36,47 @@
                                      style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
-                                            <form method="get" action="">
+                                            <form id="search-form" method="get" action="{{route('customer.employee.get_all')}}">
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày bắt đầu</label>
+                                                    <label class="form-label"><strong>Ngày tạo</strong></label>
+                                                        <div style="padding-left: 20px;">
+                                                            <label>Từ ngày</label>
+                                                            <input type="date" name="start_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                            <label>Đến ngày</label>
+                                                            <input type="date" name="end_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                        </div>
+                                                       
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label"><strong>Tên nhân viên</strong></label>
                                                     <div>
-                                                        <input type="date" name="start" class="form-control"
+                                                        <input type="text" name="name_search" class="form-control"
                                                                value=""
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày kết thúc</label>
+                                                    <label class="form-label"><strong>Email nhân viên</strong></label>
                                                     <div>
-                                                        <input type="date" name="end" class="form-control"
+                                                        <input type="text" name="email_search" class="form-control"
                                                                value=""
                                                                autocomplete="off">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label"><strong>Trạng thái hoạt động</strong></label>
+                                                    <div>
+                                                        <select class="form-control" name="status_search">
+                                                            <option value="">--Chọn trạng thái--</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="block">Block</option>
+                                                            <option value="new">New</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -123,17 +149,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                    width="24"
-                                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                    stroke="currentColor" fill="none"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <circle cx="12" cy="12" r="1"/>
-                                                                <circle cx="12" cy="19" r="1"/>
-                                                                <circle cx="12" cy="5" r="1"/>
-                                                            </svg>
+                                                        <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
@@ -143,7 +160,7 @@
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
                                                                 href='{{route("customer.employee.edit_employee",["id" => $employee->id])}}'>
-                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>
                                                         </div>
@@ -169,7 +186,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-
+                            @if(!empty($employees))
+                                <nav aria-label="Page navigation" style="margin-top: 20px;">
+                                {{$employees->withQueryString()->links()}}
+                                </nav>
+                            @endif
                             </div>
                         </div>
                     </div>
@@ -221,6 +242,17 @@
         }
     })
 })
+</script>
+<script type="text/javascript">
+    var dataSearch = JSON.parse('{!! json_encode($dataSearch) !!}');
+    console.log(dataSearch);
+    for (const property in dataSearch) {
+      if (dataSearch[property] == null) {
+        continue;
+      }
+      console.log(property, ' ', dataSearch[property]);
+      $('#search-form').find("[name='" + property + "']").val(dataSearch[property]);
+    }
 </script>
 @endsection
 
