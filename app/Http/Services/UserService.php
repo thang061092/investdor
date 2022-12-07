@@ -69,36 +69,29 @@ class UserService
     public function customer_register($request)
     {
         $otp = rand(100000, 999999);
+        $data = [
+            Users::FULL_NAME => $request->full_name,
+            Users::EMAIL => $request->email,
+            Users::PASSWORD => Hash::make($request->password),
+            Users::STATUS => Users::NEW,
+            Users::TYPE => Users::INVESTOR,
+            Users::BANK_NAME => null,
+            Users::ACCOUNT_NAME => null,
+            Users::ACCOUNT_NUMBER => null,
+            Users::OTP => $otp,
+            Users::EXPIRE_OTP => Carbon::now()->addMinutes(5)->unix()
+        ];
         $user = $this->userRepository->findOne([Users::EMAIL => $request->email]);
-        if ($user['status'] == Users::NEW) {
-            $data = [
-                Users::FULL_NAME => $request->full_name,
-                Users::EMAIL => $request->email,
-                Users::PASSWORD => Hash::make($request->password),
-                Users::STATUS => Users::NEW,
-                Users::TYPE => Users::INVESTOR,
-                Users::BANK_NAME => null,
-                Users::ACCOUNT_NAME => null,
-                Users::ACCOUNT_NUMBER => null,
-                Users::OTP => $otp,
-                Users::EXPIRE_OTP => Carbon::now()->addMinutes(5)->unix()
-            ];
-            $user_new = $this->userRepository->update($user['id'], $data);
+        if ($user) {
+            if ($user['status'] == Users::NEW) {
+                $user_new = $this->userRepository->update($user['id'], $data);
+            } else {
+                $user_new = $this->userRepository->create($data);
+            }
         } else {
-            $data = [
-                Users::FULL_NAME => $request->full_name,
-                Users::EMAIL => $request->email,
-                Users::PASSWORD => Hash::make($request->password),
-                Users::STATUS => Users::NEW,
-                Users::TYPE => Users::INVESTOR,
-                Users::BANK_NAME => null,
-                Users::ACCOUNT_NAME => null,
-                Users::ACCOUNT_NUMBER => null,
-                Users::OTP => $otp,
-                Users::EXPIRE_OTP => Carbon::now()->addMinutes(5)->unix()
-            ];
             $user_new = $this->userRepository->create($data);
         }
+
         return $user_new;
     }
 
