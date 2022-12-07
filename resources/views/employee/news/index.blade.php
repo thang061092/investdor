@@ -36,21 +36,56 @@
                                      style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
-                                            <form method="get" action="">
+                                            <form id="search-form" method="get" action="{{route('customer.employee.list_news')}}">
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày bắt đầu</label>
+                                                    <label class="form-label"><strong>Ngày tạo</strong></label>
+                                                        <div style="padding-left: 20px;">
+                                                            <label>Từ ngày</label>
+                                                            <input type="date" name="start_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                            <label>Đến ngày</label>
+                                                            <input type="date" name="end_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                        </div>
+                                                </div>
+                                                
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label"><strong>Thể loại</strong></label>
                                                     <div>
-                                                        <input type="date" name="start" class="form-control"
+                                                        <select class="form-control" name="category_search">
+                                                        <option value="">--Chọn thể loại--</option>
+                                                            @foreach ($categories as $item) 
+                                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label"><strong>Tên bài viết</strong></label>
+                                                    <div>
+                                                        <input type="text" name="name_search" class="form-control"
                                                                value=""
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày kết thúc</label>
+                                                    <label class="form-label"><strong>Người tạo</strong></label>
                                                     <div>
-                                                        <input type="date" name="end" class="form-control"
+                                                        <input type="text" name="email_search" class="form-control"
                                                                value=""
                                                                autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label"><strong>Trạng thái</strong></label>
+                                                    <div>
+                                                        <select class="form-control" name="status_search">
+                                                            <option value="">--Chọn trạng thái--</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="deactive">Deactive</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -97,7 +132,13 @@
                                             <tr style="text-align: center">
                                                 <td>{{++$key}}</td>
                                                 <td>{{$item->title}}</td>
-                                                <td>{{$item->category}}</td>
+                                                <td>
+                                                    @foreach ($categories as $i)
+                                                        @if ($i['id'] == $item['category_news_id'])
+                                                            {{$i['name']}}
+                                                        @endif
+                                                    @endforeach 
+                                                </td>
                                                 <td>{{date('Y-m-d',strtotime($item->created_at))}}</td>
                                                 <td>{{$item->created_by}}</td>
                                                 <td>
@@ -116,17 +157,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                    width="24"
-                                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                    stroke="currentColor" fill="none"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <circle cx="12" cy="12" r="1"/>
-                                                                <circle cx="12" cy="19" r="1"/>
-                                                                <circle cx="12" cy="5" r="1"/>
-                                                            </svg>
+                                                        <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
@@ -136,7 +168,7 @@
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
                                                                 href='{{route("customer.employee.edit_news",["id" => $item->id])}}'>
-                                                                <i class="fa fa-edit"></i>&nbsp;
+                                                                <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật bài viết
                                                             </a>
                                                         </div>
@@ -215,6 +247,17 @@
         }
     })
 })
+</script>
+<script type="text/javascript">
+    var dataSearch = JSON.parse('{!! json_encode($dataSearch) !!}');
+    console.log(dataSearch);
+    for (const property in dataSearch) {
+      if (dataSearch[property] == null) {
+        continue;
+      }
+      console.log(property, ' ', dataSearch[property]);
+      $('#search-form').find("[name='" + property + "']").val(dataSearch[property]);
+    }
 </script>
 @endsection
 

@@ -23,28 +23,28 @@
                             <form action='{{route("send_answer",["id" => $detail->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name" id="name"
                                                     disabled value="{{$detail->name}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-7 col-sm-12 ">
+                                        <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
                                                     disabled value="{{$detail->email}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-7 col-sm-12 ">
+                                        <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="question">{{__('profile.question')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="question" id="question" disabled 
                                                 value="{{$detail->question}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-7 col-sm-12 ">
+                                        <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="question">{{__('profile.type_question')}}<span class="text-danger">*</span></label>
                                                     @if($detail->type == 1)
@@ -54,7 +54,7 @@
                                                     @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-7 col-sm-12 ">
+                                        <div class="col-md-12 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="question">{{__('profile.answer_question')}}<span class="text-danger">*</span></label>
                                                 <textarea id="answer" name="answer" class="form-control" placehodel="{{__('profile.answer_question')}}"></textarea>

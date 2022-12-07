@@ -45,28 +45,6 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.identity')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="identity" id="identity"
-                                                    disabled value="{{$user->identity}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 ">
-                                            <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="date_identity" id="date_identity"
-                                                    disabled value="{{$user->date_identity}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 ">
-                                            <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="address_identity" id="address_identity"
-                                                    disabled value="{{$user->address_identity}}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-12 ">
-                                            <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="gender" id="gender"
                                                     disabled value="{{$user->birthday}}">
@@ -75,99 +53,21 @@
                                         <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
-                                                <label class="gender-choose" for="male">
-                                                    @php
-                                                        if($user->gender == 1) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="1" {{$check}} name="gender" />
-                                                        Nam
-                                                    </label>
-                                                    <label class="gender-choose" for="female">
-                                                    @php
-                                                        if($user->gender == 2) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="2" {{$check}} name="gender" />
-                                                        Nữ
-                                                    </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-12 ">
-                                            <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
-                                                <select disabled name="bank_name" class="form-control mb-3" id="banks" data-text="Chọn ngân hàng"
-                                                    data-default="Chọn">
-                                                @if(isset($banks))
-                                                    @foreach ($banks as $bank)
-                                                        <option value="{{$bank->code}}"
-                                                                @if($user->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
-                                                    @endforeach
-                                                @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="account_number" id="account_number"
-                                                    disabled value="{{$user->account_number}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 ">
-                                            <div class="form-group mb-3">
-                                                <label for="email">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="account_name" id="account_name"
-                                                    disabled value="{{$user->account_name}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 wow fadeInUp">
-                                                <label for="img_category">{{__('profile.photo')}}<span class="text-danger">*</span></label>
-                                                @if (!empty($user->avatar))
-                                                <img class="form-control" style="width: 200px; height: auto" src='{{asset("$user->avatar")}}'>
+                                                @if($user->gender == 1)
+                                                    <input disabled class="form-control" type="text"  value="Nam">
                                                 @else
-                                                <p class="text-danger">{{__('table.no_data')}}</p>
+                                                    <input disabled class="form-control" type="text"  value="Nữ">
                                                 @endif
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 mb-md-0 mb-3">
-                                            <label for="img_before" class="img-cmt">{{__('profile.facede')}}</label>
 
-                                                    @if ($user->front_facing_card)
-                                                    <img class="form-control" src='{{asset("$user->front_facing_card")}}' style="width: 200px; height: auto">
-                                                    @else
-                                                    <p class="text-danger">{{__('table.no_data')}}</p>
-                                                    @endif
-
-                                            @if($errors->has('img_before'))
-                                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_before') }}</p>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-6 mb-md-0 mb-3">
-                                            <label for="img_after" class="img-cmt">{{__('profile.backside')}}</label>
-
-                                                    @if ($user->card_back)
-                                                    <img class="form-control" src='{{asset("$user->card_back")}}' style="width: 200px; height: auto">
-                                                    @else
-                                                    <p class="text-danger">{{__('table.no_data')}}</p>
-                                                    @endif
-
-                                            @if($errors->has('img_after'))
-                                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_after') }}</p>
-                                            @endif
-                                        </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
+                                                <a type="button" href="" class="btn btn-success" data-bs-toggle="modal" 
+                                                data-bs-target="#staticBackdrop">
+                                                    Đổi mật khẩu &nbsp;
+                                                    <i class="fa fa-key" aria-hidden="true"></i>
+                                                </a>
                                                 <a type="button" href="{{route('customer.employee.get_all')}}" class="btn btn-danger action">
                                                     Quay lại &nbsp;
                                                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -182,7 +82,89 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thay đổi mật khẩu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <form action="{{route('change_password',['id' => session()->get('employee')['id']])}}" method="post"> -->
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="form-label"><strong>Mật khẩu mới</strong></label>
+                            <input type="password" id="new_pass" name="new_password" class="form-control" value="" autocomplete="off" placeholder="Mật khẩu mới">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><strong>Nhập lại mật khẩu mới</strong></label>
+                            <input type="password" id="re_new_pass" name="re_new_password" class="form-control" value="" autocomplete="off" placeholder="Nhập lại mật khẩu mới">
+                        </div>
+                        <div style="padding-top:10px;" class="modal-footer">
+                            <button id="change" type="submit" class="btn btn-primary">Xác nhận</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    $("#change").on('click', function() {
+        let new_pass = $('#new_pass').val();
+        let re_new_pass = $('#re_new_pass').val();
+        if (new_pass == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Thông báo lỗi',
+                text: 'Mật khẩu mới không để trống',
+            });
+            return;
+        }
+        if (re_new_pass == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Thông báo lỗi',
+                text: 'Vui lòng nhập lại mật khẩu mới',
+            });
+            return;
+        }
+        if (new_pass != re_new_pass) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Thông báo lỗi',
+                text: 'Mật khẩu không khớp',
+            });
+            return;
+        } 
+        let form = new FormData();
+        form.append('new_password', new_pass);
+        $.ajax({
+            type: "POST",
+            url: "{{route('change_password',['id' => session()->get('employee')['id']])}}",
+            datatype: "JSON",
+            success: function (data) {
+                if (data.status == 200) {
+                    Swal.fire(
+                        "{{__('message.success')}}",
+                        "{{__('message.change_pass_success')}}",
+                        'success'
+                    );
+                    $("#staticBackdrop").modal('hide');
+                } else {
+                    Swal.fire(
+                        "{{__('message.fail')}}",
+                        "{{__('message.change_pass_fail')}}",
+                        'error'
+                    );
+                    $("#staticBackdrop").modal('hide');
+                }
+            }
+        });
+    });
+</script>
 @endsection

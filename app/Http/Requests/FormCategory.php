@@ -27,7 +27,9 @@ class FormCategory extends FormRequest
     {
         return [
             'name_category_vi' => 'required',
+            'name_category_en' => 'required',
             'desc_category_vi' => 'required',
+            'desc_category_en' => 'required',
         ];
     }
 
@@ -35,7 +37,9 @@ class FormCategory extends FormRequest
     {
         return [
             "name_category_vi.required" => __('auth.name_category_not_null'),
+            "name_category_en.required" => __('auth.name_category_not_null'),
             "desc_category_vi.required" => __('auth.desc_category_not_null'),
+            "desc_category_en.required" => __('auth.desc_category_not_null'),
         ];
 
     }

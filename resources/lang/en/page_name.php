@@ -33,4 +33,6 @@ return [
     'detail_question' => 'Detail question',
     'details' => "Details",
     'serial' => 'Serial',
+    'create_category' => 'Create category',
+    'detail_news' => "Detail news"
 ];

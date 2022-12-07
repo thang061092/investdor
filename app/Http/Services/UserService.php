@@ -230,9 +230,10 @@ class UserService
         return $user;
     }
 
-    public function get_all_employee()
+    public function get_all_employee($request)
     {
-        $employees = $this->userRepository->get_all_employee();
+        $search = $request->all();
+        $employees = $this->userRepository->get_all_employee($search);
         if ($employees) {
             return $employees;
         }
@@ -291,9 +292,10 @@ class UserService
         return $user;
     }
 
-    public function get_all_customer()
+    public function get_all_customer($request)
     {
-        $customer = $this->userRepository->get_all_customer();
+        $search = $request->all();
+        $customer = $this->userRepository->get_all_customer($search);
         if ($customer) {
             return $customer;
         }
@@ -529,5 +531,16 @@ class UserService
         $user = $this->userRepository->update($token->id, [Users::PASSWORD => Hash::make($request->password), Users::TOKEN_RESET => null]);
         return $user;
 
+    }
+
+    public function change_password_employee($request, $id) {
+        $data = [
+            Users::PASSWORD => Hash::make($request->new_password) ?? "",
+        ];
+        $pass = $this->userRepository->update($id, $data);
+        if ($pass) {
+            return $pass;
+        }
+        return false;
     }
 }
