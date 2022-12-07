@@ -59,28 +59,28 @@
                                                          value="{{$customer->email}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="phone_number">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="phone_number" id="phone_number"
                                                          value="{{$customer->phone}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="identity">{{__('profile.identity')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="identity" id="identity"
                                                          value="{{$customer->identity}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="date_identity">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
                                                     <input type="date" class="form-control" name="date_identity" id="date_identity"
                                                          value="{{$customer->date_identity}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="address_identity">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="address_identity" id="address_identity"
@@ -88,14 +88,14 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="gender">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="gender" id="gender"
                                                          value="{{$customer->birthday}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
                                                     <label class="gender-choose" for="male">
@@ -127,21 +127,21 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="bank_name">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="bank_name" id="bank_name"
                                                         disabled value="{{$customer->bank_name}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="account_number">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="account_number" id="account_number"
                                                          value="{{$customer->account_number}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="account_name">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="account_name" id="account_name"
@@ -149,17 +149,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-8 col-sm-12 email">
-                                                <div class="form-group mb-3">
-                                                    <label for="avatar">{{__('profile.photo')}}<span class="text-danger">*</span></label>
-                                                    @if ($customer->avatar)
-                                                    <img src='{{asset("$customer->avatar")}}' id="avatar" class="img-fluid" alt=""/>
-                                                    @else
-                                                    <p class="text-danger">{{__('table.no_data')}}</p>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="img_before">{{__('profile.facede')}}<span class="text-danger">*</span></label>
                                                     @if ($customer->front_facing_card)
@@ -170,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-8 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="img_after">{{__('profile.backside')}}<span class="text-danger">*</span></label>
                                                     @if ($customer->card_back)
