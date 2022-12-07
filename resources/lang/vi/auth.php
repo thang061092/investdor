@@ -98,5 +98,8 @@ return array(
     'Or_scan_the_following_QR_code' => 'Hoặc scan mã QR code sau:',
     'download' => 'Tải xuống',
     'I_made_a_transfer' => 'Tôi đã chuyển khoản',
-    'copy' => 'Sao chép'
+    'copy' => 'Sao chép',
+    'new_password_not_null' => 'Mật khẩu mới không để trống',
 );
+
+

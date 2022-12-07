@@ -537,4 +537,15 @@ class UserService
         return $user;
 
     }
+
+    public function change_password_employee($request, $id) {
+        $data = [
+            Users::PASSWORD => Hash::make($request->new_password) ?? "",
+        ];
+        $pass = $this->userRepository->update($id, $data);
+        if ($pass) {
+            return $pass;
+        }
+        return false;
+    }
 }

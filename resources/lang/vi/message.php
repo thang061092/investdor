@@ -57,5 +57,6 @@ return [
     'no' => "Không!",
     'send_question_success' => 'Gửi phản hồi thành công',
     'send_question_fail' => 'Gửi phản hồi thất bại',
+    'change_pass_success' => 'Thay đổi mật khẩu thành công',
 
 ];

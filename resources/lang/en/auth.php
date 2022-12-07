@@ -109,6 +109,6 @@ return [
     'Or_scan_the_following_QR_code' => 'Or scan the following QR code:',
     'download' => 'Download',
     'I_made_a_transfer' => 'I made a transfer',
-    'copy' => 'Copy'
-
+    'copy' => 'Copy',
+    'new_password_not_null' => 'New password not null',
 ];

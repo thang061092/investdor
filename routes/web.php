@@ -154,6 +154,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/list_question', 'Admin\UserController@list_question')->name('list_question');
                 Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
                 Route::post('/send_answer/{id}', 'Admin\UserController@send_answer')->name('send_answer');
+                Route::post('/change_password/{id}', 'Admin\UserController@change_password')->name('change_password');
             });
 
             Route::prefix('/customer')->group(function () {

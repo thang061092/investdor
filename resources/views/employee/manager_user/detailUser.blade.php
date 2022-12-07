@@ -26,25 +26,19 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="accuracy">{{__('profile.status_auth')}}<span class="text-danger">*</span></label>
-                                                <p class="form-control">
-                                                    @if ($customer->accuracy == 0)
-                                                        <span class="bg bg-danger">
-                                                        {{__('profile.yet_auth')}}
-                                                        </span>
-                                                    @elseif ($customer->accuracy == 1)
-                                                        <span class="bg bg-success">
-                                                        {{__('profile.success_auth')}}
-                                                        </span>
-                                                    @elseif ($customer->accuracy == 2)
-                                                        <span class="bg bg-warning">
-                                                        {{__('profile.wait_auth')}}
-                                                        </span>
-                                                    @else
-                                                        <span class="bg bg-danger">
-                                                        {{__('profile.fail_auth')}}
-                                                        </span>
-                                                    @endif
-                                                </p>
+                                                @if ($customer->accuracy == 0)
+                                                    <input type="text" class="form-control text-danger" name="" disabled
+                                                            value="{{__('profile.yet_auth')}}">
+                                                @elseif ($customer->accuracy == 1)
+                                                    <input type="text" class="form-control text-success" name="" disabled
+                                                            value="{{__('profile.success_auth')}}">
+                                                @elseif ($customer->accuracy == 2)
+                                                    <input type="text" class="form-control text-warning" name="" disabled
+                                                         value="{{__('profile.wait_auth')}}">
+                                                @else
+                                                    <input type="text" class="form-control text-danger" name="" disabled
+                                                         value="{{__('profile.fail_auth')}}">
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
