@@ -100,6 +100,12 @@ return array(
     'I_made_a_transfer' => 'Tôi đã chuyển khoản',
     'copy' => 'Sao chép',
     'new_password_not_null' => 'Mật khẩu mới không để trống',
+    'image_employee_not_null' => "Ảnh nhân viên không để trống",
+    'specific_address_not_null' => "Địa chỉ cụ thể không để trống",
+    'phone_number_not_format' => 'Số điện thoại sai định dạng',
+    'identity_not_format' => 'Số CMND/CCCD sai định dạng',
+    'identity_max' => 'Số CMND/CCCD phải là 9 hoặc 12 số',
+    'phone_number_max' => "Số điện thoại phải là 10 số",
 );
 
 

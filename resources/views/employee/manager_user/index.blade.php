@@ -1,5 +1,13 @@
 @extends('employee.layout.master')
 @section('page_name','- '.__('page_name.list_customer_account'))
+<!-- @section('css')
+<style>
+input[type=checkbox] {
+  accent-color: red;
+}
+</style>
+
+@endsection -->
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
@@ -102,6 +110,7 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
+                    <p style="color: #047734"><strong>Tổng số nhà đầu tư:</strong>&nbsp;<span id="total">{{$customer->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
@@ -112,7 +121,6 @@
                                         <th style="text-align: center">Email</th>
                                         <th style="text-align: center">Tài khoản</th>
                                         <th style="text-align: center">Ngày tạo</th>
-                                        <th style="text-align: center">Người tạo</th>
                                         <th style="text-align: center">Trạng thái</th>
                                         <th style="text-align: center">Chức năng</th>
                                     </tr>
@@ -127,7 +135,7 @@
                                     @else
                                         @foreach ($customer as $key => $item)
                                             <tr style="text-align: center">
-                                                <td>{{++$key}}</td>
+                                                <td>{{$perPage + ++$key}}</td>
                                                 <td>{{$item->full_name}}</td>
                                                 <td>{{$item->email}}</td>
                                                 <td>
@@ -138,7 +146,6 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$item->created_at}}</td>
-                                                <td>{{$item->created_by}}</td>
                                                 <td>
                                                     <label class=" form-switch toggle-status"
                                                            data-id="{{ $item['id'] }} ">
@@ -193,7 +200,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-
+                            @if(!empty($customer))
+                                <nav aria-label="Page navigation" style="margin-top: 20px;">
+                                {{$customer->withQueryString()->links()}}
+                                </nav>
+                            @endif
                             </div>
                         </div>
                     </div>

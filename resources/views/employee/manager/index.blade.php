@@ -95,6 +95,7 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
+                    <p style="color: #047734"><strong>Tổng số nhân viên:</strong>&nbsp;<span id="total">{{$employees->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
@@ -121,7 +122,7 @@
                                         @if (isset($employees))
                                             @foreach ($employees as $key => $employee)
                                             <tr style="text-align: center">
-                                                <td>{{++$key}}</td>
+                                                <td>{{$perPage + ++$key}}</td>
                                                 <td>{{$employee->full_name}}</td>
                                                 <td>{{$employee->email}}</td>
                                                 <td>

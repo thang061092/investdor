@@ -92,9 +92,14 @@ class UserController extends BaseController
     public function get_all_employee(Request $request)
     {
         $employees = $this->userService->get_all_employee($request);
+        $array = $employees->toArray();
+        $page = $array['current_page'];
+        $perPage = $array['per_page'];
+        $perPage = ($page - 1) * $perPage;
         return view('employee.manager.index', [
             'employees' => $employees,
             'dataSearch' => $request->all(),
+            'perPage' => $perPage,
         ]);
     }
 
@@ -148,9 +153,14 @@ class UserController extends BaseController
     public function get_all_customer(Request $request)
     {
         $customer = $this->userService->get_all_customer($request);
+        $array = $customer->toArray();
+        $page = $array['current_page'];
+        $perPage = $array['per_page'];
+        $perPage = ($page - 1) * $perPage;
         return view('employee.manager_user.index', [
             'customer' => $customer,
             'dataSearch' => $request->all(),
+            'perPage' => $perPage,
         ]);
     }
 
@@ -169,7 +179,7 @@ class UserController extends BaseController
         }
         return view('employee.manager_user.detailUser', [
             'customer' => $customer,
-            'bank_name' => $bank_name,
+            'bank_name' => $bank_name ?? "",
         ]);
     }
 
@@ -188,7 +198,7 @@ class UserController extends BaseController
         }
         return view('employee.manager_user.updateUser', [
             'customer' => $customer,
-            'bank_name' => $bank_name,
+            'bank_name' => $bank_name ?? "",
         ]);
     }
 
@@ -224,10 +234,15 @@ class UserController extends BaseController
     {
         $list = $this->newsService->filter($request);
         $categories = $this->categoryService->get_all();
+        $array = $list->toArray();
+        $page = $array['current_page'];
+        $perPage = $array['per_page'];
+        $perPage = ($page - 1) * $perPage;
         return view('employee.news.index', [
             'list' => $list,
             'categories' => $categories,
             'dataSearch' => $request->all(),
+            'perPage' => $perPage,
         ]);
     }
 
@@ -287,16 +302,21 @@ class UserController extends BaseController
         $categories = $this->categoryService->get_all();
         return view('employee.news.detailNews', [
             'detail' => $detail,
-            'categories' => $categories,
+            'categories' => $categories ?? "",
         ]);
     }
 
     public function list_category(Request $request)
     {
         $list = $this->categoryService->filter($request);
+        $array = $list->toArray();
+        $page = $array['current_page'];
+        $perPage = $array['per_page'];
+        $perPage = ($page - 1) * $perPage;
         return view('employee.category_news.index', [
             'list' => $list,
             'dataSearch' => $request->all(),
+            'perPage' => $perPage,
         ]);
     }
 
@@ -356,10 +376,15 @@ class UserController extends BaseController
     public function list_question(Request $request)
     {
         $questions = $this->questionService->filter($request);
+        $array = $questions->toArray();
+        $page = $array['current_page'];
+        $perPage = $array['per_page'];
+        $perPage = ($page - 1) * $perPage;
         if ($questions) {
             return view('employee.question.index', [
                 'questions' => $questions,
                 'dataSearch' => $request->all(),
+                'perPage' => $perPage,
             ]);
         }
     }
