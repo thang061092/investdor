@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Users;
 use App\Http\Services\UploadService;
+use Illuminate\Support\Facades\DB;
 
 class UserService
 {
@@ -186,6 +187,16 @@ class UserService
                     $data['user'] = $user;
                 }
             }
+        }
+        $remember_me = $request->remember;
+        if ($remember_me == "on") {
+            $minutes = 3600*30;
+            $hash = $user->id.$user->email.$user->password;
+            $cookieValue = Hash::make($hash);
+            cookie('admin_login_remember', $cookieValue, $minutes);
+            DB::table('users')
+                ->where('id', $user->id)
+                ->update(['token_web' => $cookieValue]);
         }
         return $data;
     }

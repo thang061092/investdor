@@ -93,6 +93,7 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
+                    <p style="color: #047734"><strong>Tổng số danh mục:</strong>&nbsp;<span id="total">{{$list->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
@@ -118,7 +119,7 @@
                                         @if (isset($list))
                                             @foreach ($list as $key => $item)
                                             <tr style="text-align: center">
-                                                <td>{{++$key}}</td>
+                                                <td>{{$perPage + ++$key}}</td>
                                                 <td>{{$item->name}}</td>
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->created_by}}</td>
@@ -175,7 +176,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-
+                            @if(!empty($list))
+                                <nav aria-label="Page navigation" style="margin-top: 20px;">
+                                {{$list->withQueryString()->links()}}
+                                </nav>
+                            @endif
                             </div>
                         </div>
                     </div>

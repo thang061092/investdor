@@ -29,6 +29,7 @@ class FormCreateEmployee extends FormRequest
             'email' => 'required|email',
             'full_name' => 'required',
             'password'  => 'required',
+            'file'     => 'required'
         ];
     }
 
@@ -39,6 +40,7 @@ class FormCreateEmployee extends FormRequest
             "email.email" => __('auth.email_malformed'),
             "full_name.required" => __('auth.name_not_null'),
             "password.required" => __('auth.password_not_null'),
+            "file.required" => __('auth.image_employee_not_null'),
         ];
 
     }

@@ -111,4 +111,10 @@ return [
     'I_made_a_transfer' => 'I made a transfer',
     'copy' => 'Copy',
     'new_password_not_null' => 'New password not null',
+    'image_employee_not_null' => 'Image is not empty',
+    'specific_address_not_null' => "Specific address is not empty",
+    'phone_number_not_format' => 'Phone number malformed',
+    'identity_not_format' => 'Identity number malformed',
+    'phone_number_max' => 'The phone number may not be greater than 10',
+    'identity_max' => 'The identity number may not be greater than 9 or 12',
 ];
