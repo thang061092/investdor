@@ -12,6 +12,7 @@ use App\Http\Services\NewsService;
 use App\Http\Services\CategoryNewsService;
 use App\Http\Services\QuestionService;
 use App\Models\Users;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\FormCreateEmployee;
 use App\Http\Requests\FormCreateNews;
@@ -202,16 +203,6 @@ class UserController extends BaseController
         ]);
     }
 
-    // public function update_customer(FormCreateEmployee $request, $id) {
-    //     $customer = $this->userService->update_customer($request, $id);
-    //     if ($customer) {
-    //         toastr()->success(__("message.update_success"), __('message.success'));
-    //         return redirect()->route('customer.customer.edit_customer',['id' => $id]);
-    //     }
-    //     toastr()->error(__("message.update_fail"), __('message.fail'));
-    //     return redirect()->route('customer.customer.edit_customer',['id' => $id]);
-    // }
-
     public function auth(Request $request, $id)
     {
         $auth = $this->userService->confirm_auth($id);
@@ -249,9 +240,7 @@ class UserController extends BaseController
     public function create_news()
     {
         $categories = $this->categoryService->get_all();
-        return view('employee.news.createNews', [
-            'categories' => $categories,
-        ]);
+        return view('employee.news.createNews', compact('categories'));
     }
 
     public function save_news(FormCreateNews $request)
@@ -315,7 +304,6 @@ class UserController extends BaseController
         $perPage = ($page - 1) * $perPage;
         return view('employee.category_news.index', [
             'list' => $list,
-            'dataSearch' => $request->all(),
             'perPage' => $perPage,
         ]);
     }

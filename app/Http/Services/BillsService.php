@@ -49,8 +49,9 @@ class BillsService
         $bill = $this->billsRepository->update($bill_id, [
             Bills::PART => $request->part_investment,
             Bills::VALUE_PART => $project['value_part'],
-            Bills::AMOUNT_MONEY => $request->part_investment * $project['value_part']
         ]);
+        $amount = 5000000000;
+        $this->billsRepository->update($bill['id'], [Bills::AMOUNT_MONEY => $amount]);
         return $bill;
     }
 
