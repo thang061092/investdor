@@ -48,4 +48,23 @@ $(document).ready(function () {
             }
         });
     });
+
+    function addCommas(str) {
+        return str.replace(/^0+/, '').replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $('#total_value_project').on('keyup', function () {
+        var total_value_project = $("input[name='total_value_project']").val()
+        $('#total_value_project').val(addCommas(total_value_project))
+    })
+
+    $('#total_part_project').on('keyup', function () {
+        var total_part_project = $("input[name='total_part_project']").val()
+        $('#total_part_project').val(addCommas(total_part_project))
+    })
+
+    $('#value_part_project').on('keyup', function () {
+        var value_part_project = $("input[name='value_part_project']").val()
+        $('#value_part_project').val(addCommas(value_part_project))
+    })
 })

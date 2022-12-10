@@ -101,7 +101,7 @@
                         </svg>
                     </div>
                     <div class="items">
-                        <a href="{{request()->url()}}?lang={{session()->get('lang') == 'vi' ? 'en' : "vi"}}"
+                        <a href="{{route('home.index')}}?lang={{session()->get('lang') == 'vi' ? 'en' : "vi"}}"
                            title="">
                             <img
                                 src="{{session()->get('lang') == 'vi' ? asset('frontend/images/en.png') : asset('frontend/images/vi.jpg')}}"
@@ -135,7 +135,7 @@
                         </svg>
                     </div>
                     <div class="items">
-                        <a href="{{request()->url()}}?lang={{session()->get('lang') == 'vi' ? 'en' : "vi"}}"
+                        <a href="{{route('home.index')}}?lang={{session()->get('lang') == 'vi' ? 'en' : "vi"}}"
                            title="">
                             <img
                                 src="{{session()->get('lang') == 'vi' ? asset('frontend/images/en.png') : asset('frontend/images/vi.jpg')}}"

@@ -53,13 +53,14 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Tổng giá trị dự án<span
+                                                <label for="">Tổng giá trị dự án (VND)<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text"
                                                        class="form-control @if($errors->has('total_value_project'))is-invalid @endif"
                                                        name="total_value_project"
                                                        placeholder="Nhập giá trị dự án"
-                                                       value="{{$project['total_value']}}">
+                                                       id="total_value_project"
+                                                       value="{{number_format($project['total_value'])}}">
                                                 @if($errors->has('total_value_project'))
                                                     <p class="text-danger">{{ $errors->first('total_value_project') }}</p>
                                                 @endif
@@ -138,7 +139,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('total_part_project'))is-invalid @endif"
                                                        placeholder="Nhập số phần" name="total_part_project"
-                                                       value="{{$project['part']}}">
+                                                       id="total_part_project"
+                                                       value="{{number_format($project['part'])}}">
                                                 @if($errors->has('total_part_project'))
                                                     <p class="text-danger">{{ $errors->first('total_part_project') }}</p>
                                                 @endif
@@ -147,11 +149,13 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Giá trị một phần<span class="text-danger">*</span></label>
+                                                <label for="">Giá trị một phần (VND)<span
+                                                        class="text-danger">*</span></label>
                                                 <input type="text"
                                                        class="form-control @if($errors->has('value_part_project'))is-invalid @endif"
                                                        placeholder="Nhập giá trị" name="value_part_project"
-                                                       value="{{$project['value_part']}}">
+                                                       id="value_part_project"
+                                                       value="{{number_format($project['value_part'])}}">
                                                 @if($errors->has('value_part_project'))
                                                     <p class="text-danger">{{ $errors->first('value_part_project') }}</p>
                                                 @endif
@@ -175,6 +179,34 @@
                                                     <p class="text-danger">{{ $errors->first('type_project') }}</p>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="">Thời gian đầu tư (Tháng)<span class="text-danger">*</span></label>
+                                                <input type="number"
+                                                       class="form-control @if($errors->has('month_project'))is-invalid @endif"
+                                                       placeholder="Nhập số tháng"
+                                                       value="{{$project->interests()->where('status', 'active')->first()['period']}}"
+                                                       disabled>
+                                                @if($errors->has('month_project'))
+                                                    <p class="text-danger">{{ $errors->first('month_project') }}</p>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label for="">Lãi suất (%/năm)<span class="text-danger">*</span></label>
+                                                <input type="text"
+                                                       class="form-control @if($errors->has('interest'))is-invalid @endif"
+                                                       placeholder="Nhập lãi suất"
+                                                       value="{{$project->interests()->where('status', 'active')->first()['interest']}}"
+                                                       disabled>
+                                                @if($errors->has('interest'))
+                                                    <p class="text-danger">{{ $errors->first('interest') }}</p>
+                                                @endif
+                                            </div>
+
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
