@@ -5,7 +5,7 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.list_category')}}"
                                                                    class="text-info">{{__('page_name.list_category')}}</a>
                 </li>
             </ol>

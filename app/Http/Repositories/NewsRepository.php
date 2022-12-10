@@ -4,6 +4,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\News;
+use Carbon\Carbon;
 
 class NewsRepository extends BaseRepository
 {
@@ -16,11 +17,11 @@ class NewsRepository extends BaseRepository
     {
         $model = $this->model;
         if (!empty($request['start_date'])) {
-            $start_date =  (date('Y-m-d 00:00:00', strtotime($request['start_date'])));
+            $start_date = Carbon::parse($request['start_date'])->format('Y-m-d 00:00:00');
             $model = $model->where(News::CREATED_AT, '>=' ,$start_date);
         }
         if (!empty($request['end_date'])) {
-            $end_date =  (date('Y-m-d 00:00:00', strtotime($request['end_date'])));
+            $end_date = Carbon::parse($request['end_date'])->format('Y-m-d 23:59:59');
             $model = $model->where(News::CREATED_AT, '<=' ,$end_date);
         }
         if (!empty($request['name_search'])) {

@@ -5,7 +5,9 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href=""
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.customer.get_all')}}"
+                                                                   class="text-info">{{__('page_name.list_customer_account')}}</a>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.customer.edit_customer', ['id' => $customer->id])}}"
                                                                    class="text-info">{{__('page_name.update_account')}}</a>
                 </li>
             </ol>

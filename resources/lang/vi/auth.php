@@ -108,6 +108,7 @@ return array(
     'phone_number_max' => "Số điện thoại phải là 10 số",
     'account_number_not_format' => "Số tài khoản sai định dạng",
     'email_unique'  => 'Email đã tồn tại',
+    'phone_number_unique' => "Số điện thoại đã tồn tại",
 );
 
 

@@ -119,4 +119,5 @@ return [
     'identity_max' => 'The identity number may not be greater than 9 or 12',
     'account_number_not_format' => "Bank number malformed",
     'email_unique'  => 'Email already exists',
+    'phone_number_unique' => 'The phone number has already been taken',
 ];

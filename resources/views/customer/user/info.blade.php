@@ -13,7 +13,7 @@
                     <div
                         class="col-md-9 mb-md-0 mb-5 d-flex flex-wrap align-items-center justify-content-lg-start justify-content-center wow fadeInUp">
                         <div class="img mr-3 pr-1 mb-sm-0 mb-3">
-                            <img src='{{!empty($detail->avatar) ? asset("$detail->avatar"): asset("frontend/images/after-cmt.png")}}' class="img-fluid" alt=""/>
+                            <img src='{{!empty($detail->avatar) ? asset("$detail->avatar"): asset("frontend/images/avatar_user.png")}}' class="img-fluid" alt=""/>
                         </div>
                         <div class="content text-lg-left text-center">
                             <p class="title_lg">{{$detail->full_name}}</p>

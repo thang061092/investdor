@@ -34,7 +34,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="file" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src='{{!empty($detail->avatar) ? asset("$detail->avatar"): asset("frontend/images/after-cmt.png")}}' id="avatar" class="img-fluid" alt=""/>
+                            <img src='{{!empty(session()->get("customer")["avatar"]) ? asset(session()->get("customer")["avatar"]): asset("frontend/images/default.png")}}' id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     @if( isset($error) && $error )
@@ -50,7 +50,7 @@
                             {{__('profile.full_name')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="full_name" placeholder="Họ tên của bạn" class="form-control mb-3"
-                               value="{{$detail->full_name}}"/>
+                               value="{{session()->get('customer')['full_name']}}"/>
                         @if($errors->has('full_name'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
                         @endif
@@ -58,7 +58,7 @@
                             {{__('profile.date_of_birth')}}<span class="text-danger">*</span>
                         </label>
                         <input type="date" name="birthday" placeholder="Chọn ngày" class="form-control mb-3"
-                               value="{{$detail->birthday}}"/>
+                               value="{{session()->get('customer')['birthday']}}"/>
                         @if($errors->has('birthday'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                         @endif
@@ -101,7 +101,7 @@
                             {{__('profile.phone_number')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="phone_number" placeholder="{{__('profile.phone_number')}}"
-                               class="form-control mb-3" value="{{$detail->phone}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['phone']}}"/>
                         @if($errors->has('phone_number'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
@@ -110,7 +110,7 @@
                             {{__('profile.identity')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="identity" placeholder="{{__('profile.identity')}}"
-                               class="form-control mb-3" value="{{$detail->identity}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['identity']}}"/>
                         @if($errors->has('identity'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
                         @endif
@@ -118,7 +118,7 @@
                             {{__('profile.date_identity')}}<span class="text-danger">*</span>
                         </label>
                         <input type="date" name="date_identity" placeholder="{{__('profile.date_identity')}}"
-                               class="form-control mb-3" value="{{$detail->date_identity}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['date_identity']}}"/>
                         @if($errors->has('date_identity'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
@@ -127,14 +127,14 @@
                             {{__('profile.address_identity')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="address_identity" placeholder="{{__('profile.address_identity')}}"
-                               class="form-control mb-3" value="{{$detail->address_identity}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['address_identity']}}"/>
                         @if($errors->has('address_identity'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
                         @endif
                         <label for="" class="d-block mb-2"> {{__('profile.email')}}<span
                                 class="text-danger">*</span></label>
-                        <input readonly="readonly" type="text" name="email" value="{{$detail->email}}"
+                        <input readonly="readonly" type="text" name="email" value="{{session()->get('customer')['email']}}"
                                class="form-control mb-3"/>
                         @if($errors->has('email'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
@@ -165,7 +165,7 @@
                             @if(isset($banks))
                                 @foreach ($banks as $bank)
                                     <option value="{{$bank->code}}"
-                                            @if($detail->bank_name == $bank->code) selected @endif>{{$bank->name}}</option>
+                                            @if(session()->get('customer')['bank_name'] == $bank->code) selected @endif>{{$bank->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -176,7 +176,7 @@
                             {{__('profile.account_number')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="account_number" placeholder="Nhập số tài khoản"
-                               class="form-control mb-3" value="{{$detail->account_number}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['account_number']}}"/>
                         @if($errors->has('account_number'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
@@ -185,7 +185,7 @@
                             {{__('profile.account_holder')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="account_name" placeholder="Nhập tên chủ tài khoản"
-                               class="form-control mb-3" value="{{$detail->account_name}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['account_name']}}"/>
                         @if($errors->has('account_name'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
@@ -217,7 +217,7 @@
                             @if(isset($province))
                                 @foreach($province as $i)
                                     <option value="{{$i->code}}"
-                                            @if($detail->city == $i->code) selected @endif>{{$i->name}}</option>
+                                            @if(session()->get('customer')['city'] == $i->code) selected @endif>{{$i->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -236,7 +236,7 @@
                             @if(isset($district))
                                 @foreach($district as $k)
                                     <option value="{{$k->code}}"
-                                            @if($detail->district == $k->code) selected @endif>{{$k->name}}</option>
+                                            @if(session()->get('customer')['district'] == $k->code) selected @endif>{{$k->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -254,7 +254,7 @@
                             @if(isset($ward))
                                 @foreach($ward as $j)
                                     <option value="{{$j->code}}"
-                                            @if($detail->ward == $j->code) selected @endif>{{$j->name}}</option>
+                                            @if(session()->get('customer')['ward'] == $j->code) selected @endif>{{$j->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -265,7 +265,7 @@
                             {{__('profile.specific_address')}}
                         </label>
                         <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
-                               class="form-control mb-3" value="{{$detail->address}}"/>
+                               class="form-control mb-3" value="{{session()->get('customer')['address']}}"/>
                         @if($errors->has('specific_address'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('specific_address') }}</p>
                         @endif
