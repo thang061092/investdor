@@ -23,49 +23,50 @@
                                 Thông tin chi tiết:
                             </div>
                             <form action='{{route("customer.employee.update_employee",["id" => $user->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-                                <div class="card-body ">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="full_name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="full_name" id="full_name"
-                                                        placeholder="{{__('profile.enter_name')}}" value="{{$user->full_name}}">
+                                                        placeholder="{{__('profile.enter_name')}}" value="{{!empty(old('full_name')) ? old('full_name') : $user->full_name}}">
+                                                @if($errors->has('full_name'))
+                                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
+                                                @endif
                                             </div>
-                                            @if($errors->has('full_name'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
-                                            @endif
+
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
-                                                    readonly placeholder="{{__('profile.enter_email')}}" value="{{$user->email}}">
+                                                    readonly placeholder="{{__('profile.enter_email')}}" value="{{!empty(old('email')) ? old('email') : $user->email}}">
                                             </div>
                                             @if($errors->has('email'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="phone_number">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="phone_number" id="phone_number"
-                                                     value="{{$user->phone}}">
+                                                <input type="number" class="form-control" name="phone_number" id="phone_number" oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
+                                                     value="{{!empty(old('phone_number')) ? old('phone_number') : $user->phone}}">
+                                                @if($errors->has('phone_number'))
+                                                    <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
+                                                @endif
                                             </div>
-                                            @if($errors->has('phone_number'))
-                                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
-                                            @endif
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="birthday">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" name="birthday" id="birthday"
-                                                     value="{{$user->birthday}}">
-                                            </div>
+                                                     value="{{!empty(old('birthday')) ? old('birthday') : $user->birthday}}">
                                             @if($errors->has('birthday'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                                             @endif
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
                                                 <label class="gender-choose" for="male">

@@ -28,7 +28,7 @@ class FormCreateEmployee extends FormRequest
         return [
             'email' => 'required|email|unique:users,email',
             'full_name' => 'required',
-            'password'  => 'required',
+            'password'  => 'required|min:6',
             'file'     => 'required'
         ];
     }
@@ -41,6 +41,7 @@ class FormCreateEmployee extends FormRequest
             "email.unique" => __('auth.email_unique'),
             "full_name.required" => __('auth.name_not_null'),
             "password.required" => __('auth.password_not_null'),
+            "password.min" => __('auth.password_min'),
             "file.required" => __('auth.image_employee_not_null'),
         ];
 

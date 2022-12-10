@@ -11,6 +11,7 @@
             </ol>
         </div>
     </div>
+    <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
     <div class="row mt-3">
         <div class="col-12">
             <div class="card" style="border-radius: 10px;">
@@ -216,46 +217,47 @@
 @endsection
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $(document).ready(function () {
-            $('.toggle-status').click(function (event) {
-                event.preventDefault();
-                var id = $(this).attr('data-id');
-                var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
-                var formData = new FormData();
-                formData.append('status', status);
-                formData.append('id', id);
-                if (confirm("Bạn chắc chắn muốn thay đổi?")) {
-                    $.ajax({
-                        url: "{{route('customer.employee.update_status')}}",
-                        type: 'POST',
-                        dataType: 'json',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (data) {
-                            console.log(data);
-                            if (data.status == 200) {
-                                $('#modal-success').modal('show');
-                                setTimeout(function () {
-                                    window.location.reload();
-                                }, 1500)
-                            } else {
-                                $('#modal-danger').modal('show');
-                            }
-                        },
-                        error: function () {
-                            $(".theloading").hide();
-                            alert('error');
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('.toggle-status').click(function (event) {
+            event.preventDefault();
+            var id = $(this).attr('data-id');
+            var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
+            var formData = new FormData();
+            formData.append('status', status);
+            formData.append('id', id);
+            formData.append('_token', $('[name="_token"]').val());
+            if (confirm("Bạn chắc chắn muốn thay đổi?")) {
+                $.ajax({
+                    url: "{{route('customer.employee.update_status')}}",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status == 200) {
+                            $('#modal-success').modal('show');
                             setTimeout(function () {
-                                window.location.reload()
-                            }, 1500);
+                                window.location.reload();
+                            }, 1500)
+                        } else {
+                            $('#modal-danger').modal('show');
                         }
-                    })
-                }
-            })
-        })
+                    },
+                    error: function () {
+                        $(".theloading").hide();
+                        alert('error');
+                        setTimeout(function () {
+                            window.location.reload()
+                        }, 1500);
+                    }
+                })
+            }
+        });
+    })
     </script>
 @endsection
 

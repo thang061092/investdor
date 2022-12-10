@@ -50,7 +50,7 @@
                                                 <label for="password">{{__('profile.password')}}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="password" id="password"
-                                                        placeholder="{{__('profile.enter_password')}}" value="{{ old('password_confirmation', '') }}">
+                                                        placeholder="{{__('profile.enter_password')}}" value="{{ old('password', '') }}">
                                             </div>
                                             @if($errors->has('password'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>
