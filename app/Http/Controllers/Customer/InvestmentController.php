@@ -78,6 +78,7 @@ class InvestmentController extends BaseController
             $checksum = Authorization::validateToken($request->checksum);
             $project = $this->realEstateProjectService->find($checksum->project_id);
             $amount = (int)$request->part_investment * (int)$project['value_part'];
+            dd($amount);
             $bill = $this->billsService->create_step2($request, $project, $checksum->bill_id, $amount);
             $data = [
                 'project_id' => $project['id'],
