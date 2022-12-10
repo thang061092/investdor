@@ -77,7 +77,8 @@ class InvestmentController extends BaseController
         } else {
             $checksum = Authorization::validateToken($request->checksum);
             $project = $this->realEstateProjectService->find($checksum->project_id);
-            $bill = $this->billsService->create_step2($request, $project, $checksum->bill_id);
+            $amount = (int)$request->part_investment * (int)$project['value_part'];
+            $bill = $this->billsService->create_step2($request, $project, $checksum->bill_id, $amount);
             $data = [
                 'project_id' => $project['id'],
                 'project_name' => $project['slug_vi'],
