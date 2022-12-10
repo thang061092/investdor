@@ -117,4 +117,6 @@ return [
     'identity_not_format' => 'Identity number malformed',
     'phone_number_max' => 'The phone number may not be greater than 10',
     'identity_max' => 'The identity number may not be greater than 9 or 12',
+    'account_number_not_format' => "Bank number malformed",
+    'email_unique'  => 'Email already exists',
 ];
