@@ -59,7 +59,8 @@ return [
     'name_file_not_nul' => "Name File not null",
     'part_investment_not_nul' => "Part investment not null",
     'request_illegal' => 'Request illegal',
-    'part_not_null'=> 'Part invest not null',
-    'part_min'=> 'Part min :part',
-    'agree'  => "You need to tick to agree"
+    'part_not_null' => 'Part invest not null',
+    'part_min' => 'Part min :part',
+    'agree' => "You need to tick to agree",
+    'interest_invalid' => "The interest format is invalid. example 10.5",
 ];

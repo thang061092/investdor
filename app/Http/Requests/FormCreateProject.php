@@ -39,7 +39,7 @@ class FormCreateProject extends FormRequest
             'description_project_vi' => 'required',
             'description_project_en' => 'required',
             'month_project' => 'required',
-            'interest' => 'required',
+            'interest' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ];
     }
 
@@ -60,6 +60,7 @@ class FormCreateProject extends FormRequest
             "description_project_en.required" => __('validate.description_project_en_not_null'),
             "month_project.required" => __('validate.month_project_not_null'),
             "interest.required" => __('validate.interest_not_null'),
+            "interest.regex" => __('validate.interest_invalid'),
         ];
 
     }

@@ -33,7 +33,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('project_name_vi'))is-invalid @endif"
                                                        name="project_name_vi"
-                                                       placeholder="Nhập tên dự án" value="{{old('project_name_vi')}}">
+                                                       placeholder="Nhập tên dự án"
+                                                       value="{{request()->old('project_name_vi')}}">
                                                 @if($errors->has('project_name_vi'))
                                                     <p class="text-danger">{{ $errors->first('project_name_vi') }}</p>
                                                 @endif
@@ -45,7 +46,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('project_name_en'))is-invalid @endif"
                                                        name="project_name_en"
-                                                       placeholder="Nhập tên dự án" value="{{old('project_name_en')}}">
+                                                       placeholder="Nhập tên dự án"
+                                                       value="{{request()->old('project_name_en')}}">
                                                 @if($errors->has('project_name_en'))
                                                     <p class="text-danger">{{ $errors->first('project_name_en') }}</p>
                                                 @endif
@@ -53,13 +55,14 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Tổng giá trị dự án<span
+                                                <label for="">Tổng giá trị dự án (VND)<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text"
                                                        class="form-control @if($errors->has('total_value_project'))is-invalid @endif"
                                                        name="total_value_project"
                                                        placeholder="Nhập giá trị dự án"
-                                                       value="{{old('total_value_project')}}">
+                                                       id="total_value_project"
+                                                       value="{{request()->old('total_value_project')}}">
                                                 @if($errors->has('total_value_project'))
                                                     <p class="text-danger">{{ $errors->first('total_value_project') }}</p>
                                                 @endif
@@ -116,7 +119,8 @@
                                                 <input
                                                     class="form-control @if($errors->has('address_project'))is-invalid @endif"
                                                     placeholder="Nhập địa chỉ"
-                                                    name="address_project">
+                                                    name="address_project"
+                                                    value="{{request()->old('address_project')}}">
                                                 @if($errors->has('address_project'))
                                                     <p class="text-danger">{{ $errors->first('address_project') }}</p>
                                                 @endif
@@ -129,7 +133,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('total_part_project'))is-invalid @endif"
                                                        placeholder="Nhập số phần" name="total_part_project"
-                                                       value="{{old('total_part_project')}}">
+                                                       id="total_part_project"
+                                                       value="{{request()->old('total_part_project')}}">
                                                 @if($errors->has('total_part_project'))
                                                     <p class="text-danger">{{ $errors->first('total_part_project') }}</p>
                                                 @endif
@@ -138,11 +143,13 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Giá trị một phần<span class="text-danger">*</span></label>
+                                                <label for="">Giá trị một phần (VND)<span
+                                                        class="text-danger">*</span></label>
                                                 <input type="text"
                                                        class="form-control @if($errors->has('value_part_project'))is-invalid @endif"
                                                        placeholder="Nhập giá trị" name="value_part_project"
-                                                       value="{{old('value_part_project')}}">
+                                                       id="value_part_project"
+                                                       value="{{request()->old('value_part_project')}}">
                                                 @if($errors->has('value_part_project'))
                                                     <p class="text-danger">{{ $errors->first('value_part_project') }}</p>
                                                 @endif
@@ -168,11 +175,11 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Thời gian đầu tư<span class="text-danger">*</span></label>
+                                                <label for="">Thời gian đầu tư (Tháng)<span class="text-danger">*</span></label>
                                                 <input type="number"
                                                        class="form-control @if($errors->has('month_project'))is-invalid @endif"
                                                        placeholder="Nhập số tháng" name="month_project"
-                                                       value="{{old('month_project')}}">
+                                                       value="{{request()->old('month_project')}}">
                                                 @if($errors->has('month_project'))
                                                     <p class="text-danger">{{ $errors->first('month_project') }}</p>
                                                 @endif
@@ -181,11 +188,11 @@
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Lãi suất<span class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <label for="">Lãi suất (%/năm)<span class="text-danger">*</span></label>
+                                                <input type="text"
                                                        class="form-control @if($errors->has('interest'))is-invalid @endif"
                                                        placeholder="Nhập lãi suất" name="interest"
-                                                       value="{{old('interest')}}">
+                                                       value="{{request()->old('interest')}}">
                                                 @if($errors->has('interest'))
                                                     <p class="text-danger">{{ $errors->first('interest') }}</p>
                                                 @endif
@@ -199,7 +206,7 @@
                                                           class="form-control @if($errors->has('description_project_vi'))is-invalid @endif"
                                                           placeholder="Mô tả dự án"
                                                           name="description_project_vi"
-                                                          id="description_project_vi">{{old('description_project_vi')}}</textarea>
+                                                          id="description_project_vi">{{request()->old('description_project_vi')}}</textarea>
                                                 @if($errors->has('description_project_vi'))
                                                     <p class="text-danger">{{ $errors->first('description_project_vi') }}</p>
                                                 @endif
@@ -212,7 +219,7 @@
                                                           class="form-control @if($errors->has('description_project_en'))is-invalid @endif"
                                                           placeholder="Mô tả dự án"
                                                           name="description_project_en"
-                                                          id="description_project_en">{{old('description_project_en')}}</textarea>
+                                                          id="description_project_en">{{request()->old('description_project_en')}}</textarea>
                                                 @if($errors->has('description_project_en'))
                                                     <p class="text-danger">{{ $errors->first('description_project_en') }}</p>
                                                 @endif
