@@ -96,4 +96,9 @@ class Users extends BaseModel
     {
         return $this->belongsToMany(GroupRole::class, 'user_group_role', 'user_id', 'group_role_id');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, Notification::USER_ID);
+    }
 }
