@@ -26,6 +26,12 @@ class QuestionService
         return $this->questionRepository->getAll();
     }
 
+    public function filter($request) 
+    {   
+        $search = $request->all();
+        return $this->questionRepository->get_all($search);
+    }
+
     public function find($id)
     {
         return $this->questionRepository->find($id);

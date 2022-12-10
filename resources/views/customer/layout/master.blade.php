@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 @yield('css')
 <body>
 @include('customer.layout.header')
@@ -36,7 +37,7 @@
 <script src="{{asset('frontend/js/script.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 <script src="{{asset('frontend/js/fslightbox.js')}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @yield('js')
 </body>
 

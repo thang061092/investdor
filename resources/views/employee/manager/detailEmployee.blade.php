@@ -53,32 +53,11 @@
                                         <div class="col-md-6 col-sm-12 ">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
-                                                <label class="gender-choose" for="male">
-                                                    @php
-                                                        if($user->gender == 1) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="1" {{$check}} name="gender" />
-                                                        Nam
-                                                    </label>
-                                                    <label class="gender-choose" for="female">
-                                                    @php
-                                                        if($user->gender == 2) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="2" {{$check}} name="gender" />
-                                                        Nữ
-                                                    </label>
+                                                @if($user->gender == 1)
+                                                    <input disabled class="form-control" type="text"  value="Nam">
+                                                @else
+                                                    <input disabled class="form-control" type="text"  value="Nữ">
+                                                @endif
                                             </div>
                                         </div>
 

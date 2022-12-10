@@ -30,21 +30,29 @@
                                      style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
-                                            <form method="get" action="">
+                                        <form id="search-form" method="get" action="{{route('list_question')}}">
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày bắt đầu</label>
-                                                    <div>
-                                                        <input type="date" name="start" class="form-control"
-                                                               value=""
-                                                               autocomplete="off">
-                                                    </div>
+                                                    <label class="form-label"><strong>Ngày tạo</strong></label>
+                                                        <div style="padding-left: 20px;">
+                                                            <label>Từ ngày</label>
+                                                            <input type="date" name="start_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                            <label>Đến ngày</label>
+                                                            <input type="date" name="end_date" class="form-control"
+                                                                value=""
+                                                                autocomplete="off">
+                                                        </div>
                                                 </div>
+                                                
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label">Ngày kết thúc</label>
+                                                    <label class="form-label"><strong>Trạng thái</strong></label>
                                                     <div>
-                                                        <input type="date" name="end" class="form-control"
-                                                               value=""
-                                                               autocomplete="off">
+                                                        <select class="form-control" name="status_search">
+                                                            <option value="">--Chọn trạng thái--</option>
+                                                            <option value="2">Đã trả lời</option>
+                                                            <option value="1">Chưa trả lời</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -63,6 +71,7 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
+                    <p style="color: #047734"><strong>Tổng số câu hỏi:</strong>&nbsp;<span id="total">{{$questions->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
@@ -87,7 +96,7 @@
                                         @if (isset($questions))
                                             @foreach ($questions as $key => $question)
                                             <tr style="text-align: center">
-                                                <td>{{++$key}}</td>
+                                                <td>{{$perPage + ++$key}}</td>
                                                 <td>{{$question->name}}</td>
                                                 <td>{{$question->email}}</td>
                                                 <td>
@@ -101,17 +110,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon"
-                                                                    width="24"
-                                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                    stroke="currentColor" fill="none"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <circle cx="12" cy="12" r="1"/>
-                                                                <circle cx="12" cy="19" r="1"/>
-                                                                <circle cx="12" cy="5" r="1"/>
-                                                            </svg>
+                                                        <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
@@ -142,7 +142,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-
+                            @if(!empty($questions))
+                                <nav aria-label="Page navigation" style="margin-top: 20px;">
+                                {{$questions->withQueryString()->links()}}
+                                </nav>
+                            @endif
                             </div>
                         </div>
                     </div>

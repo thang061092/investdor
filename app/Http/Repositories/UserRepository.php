@@ -12,22 +12,63 @@ class UserRepository extends BaseRepository
         return Users::class;
     }
 
-    public function get_all_employee()
+    public function get_all_employee($request)
     {
         $model = $this->model;
-        $model = $model
-            ->where(Users::TYPE, Users::EMPLOYEE)
-            ->get();
-        return $model;
+        if (!empty($request['start_date'])) {
+            $start_date =  (date('Y-m-d 00:00:00', strtotime($request['start_date'])));
+            $model = $model->where(Users::CREATED_AT, '>=' ,$start_date);
+        }
+        if (!empty($request['end_date'])) {
+            $end_date =  (date('Y-m-d 00:00:00', strtotime($request['end_date'])));
+            $model = $model->where(Users::CREATED_AT, '<=' ,$end_date);
+        }
+        if (!empty($request['name_search'])) {
+            $name = $request['name_search'];
+            $model = $model->where(Users::FULL_NAME, 'like', "%$name%");
+        }
+        if (!empty($request['email_search'])) {
+            $email = $request['email_search'];
+            $model = $model->where(Users::EMAIL, 'like', "%$email%");
+        }
+        if (!empty($request['status_search'])) {
+            $model = $model->where(Users::STATUS, $request['status_search']);
+        }
+        return $model
+        ->where(Users::TYPE, Users::EMPLOYEE)
+        ->orderBy(Users::CREATED_AT, 'DESC')
+        ->paginate(10);
     }
 
-    public function get_all_customer()
+    public function get_all_customer($request)
     {
         $model = $this->model;
-        $model = $model
-            ->where(Users::TYPE, Users::INVESTOR)
-            ->get();
-        return $model;
+        if (!empty($request['start_date'])) {
+            $start_date =  (date('Y-m-d 00:00:00', strtotime($request['start_date'])));
+            $model = $model->where(Users::CREATED_AT, '>=' ,$start_date);
+        }
+        if (!empty($request['end_date'])) {
+            $end_date =  (date('Y-m-d 00:00:00', strtotime($request['end_date'])));
+            $model = $model->where(Users::CREATED_AT, '<=' ,$end_date);
+        }
+        if (!empty($request['name_search'])) {
+            $name = $request['name_search'];
+            $model = $model->where(Users::FULL_NAME, 'like', "%$name%");
+        }
+        if (!empty($request['email_search'])) {
+            $email = $request['email_search'];
+            $model = $model->where(Users::EMAIL, 'like', "%$email%");
+        }
+        if (!empty($request['status_search'])) {
+            $model = $model->where(Users::STATUS, $request['status_search']);
+        }
+        if (!empty($request['auth_search'])) {
+            $model = $model->where(Users::ACCURACY, $request['auth_search']);
+        }
+        return $model
+        ->where(Users::TYPE, Users::INVESTOR)
+        ->orderBy(Users::CREATED_AT, 'DESC')
+        ->paginate(10);
     }
 
     public function get_user_add_role($userIds)

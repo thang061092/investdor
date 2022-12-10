@@ -48,35 +48,35 @@
                                                     disabled    value="{{$customer->full_name}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
                                                     disabled value="{{$customer->email}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.phone_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="phone_number" id="phone_number"
                                                     disabled value="{{$customer->phone}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="identity" id="identity"
                                                     disabled value="{{$customer->identity}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.date_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="date_identity" id="date_identity"
                                                     disabled value="{{$customer->date_identity}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.address_identity')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="address_identity" id="address_identity"
@@ -84,92 +84,61 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="gender" id="gender"
                                                     disabled value="{{$customer->birthday}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.gender')}}<span class="text-danger">*</span></label>
-                                                <label class="gender-choose" for="male">
-                                                    @php
-                                                        if($customer->gender == 1) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="1" {{$check}} name="gender" />
-                                                        Nam
-                                                    </label>
-                                                    <label class="gender-choose" for="female">
-                                                    @php
-                                                        if($customer->gender == 2) {
-                                                            $check = " checked";
-                                                        }
-                                                        else
-                                                        {
-                                                            $check = "";
-                                                        }
-                                                    @endphp
-                                                        <input  type="radio" value="2" {{$check}} name="gender" />
-                                                        Nữ
-                                                    </label>
+                                                @if($customer->gender == 1)
+                                                    <input disabled class="form-control" type="text"  value="Nam">
+                                                @else
+                                                    <input disabled class="form-control" type="text"  value="Nữ">
+                                                @endif
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.bank_name')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="bank_name" id="bank_name"
-                                                    disabled value="{{$customer->bank_name}}">
+                                                    disabled value="{{$bank_name}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.account_number')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_number" id="account_number"
                                                     disabled value="{{$customer->account_number}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.account_holder')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="account_name" id="account_name"
                                                     disabled value="{{$customer->account_name}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 email">
-                                                <div class="form-group mb-3">
-                                                    <label for="avatar">{{__('profile.photo')}}<span class="text-danger">*</span></label>
-                                                    @if ($customer->avatar)
-                                                    <img src='{{asset("$customer->avatar")}}' id="avatar" class="img-fluid" alt=""/>
-                                                    @else
-                                                    <p class="text-danger">{{__('table.no_data')}}</p>
-                                                    @endif
-                                                </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 email">
+                                        <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="img_before">{{__('profile.facede')}}<span class="text-danger">*</span></label>
                                                     @if ($customer->front_facing_card)
-                                                    <img src='{{asset("$customer->front_facing_card")}}' id="img_before" class="img-fluid" alt=""/>
+                                                    <img style="width:200px; height:200px" class="form-control" src='{{asset("$customer->front_facing_card")}}' id="img_before" alt=""/>
                                                     @else
                                                     <p class="text-danger">{{__('table.no_data')}}</p>
                                                     @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 email">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-3">
                                                     <label for="img_after">{{__('profile.backside')}}<span class="text-danger">*</span></label>
                                                     @if ($customer->card_back)
-                                                    <img src='{{asset("$customer->card_back")}}' id="img_after" class="img-fluid" alt=""/>
+                                                    <img style="width:200px; height:200px" class="form-control" src='{{asset("$customer->card_back")}}' id="img_after"  alt=""/>
                                                     @else
                                                     <p class="text-danger">{{__('table.no_data')}}</p>
                                                     @endif

@@ -103,9 +103,9 @@ $(document).ready(function () {
                 if (data.status == 200) {
                     $('#add_document').modal('hide')
                     toastr.success(data.message ?? 'Success')
-                    // setTimeout(function () {
-                    //     window.location.reload();
-                    // }, 500);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
                 } else {
                     toastr.error(data.message ?? 'error')
                 }

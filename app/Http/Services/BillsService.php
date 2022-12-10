@@ -6,6 +6,7 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\BillsRepository;
 use App\Models\Bills;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class BillsService
@@ -29,7 +30,7 @@ class BillsService
         $this->transactionService = $transactionService;
     }
 
-    public function create_step1($request)
+    public function create_step1($request, $project)
     {
         $bill = $this->billsRepository->create([
             Bills::USER_ID => Session::get('customer')['id'],
@@ -38,7 +39,9 @@ class BillsService
             Bills::STATUS => Bills::NEW,
             Bills::ORDER_CODE => date('Ymd') . random_string(6)
         ]);
-        return $bill;
+        $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
+        $bill_new = $this->billsRepository->update($bill['id'], [Bills::CHECKSUM => $checksum]);
+        return $bill_new;
     }
 
     public function create_step2($request, $project, $bill_id)

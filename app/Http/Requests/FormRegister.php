@@ -26,7 +26,7 @@ class FormRegister extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|min:6',
             'full_name' => 'required'
@@ -38,7 +38,6 @@ class FormRegister extends FormRequest
         return [
             "email.required" => __('auth.email_not_null'),
             "email.email" => __('auth.email_malformed'),
-            "email.unique" => __('auth.email_exist'),
             "password.required" => __('auth.password_not_null'),
             "full_name.required" => __('auth.name_not_null'),
             "password_confirmation.required" => __('auth.repassword_not_null'),

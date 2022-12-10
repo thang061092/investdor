@@ -4,9 +4,7 @@
     @include('customer.investment.header')
     <section class="invest mt-lg-3 pt-2">
         <div class="container">
-            <form action="{{route('investment.step1_submit')}}" method="post"
-                  class="frm-set-invest invest-step-1 wow fadeInUp">
-                @csrf
+            <div class="frm-set-invest invest-step-1 wow fadeInUp">
                 <div class="wrapper-set-invest mx-auto">
                     <p class="title_lg">{{__('profile.personal_information')}}</p>
                     <label for="" class="d-block mb-2"> {{__('profile.full_name')}} </label>
@@ -43,19 +41,25 @@
                     <label for="" class="d-block mb-2">
                         {{__('profile.bank_name')}}
                     </label>
-                    <select name="" class="e-select nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
-                            data-default="Chọn">
-                        <option value="">Vietcombank</option>
-                        <option value="">Agribank</option>
+                    <select name="bank" class="form-control mb-3" disabled>
+                        <option value="">Chọn ngân hàng</option>
+                        @foreach($banks as $bank)
+                            <option
+                                value="{{$bank->code}}" {{$bank->code == session()->get('customer')['bank_name'] ? 'selected' : ''}}>{{$bank->name}}
+                                &nbsp;-
+                                &nbsp;{{$bank->shortName}}</option>
+                        @endforeach
                     </select>
                     <label for="" class="d-block mb-2">
                         {{__('profile.account_number')}}
                     </label>
-                    <input type="text" name="" placeholder="Nhập số tài khoản" class="form-control mb-3"/>
+                    <input type="text" name="" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['account_number'] ?? ""}}" disabled/>
                     <label for="" class="d-block mb-2">
                         {{__('profile.account_holder')}}
                     </label>
-                    <input type="text" name="" placeholder="Nhập tên chủ tài khoản" class="form-control mb-3"/>
+                    <input type="text" name="" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['account_name'] ?? ""}}" disabled/>
                     <div class="ping-alert-note">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -72,10 +76,13 @@
                     </div>
                     <input type="hidden" name="project_id" value="{{$project->id}}">
                 </div>
-                <button type="submit" class="btn_all mt-xl-5 mt-lg-4 mt-3 step1" style="text-align: center">
+                <button type="button" class="btn_all mt-xl-5 mt-lg-4 mt-3 step1" style="text-align: center">
                     {{__('button.continue')}}
                 </button>
-            </form>
+            </div>
         </div>
     </section>
-@stop
+@endsection
+@section('js')
+    <script src="{{asset('js/investment/step1.js')}}"></script>
+@endsection

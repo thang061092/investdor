@@ -34,7 +34,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="file" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src='{{asset("$detail->avatar")}}' id="avatar" class="img-fluid" alt=""/>
+                            <img src='{{!empty($detail->avatar) ? asset("$detail->avatar"): asset("frontend/images/after-cmt.png")}}' id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     @if( isset($error) && $error )
@@ -266,6 +266,9 @@
                         </label>
                         <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
                                class="form-control mb-3" value="{{$detail->address}}"/>
+                        @if($errors->has('specific_address'))
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('specific_address') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="text-center mt-2 pt-2 wow fadeInUp">

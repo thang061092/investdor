@@ -57,5 +57,9 @@ return [
     'title_vi_not_null' => "Title not null",
     'title_en_not_null' => "Title not null",
     'name_file_not_nul' => "Name File not null",
-    'part_investment_not_nul'=> "Part investment not null"
+    'part_investment_not_nul' => "Part investment not null",
+    'request_illegal' => 'Request illegal',
+    'part_not_null'=> 'Part invest not null',
+    'part_min'=> 'Part min :part',
+    'agree'  => "You need to tick to agree"
 ];

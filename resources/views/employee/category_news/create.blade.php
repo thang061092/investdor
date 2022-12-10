@@ -1,12 +1,12 @@
 @extends("employee.layout.master")
-@section('page_name', '- Thêm mới bài viết')
+@section('page_name', '- Thêm mới danh mục bài viết')
 @section("content")
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">{{__('page_name.create_news')}}</a>
+                                                                   class="text-info">{{__('page_name.create_category')}}</a>
                 </li>
             </ol>
         </div>
