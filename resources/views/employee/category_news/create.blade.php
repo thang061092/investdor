@@ -24,7 +24,7 @@
                                 @csrf 
                                 <div class="card-body ">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_vi" id="name_category_vi"
@@ -34,7 +34,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_en" id="name_category_en"
@@ -44,7 +44,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 desc_category">
+                                        <div class="col-md-6 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
                                                 <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
@@ -55,7 +55,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 desc_category">
+                                        <div class="col-md-6 col-sm-12 desc_category">
                                             <div class="form-group mb-3">
                                                 <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
                                                         class="text-danger">*</span></label>
@@ -90,5 +90,13 @@
     </div>
 @endsection
 @section('js')
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.0/tinymce.min.js'></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: '#desc_category_vi',
+});
+tinymce.init({
+    selector: '#desc_category_en',
+});
+</script>
 @endsection
