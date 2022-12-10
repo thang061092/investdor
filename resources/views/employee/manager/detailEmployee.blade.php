@@ -96,15 +96,15 @@
                 <!-- <form action="{{route('change_password',['id' => session()->get('employee')['id']])}}" method="post"> -->
                     <div class="row">
                         <div class="form-group">
-                            <label class="form-label"><strong>Mật khẩu mới</strong></label>
+                            <label class="form-label"><strong>Mật khẩu mới</strong><span class="text-danger">*</span></label>
                             <input type="password" id="new_pass" name="new_password" class="form-control" value="" autocomplete="off" placeholder="Mật khẩu mới">
                         </div>
                         <div class="form-group">
-                            <label class="form-label"><strong>Nhập lại mật khẩu mới</strong></label>
+                            <label class="form-label"><strong>Nhập lại mật khẩu mới</strong><span class="text-danger">*</span></label>
                             <input type="password" id="re_new_pass" name="re_new_password" class="form-control" value="" autocomplete="off" placeholder="Nhập lại mật khẩu mới">
                         </div>
                         <div style="padding-top:10px;" class="modal-footer">
-                            <button id="change" type="submit" class="btn btn-primary">Xác nhận</button>
+                            <button disabled id="change" type="submit" class="btn btn-primary">Xác nhận</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -116,6 +116,15 @@
 @section('js')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
+        $('input[name="new_password"]').keyup(function(){
+        val = $('#new_pass').val(); 
+        console.log(val);
+        if(val.length >= 6){
+          $('#change').attr('disabled', false);
+        } else {
+          $('#change').attr('disabled', true);
+        }
+      });
     $("#change").on('click', function() {
         let new_pass = $('#new_pass').val();
         let re_new_pass = $('#re_new_pass').val();

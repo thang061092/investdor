@@ -109,6 +109,7 @@ return array(
     'account_number_not_format' => "Số tài khoản sai định dạng",
     'email_unique'  => 'Email đã tồn tại',
     'phone_number_unique' => "Số điện thoại đã tồn tại",
+    'password_min' => "Mật khẩu ít nhất 6 ký tự",
 );
 
 

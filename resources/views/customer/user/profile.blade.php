@@ -100,8 +100,9 @@
                         <label for="" class="d-block mb-2">
                             {{__('profile.phone_number')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="phone_number" placeholder="{{__('profile.phone_number')}}"
-                               class="form-control mb-3" value="{{session()->get('customer')['phone']}}"/>
+                        <input type="number" name="phone_number" placeholder="{{__('profile.phone_number')}}"
+                                oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
+                               class="form-control mb-3" value="{{!empty(old('phone_number')) ? old('phone_number') : session()->get('customer')['phone']}}"/>
                         @if($errors->has('phone_number'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
@@ -109,7 +110,8 @@
                         <label for="" class="d-block mb-2">
                             {{__('profile.identity')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="identity" placeholder="{{__('profile.identity')}}"
+                        <input type="number" name="identity" placeholder="{{__('profile.identity')}}"
+                            oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
                                class="form-control mb-3" value="{{session()->get('customer')['identity']}}"/>
                         @if($errors->has('identity'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
@@ -175,7 +177,8 @@
                         <label for="account_number" class="d-block mb-2">
                             {{__('profile.account_number')}}<span class="text-danger">*</span>
                         </label>
-                        <input type="text" name="account_number" placeholder="Nhập số tài khoản"
+                        <input type="number" name="account_number" placeholder="Nhập số tài khoản"
+                        oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
                                class="form-control mb-3" value="{{session()->get('customer')['account_number']}}"/>
                         @if($errors->has('account_number'))
                             <p class="text-danger"

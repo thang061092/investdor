@@ -11,6 +11,7 @@
             </ol>
         </div>
     </div>
+    <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
     <div class="row mt-3">
         <div class="col-12">
             <div class="card" style="border-radius: 10px;">
@@ -213,6 +214,7 @@
          var formData = new FormData();
          formData.append('status', status);
          formData.append('id', id);
+         formData.append('_token', $('[name="_token"]').val());
          if (confirm("Bạn chắc chắn muốn thay đổi?")) {
             $.ajax({
                 url: "{{route('customer.employee.update_status')}}",

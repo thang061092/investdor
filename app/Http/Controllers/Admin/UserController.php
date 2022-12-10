@@ -48,7 +48,7 @@ class UserController extends BaseController
         $user = $this->userService->create_employee($request);
         if ($user) {
             toastr()->success(__("message.create_success"), __('message.success'));
-            return redirect()->route('customer.employee.get_all');
+            return redirect()->route('customer.employee.get_all')->withInput(Input::all());
         }
         toastr()->error(__("message.create_fail"), __('message.fail'));
         return redirect()->route('customer.employee.get_all');
