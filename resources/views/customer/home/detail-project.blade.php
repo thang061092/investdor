@@ -265,13 +265,15 @@
                             <div class="c-label">
                                 {{__('project.estimated_capacity')}}
                             </div>
-                            <div class="c-value">{{$project->assetProject->expected_capacity ?? ""}}</div>
+                            <div
+                                class="c-value">{{!empty($project->assetProject->expected_capacity) ? number_format_vn($project->assetProject->expected_capacity) : ""}}</div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="c-label">{{__('project.total_building_area')}}</div>
-                            <div class="c-value">{{$project->assetProject->total_building_area ?? ""}}</div>
+                            <div
+                                class="c-value">{{!empty($project->assetProject->total_building_area) ? number_format_vn($project->assetProject->total_building_area) : ""}}</div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
@@ -279,13 +281,15 @@
                             <div class="c-label">
                                 {{__('project.target_stable_return_on_cost')}}
                             </div>
-                            <div class="c-value">{{$project->assetProject->target_table ?? ""}}</div>
+                            <div
+                                class="c-value">{{!empty($project->assetProject->target_table) ? number_format_vn($project->assetProject->target_table) : ""}}</div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="c-label">NRSF</div>
-                            <div class="c-value">{{$project->assetProject->nrsf ?? ""}}</div>
+                            <div
+                                class="c-value">{{!empty($project->assetProject->nrsf) ? number_format_vn($project->assetProject->nrsf): ""}}</div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 mb-md-3 mb-4">
@@ -293,7 +297,8 @@
                             <div class="c-label">
                                 {{__('project.price_cost_so_far')}}
                             </div>
-                            <div class="c-value">{{$project->assetProject->current_price ?? ""}}</div>
+                            <div
+                                class="c-value">{{!empty($project->assetProject->current_price) ? number_format_vn($project->assetProject->current_price): ""}}</div>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@
                             <div class="card-header text-primary">
                                 Thông tin chi tiết:
                             </div>
-                            <form action="{{route('customer.employee.save_news')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'> 
+                            <form action="{{route('customer.employee.save_news')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
@@ -85,8 +85,8 @@
                                                         @foreach ($categories as $item)
                                                             <option value="{{$item->id}}">{{$item->name}}</option>
                                                         @endforeach
-                                                    @endif 
-                                                </select>        
+                                                    @endif
+                                                </select>
                                             </div>
                                             @if($errors->has('category'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('category') }}</p>
@@ -131,14 +131,22 @@
     </div>
 @endsection
 @section('js')
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.0/tinymce.min.js'></script>
-<script>
-tinymce.init({
-    selector: '#content_en',
-});
-tinymce.init({
-    selector: '#content_vi',
-});
-
-</script>
+    <script>
+        CKEDITOR.replace('content_vi', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+        CKEDITOR.replace('content_en', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+    </script>
 @endsection

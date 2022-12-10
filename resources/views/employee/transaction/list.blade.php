@@ -126,14 +126,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        <div class="col-12 col-md-12">
-                                            <div class="row">
-                                                <div class="col-12 col-md-10"></div>
-                                                <div
-                                                    class=" col-12 col-md-2">  {{$transactions->appends(request()->query())}}
-                                                </div>
-                                            </div>
-                                        </div>
                                     @endempty
                                     </tbody>
                                 </table>
@@ -143,6 +135,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
+                                {{$transactions->appends(request()->query())}}
                             </div>
                         </div>
                     </div>
