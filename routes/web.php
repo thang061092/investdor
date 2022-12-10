@@ -148,12 +148,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/detail_category/{id}', 'Admin\UserController@detail_category')->name('customer.employee.detail_category');
                 Route::post('/update_status_category', 'Admin\UserController@update_status_category')->name('customer.employee.update_status_category');
                 Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
-                Route::get('/detail/{id}','Admin\UserController@detail_question')->name('detail_question');
+                Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
                 Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
                 Route::post('/question', 'Customer\UserController@question')->name('question');
-                Route::get('/list_question', 'Admin\UserController@list_question')->name('list_question');
-                Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
-                Route::post('/send_answer/{id}', 'Admin\UserController@send_answer')->name('send_answer');
                 Route::post('/change_password/{id}', 'Admin\UserController@change_password')->name('change_password');
             });
 

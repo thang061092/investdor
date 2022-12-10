@@ -28,8 +28,7 @@ class FormUpdateEmployee extends FormRequest
         return [
             'email' => 'required|email',
             'full_name' => 'required',
-            'phone_number' => 'required',
-            'identity' => 'required',
+            'phone_number' => 'required|numeric|digits:10',
             'gender'    => 'required',
             'birthday' => 'required',
         ];
@@ -44,7 +43,8 @@ class FormUpdateEmployee extends FormRequest
             "birthday.required" => __('auth.birthday_not_null'),
             "gender.required" => __('auth.gender_not_null'),
             "phone_number.required" => __('auth.phone_number_not_null'),
-            "identity.required" => __('auth.identity_not_null'),
+            "phone_number.digits" => __('auth.phone_number_max'),
+            "phone_number.numeric" => __('auth.phone_number_not_format'),
         ];
 
     }

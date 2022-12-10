@@ -5,6 +5,8 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.get_all')}}"
+                                                                   class="text-info">{{__('page_name.list_employee_account')}}</a>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
                                                                    class="text-info">{{__('page_name.update_account')}}</a>
                 </li>
@@ -37,7 +39,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
-                                                    disabled placeholder="{{__('profile.enter_email')}}" value="{{$user->email}}">
+                                                    readonly placeholder="{{__('profile.enter_email')}}" value="{{$user->email}}">
                                             </div>
                                             @if($errors->has('email'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
@@ -49,20 +51,20 @@
                                                 <input type="text" class="form-control" name="phone_number" id="phone_number"
                                                      value="{{$user->phone}}">
                                             </div>
-                                        </div>
-                                        @if($errors->has('phone_number'))
+                                            @if($errors->has('phone_number'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('phone_number') }}</p>
                                             @endif
+                                        </div>
                                         <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="birthday">{{__('profile.date_of_birth')}}<span class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" name="birthday" id="birthday"
                                                      value="{{$user->birthday}}">
                                             </div>
-                                        </div>
-                                        @if($errors->has('birthday'))
+                                            @if($errors->has('birthday'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                                             @endif
+                                        </div>
                                         <div class="col-md-6 col-sm-12 email">
                                             <div class="form-group mb-3">
                                                 <label for="gender">{{__('profile.gender')}}<span class="text-danger">*</span></label>
@@ -76,7 +78,7 @@
                                                             $check = "";
                                                         }
                                                     @endphp
-                                                        <input  type="radio" value="1" {{$check}} name="gender" />
+                                                        <input type="radio" value="1" {{$check}} name="gender" />
                                                         Nam
                                                     </label>
                                                     <label class="gender-choose" for="female">
@@ -89,14 +91,14 @@
                                                             $check = "";
                                                         }
                                                     @endphp
-                                                        <input  type="radio" value="2" {{$check}} name="gender" />
+                                                        <input type="radio" value="2" {{$check}} name="gender" />
                                                         Nữ
                                                     </label>
                                             </div>
-                                        </div>
-                                        @if($errors->has('gender'))
+                                            @if($errors->has('gender'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('gender') }}</p>
                                             @endif
+                                        </div>
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="update" class="btn btn-success action">

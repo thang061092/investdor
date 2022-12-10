@@ -5,7 +5,9 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href=""
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('list_question')}}"
+                                                                   class="text-info">{{__('page_name.list_question')}}</a>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('detail_question', ['id' => $detail->id])}}"
                                                                    class="text-info">{{__('page_name.detail_question')}}</a>
                 </li>
             </ol>
