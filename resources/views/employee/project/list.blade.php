@@ -167,14 +167,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        <div class="col-12 col-md-12">
-                                            <div class="row">
-                                                <div class="col-12 col-md-10"></div>
-                                                <div
-                                                    class=" col-12 col-md-2">  {{$projects->appends(request()->query())}}
-                                                </div>
-                                            </div>
-                                        </div>
                                     @endempty
                                     </tbody>
                                 </table>
@@ -184,13 +176,14 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-
+                                {{$projects->appends(request()->query())}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="{{asset('js/project/index.js')}}"></script>
 @endsection
