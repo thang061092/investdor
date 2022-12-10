@@ -44,13 +44,14 @@ class BillsService
         return $bill_new;
     }
 
-    public function create_step2($request, $project, $bill_id, $amount)
+    public function create_step2($request, $project, $bill_id)
     {
         $bill = $this->billsRepository->update($bill_id, [
             Bills::PART => $request->part_investment,
             Bills::VALUE_PART => $project['value_part'],
-            Bills::AMOUNT_MONEY => $amount
         ]);
+        $amount = $bill['part'] * $bill['value_part'];
+        $this->billsRepository->update($bill['id'], [Bills::AMOUNT_MONEY => $amount]);
         return $bill;
     }
 
