@@ -1,19 +1,12 @@
 @extends('employee.layout.master')
 @section('page_name','- '.__('page_name.list_customer_account'))
-<!-- @section('css')
-<style>
-input[type=checkbox] {
-  accent-color: red;
-}
-</style>
 
-@endsection -->
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.customer.get_all')}}"
                                                                    class="text-info">{{__('page_name.list_customer_account')}}</a>
                 </li>
             </ol>
@@ -117,7 +110,7 @@ input[type=checkbox] {
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">STT</th>
-                                        <th style="text-align: center">Tên nhân viên</th>
+                                        <th style="text-align: center">Tên nhà đầu tư</th>
                                         <th style="text-align: center">Email</th>
                                         <th style="text-align: center">Tài khoản</th>
                                         <th style="text-align: center">Ngày tạo</th>

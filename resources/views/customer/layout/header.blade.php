@@ -168,14 +168,14 @@
                         </svg>
                     </a>
                     <div class="group-box group-user toggle-content">
-                        <a href="#" title="{{__('auth.personal_information')}}" class="btn_user unconfirmed mr-3">
+                        <a href="#" title="{{__('auth.personal_information')}}" class="btn_user  mr-3">
                             <img
-                                src="{{!empty(session()->get('customer')['avatar']) ? asset(session()->get('customer')['avatar']): asset('frontend/images/avatar.jpg')}}"
+                                src="{{!empty(session()->get('customer')['avatar']) ? asset(session()->get('customer')['avatar']): asset('frontend/images/avatar_user.png')}}"
                                 class="img-fluid" alt=""/>
                         </a>
                         <!--CHÚ Ý CLASS unconfirmed khi chưa xác thực - confirmed cho xác thực-->
                         <div class="group-action-user">
-                            <p title="{{__('auth.personal_information')}}" class="btn_user_link btn_toggle unconfirmed">
+                            <p title="{{__('auth.personal_information')}}" class="btn_user_link btn_toggle ">
                                 {{!empty(session()->get('customer')['full_name']) ? session()->get('customer')['full_name'] : ""}}
                                 <svg class="ml-1" width="12" height="7" viewBox="0 0 12 7" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

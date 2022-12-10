@@ -5,7 +5,9 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page"><a href=""
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.get_all')}}"
+                                                                   class="text-info">{{__('page_name.list_employee_account')}}</a>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.store_employee')}}"
                                                                    class="text-info">{{__('page_name.create_account')}}</a>
                 </li>
             </ol>
@@ -33,7 +35,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 email">
+                                        <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="email">{{__('profile.email')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="email" id="email"
@@ -43,7 +45,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 password">
+                                        <div class="col-md-7 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="password">{{__('profile.password')}}<span
                                                         class="text-danger">*</span></label>
@@ -54,7 +56,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>
                                             @endif
                                         </div>
-                                        <div class="col-md-7 col-sm-12 wow fadeInUp">
+                                        <div class="col-md-7 col-sm-12 wow">
                                                 <label for="file">{{__('profile.photo')}}<span class="text-danger">*</span></label>
                                                 <input type="file" name="file" class="form-control" id="file" placeholder="{{__('profile.photo')}}">
                                                 @if($errors->has('file'))

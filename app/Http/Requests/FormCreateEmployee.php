@@ -26,7 +26,7 @@ class FormCreateEmployee extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'full_name' => 'required',
             'password'  => 'required',
             'file'     => 'required'
@@ -38,6 +38,7 @@ class FormCreateEmployee extends FormRequest
         return [
             "email.required" => __('auth.email_not_null'),
             "email.email" => __('auth.email_malformed'),
+            "email.unique" => __('auth.email_unique'),
             "full_name.required" => __('auth.name_not_null'),
             "password.required" => __('auth.password_not_null'),
             "file.required" => __('auth.image_employee_not_null'),
