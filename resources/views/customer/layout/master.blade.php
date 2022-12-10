@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>InvestDor - @yield('page_name')</title>
     <link type=”image/x-icon” href="{{asset('frontend/images/logo.png')}}" rel="shortcut icon"/>
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}"/>
