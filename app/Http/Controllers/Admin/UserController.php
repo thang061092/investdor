@@ -12,6 +12,7 @@ use App\Http\Services\NewsService;
 use App\Http\Services\CategoryNewsService;
 use App\Http\Services\QuestionService;
 use App\Models\Users;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\FormCreateEmployee;
 use App\Http\Requests\FormCreateNews;
