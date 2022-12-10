@@ -36,26 +36,27 @@
                                      style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
-                                            <form id="search-form" method="get" action="{{route('customer.employee.get_all')}}">
+                                            <form id="search-form" method="get"
+                                                  action="{{route('customer.employee.get_all')}}">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label"><strong>Ngày tạo</strong></label>
-                                                        <div style="padding-left: 20px;">
-                                                            <label>Từ ngày</label>
-                                                            <input type="date" name="start_date" class="form-control"
-                                                                value=""
-                                                                autocomplete="off">
-                                                            <label>Đến ngày</label>
-                                                            <input type="date" name="end_date" class="form-control"
-                                                                value=""
-                                                                autocomplete="off">
-                                                        </div>
-                                                       
+                                                    <div style="padding-left: 20px;">
+                                                        <label>Từ ngày</label>
+                                                        <input type="date" name="start_date" class="form-control"
+                                                               value="{{request()->get('start_date')}}"
+                                                               autocomplete="off">
+                                                        <label>Đến ngày</label>
+                                                        <input type="date" name="end_date" class="form-control"
+                                                               value="{{request()->get('end_date')}}"
+                                                               autocomplete="off">
+                                                    </div>
+
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label class="form-label"><strong>Tên nhân viên</strong></label>
                                                     <div>
                                                         <input type="text" name="name_search" class="form-control"
-                                                               value=""
+                                                               value="{{request()->get('name_search')}}"
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
@@ -63,19 +64,29 @@
                                                     <label class="form-label"><strong>Email nhân viên</strong></label>
                                                     <div>
                                                         <input type="text" name="email_search" class="form-control"
-                                                               value=""
+                                                               value="{{request()->get('email_search')}}"
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-3">
-                                                    <label class="form-label"><strong>Trạng thái hoạt động</strong></label>
+                                                    <label class="form-label"><strong>Trạng thái hoạt
+                                                            động</strong></label>
                                                     <div>
                                                         <select class="form-control" name="status_search">
                                                             <option value="">--Chọn trạng thái--</option>
-                                                            <option value="active">Active</option>
-                                                            <option value="block">Block</option>
-                                                            <option value="new">New</option>
+                                                            <option
+                                                                value="active" {{request()->get('status_search') == 'active' ? 'selected' : ''}}>
+                                                                Active
+                                                            </option>
+                                                            <option
+                                                                value="block" {{request()->get('status_search') == 'block' ? 'selected' : ''}}>
+                                                                Block
+                                                            </option>
+                                                            <option
+                                                                value="new" {{request()->get('status_search') == 'new' ? 'selected' : ''}}>
+                                                                New
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -95,7 +106,8 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
-                    <p style="color: #047734"><strong>Tổng số nhân viên:</strong>&nbsp;<span id="total">{{$employees->total()}}</span></p>
+                        <p style="color: #047734"><strong>Tổng số nhân viên:</strong>&nbsp;<span
+                                id="total">{{$employees->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-nowrap table-striped table-bordered">
@@ -112,15 +124,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @if (@empty($employees))
-                                            <tr>
-                                                <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
-                                                    liệu
-                                                </td>
-                                            </tr>
-                                        @endif
-                                        @if (isset($employees))
-                                            @foreach ($employees as $key => $employee)
+                                    @if (@empty($employees))
+                                        <tr>
+                                            <td colspan="20" class="text-danger" style="text-align: center">Không có dữ
+                                                liệu
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    @if (isset($employees))
+                                        @foreach ($employees as $key => $employee)
                                             <tr style="text-align: center">
                                                 <td>{{$perPage + ++$key}}</td>
                                                 <td>{{$employee->full_name}}</td>
@@ -135,11 +147,12 @@
                                                 <td>{{$employee->created_at}}</td>
                                                 <td>{{$employee->created_by}}</td>
                                                 <td>
-                                                    <label class=" form-switch toggle-status" data-id="{{ $employee['id'] }} ">
+                                                    <label class=" form-switch toggle-status"
+                                                           data-id="{{ $employee['id'] }} ">
                                                         <input class="form-check-input"
-                                                            style="margin-top: 6px"
-                                                            type="checkbox" name="status"
-                                                            id="status" {{ ($employee['status'] == 'active') ? 'checked' : '' }}>
+                                                               style="margin-top: 6px"
+                                                               type="checkbox" name="status"
+                                                               id="status" {{ ($employee['status'] == 'active') ? 'checked' : '' }}>
                                                     </label>
                                                     @if($employee['status'] == 'active')
                                                         <label></label>
@@ -150,17 +163,17 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                        <button class="btn btn-info"><i class="fas fa-edit"></i>
+                                                            <button class="btn btn-info"><i class="fas fa-edit"></i>
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.employee.detail_employee",["id" => $employee->id])}}'>
+                                                               href='{{route("customer.employee.detail_employee",["id" => $employee->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết tài khoản
                                                             </a>
                                                             <a class="dropdown-item" target="_blank"
-                                                                href='{{route("customer.employee.edit_employee",["id" => $employee->id])}}'>
+                                                               href='{{route("customer.employee.edit_employee",["id" => $employee->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>
@@ -168,17 +181,17 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        @endif
-                                        <div class="col-12 col-md-12">
-                                            <div class="row">
-                                                <div class="col-12 col-md-10"></div>
-                                                <div
-                                                    class=" col-12 col-md-2">
-                                                </div>
+                                        @endforeach
+                                    @endif
+                                    <div class="col-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-12 col-md-10"></div>
+                                            <div
+                                                class=" col-12 col-md-2">
                                             </div>
                                         </div>
-                                   
+                                    </div>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -187,11 +200,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-inline-block float-right">
-                            @if(!empty($employees))
-                                <nav aria-label="Page navigation" style="margin-top: 20px;">
-                                {{$employees->withQueryString()->links()}}
-                                </nav>
-                            @endif
+                                @if(!empty($employees))
+                                    <nav aria-label="Page navigation" style="margin-top: 20px;">
+                                        {{$employees->withQueryString()->links()}}
+                                    </nav>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -203,57 +216,46 @@
 @endsection
 
 @section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(function () {
-    $('.toggle-status').click(function (event) {
-        event.preventDefault();
-        var id = $(this).attr('data-id');
-        var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
-         var formData = new FormData();
-         formData.append('status', status);
-         formData.append('id', id);
-         if (confirm("Bạn chắc chắn muốn thay đổi?")) {
-            $.ajax({
-                url: "{{route('customer.employee.update_status')}}",
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == 200) {
-                        $('#modal-success').modal('show');
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 1500)
-                    } else {
-                        $('#modal-danger').modal('show');
-                    }
-                },
-                error: function () {
-                    $(".theloading").hide();
-                    alert('error');
-                    setTimeout(function () {
-                        window.location.reload()
-                    }, 1500);
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('.toggle-status').click(function (event) {
+                event.preventDefault();
+                var id = $(this).attr('data-id');
+                var status = $(this).prop('checked') == 'active' ? 'active' : 'block';
+                var formData = new FormData();
+                formData.append('status', status);
+                formData.append('id', id);
+                if (confirm("Bạn chắc chắn muốn thay đổi?")) {
+                    $.ajax({
+                        url: "{{route('customer.employee.update_status')}}",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.status == 200) {
+                                $('#modal-success').modal('show');
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 1500)
+                            } else {
+                                $('#modal-danger').modal('show');
+                            }
+                        },
+                        error: function () {
+                            $(".theloading").hide();
+                            alert('error');
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1500);
+                        }
+                    })
                 }
             })
-        }
-    })
-})
-</script>
-<script type="text/javascript">
-    var dataSearch = JSON.parse('{!! json_encode($dataSearch) !!}');
-    console.log(dataSearch);
-    for (const property in dataSearch) {
-      if (dataSearch[property] == null) {
-        continue;
-      }
-      console.log(property, ' ', dataSearch[property]);
-      $('#search-form').find("[name='" + property + "']").val(dataSearch[property]);
-    }
-</script>
+        })
+    </script>
 @endsection
 

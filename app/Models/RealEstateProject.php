@@ -97,4 +97,9 @@ class RealEstateProject extends BaseModel
     {
         return $this->hasMany(Interest::class, Interest::REAL_ESTATE_PROJECT_ID);
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, Notification::REAL_ESTATE_PROJECT_ID);
+    }
 }
