@@ -30,6 +30,7 @@ class Bills extends BaseModel
     const PAYMENT_DATE = 'payment_date';
     const IMAGE_LICENSE = 'image_license';
     const CHECKSUM = 'checksum';
+    const TOTAL_MONEY = 'total_money';
 
     //status
     const NEW = 'new';
@@ -38,7 +39,7 @@ class Bills extends BaseModel
     const WARNING = 'warning';
     const FAIL = 'fail';
 
-    protected $table = 'bills';
+    protected $table = 'bill';
 
     public function realEstateProject()
     {
