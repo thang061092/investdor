@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterChangeColumnBillTable extends Migration
+class AlterChangeColumnBillTable1 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AlterChangeColumnBillTable extends Migration
     public function up()
     {
         Schema::table('bills', function (Blueprint $table) {
-            $table->bigInteger('amount_money')->change();
+            $table->double('amount_money', 20, 5)->change();
+            $table->bigInteger('total_money')->nullable();
         });
     }
 
@@ -26,7 +27,8 @@ class AlterChangeColumnBillTable extends Migration
     public function down()
     {
         Schema::table('bills', function (Blueprint $table) {
-            $table->decimal('amount_money')->change();
+            $table->bigInteger('amount_money')->change();
+            $table->dropColumn('total_money');
         });
     }
 }
