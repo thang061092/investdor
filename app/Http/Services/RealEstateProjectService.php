@@ -92,7 +92,7 @@ class RealEstateProjectService
             RealEstateProject::TYPE => $request->type_project ?? null,
             RealEstateProject::STATUS => RealEstateProject::NEW,
             RealEstateProject::CREATED_BY => Session::get('employee')['email'] ?? null,
-            RealEstateProject::CURRENT_PART => $request->total_part_project ?? null,
+            RealEstateProject::CURRENT_PART => !empty($request->total_value_project) ? trim(str_replace(array(',', '.',), '', $request->total_value_project)) : null,
         ];
         $project = $this->estateProjectRepository->create($data);
         $this->interestRepository->create([
