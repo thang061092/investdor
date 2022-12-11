@@ -1,5 +1,5 @@
 @extends("employee.layout.master")
-@section('page_name', '- Thêm tài khoản mới')
+@section('page_name', '- Cập nhật tài khoản mới')
 @section("content")
     <div class="row mb-3">
         <div class="col-12">
@@ -23,6 +23,7 @@
                             {{__('auth.personal_information')}}:
                             </div>
                             <form action='{{route("customer.customer.update_customer",["id" => $customer->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+                                <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
@@ -160,12 +161,6 @@
                                                     <i class="fa fa-refresh" aria-hidden="true"></i>
                                                 </a>
                                                 @endif
-                                                @if ($customer->accuracy == 3)
-                                                <a type="button" id="auth" class="btn btn-success action">
-                                                {{__('profile.auth')}}&nbsp;
-                                                    <i class="fa fa-refresh" aria-hidden="true"></i>
-                                                </a>
-                                                @endif
                                                 <a type="button" href="{{route('customer.customer.get_all')}}" class="btn btn-danger action">
                                                 {{__('button.back')}} &nbsp;
                                                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -187,6 +182,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#auth").on('click', function() {
+            var form = new FormData();
+            form.append('_token', $('[name="_token"]').val());
             Swal.fire({
                 title: "{{__('auth.authentication')}}",
                 icon: 'warning',
@@ -201,6 +198,9 @@
                     type: "POST",
                     url: "{{route('customer.customer.auth',['id' => $customer->id])}}",
                     datatype: "JSON",
+                    data: form,
+                    processData: false,
+                    contentType: false,
                     success: function(data)
                         {
                             if (data.status == 200) {
@@ -209,6 +209,8 @@
                                     "{{__('message.success')}}",
                                     'success'
                                 )
+                                setTimeout(function () {
+                                window.location.reload()}, 2000);
                             } else {
                                 Swal.fire(
                                     "{{__('message.fail')}}",
@@ -223,6 +225,8 @@
         });
 
         $("#not_auth").on('click', function() {
+            var form = new FormData();
+            form.append('_token', $('[name="_token"]').val());
             Swal.fire({
                 title: "{{__('auth.not_authentication')}}",
                 icon: 'warning',
@@ -237,6 +241,9 @@
                     type: "POST",
                     url: "{{route('customer.customer.not_auth',['id' => $customer->id])}}",
                     datatype: "JSON",
+                    data: form,
+                    processData: false,
+                    contentType: false,
                     success: function(data)
                         {
                             if (data.status == 200) {
@@ -245,6 +252,8 @@
                                     "{{__('message.success')}}",
                                     'success'
                                 )
+                                setTimeout(function () {
+                                window.location.reload()}, 2000);
                             } else {
                                 Swal.fire(
                                     "{{__('message.fail')}}",

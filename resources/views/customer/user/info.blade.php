@@ -159,10 +159,12 @@
                                 </div>
                             </div>
                             <div class="text-right mt-xl-4 mt-3">
+                                @if (session()->get('customer')['accuracy'] != 1 && session()->get('customer')['accuracy'] != 2)
                                 <a type="button" class="btn_all reset mr-2" id="reselect">
                                 {{__('profile.reselect')}}</a>
                                 <button type="submit" class="btn_all accept" id="auth">
                                 {{__('profile.auth')}}</button>
+                                @endif
                             </div>
                         </div>
                         </form>

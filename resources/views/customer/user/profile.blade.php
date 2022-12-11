@@ -27,7 +27,7 @@
             </div>
             <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8"
                   enctype='multipart/form-data'>
-                @csrf
+                <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="col-lg-4 mb-lg-0 mb-2 wow fadeInUp">
                         <p class="title_lg">{{__('profile.photo')}}</p>
@@ -311,12 +311,16 @@
         $(document).ready(function () {
             $("#city").on('change', function () {
                 let province = $(this).val();
-                let data = {code: province};
+                let formData = new FormData();
+                formData.append('_token', $('[name="_token"]').val());
+                formData.append('code', province);
                 $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.district')}}",
                     datatype: "JSON",
-                    data: data,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
                         $('#district').html('');
                         $('#ward').html('');
@@ -333,12 +337,16 @@
 
             $("#district").on('change', function () {
                 let district = $(this).val();
-                let data = {code: district};
+                let formData = new FormData();
+                formData.append('_token', $('[name="_token"]').val());
+                formData.append('code', district);
                 $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.ward')}}",
                     datatype: "JSON",
-                    data: data,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
                         $('#ward').html('');
                         if (data.status == 200) {

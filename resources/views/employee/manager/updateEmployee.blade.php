@@ -23,6 +23,7 @@
                                 Thông tin chi tiết:
                             </div>
                             <form action='{{route("customer.employee.update_employee",["id" => $user->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+                                @csrf
                                 <div class="card-body">
                                     <div class="row justify-content-center">
                                         <div class="col-md-7 col-sm-12">
