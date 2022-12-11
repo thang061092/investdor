@@ -39,7 +39,7 @@ class Bills extends BaseModel
     const WARNING = 'warning';
     const FAIL = 'fail';
 
-    protected $table = 'bills';
+    protected $table = 'bill';
 
     public function realEstateProject()
     {
