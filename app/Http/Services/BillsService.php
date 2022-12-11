@@ -38,7 +38,7 @@ class BillsService
             Bills::CREATED_BY => Session::get('customer')['email'],
             Bills::STATUS => Bills::NEW,
             Bills::ORDER_CODE => date('Ymd') . random_string(6),
-            Bills::AMOUNT_MONEY => 5000000000
+            Bills::AMOUNT_MONEY => (string)5000000000
 
         ];
         $bill = $this->billsRepository->create($data);
