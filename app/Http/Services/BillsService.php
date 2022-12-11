@@ -38,8 +38,6 @@ class BillsService
             Bills::CREATED_BY => Session::get('customer')['email'],
             Bills::STATUS => Bills::NEW,
             Bills::ORDER_CODE => date('Ymd') . random_string(6),
-            Bills::AMOUNT_MONEY => (string)5000000000
-
         ];
         $bill = $this->billsRepository->create($data);
         $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
@@ -54,7 +52,7 @@ class BillsService
         $bill = $this->billsRepository->update($bill_id, [
             Bills::PART => $request->part_investment,
             Bills::VALUE_PART => $project['value_part'],
-            Bills::AMOUNT_MONEY => (int)$amount
+            Bills::AMOUNT_MONEY => $amount
         ]);
         return $bill;
     }
