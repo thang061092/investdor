@@ -37,7 +37,9 @@ class BillsService
             Bills::REAL_ESTATE_PROJECT_ID => $request->project_id,
             Bills::CREATED_BY => Session::get('customer')['email'],
             Bills::STATUS => Bills::NEW,
-            Bills::ORDER_CODE => date('Ymd') . random_string(6)
+            Bills::ORDER_CODE => date('Ymd') . random_string(6),
+            Bills::AMOUNT_MONEY => 5000000000
+
         ]);
         $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
         $bill_new = $this->billsRepository->update($bill['id'], [Bills::CHECKSUM => $checksum]);
