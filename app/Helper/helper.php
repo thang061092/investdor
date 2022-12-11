@@ -250,7 +250,7 @@ if (!function_exists('color_status_transaction')) {
     }
 }
 
-function update_money($money)
+function convert_money($money)
 {
     $new = "$money";
     return $new;
