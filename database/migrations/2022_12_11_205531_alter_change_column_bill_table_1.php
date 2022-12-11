@@ -15,6 +15,7 @@ class AlterChangeColumnBillTable1 extends Migration
     {
         Schema::table('bills', function (Blueprint $table) {
             $table->double('amount_money', 20, 5)->change();
+            $table->bigInteger('total_money')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AlterChangeColumnBillTable1 extends Migration
     {
         Schema::table('bills', function (Blueprint $table) {
             $table->bigInteger('amount_money')->change();
+            $table->dropColumn('total_money');
         });
     }
 }
