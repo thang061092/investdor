@@ -52,7 +52,7 @@ class BillsService
         $data = [
             Bills::PART => $request->part_investment,
             Bills::VALUE_PART => $project['value_part'],
-            Bills::AMOUNT_MONEY => $amount
+            Bills::AMOUNT_MONEY => "$amount"
         ];
         Bills::where(Bills::ID, $bill_id)->update($data);
         $bill = $this->billsRepository->find($bill_id);
