@@ -54,8 +54,8 @@ class BillsService
             Bills::VALUE_PART => $project['value_part'],
             Bills::AMOUNT_MONEY => convert_money($amount)
         ];
-        Bills::where(Bills::ID, $bill_id)->update($data);
-        $bill = $this->billsRepository->find($bill_id);
+//        Bills::where(Bills::ID, $bill_id)->update($data);
+        $bill = $this->billsRepository->update($bill_id, $data);
         return $bill;
     }
 
