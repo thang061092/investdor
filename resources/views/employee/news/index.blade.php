@@ -104,6 +104,7 @@
                     </div>
                     {{-- Table --}}
                     <div class="row">
+                    <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                     <p style="color: #047734"><strong>Tổng số bài viết:</strong>&nbsp;<span id="total">{{$list->total()}}</span></p>
                         <div class="col-12">
                             <div class="table-responsive">
@@ -221,6 +222,7 @@
          var formData = new FormData();
          formData.append('status', status);
          formData.append('id', id);
+         formData.append('_token', $('[name="_token"]').val());
          if (confirm("Bạn chắc chắn muốn thay đổi?")) {
             $.ajax({
                 url: "{{route('customer.employee.update_status_news')}}",

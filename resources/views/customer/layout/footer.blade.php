@@ -12,7 +12,7 @@
                         </div>
                         <div class="email">
                             Email:
-                            <a href="" title="" class="d-inline-block email">emai công ty</a>
+                            <a href="" title="" class="d-inline-block email">Email công ty</a>
                         </div>
                         <div class="d-flex flex-wrap">
                             <a href="" title="" class="d-inline-block smooth social-link fb" target="_blank" rel="noopener,noindex,nofollow">
@@ -45,13 +45,13 @@
                     <div class="col-md-7 col-12">
                         <form action="{{route('customer.question')}}" class="form_footer" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                             @csrf
-                            <input type="text" class="form-control" placeholder="{{__('profile.full_name')}}" name="name"/>
-                            @if($errors->has('name'))
-                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name') }}</p>
+                            <input type="text" class="form-control" placeholder="{{__('profile.full_name')}}" name="name_user"/>
+                            @if($errors->has('name_user'))
+                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_user') }}</p>
                             @endif
-                            <input type="text" class="form-control" placeholder="{{__('profile.email')}}" name="email"/>
-                            @if($errors->has('email'))
-                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email') }}</p>
+                            <input type="text" class="form-control" placeholder="{{__('profile.email')}}" name="email_user"/>
+                            @if($errors->has('email_user'))
+                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email_user') }}</p>
                             @endif
                             <textarea name="question" class="form-control" placeholder="{{__('profile.question')}}"></textarea>
                             @if($errors->has('question'))

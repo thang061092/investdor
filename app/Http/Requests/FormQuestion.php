@@ -26,8 +26,8 @@ class FormQuestion extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
+            'name_user' => 'required',
+            'email_user' => 'required|email',
             'question' => 'required',
         ];
     }
@@ -35,9 +35,9 @@ class FormQuestion extends FormRequest
     public function messages()
     {
         return [
-            "name.required" => __('auth.name_not_null'),
-            "email.required" => __('auth.email_not_null'),
-            "email.email" => __('auth.email_malformed'),
+            "name_user.required" => __('auth.name_not_null'),
+            "email_user.required" => __('auth.email_not_null'),
+            "email_user.email" => __('auth.email_malformed'),
             'question.required' => __('auth.question_not_null'),
         ];
 

@@ -23,6 +23,7 @@
                                 Thông tin chi tiết:
                             </div>
                             <form action="{{route('customer.employee.create_employee')}}" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+                                @csrf
                                 <div class="card-body ">
                                     <div class="row justify-content-center">
                                         <div class="col-md-7 col-sm-12">
@@ -50,7 +51,7 @@
                                                 <label for="password">{{__('profile.password')}}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="password" id="password"
-                                                        placeholder="{{__('profile.enter_password')}}" value="{{ old('password_confirmation', '') }}">
+                                                        placeholder="{{__('profile.enter_password')}}" value="{{ old('password', '') }}">
                                             </div>
                                             @if($errors->has('password'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('password') }}</p>

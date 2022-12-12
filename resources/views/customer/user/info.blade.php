@@ -13,12 +13,12 @@
                     <div
                         class="col-md-9 mb-md-0 mb-5 d-flex flex-wrap align-items-center justify-content-lg-start justify-content-center wow fadeInUp">
                         <div class="img mr-3 pr-1 mb-sm-0 mb-3">
-                            <img src='{{!empty($detail->avatar) ? asset("$detail->avatar"): asset("frontend/images/avatar_user.png")}}' class="img-fluid" alt=""/>
+                            <img src='{{!empty(session()->get("customer")["avatar"]) ? asset(session()->get("customer")["avatar"]): asset("frontend/images/avatar_user.png")}}' class="img-fluid" alt=""/>
                         </div>
                         <div class="content text-lg-left text-center">
-                            <p class="title_lg">{{$detail->full_name}}</p>
+                            <p class="title_lg">{{session()->get("customer")["full_name"]}}</p>
                             <div class="desc">
-                                {{$detail->address}}
+                                {{session()->get("customer")["address"]}}
                             </div>
                         </div>
                     </div>
@@ -61,27 +61,27 @@
                         <p class="title_lg">{{__('profile.personal_information')}}</p>
                         <p class="c-label mb-1">{{__('profile.full_name')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            {{$detail->full_name}}
+                            {{session()->get("customer")["full_name"]}}
                         </div>
                         <p class="c-label mb-1">{{__('profile.date_of_birth')}}</p>
-                        @if (!empty($detail->birthday))
+                        @if (!empty(session()->get("customer")["birthday"]))
                         <div class="c-value mb-lg-3 mb-2">{{date('d/m/Y', strtotime($detail->birthday))}}</div>
                         @else
                         <div class="c-value mb-lg-3 mb-2"></div>
                         @endif
                         <p class="c-label mb-1">{{__('profile.gender')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            @if ($detail->gender == 1)
+                            @if (session()->get("customer")["gender"] == 1)
                                 Nam
-                            @elseif ($detail->gender == 2)
+                            @elseif (session()->get("customer")["gender"] == 2)
                                 Nữ
                             @endif
                         </div>
                         <p class="c-label mb-1">{{__('profile.phone_number')}}</p>
-                        <div class="c-value mb-lg-3 mb-2">{{$detail->phone}}</div>
+                        <div class="c-value mb-lg-3 mb-2">{{session()->get("customer")["phone"]}}</div>
                         <p class="c-label mb-1">{{__('profile.email')}}</p>
                         <div class="c-value mb-lg-3 mb-2">
-                            {{$detail->email}}
+                            {{session()->get("customer")["email"]}}
                         </div>
                     </div>
                     <div class="group-box">
@@ -90,16 +90,16 @@
                         <div class="c-value mb-lg-3 mb-2">
                             @if (isset($banks))
                                 @foreach ($banks as $bank)
-                                    @if ($bank->code == $detail->bank_name)
+                                    @if ($bank->code == session()->get("customer")["bank_name"])
                                         {{$bank->name}}
                                     @endif
                                 @endforeach
                             @endif
                         </div>
                         <p class="c-label mb-1">{{__('profile.account_number')}}</p>
-                        <div class="c-value mb-lg-3 mb-2">{{$detail->account_number}}</div>
+                        <div class="c-value mb-lg-3 mb-2">{{session()->get("customer")["account_number"]}}</div>
                         <p class="c-label mb-1">{{__('profile.account_holder')}}</p>
-                        <div class="c-value">{{$detail->account_name}}</div>
+                        <div class="c-value">{{session()->get("customer")["account_name"]}}</div>
                     </div>
                 </div>
                 <div class="col-lg-7 wow fadeInUp">
@@ -128,10 +128,10 @@
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-before" class="img-cmt">
                                         <input type="file" name="img_before" accept="image/*" class="d-none"
-                                               id="img-cmt-before"
+                                               id="img-cmt-before" value="{{!empty(session()->get('customer')['front_facing_card']) ? session()->get('customer')['front_facing_card'] : $detail->front_facing_card}}"
                                                onchange="document.getElementById('img-before').src = window.URL.createObjectURL(this.files[0])"/>
-                                               @if ($detail->front_facing_card)
-                                                <img id="img-before" src='{{asset("$detail->front_facing_card")}}' class="img-fluid" alt=""/>
+                                               @if (session()->get('customer')['front_facing_card'])
+                                                <img id="img-before" src='{{asset(session()->get("customer")["front_facing_card"])}}' class="img-fluid" alt=""/>
                                                @else
                                                 <img id="img-before" src="{{asset('frontend/images/before-cmt.png')}}" class="img-fluid" alt=""/>
                                                 @endif
@@ -144,10 +144,10 @@
                                 <div class="col-md-6 mb-md-0 mb-3">
                                     <label for="img-cmt-after" class="img-cmt">
                                         <input type="file" name="img_after" accept="image/*" class="d-none"
-                                               id="img-cmt-after"
+                                               id="img-cmt-after" value="{{!empty(session()->get('customer')['card_back']) ? session()->get('customer')['card_back'] : $detail->card_back}}"
                                                onchange="document.getElementById('img-after').src = window.URL.createObjectURL(this.files[0])"/>
-                                               @if ($detail->card_back)
-                                                <img id="img-after" src='{{asset("$detail->card_back")}}' class="img-fluid" alt=""/>
+                                               @if (session()->get("customer")["card_back"])
+                                                <img id="img-after" src='{{asset(session()->get("customer")["card_back"])}}' class="img-fluid" alt=""/>
                                                 @else
                                                 <img id="img-after" src="{{asset('frontend/images/after-cmt.png')}}" class="img-fluid" alt=""/>
                                                 @endif
@@ -159,10 +159,12 @@
                                 </div>
                             </div>
                             <div class="text-right mt-xl-4 mt-3">
+                                @if (session()->get('customer')['accuracy'] != 1 && session()->get('customer')['accuracy'] != 2)
                                 <a type="button" class="btn_all reset mr-2" id="reselect">
                                 {{__('profile.reselect')}}</a>
                                 <button type="submit" class="btn_all accept" id="auth">
                                 {{__('profile.auth')}}</button>
+                                @endif
                             </div>
                         </div>
                         </form>
