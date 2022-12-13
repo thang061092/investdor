@@ -23,8 +23,7 @@
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
-                                   href="{{route('project.create')}}"
-                                   target="_blank">
+                                   href="{{route('post.create')}}">
                                     <i class="fas fa-plus"></i>&nbsp;
                                     Thêm mới
                                 </a>

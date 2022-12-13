@@ -22,4 +22,9 @@ class PostController extends BaseController
         $posts = $this->postService->get_list($request);
         return view('employee.posts.index', compact('posts'));
     }
+
+    public function create()
+    {
+        return view('employee.posts.create');
+    }
 }
