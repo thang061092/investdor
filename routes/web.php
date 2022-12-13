@@ -204,6 +204,10 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/role_employee/{id}', "Admin\UserController@role_employee")->name('role.role_employee');
             });
 
+            Route::prefix('/post')->group(function () {
+                Route::get('/list', "Admin\PostController@index")->name('post.index');
+            });
+
         });
     });
 
