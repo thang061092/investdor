@@ -207,6 +207,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/post')->group(function () {
                 Route::get('/list', "Admin\PostController@index")->name('post.index');
                 Route::get('/create', "Admin\PostController@create")->name('post.create');
+                Route::post('/store', "Admin\PostController@store")->name('post.store');
             });
 
         });

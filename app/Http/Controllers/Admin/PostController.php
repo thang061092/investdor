@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\FormCreatePost;
 use App\Http\Services\PostService;
 use Illuminate\Http\Request;
 
@@ -26,5 +27,11 @@ class PostController extends BaseController
     public function create()
     {
         return view('employee.posts.create');
+    }
+
+    public function store(FormCreatePost $request)
+    {
+        $this->postService->create($request);
+        return redirect()->route('post.index');
     }
 }
