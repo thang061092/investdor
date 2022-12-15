@@ -1,3 +1,5 @@
+@inject('post','App\Http\Services\PostService')
+@php( $posts = $post->get_post_home_page() )
 <header class="header {{!empty(session()->get('customer')) ? 'is-login':'not-login'}}">
     <div class="container">
         <div class="row align-items-center">
@@ -41,28 +43,31 @@
                         <a href="{{route('home.index')}}" title=""
                            class="{{request()->path() == '/' ? 'current-page' : ''}}">INVESTDOR</a>
                         <ul>
-                            <li>
-                                <a href="{{route('home.index')}}" title="" class="current-page">INVESTDOR</a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route('home.index')}}" title="" class="">INVESTDOR</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('customer.home_page')}}"
-                                           title="">{{__('page_name.product')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('customer.knowledge')}}"
-                                           title="">{{__('page_name.knowledge')}}</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>
-                            </li>
-                            <li>
-                                <a href="{{route('customer.knowledge')}}" title="">{{__('page_name.knowledge')}}</a>
-                            </li>
+                            @foreach($posts as $p)
+                                <li>
+                                    <a href="{{route('post.detail', ['slug'=> $p->slug])}}" title=""
+                                       class="current-page">{{session()->get('lang') == 'en' ? $p->title_en : $p->title_vi}}</a>
+                                    {{--                                <ul>--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a href="{{route('home.index')}}" title="" class="">INVESTDOR</a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a href="{{route('customer.home_page')}}"--}}
+                                    {{--                                           title="">{{__('page_name.product')}}</a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <a href="{{route('customer.knowledge')}}"--}}
+                                    {{--                                           title="">{{__('page_name.knowledge')}}</a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                </ul>--}}
+                                </li>
+                            @endforeach
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{route('customer.knowledge')}}" title="">{{__('page_name.knowledge')}}</a>--}}
+                            {{--                            </li>--}}
                         </ul>
                     </li>
                     <li>
