@@ -30,8 +30,19 @@ class PostService
             Posts::PARENT_ID => $request->parent,
             Posts::CONTENT_VI => $request->content_vi,
             Posts::CONTENT_EN => $request->content_en,
+            Posts::SLUG =>slugify($request->title_vi),
             Posts::CREATED_BY => Session::get('employee')['email'],
         ];
         return $this->postRepository->create($data);
+    }
+
+    public function get_post_home_page()
+    {
+        return $this->postRepository->getAll();
+    }
+
+    public function detail($slug)
+    {
+        return $this->postRepository->findOne([Posts::SLUG => $slug]);
     }
 }
