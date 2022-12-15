@@ -97,13 +97,14 @@ class TransactionService
             Contract::STATUS => Contract::EXPIRE,
             Contract::EXPIRE_DATE => strtotime($request->payment_date)
         ]);
+        $total = convert_money((int)$request->principal + (int)$request->money_interest);
         $transaction = $this->transactionRepository->create(
             [
                 Transaction::CONTRACT_ID => $request->id,
                 Transaction::PRINCIPAL => $request->principal,
                 Transaction::MONEY_INTEREST => $request->money_interest,
-                Transaction::TOTAL_PRINCIPAL_INTEREST => (int)$request->principal + (int)$request->money_interest,
-                Transaction::AMOUNT => (int)$request->principal + (int)$request->money_interest,
+                Transaction::TOTAL_PRINCIPAL_INTEREST => $total,
+                Transaction::AMOUNT => $total,
                 Transaction::CODE => date('Ymd') . random_string(6),
                 Transaction::DATE_PAY => strtotime($request->payment_date),
                 Transaction::INTEREST => $contract['interest'],
