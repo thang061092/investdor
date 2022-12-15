@@ -123,7 +123,6 @@ class UserController extends BaseController
     {
         $user = $this->userService->update_employee($request, $id);
         if ($user) {
-            Session::put('employee', $user);
             toastr()->success(__("message.update_success"), __('message.success'));
             return redirect()->route('customer.employee.edit_employee', ['id' => $id]);
         }

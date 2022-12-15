@@ -42,6 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 mb-lg-0 mb-4 wow fadeInUp">
+                    @if (session()->get('customer')['accuracy'] != 1)
                     <div class="ping-alert-note mb-4 pb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -57,6 +58,7 @@
                         Thông tin cá nhân của bạn chưa được xác thực, vui lòng xác
                         thực tài khoản trước khi tiến hành đầu tư.
                     </div>
+                    @endif
                     <div class="group-box mb-xl-4 mb-3">
                         <p class="title_lg">{{__('profile.personal_information')}}</p>
                         <p class="c-label mb-1">{{__('profile.full_name')}}</p>
@@ -105,6 +107,7 @@
                 <div class="col-lg-7 wow fadeInUp">
                     <div class="group-box cmt">
                         <p class="title_lg">{{__('profile.certificate_information')}}</p>
+                        @if (session()->get('customer')['accuracy'] != 1)
                         <div class="alert-note">
                             <svg class="mx-auto d-block mb-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                  viewBox="0 0 40 40" fill="none">
@@ -121,6 +124,7 @@
                             <p class="desc text-center mb-3 pb-2">
                             {{__('profile.update_certificate')}}
                             </p>
+                        @endif
                         <form action="{{route('customer.user.auth')}}" method="post" accept-charset="utf-8"
                             enctype='multipart/form-data'>
                             @csrf
