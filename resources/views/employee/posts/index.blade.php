@@ -106,8 +106,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{{$post->name_vi}}</td>
-                                                <td>{{$post->content_vi}}</td>
+                                                <td>{{$post->title_vi}}</td>
+                                                <td>{!! $post->content_vi !!}</td>
                                                 <td>
                                                     {{$post->created_at}}
                                                     <br>
