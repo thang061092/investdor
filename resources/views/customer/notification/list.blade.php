@@ -9,24 +9,26 @@
                     <h1>{{__('page_name.notification')}}</h1>
                 </div>
                 <div class="card-body">
-                    <table class="table table-responsive table-hover">
-                        <thead class="thead-light">
-                        <tr>
-                            <th style="text-align: center">Tiêu đề</th>
-                            <th style="text-align: center">Nội dung</th>
-                            <th style="text-align: center">Thời gian</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($notifications as $notification)
-                            <tr style="text-align: center">
-                                <td>{{$notification->title}}</td>
-                                <td>{!! $notification->content !!}</td>
-                                <td>{{date('d-m-Y H:i:s', strtotime($notification->created_at))}}</td>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                            <tr>
+                                <th style="text-align: center">Tiêu đề</th>
+                                <th style="text-align: center">Nội dung</th>
+                                <th style="text-align: center">Thời gian</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach($notifications as $notification)
+                                <tr style="text-align: center;height:100px">
+                                    <td>{{$notification->title}}</td>
+                                    <td>{!! $notification->content !!}</td>
+                                    <td>{{date('d-m-Y H:i:s', strtotime($notification->created_at))}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
