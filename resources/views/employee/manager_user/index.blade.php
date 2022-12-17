@@ -140,6 +140,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$item->created_at}}</td>
+                                                @if ($item->status != 'new')
                                                 <td>
                                                     <label class=" form-switch toggle-status"
                                                            data-id="{{ $item['id'] }} ">
@@ -154,6 +155,9 @@
                                                         <label></label>
                                                     @endif
                                                 </td>
+                                                @else 
+                                                <td class=""><span style="background-color:silver">Chưa được kích hoạt</span></td>
+                                                @endif
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="dropdownMenuButton1" data-bs-toggle="dropdown">
@@ -166,11 +170,13 @@
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết tài khoản
                                                             </a>
+                                                            @if ($item->status != 'new')
                                                             <a class="dropdown-item" target="_blank"
                                                                href='{{route("customer.customer.edit_customer",["id" => $item->id])}}'>
                                                                <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật tài khoản
                                                             </a>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </td>

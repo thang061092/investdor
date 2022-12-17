@@ -42,25 +42,23 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-7 col-12">
-                        <form action="{{route('customer.question')}}" class="form_footer" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-                            @csrf
-                            <input type="text" class="form-control" placeholder="{{__('profile.full_name')}}" name="name_user"/>
-                            @if($errors->has('name_user'))
-                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_user') }}</p>
-                            @endif
-                            <input type="text" class="form-control" placeholder="{{__('profile.email')}}" name="email_user"/>
-                            @if($errors->has('email_user'))
-                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email_user') }}</p>
-                            @endif
-                            <textarea name="question" class="form-control" placeholder="{{__('profile.question')}}"></textarea>
-                            @if($errors->has('question'))
-                                <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('question') }}</p>
-                            @endif
-                            <button class="btn_all lg bg-white" type="submit" name="submit">
-                                Gửi phản hồi
-                            </button>
-                        </form>
+                    <div class="col-md-7 col-12 form_footer">
+                        <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
+                        <input type="text" class="form-control" placeholder="{{__('profile.full_name')}}" name="name_user"/>
+                        @if($errors->has('name_user'))
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_user') }}</p>
+                        @endif
+                        <input type="text" class="form-control" placeholder="{{__('profile.email')}}" name="email_user"/>
+                        @if($errors->has('email_user'))
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('email_user') }}</p>
+                        @endif
+                        <textarea name="question" class="form-control" placeholder="{{__('profile.question')}}"></textarea>
+                        @if($errors->has('question'))
+                            <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('question') }}</p>
+                        @endif
+                        <button class="btn_all lg bg-white" type="" name="submit" id="send_question">
+                            Gửi phản hồi
+                        </button>
                     </div>
                 </div>
             </div>
@@ -134,3 +132,82 @@
         </div>
     </div>
 </footer>
+@Push('js')
+<script>
+    $(document).ready(function() {
+        $("#send_question").on('click', function() {
+            var email = $('[name="email_user"]').val();
+            var name = $('[name="name_user"]').val();
+            var content = $('[name="question"]').val();
+            var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+            if (name == "") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: "{{__('auth.name_not_null')}}",
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+                return;
+            } else if (email == "") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: "__('auth.email_not_null')",
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+                return;
+            } else if(!pattern.test(email)) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: "{{__('auth.email_malformed')}}",
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+                return;
+            } else if (content == "") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: "{{__('auth.question_not_null')}}",
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+                return;
+            } else {
+                let formData = new FormData();
+                formData.append('_token', $('[name="_token"]').val());
+                formData.append('name_user', $('[name="name_user"]').val())
+                formData.append('email_user', $('[name="email_user"]').val())
+                formData.append('question', $('[name="question"]').val())
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('customer.question')}}",
+                    datatype: "JSON",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.status == 200) {
+                            Swal.fire(
+                                "{{__('message.success')}}",
+                                "{{__('message.send_question_success')}}",
+                                'success'
+                            )
+                        } else {
+                            Swal.fire(
+                                "{{__('message.fail')}}",
+                                "{{__('message.fail')}}",
+                                'error'
+                            )
+                        }
+                    }
+                });
+            }
+
+        })
+    });
+</script>
+@endpush
