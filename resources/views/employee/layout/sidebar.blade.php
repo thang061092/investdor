@@ -1,5 +1,6 @@
-{{--@inject('sidebar','App\Service\Sidebar')--}}
-{{--@php( $menu = $sidebar->loadMenu() )--}}
+@inject('sidebar','App\Http\Services\SideBarService')
+@php( $sidebar = $sidebar->sidebar() )
+
 <aside class="navbar navbar-vertical navbar-expand-lg sidebar">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">

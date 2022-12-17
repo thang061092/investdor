@@ -20,6 +20,7 @@ use App\Http\Requests\FormCategory;
 use App\Http\Requests\FormUpdateEmployee;
 use App\Http\Services\BankService;
 use App\Http\Requests\FormAnswer;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class UserController extends BaseController
 {
@@ -75,7 +76,8 @@ class UserController extends BaseController
                 $error = __('auth.login_fail');
             }
         }
-        return view('employee.auth.login', compact('error'));
+        Toastr::error($error);
+        return redirect(route('admin.login'))->withInput();
     }
 
     public function login(Request $request)
