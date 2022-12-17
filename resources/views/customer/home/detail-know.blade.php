@@ -1,6 +1,7 @@
 @extends("customer.layout.master")
-@section('page_name', __('page_name.knowledge'))
+@section('page_name', session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $knowledge['title_en'] : $knowledge['title'])
 @section("content")
+    @include('customer.home.banner')
     <div class="page" style="padding-top: 50px">
         <div class="container">
             <div class="card">

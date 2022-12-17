@@ -30,7 +30,8 @@ class PostService
             Posts::PARENT_ID => $request->parent,
             Posts::CONTENT_VI => $request->content_vi,
             Posts::CONTENT_EN => $request->content_en,
-            Posts::SLUG =>slugify($request->title_vi),
+            Posts::SLUG => slugify($request->title_vi),
+            Posts::STATUS => 'active',
             Posts::CREATED_BY => Session::get('employee')['email'],
         ];
         return $this->postRepository->create($data);
