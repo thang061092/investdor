@@ -19,4 +19,11 @@ class PostRepository extends BaseRepository
         $model = $this->model;
         return $model->paginate(20);
     }
+
+    public function get_parent()
+    {
+        return $this->model
+            ->whereNull(Posts::PARENT_ID)
+            ->get();
+    }
 }

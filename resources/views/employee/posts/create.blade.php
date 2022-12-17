@@ -40,7 +40,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('title_vi'))is-invalid @endif"
                                                        name="title_vi"
-                                                       id="title_vi" placeholder="Nhập tiêu đề" value="{{old('title_vi')}}">
+                                                       id="title_vi" placeholder="Nhập tiêu đề"
+                                                       value="{{old('title_vi')}}">
                                                 @if($errors->has('title_vi'))
                                                     <p class="text-danger">{{ $errors->first('title_vi') }}</p>
                                                 @endif
@@ -53,7 +54,8 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('title_en'))is-invalid @endif"
                                                        name="title_en"
-                                                       id="title_en" placeholder="Nhập tiêu đề" value="{{old('title_en')}}">
+                                                       id="title_en" placeholder="Nhập tiêu đề"
+                                                       value="{{old('title_en')}}">
                                                 @if($errors->has('title_en'))
                                                     <p class="text-danger">{{ $errors->first('title_en') }}</p>
                                                 @endif
@@ -68,6 +70,9 @@
                                                         name="parent"
                                                         id="parent">
                                                     <option value="">Chọn</option>
+                                                    @foreach($parents as $parent)
+                                                        <option value="{{$parent->id}}">{{$parent->title_vi}}</option>
+                                                    @endforeach
                                                 </select>
                                                 @if($errors->has('parent'))
                                                     <p class="text-danger">{{ $errors->first('parent') }}</p>
