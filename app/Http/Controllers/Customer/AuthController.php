@@ -51,7 +51,8 @@ class AuthController extends BaseController
                 $error = __('auth.login_fail');
             }
         }
-        return view('customer.auth.login', compact('error'));
+        Toastr::error($error);
+        return redirect(route('customer.login'))->withInput();
     }
 
     public function register_submit(FormRegister $request)
