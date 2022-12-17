@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class FormUpdateProfile extends FormRequest
 {
@@ -30,7 +31,8 @@ class FormUpdateProfile extends FormRequest
             'full_name' => 'required',
             'birthday' => 'required',
             'gender' => 'required',
-            'phone_number' => 'required|numeric|digits:10|unique:users,phone',
+            'phone_number' => 'required|numeric|digits:10',
+            'phone_number'=>['unique:users,phone,'.Rule::unique('users')->ignore($this->user['id'])],
             'bank_name' => 'required',
             'account_number' => 'required|numeric',
             'account_name' => 'required',
@@ -66,6 +68,7 @@ class FormUpdateProfile extends FormRequest
             "identity.required" => __('auth.identity_not_null'),
             "identity.numeric" => __('auth.identity_not_format'),
             "identity.regex" => __('auth.identity_max'),
+            // "identity.unique" => __('auth.identity_unique'),
             "date_identity.required" => __('auth.date_identity_not_null'),
             "address_identity.required" => __('auth.address_identity_not_null'),
             'specific_address.required' => __('auth.specific_address_not_null'),
