@@ -181,10 +181,8 @@ class UserController extends BaseController
     {
         $create = $this->questionService->create($request);
         if ($create) {
-            toastr()->success(__("message.send_question_success"), __('message.success'));
-            return redirect()->route('customer.home_page');
+            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $create);
         }
-        toastr()->error(__("message.send_question_fail"), __('message.fail'));
-        return redirect()->route("customer.home_page");
+        return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, __('message.fail'), []);
     }
 }
