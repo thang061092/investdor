@@ -100,12 +100,13 @@ class UserController extends BaseController
         } elseif ($main_tab == 'profile') {
             if ($action == 'update') {
                 $user = session()->get('customer');
+                $detail = $this->userService->find($user['id']);
                 $allBankName = $this->bankService->getAllBank();
                 $province = $this->cityService->get_province();
                 $district = $this->districtService->get_district();
                 $ward = $this->wardService->get_ward();
                 return view('customer.user.profile', [
-                    'detail' => $user,
+                    'detail' => $detail,
                     'banks' => $allBankName,
                     'province' => $province,
                     'district' => $district,
@@ -113,12 +114,13 @@ class UserController extends BaseController
                 ]);
             } else {
                 $user = session()->get('customer');
+                $detail = $this->userService->find($user['id']);
                 $allBankName = $this->bankService->getAllBank();
                 $province = $this->cityService->get_province();
                 $district = $this->districtService->get_district();
                 $ward = $this->wardService->get_ward();
                 return view('customer.user.info', [
-                    'detail' => $user,
+                    'detail' => $detail,
                     'banks' => $allBankName,
                     'province' => $province,
                     'district' => $district,

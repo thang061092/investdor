@@ -44,7 +44,7 @@
                            class="{{request()->path() == '/' ? 'current-page' : ''}}">INVESTDOR</a>
                         <ul>
                             @foreach($posts as $p)
-                                <li>
+                            <li>
                                     <a href="{{route('post.detail', ['slug'=> $p->slug])}}" title=""
                                        class="current-page">{{session()->get('lang') == 'en' ? $p->title_en : $p->title_vi}}</a>
                                     {{--                                <ul>--}}
@@ -60,7 +60,7 @@
                                     {{--                                           title="">{{__('page_name.knowledge')}}</a>--}}
                                     {{--                                    </li>--}}
                                     {{--                                </ul>--}}
-                                </li>
+                            </li>
                             @endforeach
                             {{--                            <li>--}}
                             {{--                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>--}}
@@ -192,20 +192,20 @@
                             <div class="wrapper-box content" style="display:none;">
                                 <div class="box">
                                     @if (!empty(session()->get('customer')))
-                                        @if ($detail['accuracy'] == 0)
+                                        @if (session()->get('customer')['accuracy'] == 0)
                                             <p class="alert-confirmed">
                                                 {{__('profile.yet_auth')}}
                                             </p>
-                                        @elseif ($detail['accuracy'] == 1)
+                                        @elseif (session()->get('customer')['accuracy'] == 1)
                                             <p class="alert alert-success">
                                                 {{__('profile.success_auth')}}
                                             </p>
-                                        @elseif ($detail['accuracy'] == 2)
+                                        @elseif (session()->get('customer')['accuracy'] == 2)
                                             <p class="alert alert-warning">
                                                 {{__('profile.wait_auth')}}
                                             </p>
                                         @else
-                                            <p class="alert alert-danger">
+                                            <p class="alert alert-success=-danger">
                                                 {{__('profile.fail_auth')}}
                                             </p>
                                         @endif
