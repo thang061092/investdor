@@ -55,7 +55,7 @@
                                 <label for="name_project"
                                        class="name_group label">{{__('project.name_project')}}</label>
                                 <div class="group position-relative">
-                                    <input type="text" placeholder="Nhập tên dự án" class="form-control"
+                                    <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"
                                            name="name_project" value="{{request()->get('name_project')}}"/>
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

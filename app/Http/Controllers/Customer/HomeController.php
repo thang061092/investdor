@@ -38,7 +38,7 @@ class HomeController extends BaseController
 
     public function index(Request $request)
     {
-        $projects = $this->realEstateProjectService->list_project_investor($request);
+        $projects = $this->realEstateProjectService->list_project_index($request);
         return view('customer.home.index', compact('projects'));
     }
 

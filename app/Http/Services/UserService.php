@@ -17,14 +17,17 @@ class UserService
     protected $userRepository;
     protected $uploadService;
     protected $mailService;
+    protected $notificationService;
 
     public function __construct(UserRepository $userRepository,
                                 UploadService $uploadService,
-                                MailService $mailService)
+                                MailService $mailService,
+                                NotificationService $notificationService)
     {
         $this->userRepository = $userRepository;
         $this->uploadService = $uploadService;
         $this->mailService = $mailService;
+        $this->notificationService = $notificationService;
     }
 
     public function find($id)
@@ -190,8 +193,8 @@ class UserService
         }
         $remember_me = $request->remember;
         if ($remember_me == "on") {
-            $minutes = 3600*30;
-            $hash = $user->id.$user->email.$user->password;
+            $minutes = 3600 * 30;
+            $hash = $user->id . $user->email . $user->password;
             $cookieValue = Hash::make($hash);
             cookie('admin_login_remember', $cookieValue, $minutes);
             DB::table('users')
@@ -395,6 +398,7 @@ class UserService
                 Users::LAST_LOGIN => Carbon::now(),
             ];
             $user_new = $this->userRepository->create($data);
+            $this->notificationService->push_welcome($user_new);
             $data['user'] = $user_new;
         }
         return $data;
@@ -439,6 +443,7 @@ class UserService
             Users::OTP => null,
             Users::EXPIRE_OTP => null
         ]);
+        $this->notificationService->push_welcome($user);
         return $user;
     }
 
@@ -544,7 +549,8 @@ class UserService
 
     }
 
-    public function change_password_employee($request, $id) {
+    public function change_password_employee($request, $id)
+    {
         $data = [
             Users::PASSWORD => Hash::make($request->new_password) ?? "",
         ];
