@@ -17,4 +17,14 @@ class Posts extends BaseModel
     const TYPE = 'type';
     const STATUS = 'status';
     const LEVEL = 'level';
+
+    public function post()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
 }
