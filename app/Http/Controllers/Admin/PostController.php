@@ -26,7 +26,8 @@ class PostController extends BaseController
 
     public function create()
     {
-        return view('employee.posts.create');
+        $parents = $this->postService->get_parent();
+        return view('employee.posts.create', compact('parents'));
     }
 
     public function store(FormCreatePost $request)

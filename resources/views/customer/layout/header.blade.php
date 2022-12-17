@@ -1,5 +1,5 @@
 @inject('post','App\Http\Services\PostService')
-@php( $posts = $post->get_post_home_page() )
+@php( $posts = $post->get_parent() )
 <header class="header {{!empty(session()->get('customer')) ? 'is-login':'not-login'}}">
     <div class="container">
         <div class="row align-items-center">
@@ -44,30 +44,22 @@
                            class="{{request()->path() == '/' ? 'current-page' : ''}}">INVESTDOR</a>
                         <ul>
                             @foreach($posts as $p)
-                            <li>
+                                <li>
                                     <a href="{{route('post.detail', ['slug'=> $p->slug])}}" title=""
                                        class="current-page">{{session()->get('lang') == 'en' ? $p->title_en : $p->title_vi}}</a>
-                                    {{--                                <ul>--}}
-                                    {{--                                    <li>--}}
-                                    {{--                                        <a href="{{route('home.index')}}" title="" class="">INVESTDOR</a>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li>--}}
-                                    {{--                                        <a href="{{route('customer.home_page')}}"--}}
-                                    {{--                                           title="">{{__('page_name.product')}}</a>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li>--}}
-                                    {{--                                        <a href="{{route('customer.knowledge')}}"--}}
-                                    {{--                                           title="">{{__('page_name.knowledge')}}</a>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                </ul>--}}
-                            </li>
+                                    <ul>
+                                        @if(count($p->posts) > 0)
+                                            @foreach($p->posts as $ps)
+                                                <li>
+                                                    <a href="{{route('post.detail', ['slug'=> $ps->slug])}}"
+                                                       title=""
+                                                       class="">{{session()->get('lang') == 'en' ? $ps->title_en : $ps->title_vi}}</a>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </li>
                             @endforeach
-                            {{--                            <li>--}}
-                            {{--                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>--}}
-                            {{--                            </li>--}}
-                            {{--                            <li>--}}
-                            {{--                                <a href="{{route('customer.knowledge')}}" title="">{{__('page_name.knowledge')}}</a>--}}
-                            {{--                            </li>--}}
                         </ul>
                     </li>
                     <li>

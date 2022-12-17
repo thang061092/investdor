@@ -46,4 +46,9 @@ class PostService
     {
         return $this->postRepository->findOne([Posts::SLUG => $slug]);
     }
+
+    public function get_parent()
+    {
+        return $this->postRepository->get_parent();
+    }
 }

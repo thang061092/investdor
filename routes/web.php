@@ -61,6 +61,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/detail-project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
     Route::get('/detail-knowledge/{slug}', "Customer\HomeController@detail_knowledge")->name('customer.detail_knowledge');
     Route::get('/post/{slug}', "Customer\PostController@detail")->name('post.detail');
+    Route::post('/question', 'Customer\UserController@question')->name('customer.question');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -167,7 +168,6 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
                 Route::post('/auth/{id}', 'Admin\UserController@auth')->name('customer.customer.auth');
                 Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
-                Route::post('/question', 'Customer\UserController@question')->name('customer.question');
             });
 
             Route::prefix('/transaction')->group(function () {
