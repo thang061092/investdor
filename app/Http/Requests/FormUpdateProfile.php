@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class FormUpdateProfile extends FormRequest
 {
@@ -17,7 +18,11 @@ class FormUpdateProfile extends FormRequest
     {
         return true;
     }
-
+    protected $id;
+    public function __construct(Request $request)
+    {
+        $this->id = (integer) $request->session()->get('customer')['id'];
+    }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,15 +35,15 @@ class FormUpdateProfile extends FormRequest
             'full_name' => 'required',
             'birthday' => 'required',
             'gender' => 'required',
-            'phone_number' => 'required|numeric|digits:10|unique:users,phone',
+            'phone_number' => 'required|numeric|digits:10|unique:users,phone,'.$this->id,
             'bank_name' => 'required',
             'account_number' => 'required|numeric',
             'account_name' => 'required',
             'province' => 'required',
             'district' => 'required',
             'ward' => 'required',
-            'identity' => 'required|numeric',
-            // 'identity' => 'regex:/(^\d[9,12]$)/',
+            'identity' => 'required|numeric|unique:users,identity,'.$this->id,
+            'identity' => 'regex:/^\d{9}(?:\d{3})?$/',
             "date_identity" => "required",
             "address_identity" => "required",
             'specific_address' => "required",
@@ -66,7 +71,8 @@ class FormUpdateProfile extends FormRequest
             "ward.required" => __('auth.ward_not_null'),
             "identity.required" => __('auth.identity_not_null'),
             "identity.numeric" => __('auth.identity_not_format'),
-            // "identity.regex" => __('auth.identity_max'),
+            "identity.unique" => __('auth.identity_unique'),
+            "identity.regex" => __('auth.identity_max'),
             "date_identity.required" => __('auth.date_identity_not_null'),
             "address_identity.required" => __('auth.address_identity_not_null'),
             'specific_address.required' => __('auth.specific_address_not_null'),

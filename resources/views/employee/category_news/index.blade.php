@@ -42,11 +42,11 @@
                                                         <div style="padding-left: 20px;">
                                                             <label>Từ ngày</label>
                                                             <input type="date" name="start_date" class="form-control"
-                                                                value=""
+                                                                value="{{request()->get('start_date')}}"
                                                                 autocomplete="off">
                                                             <label>Đến ngày</label>
                                                             <input type="date" name="end_date" class="form-control"
-                                                                value=""
+                                                                value="{{request()->get('end_date')}}"
                                                                 autocomplete="off">
                                                         </div>
                                                 </div>
@@ -55,7 +55,7 @@
                                                     <label class="form-label"><strong>Tên danh mục</strong></label>
                                                     <div>
                                                         <input type="text" name="name_search" class="form-control"
-                                                               value=""
+                                                               value="{{request()->get('name_search')}}"
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
@@ -63,7 +63,7 @@
                                                     <label class="form-label"><strong>Người tạo</strong></label>
                                                     <div>
                                                         <input type="text" name="email_search" class="form-control"
-                                                               value=""
+                                                               value="{{request()->get('email_search')}}"
                                                                autocomplete="off">
                                                     </div>
                                                 </div>
@@ -72,8 +72,8 @@
                                                     <div>
                                                         <select class="form-control" name="status_search">
                                                             <option value="">--Chọn trạng thái--</option>
-                                                            <option value="active">Active</option>
-                                                            <option value="deactive">Deactive</option>
+                                                            <option value="active" {{request()->get('status_search') == 'active' ? 'selected' : ''}}>Active</option>
+                                                            <option value="deactive" {{request()->get('status_search') == 'deactive' ? 'selected' : ''}}>Deactive</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -233,16 +233,6 @@
     })
 })
 </script>
-<script type="text/javascript">
-    var dataSearch = JSON.parse('{!! json_encode($dataSearch) !!}');
-    console.log(dataSearch);
-    for (const property in dataSearch) {
-      if (dataSearch[property] == null) {
-        continue;
-      }
-      console.log(property, ' ', dataSearch[property]);
-      $('#search-form').find("[name='" + property + "']").val(dataSearch[property]);
-    }
-</script>
+
 @endsection
 

@@ -187,15 +187,15 @@
                             <div class="wrapper-box content" style="display:none;">
                                 <div class="box">
                                     @if (!empty(session()->get('customer')))
-                                        @if (session()->get('customer')['accuracy'] == 0)
+                                        @if ($detail['accuracy'] == 0)
                                             <p class="alert-confirmed">
                                                 {{__('profile.yet_auth')}}
                                             </p>
-                                        @elseif (session()->get('customer')['accuracy'] == 1)
+                                        @elseif ($detail['accuracy'] == 1)
                                             <p class="alert alert-success">
                                                 {{__('profile.success_auth')}}
                                             </p>
-                                        @elseif (session()->get('customer')['accuracy'] == 2)
+                                        @elseif ($detail['accuracy'] == 2)
                                             <p class="alert alert-warning">
                                                 {{__('profile.wait_auth')}}
                                             </p>

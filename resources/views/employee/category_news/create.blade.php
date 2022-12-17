@@ -30,7 +30,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_vi" id="name_category_vi"
-                                                        placeholder="{{__('profile.name_category_vi')}}" >
+                                                        placeholder="{{__('profile.name_category_vi')}}" value="{{old('name_category_vi', '')}}">
                                             </div>
                                             @if($errors->has('name_category_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
@@ -40,7 +40,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_en" id="name_category_en"
-                                                        placeholder="{{__('profile.name_category_en')}}" >
+                                                        placeholder="{{__('profile.name_category_en')}}" value="{{old('name_category_en', '')}}">
                                             </div>
                                             @if($errors->has('name_category_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
@@ -51,7 +51,7 @@
                                                 <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="desc_category_vi" id="desc_category_vi"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category_vi')}}"></textarea>
+                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category_vi')}}">{{old('desc_category_vi','')}}</textarea>
                                             </div>
                                             @if($errors->has('desc_category_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
@@ -62,7 +62,7 @@
                                                 <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.desc_category_en')}}"></textarea>
+                                                    rows="4" cols="50" placeholder="{{__('profile.desc_category_en')}}">{{old('desc_category_en','')}}</textarea>
                                             </div>
                                             @if($errors->has('desc_category_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>
