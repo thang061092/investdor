@@ -50,7 +50,7 @@
                                                                 autocomplete="off">
                                                         </div>
                                                 </div>
-                                                
+
                                                 <div class="form-group mb-3">
                                                     <label class="form-label"><strong>Tên danh mục</strong></label>
                                                     <div>
@@ -167,7 +167,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                   
+
                                     </tbody>
                                 </table>
                             </div>
@@ -233,6 +233,5 @@
     })
 })
 </script>
-
 @endsection
 

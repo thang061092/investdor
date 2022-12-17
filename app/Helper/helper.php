@@ -249,3 +249,9 @@ if (!function_exists('color_status_transaction')) {
         return $result;
     }
 }
+
+function convert_money($money)
+{
+    $new = "$money";
+    return $new;
+}

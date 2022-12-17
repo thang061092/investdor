@@ -59,6 +59,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/home-page', "Customer\HomeController@home_page")->name('customer.home_page');
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
     Route::get('/detail-project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
+    Route::get('/detail-knowledge/{slug}', "Customer\HomeController@detail_knowledge")->name('customer.detail_knowledge');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -201,6 +202,11 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/create', "Admin\RoleController@create")->name('role.create');
                 Route::post('/get_action_add_user', "Admin\RoleController@get_action_add_user")->name('role.get_action_add_user');
                 Route::get('/role_employee/{id}', "Admin\UserController@role_employee")->name('role.role_employee');
+            });
+
+            Route::prefix('/post')->group(function () {
+                Route::get('/list', "Admin\PostController@index")->name('post.index');
+                Route::get('/create', "Admin\PostController@create")->name('post.create');
             });
 
         });

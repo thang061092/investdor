@@ -32,13 +32,14 @@ class BillsService
 
     public function create_step1($request, $project)
     {
-        $bill = $this->billsRepository->create([
+        $data = [
             Bills::USER_ID => Session::get('customer')['id'],
             Bills::REAL_ESTATE_PROJECT_ID => $request->project_id,
             Bills::CREATED_BY => Session::get('customer')['email'],
             Bills::STATUS => Bills::NEW,
-            Bills::ORDER_CODE => date('Ymd') . random_string(6)
-        ]);
+            Bills::ORDER_CODE => date('Ymd') . random_string(6),
+        ];
+        $bill = $this->billsRepository->create($data);
         $checksum = Authorization::generateToken(['project_id' => $project['id'], 'bill_id' => $bill['id'], 'time' => Carbon::now()->addMinutes(5)->unix()]);
         $bill_new = $this->billsRepository->update($bill['id'], [Bills::CHECKSUM => $checksum]);
         return $bill_new;
@@ -46,12 +47,15 @@ class BillsService
 
     public function create_step2($request, $project, $bill_id)
     {
-        $bill = $this->billsRepository->update($bill_id, [
+        $part = $request->part_investment;
+        $amount = $project['value_part'] * $part;
+        $data = [
             Bills::PART => $request->part_investment,
             Bills::VALUE_PART => $project['value_part'],
-        ]);
-        $amount = 5000000000;
-        $this->billsRepository->update($bill['id'], [Bills::AMOUNT_MONEY => $amount]);
+            Bills::AMOUNT_MONEY => convert_money($amount)
+        ];
+//        Bills::where(Bills::ID, $bill_id)->update($data);
+        $bill = $this->billsRepository->update($bill_id, $data);
         return $bill;
     }
 

@@ -27,7 +27,7 @@
             </div>
             <form action="{{route('customer.user.update_profile')}}" method="post" accept-charset="utf-8"
                   enctype='multipart/form-data'>
-                @csrf
+                <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="col-lg-4 mb-lg-0 mb-2 wow fadeInUp">
                         <p class="title_lg">{{__('profile.photo')}}</p>
@@ -50,7 +50,7 @@
                             {{__('profile.full_name')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="full_name" placeholder="Họ tên của bạn" class="form-control mb-3"
-                               value="{{session()->get('customer')['full_name']}}"/>
+                               value="{{!empty(old('full_name')) ? old('full_name') : session()->get('customer')['full_name']}}"/>
                         @if($errors->has('full_name'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('full_name') }}</p>
                         @endif
@@ -58,7 +58,7 @@
                             {{__('profile.date_of_birth')}}<span class="text-danger">*</span>
                         </label>
                         <input type="date" name="birthday" placeholder="Chọn ngày" class="form-control mb-3"
-                               value="{{session()->get('customer')['birthday']}}"/>
+                               value="{{!empty(old('birthday')) ? old('birthday') : session()->get('customer')['birthday']}}"/>
                         @if($errors->has('birthday'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('birthday') }}</p>
                         @endif
@@ -69,11 +69,13 @@
                             <label class="gender-choose" for="male">
 
                                 @php
-                                    if($detail->gender == 1) {
+                                    if(old('gender') == 1) {
                                         $check = " checked";
                                     }
-                                    else
+                                    else if ($detail->gender == 1)
                                     {
+                                        $check = " checked";
+                                    } else {
                                         $check = "";
                                     }
                                 @endphp
@@ -82,7 +84,9 @@
                             </label>
                             <label class="gender-choose" for="female">
                                 @php
-                                    if($detail->gender == 2) {
+                                    if (old('gender') == 2) {
+                                        $check = " checked";
+                                    }else if($detail->gender == 2) {
                                         $check = " checked";
                                     }
                                     else
@@ -112,7 +116,7 @@
                         </label>
                         <input type="number" name="identity" placeholder="{{__('profile.identity')}}"
                             oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
-                               class="form-control mb-3" value="{{session()->get('customer')['identity']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('identity')) ? old('identity') : session()->get('customer')['identity']}}"/>
                         @if($errors->has('identity'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('identity') }}</p>
                         @endif
@@ -120,7 +124,7 @@
                             {{__('profile.date_identity')}}<span class="text-danger">*</span>
                         </label>
                         <input type="date" name="date_identity" placeholder="{{__('profile.date_identity')}}"
-                               class="form-control mb-3" value="{{session()->get('customer')['date_identity']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('date_identity')) ? old('date_identity') : session()->get('customer')['date_identity']}}"/>
                         @if($errors->has('date_identity'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('date_identity') }}</p>
@@ -129,7 +133,7 @@
                             {{__('profile.address_identity')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="address_identity" placeholder="{{__('profile.address_identity')}}"
-                               class="form-control mb-3" value="{{session()->get('customer')['address_identity']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('address_identity')) ? old('address_identity') : session()->get('customer')['address_identity']}}"/>
                         @if($errors->has('address_identity'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('address_identity') }}</p>
@@ -179,7 +183,7 @@
                         </label>
                         <input type="number" name="account_number" placeholder="Nhập số tài khoản"
                         oninput="validity.valid||(value='')" onkeydown="return event.keyCode !== 69"
-                               class="form-control mb-3" value="{{session()->get('customer')['account_number']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('account_number')) ? old('account_number') : session()->get('customer')['account_number']}}"/>
                         @if($errors->has('account_number'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('account_number') }}</p>
@@ -188,7 +192,7 @@
                             {{__('profile.account_holder')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="account_name" placeholder="Nhập tên chủ tài khoản"
-                               class="form-control mb-3" value="{{session()->get('customer')['account_name']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('account_name')) ? old('account_name') : session()->get('customer')['account_name']}}"/>
                         @if($errors->has('account_name'))
                             <p class="text-danger"
                                style="padding-bottom: 10px;">{{ $errors->first('account_name') }}</p>
@@ -268,7 +272,7 @@
                             {{__('profile.specific_address')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
-                               class="form-control mb-3" value="{{session()->get('customer')['address']}}"/>
+                               class="form-control mb-3" value="{{!empty(old('specific_address')) ? old('specific_address') : session()->get('customer')['address']}}"/>
                         @if($errors->has('specific_address'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('specific_address') }}</p>
                         @endif
@@ -307,12 +311,16 @@
         $(document).ready(function () {
             $("#city").on('change', function () {
                 let province = $(this).val();
-                let data = {code: province};
+                let formData = new FormData();
+                formData.append('_token', $('[name="_token"]').val());
+                formData.append('code', province);
                 $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.district')}}",
                     datatype: "JSON",
-                    data: data,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
                         $('#district').html('');
                         $('#ward').html('');
@@ -329,12 +337,16 @@
 
             $("#district").on('change', function () {
                 let district = $(this).val();
-                let data = {code: district};
+                let formData = new FormData();
+                formData.append('_token', $('[name="_token"]').val());
+                formData.append('code', district);
                 $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.ward')}}",
                     datatype: "JSON",
-                    data: data,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
                         $('#ward').html('');
                         if (data.status == 200) {

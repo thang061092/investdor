@@ -23,7 +23,7 @@
                                 Thông tin chi tiết:
                             </div>
                             <form action='{{route("customer.employee.save_category")}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-                                @csrf 
+                                @csrf
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
@@ -92,13 +92,22 @@
     </div>
 @endsection
 @section('js')
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.0/tinymce.min.js'></script>
-<script type="text/javascript">
-tinymce.init({
-    selector: '#desc_category_vi',
-});
-tinymce.init({
-    selector: '#desc_category_en',
-});
+<script>
+    CKEDITOR.replace('desc_category_vi', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+    });
+    CKEDITOR.replace('desc_category_en', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+    });
 </script>
 @endsection

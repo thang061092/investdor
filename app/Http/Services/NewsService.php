@@ -23,13 +23,13 @@ class NewsService
         $this->uploadService = $uploadService;
     }
 
-    public function get_all() 
-    {   
+    public function get_all()
+    {
         return $this->newsRepository->getAll();
     }
 
-    public function filter($request) 
-    {   
+    public function filter($request)
+    {
         $search = $request->all();
         return $this->newsRepository->get_all($search);
     }
@@ -39,7 +39,7 @@ class NewsService
         return $this->newsRepository->find($id);
     }
 
-    public function create($request) 
+    public function create($request)
     {
         if ($request->img_news) {
             $image = $this->uploadService->upload_param($request->img_news);
@@ -52,8 +52,8 @@ class NewsService
             News::IMAGE => $image ?? "",
             News::CONTENT => $request->content_vi ?? "",
             News::CONTENT_EN => $request->content_en ?? "",
-            News::STATUS    => News::ACTIVE,
-            News::CREATED_BY    => session()->get('employee')['email'],
+            News::STATUS => News::ACTIVE,
+            News::CREATED_BY => session()->get('employee')['email'],
         ];
         $create = $this->newsRepository->create($data);
         if ($create) {
@@ -62,7 +62,7 @@ class NewsService
         return false;
     }
 
-    public function update_status($id) 
+    public function update_status($id)
     {
         $detail = $this->newsRepository->find($id);
         if ($detail[News::STATUS] == News::ACTIVE) {
@@ -78,7 +78,7 @@ class NewsService
         return $status;
     }
 
-    public function update_news($request, $id) 
+    public function update_news($request, $id)
     {
         $detail = $this->newsRepository->find($id);
         if ($request->img_news) {
@@ -93,9 +93,14 @@ class NewsService
             News::CONTENT => $request->content_vi ?? "",
             News::CONTENT_EN => $request->content_en ?? "",
             News::IMAGE => !empty($request->img_news) ? $image : $detail['image'],
-            News::UPDATED_BY    => session()->get('employee')['email'],
+            News::UPDATED_BY => session()->get('employee')['email'],
         ];
         $news = $this->newsRepository->update($id, $data);
         return $news;
+    }
+
+    public function detail_knowledge($request)
+    {
+        return $this->newsRepository->findOne([News::SLUG => $request->slug]);
     }
 }

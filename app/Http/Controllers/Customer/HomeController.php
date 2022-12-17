@@ -61,4 +61,10 @@ class HomeController extends BaseController
         $project = $this->realEstateProjectService->detail_project($lug);
         return view('customer.home.detail-project', compact('project'));
     }
+
+    public function detail_knowledge(Request $request)
+    {
+        $knowledge = $this->newsService->detail_knowledge($request);
+        return view('customer.home.detail-know', compact('knowledge'));
+    }
 }

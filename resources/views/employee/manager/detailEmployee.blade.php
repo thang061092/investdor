@@ -24,6 +24,7 @@
                             </div>
                                 <div class="card-body ">
                                     <div class="row">
+                                    <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
                                                 <label for="full_name">{{__('profile.full_name')}}<span class="text-danger">*</span></label>
@@ -154,10 +155,14 @@
         } 
         let form = new FormData();
         form.append('new_password', new_pass);
+        form.append('_token', $('[name="_token"]').val());
         $.ajax({
             type: "POST",
             url: "{{route('change_password',['id' => session()->get('employee')['id']])}}",
             datatype: "JSON",
+            data: form,
+            processData: false,
+            contentType: false,
             success: function (data) {
                 if (data.status == 200) {
                     Swal.fire(
