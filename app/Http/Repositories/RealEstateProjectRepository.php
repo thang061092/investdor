@@ -25,7 +25,7 @@ class RealEstateProjectRepository extends BaseRepository
 
     public function list_project_investor($request)
     {
-        $limit = $request->limit ?? 6;
+        $limit = $request->limit ?? 100;
         $offset = $request->offset ?? 0;
         $model = $this->model;
         if (!empty($request->name_project)) {
@@ -48,7 +48,9 @@ class RealEstateProjectRepository extends BaseRepository
             }
         }
 
-        $model = $model->limit((int)$limit)
+        $model = $model
+            ->whereNotIn(RealEstateProject::STATUS, [RealEstateProject::NEW])
+            ->limit((int)$limit)
             ->offset((int)$offset)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->get();
@@ -64,4 +66,15 @@ class RealEstateProjectRepository extends BaseRepository
             });
         return $model->first();
     }
+
+    public function list_project_index($request)
+    {
+        $model = $this->model
+            ->whereNotIn(RealEstateProject::STATUS, [RealEstateProject::NEW])
+            ->limit(10)
+            ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
+            ->get();
+        return $model;
+    }
+
 }

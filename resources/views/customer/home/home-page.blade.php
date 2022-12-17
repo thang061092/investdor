@@ -55,7 +55,7 @@
                                 <label for="name_project"
                                        class="name_group label">{{__('project.name_project')}}</label>
                                 <div class="group position-relative">
-                                    <input type="text" placeholder="Nhập tên dự án" class="form-control"
+                                    <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"
                                            name="name_project" value="{{request()->get('name_project')}}"/>
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -159,7 +159,7 @@
                                                 <div class="text mb-1">
                                                     {{__('project.total_investment')}}
                                                     <span
-                                                        class="number ml-3">{{number_format_vn($v->part)}}</span>
+                                                        class="number ml-3">{{number_format_vn($v->total_value)}}</span>
                                                 </div>
                                                 <div class="process d-flex flex-nowrap">
                                                 <span class="d-block text-center"
@@ -241,7 +241,12 @@
                     status.push($(this).val());
                 });
                 let investment = $("input[name='investment']:checked").val();
-                window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
+                if (investment) {
+                    window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
+                } else {
+                    window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status;
+
+                }
             })
             $('.investment_status').on('click', function (event) {
                 let status = [];
@@ -249,7 +254,12 @@
                     status.push($(this).val());
                 });
                 let investment = $("input[name='investment']:checked").val();
-                window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
+                if (investment) {
+                    window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status + "&investment=" + investment;
+                } else {
+                    window.location.href = window.origin + "/home-page?name_project=" + name_project + "&status=" + status;
+
+                }
             })
         })
     </script>

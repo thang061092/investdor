@@ -166,5 +166,16 @@
     </div>
 @endsection
 @section('js')
-
+<script>
+$(document).ready(function() {
+    $("img").on('click', function() {
+    //     var modal = document.getElementById("imgModal");
+    //   // Get the image and insert it inside the modal - use its "alt" text as a caption
+    //   var modalImg = document.getElementById("img01");
+    //   var captionText = document.getElementById("caption");
+    //   modal.style.display = "block";
+    //   modalImg.src = $(this).src;
+    // })
+});
+</script>
 @endsection

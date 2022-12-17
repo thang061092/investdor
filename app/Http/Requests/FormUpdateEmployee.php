@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class FormUpdateEmployee extends FormRequest
 {
@@ -17,7 +18,11 @@ class FormUpdateEmployee extends FormRequest
     {
         return true;
     }
-
+    protected $id;
+    public function __construct(Request $request)
+    {
+        $this->id = (integer) $request->route()->id;
+    }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,8 +33,7 @@ class FormUpdateEmployee extends FormRequest
         return [
             'email' => 'required|email',
             'full_name' => 'required',
-            'phone_number' => 'required|numeric|digits:10',
-            'phone_number' => 'unique:users,phone,' . $this->users['id'],
+            'phone_number' => 'required|numeric|digits:10|unique:users,phone,'.$this->id,
             'gender'    => 'required',
             'birthday' => 'required',
         ];

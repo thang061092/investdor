@@ -71,7 +71,6 @@ return array(
     'desc_category_not_null' => 'Mô tả danh mục không để trống',
     "account_is_locked" => 'Tài khoản đang bị khóa',
     'email_account_already_exists' => 'Tài khoản email đã tồn tại',
-    "password_min" => 'Mật khẩu tối thiểu 6 ký tự',
     'answer_not_null' => "Câu trả lời không để trống",
     'question_not_null' => "Vui lòng nhập câu hỏi",
     'otp_not_null' => "Mã xác thực không để trống",
@@ -111,6 +110,7 @@ return array(
     'phone_number_unique' => "Số điện thoại đã tồn tại",
     'password_min' => "Mật khẩu ít nhất 6 ký tự",
     'identity_unique' => "Số CMND/CCCD đã tồn tại",
+    'parent_not_null' => "Danh mục cha không để trống",
 );
 
 

@@ -18,7 +18,7 @@ class CreateCategoryNewsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('image');
-            $table->longText('description')->change();
+            $table->longText('description');
             $table->timestamps();
         });
     }

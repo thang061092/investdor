@@ -99,8 +99,8 @@
                                                 <td class="text-danger">{{!empty($contract->amount) ? number_format_vn($contract->amount) : 0}}</td>
                                                 <td>{{!empty($contract->part) ? number_format_vn($contract->part) : 0}}</td>
                                                 <td>{{number_format_vn($contract->value_part)}}</td>
-                                                <td>{{data_get(json_decode($contract->interest, true), 'detail.interest').'%/năm'}}</td>
-                                                <td>{{($contract->month). 'tháng'}}</td>
+                                                <td>{{data_get(json_decode($contract->interest, true), 'interest').'%/ năm'}}</td>
+                                                <td>{{($contract->month). ' tháng'}}</td>
                                                 <td>{{!empty($contract->date_init) ? date('d-m-Y', $contract->date_init) : ''}}</td>
                                                 <td>{{!empty($contract->due_date) ? date('d-m-Y', $contract->due_date) : ''}}</td>
                                                 <td>{{!empty($contract->expire_date) ? date('d-m-Y', $contract->expire_date) : ''}}</td>

@@ -15,7 +15,7 @@ class Notification extends BaseModel
     const USER_ID = 'user_id';
     const IMAGE = 'image';
     const CONTENT = 'content';
-    const TITLE = '	title';
+    const TITLE = 'title';
 
     //status
     const ACTIVE = 'active';

@@ -1,18 +1,18 @@
 @extends("customer.layout.master")
-@section('page_name', session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $knowledge['title_en'] : $knowledge['title'])
+@section('page_name', session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $post['title_en'] : $post['title_vi'])
 @section("content")
-    @include('customer.home.banner')
+   @include('customer.home.banner')
     <div class="page" style="padding-top: 50px">
         <div class="container">
             <div class="card">
-                @if($knowledge)
+                @if($post)
                     <div class="card-header">
-                        <h1>{{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $knowledge['title_en'] : $knowledge['title']}}</h1>
+                        <h1>{{session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $post['title_en'] : $post['title_vi']}}</h1>
                     </div>
                     <div class="card-body">
                         <div class="content">
                             <div class="col-12 text-justify" style="text-align: center">
-                                {!! session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $knowledge['content_en'] : $knowledge['content'] !!}
+                                {!! session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN ? $post['content_en'] : $post['content_vi'] !!}
 
                             </div>
                         </div>

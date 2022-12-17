@@ -23,6 +23,7 @@
                             {{__('auth.personal_information')}}:
                             </div>
                             <form action='{{route("customer.customer.update_customer",["id" => $customer->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+                                @csrf
                                 <input type="hidden" class="form-control" name="_token" value="{{ csrf_token() }}">
                                 <div class="card-body ">
                                     <div class="row">

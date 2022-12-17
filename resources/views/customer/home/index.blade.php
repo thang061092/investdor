@@ -8,13 +8,12 @@
                     <div class="banner">
                         <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
                         <div class="box-banner">
-                            <h2 class="banner_title">Đầu tư và bất động sản</h2>
+                            <h2 class="banner_title">{{__('page_name.investment_and_real_estate')}}</h2>
                             <div class="banner_short">
-                                XÂY DỰNG TƯƠNG LAI BẠN MONG MUỐN
+                                {{__('page_name.BUILD_THE_FUTURE_YOU_WANT')}}
                             </div>
                             <div class="banner_desc">
-                                Tiếp cận nhanh chóng các khoản đầu tư có chất lượng
-                                cao
+                                {{__('page_name.quick_access_investments')}}
                             </div>
                         </div>
                     </div>
@@ -23,13 +22,12 @@
                     <div class="banner">
                         <img src="{{asset('frontend/images/banner.jpg')}}" class="img-fluid" alt=""/>
                         <div class="box-banner">
-                            <h2 class="banner_title">Đầu tư và bất động sản</h2>
+                            <h2 class="banner_title">{{__('page_name.investment_and_real_estate')}}</h2>
                             <div class="banner_short">
-                                XÂY DỰNG TƯƠNG LAI BẠN MONG MUỐN
+                                {{__('page_name.BUILD_THE_FUTURE_YOU_WANT')}}
                             </div>
                             <div class="banner_desc">
-                                Tiếp cận nhanh chóng các khoản đầu tư có chất lượng
-                                cao
+                                {{__('page_name.quick_access_investments')}}
                             </div>
                         </div>
                     </div>
