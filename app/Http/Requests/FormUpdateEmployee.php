@@ -45,7 +45,7 @@ class FormUpdateEmployee extends FormRequest
             "phone_number.required" => __('auth.phone_number_not_null'),
             "phone_number.digits" => __('auth.phone_number_max'),
             "phone_number.numeric" => __('auth.phone_number_not_format'),
-            "phone_number.unique" => __('auth.phone_number_unique'),
+            // "phone_number.unique" => __('auth.phone_number_unique'),
         ];
 
     }

@@ -205,7 +205,7 @@
                                                 {{__('profile.wait_auth')}}
                                             </p>
                                         @else
-                                            <p class="alert alert-success=-danger">
+                                            <p class="alert alert-danger">
                                                 {{__('profile.fail_auth')}}
                                             </p>
                                         @endif
