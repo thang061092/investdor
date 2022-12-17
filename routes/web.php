@@ -85,6 +85,10 @@ Route::group(['middleware' => 'locale'], function () {
             Route::get('/step4/{slug}', "Customer\InvestmentController@step4")->name('investment.step4');
         });
 
+        Route::prefix('/notification')->group(function () {
+            Route::get('/list', "Customer\NotificationController@get_by_user")->name('notification.list');
+        });
+
         // Route::post('/question','Customer\UserController@question')->name('question');
 
     });
