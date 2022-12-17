@@ -48,7 +48,9 @@ class RealEstateProjectRepository extends BaseRepository
             }
         }
 
-        $model = $model->limit((int)$limit)
+        $model = $model
+            ->whereNotIn(RealEstateProject::STATUS, [RealEstateProject::NEW])
+            ->limit((int)$limit)
             ->offset((int)$offset)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->get();
