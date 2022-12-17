@@ -60,6 +60,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/knowledge', "Customer\HomeController@knowledge")->name('customer.knowledge');
     Route::get('/detail-project/{slug}', "Customer\HomeController@detail_project")->name('customer.detail_project');
     Route::get('/detail-knowledge/{slug}', "Customer\HomeController@detail_knowledge")->name('customer.detail_knowledge');
+    Route::get('/post/{slug}', "Customer\PostController@detail")->name('post.detail');
 
     Route::group(['middleware' => 'auth_customer'], function () {
         Route::get('/logout', "Customer\AuthController@logout")->name('customer.logout');
@@ -148,9 +149,9 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_category/{id}', 'Admin\UserController@update_category')->name('customer.employee.update_category');
                 Route::get('/detail_category/{id}', 'Admin\UserController@detail_category')->name('customer.employee.detail_category');
                 Route::post('/update_status_category', 'Admin\UserController@update_status_category')->name('customer.employee.update_status_category');
-                Route::get('/list_question','Admin\UserController@list_question')->name('list_question');
+                Route::get('/list_question', 'Admin\UserController@list_question')->name('list_question');
                 Route::get('/detail/{id}', 'Admin\UserController@detail_question')->name('detail_question');
-                Route::post('/send_answer/{id}','Admin\UserController@send_answer')->name('send_answer');
+                Route::post('/send_answer/{id}', 'Admin\UserController@send_answer')->name('send_answer');
                 Route::post('/question', 'Customer\UserController@question')->name('question');
                 Route::post('/change_password/{id}', 'Admin\UserController@change_password')->name('change_password');
             });
@@ -162,7 +163,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_customer/{id}', 'Admin\UserController@update_customer')->name('customer.customer.update_customer');
                 Route::post('/auth/{id}', 'Admin\UserController@auth')->name('customer.customer.auth');
                 Route::post('/not_auth/{id}', 'Admin\UserController@not_auth')->name('customer.customer.not_auth');
-                Route::post('/question','Customer\UserController@question')->name('customer.question');
+                Route::post('/question', 'Customer\UserController@question')->name('customer.question');
             });
 
             Route::prefix('/transaction')->group(function () {
@@ -207,6 +208,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::prefix('/post')->group(function () {
                 Route::get('/list', "Admin\PostController@index")->name('post.index');
                 Route::get('/create', "Admin\PostController@create")->name('post.create');
+                Route::post('/store', "Admin\PostController@store")->name('post.store');
             });
 
         });

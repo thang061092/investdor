@@ -30,7 +30,7 @@
                                 Tạo mới bài viết &nbsp;
                             </div>
                             <div class="card-body ">
-                                <form method="post" action="">
+                                <form method="post" action="{{route('post.store')}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
@@ -40,7 +40,7 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('title_vi'))is-invalid @endif"
                                                        name="title_vi"
-                                                       id="title_vi" placeholder="Nhập tiêu đề">
+                                                       id="title_vi" placeholder="Nhập tiêu đề" value="{{old('title_vi')}}">
                                                 @if($errors->has('title_vi'))
                                                     <p class="text-danger">{{ $errors->first('title_vi') }}</p>
                                                 @endif
@@ -53,7 +53,7 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('title_en'))is-invalid @endif"
                                                        name="title_en"
-                                                       id="title_en" placeholder="Nhập tiêu đề">
+                                                       id="title_en" placeholder="Nhập tiêu đề" value="{{old('title_en')}}">
                                                 @if($errors->has('title_en'))
                                                     <p class="text-danger">{{ $errors->first('title_en') }}</p>
                                                 @endif
@@ -81,7 +81,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('content_vi'))is-invalid @endif"
                                                           name="content_vi"
-                                                          id="content_vi"></textarea>
+                                                          id="content_vi">{{old('content_vi')}}</textarea>
                                                 @if($errors->has('content_vi'))
                                                     <p class="text-danger">{{ $errors->first('content_vi') }}</p>
                                                 @endif
@@ -94,7 +94,7 @@
                                                 <textarea type="text"
                                                           class="form-control @if($errors->has('content_en'))is-invalid @endif"
                                                           name="content_en"
-                                                          id="content_en"></textarea>
+                                                          id="content_en">{{old('content_en')}}</textarea>
                                                 @if($errors->has('content_en'))
                                                     <p class="text-danger">{{ $errors->first('content_en') }}</p>
                                                 @endif

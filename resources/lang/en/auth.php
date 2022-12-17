@@ -83,7 +83,6 @@ return [
     'desc_category_not_null' => 'Description category not empty',
     "account_is_locked" => 'Account is locked',
     'email_account_already_exists' => 'Email account already exists',
-    "password_min" => 'Password minimum 6 characters',
     'answer_not_null' => "Answers is not empty",
     'question_not_null' => 'Please enter a question',
     'otp_not_null' => "OTP not null",
@@ -122,4 +121,5 @@ return [
     'phone_number_unique' => 'The phone number has already been taken',
     'password_min' => 'Password must be at least 6 characters',
     'identity_unique' => 'The identity has already been taken',
+    'parent_not_null' => "Parent not null",
 ];

@@ -1,4 +1,3 @@
-{{--@inject('noti','App\Service\Notification')--}}
 <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none">
     <div class="container-fluid">
         <div class="navbar-nav flex-row order-md-last">

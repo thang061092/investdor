@@ -39,7 +39,7 @@ class ContractService
             Contract::CODE => random_string(12),
             Contract::INTEREST => json_encode($interest ?? ['interest' => 12, 'period' => 12]),
             Contract::AMOUNT => $bill['amount_money'],
-            Contract::DATE_INIT => $bill['payment_date'],
+            Contract::DATE_INIT => strtotime($request->payment_date),
             Contract::DUE_DATE => strtotime($this->periodDays($request->payment_date, $interest['period'] ?? 12)['date']),
             Contract::MONTH => $interest['period'] ?? 12,
             Contract::INTEREST_ID => $interest['id'],
