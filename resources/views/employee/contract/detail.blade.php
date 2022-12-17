@@ -53,7 +53,7 @@
                                             - {{$contract->month}} tháng
                                         </td>
                                         <th>Lãi suất</th>
-                                        <td>{{data_get(json_decode($contract->interest, true), 'detail.interest').'%/năm'}}</td>
+                                        <td>{{data_get(json_decode($contract->interest, true), 'interest').'%/ năm'}}</td>
                                     </tr>
                                     <tr>
                                         <th>Số phần</th>
