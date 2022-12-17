@@ -120,5 +120,6 @@ return [
     'email_unique'  => 'Email already exists',
     'phone_number_unique' => 'The phone number has already been taken',
     'password_min' => 'Password must be at least 6 characters',
+    'identity_unique' => 'The identity has already been taken',
     'parent_not_null' => "Parent not null",
 ];

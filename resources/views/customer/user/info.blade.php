@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 mb-lg-0 mb-4 wow fadeInUp">
-                    @if (session()->get('customer')['accuracy'] != 1)
+                    @if ($detail['accuracy'] != 1)
                     <div class="ping-alert-note mb-4 pb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -107,7 +107,7 @@
                 <div class="col-lg-7 wow fadeInUp">
                     <div class="group-box cmt">
                         <p class="title_lg">{{__('profile.certificate_information')}}</p>
-                        @if (session()->get('customer')['accuracy'] != 1)
+                        @if ($detail['accuracy'] != 1)
                         <div class="alert-note">
                             <svg class="mx-auto d-block mb-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                  viewBox="0 0 40 40" fill="none">

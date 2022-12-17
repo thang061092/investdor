@@ -17,14 +17,14 @@
                     <div class="radios mb-3">
                         <label class="gender-choose" for="male">
                             <input type="radio"
-                                   {{session()->get('customer')['gender'] == 'male' ? 'checked' : ''}} value="1"
+                                   {{session()->get('customer')['gender'] == '1' ? 'checked' : ''}} value="1"
                                    name="gender" disabled/>
                             {{__('profile.male')}}
                         </label>
                         <label class="gender-choose" for="female">
                             <input type="radio" value="2"
                                    name="gender"
-                                   {{session()->get('customer')['gender'] == 'male' ? 'checked' : ''}} disabled/>
+                                   {{session()->get('customer')['gender'] == '2' ? 'checked' : ''}} value="2" name="gender" disabled/>
                             {{__('profile.female')}}
                         </label>
                     </div>

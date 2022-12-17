@@ -109,6 +109,7 @@ return array(
     'email_unique'  => 'Email đã tồn tại',
     'phone_number_unique' => "Số điện thoại đã tồn tại",
     'password_min' => "Mật khẩu ít nhất 6 ký tự",
+    'identity_unique' => "Số CMND/CCCD đã tồn tại",
     'parent_not_null' => "Danh mục cha không để trống",
 );
 

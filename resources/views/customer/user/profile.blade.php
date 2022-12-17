@@ -269,7 +269,7 @@
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('ward') }}</p>
                         @endif
                         <label for="specific_address" class="d-block mb-2">
-                            {{__('profile.specific_address')}}
+                            {{__('profile.specific_address')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
                                class="form-control mb-3" value="{{!empty(old('specific_address')) ? old('specific_address') : session()->get('customer')['address']}}"/>

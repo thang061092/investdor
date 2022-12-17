@@ -44,7 +44,7 @@
                            class="{{request()->path() == '/' ? 'current-page' : ''}}">INVESTDOR</a>
                         <ul>
                             @foreach($posts as $p)
-                                <li>
+                            <li>
                                     <a href="{{route('post.detail', ['slug'=> $p->slug])}}" title=""
                                        class="current-page">{{session()->get('lang') == 'en' ? $p->title_en : $p->title_vi}}</a>
                                     {{--                                <ul>--}}
@@ -60,7 +60,7 @@
                                     {{--                                           title="">{{__('page_name.knowledge')}}</a>--}}
                                     {{--                                    </li>--}}
                                     {{--                                </ul>--}}
-                                </li>
+                            </li>
                             @endforeach
                             {{--                            <li>--}}
                             {{--                                <a href="{{route('customer.home_page')}}" title="">{{__('page_name.product')}}</a>--}}
@@ -206,7 +206,7 @@
                                                 {{__('profile.wait_auth')}}
                                             </p>
                                         @else
-                                            <p class="alert alert-danger">
+                                            <p class="alert alert-success=-danger">
                                                 {{__('profile.fail_auth')}}
                                             </p>
                                         @endif
