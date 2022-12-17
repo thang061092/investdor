@@ -35,4 +35,5 @@ return [
     'serial' => "STT",
     'create_category' => "Thêm mới danh mục",
     'detail_news' => "Chi tiết bài viết",
+    'notification' => 'Thông báo',
 ];

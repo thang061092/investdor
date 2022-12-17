@@ -34,5 +34,6 @@ return [
     'details' => "Details",
     'serial' => 'Serial',
     'create_category' => 'Create category',
-    'detail_news' => "Detail news"
+    'detail_news' => "Detail news",
+    'notification' => 'Notification',
 ];

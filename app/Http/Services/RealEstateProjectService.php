@@ -474,4 +474,10 @@ class RealEstateProjectService
         }
         return $message;
     }
+
+    public function list_project_index($request)
+    {
+        $projects = $this->estateProjectRepository->list_project_index($request);
+        return $projects;
+    }
 }
