@@ -5,8 +5,11 @@
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="{{route('project.list')}}"
+                                                                   class="text-info">{{__('page_name.list_news')}}</a>
+                </li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">{{__('page_name.detail_news')}}</a>
+                                                                   class="text-success">{{__('page_name.detail_news')}}</a>
                 </li>
             </ol>
         </div>
@@ -20,7 +23,7 @@
                             <div class="card-header text-primary">
                                 Thông tin chi tiết:
                             </div>
-                            <form action='{{route("customer.employee.update_news",["id" => $detail->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'> 
+                            <form action='{{route("customer.employee.update_news",["id" => $detail->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
@@ -62,9 +65,9 @@
                                                         @continue
                                                     @else
                                                     <input type="text" class="form-control" name="category" id="category"
-                                                        disabled value="{{$item['name']}}">  
+                                                        disabled value="{{$item['name']}}">
                                                     @endif
-                                                @endforeach  
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
@@ -92,14 +95,22 @@
     </div>
 @endsection
 @section('js')
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.0/tinymce.min.js'></script>
-<script>
-tinymce.init({
-    selector: '#content_en',
-});
-tinymce.init({
-    selector: '#content_vi',
-});
-
-</script>
+    <script>
+        CKEDITOR.replace('content_vi', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+        CKEDITOR.replace('content_en', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+    </script>
 @endsection
