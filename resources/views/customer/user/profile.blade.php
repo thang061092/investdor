@@ -1,6 +1,7 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.personal_profile'))
 @section('css')
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"/> -->
     <style>
         .theloading {
             position: fixed;
@@ -16,6 +17,9 @@
             justify-content: center;
             align-items: center
         }
+        /* .selectize-input{
+            height:calc(1.5em + 0.75rem + 2px);
+        } */
     </style>
 @endsection
 @section("content")
@@ -34,7 +38,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="file" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src='{{!empty(session()->get("customer")["avatar"]) ? asset(session()->get("customer")["avatar"]): asset("frontend/images/default.png")}}' id="avatar" class="img-fluid" alt=""/>
+                            <img src='{{!empty(session()->get("customer")["avatar"]) ? (session()->get("customer")["avatar"]): asset("frontend/images/default.png")}}' id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     @if( isset($error) && $error )
@@ -290,6 +294,7 @@
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             toastr.options.timeOut = 10000;
@@ -396,6 +401,13 @@
                 })
             });
         });
+    </script>
+    <script>
+        // $(document).ready(function () {
+        //     $('select').selectize({
+        //         sortField: 'text'
+        //     });
+        // });
     </script>
 @endsection
 @stop

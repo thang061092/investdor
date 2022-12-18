@@ -235,7 +235,7 @@ class UserService
             Users::DISTRICT => $request->district ?? "",
             Users::WARD => $request->ward ?? "",
             Users::ADDRESS => $request->specific_address ?? "",
-            Users::AVATAR => $avatar ?? "",
+            Users::AVATAR => $avatar ?? $user['avatar'],
             Users::IDENTITY => $request->identity ?? "",
             Users::DATE_IDENTITY => $request->date_identity ?? "",
             Users::ADDRESS_IDENTITY => $request->address_identity ?? "",
