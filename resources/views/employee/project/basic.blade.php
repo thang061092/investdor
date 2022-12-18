@@ -140,7 +140,7 @@
                                                        class="form-control @if($errors->has('total_part_project'))is-invalid @endif"
                                                        placeholder="Nhập số phần" name="total_part_project"
                                                        id="total_part_project"
-                                                       value="{{number_format($project['part'])}}">
+                                                       value="{{number_format($project['part'])}}" {{in_array($project['status'], [2,3,4,5]) ? 'disabled' : ''}}>
                                                 @if($errors->has('total_part_project'))
                                                     <p class="text-danger">{{ $errors->first('total_part_project') }}</p>
                                                 @endif
@@ -155,7 +155,7 @@
                                                        class="form-control @if($errors->has('value_part_project'))is-invalid @endif"
                                                        placeholder="Nhập giá trị" name="value_part_project"
                                                        id="value_part_project"
-                                                       value="{{number_format($project['value_part'])}}">
+                                                       value="{{number_format($project['value_part'])}}" {{in_array($project['status'], [2,3,4,5]) ? 'disabled' : ''}}>
                                                 @if($errors->has('value_part_project'))
                                                     <p class="text-danger">{{ $errors->first('value_part_project') }}</p>
                                                 @endif
@@ -240,10 +240,12 @@
                                                     Trở về &nbsp;
                                                     <i class="fa fa-backspace" aria-hidden="true"></i>
                                                 </a>
-                                                <button type="submit" class="btn btn-success action">
-                                                    Cập nhật &nbsp;
-                                                    <i class="fa fa-edit" aria-hidden="true"></i>
-                                                </button>
+                                                @if(!in_array($project->status, [3,5]))
+                                                    <button type="submit" class="btn btn-success action">
+                                                        Cập nhật &nbsp;
+                                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                                    </button>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

@@ -18,6 +18,9 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.status == 200) {
                     toastr.success(data.message ?? 'Success')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
                 } else {
                     toastr.error(data.message ?? 'Fail')
                     setTimeout(function () {

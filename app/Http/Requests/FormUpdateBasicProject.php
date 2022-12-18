@@ -33,8 +33,8 @@ class FormUpdateBasicProject extends FormRequest
             'district_project' => 'required',
             'ward_project' => 'required',
             'address_project' => 'required',
-            'total_part_project' => 'required',
-            'value_part_project' => 'required',
+//            'total_part_project' => 'required',
+//            'value_part_project' => 'required',
             'description_project_vi' => 'required',
             'description_project_en' => 'required',
         ];
@@ -50,8 +50,8 @@ class FormUpdateBasicProject extends FormRequest
             "district_project.required" => __('validate.district_project_not_null'),
             "ward_project.required" => __('validate.ward_project_not_null'),
             "address_project.required" => __('validate.address_project_not_null'),
-            "total_part_project.required" => __('validate.total_part_project_not_null'),
-            "value_part_project.required" => __('validate.value_part_project_not_null'),
+//            "total_part_project.required" => __('validate.total_part_project_not_null'),
+//            "value_part_project.required" => __('validate.value_part_project_not_null'),
             "description_project_vi.required" => __('validate.description_project_vi_not_null'),
             "description_project_en.required" => __('validate.description_project_en_not_null'),
         ];
