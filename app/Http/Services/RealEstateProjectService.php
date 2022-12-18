@@ -280,6 +280,7 @@ class RealEstateProjectService
 
     public function update($request, $id)
     {
+        $project = $this->estateProjectRepository->find($id);
         $data = [
             RealEstateProject::NAME_VI => $request->project_name_vi ?? null,
             RealEstateProject::NAME_EN => $request->project_name_en ?? null,
@@ -290,14 +291,20 @@ class RealEstateProjectService
             RealEstateProject::WARD_ID => $request->ward_project ?? null,
             RealEstateProject::ADDRESS_VI => $request->address_project ?? null,
             RealEstateProject::TOTAL_VALUE => !empty($request->total_value_project) ? trim(str_replace(array(',', '.',), '', $request->total_value_project)) : null,
-            RealEstateProject::PART => !empty($request->total_part_project) ? trim(str_replace(array(',', '.',), '', $request->total_part_project)) : null,
-            RealEstateProject::VALUE_PART => !empty($request->value_part_project) ? trim(str_replace(array(',', '.',), '', $request->value_part_project)) : null,
+//            RealEstateProject::PART => !empty($request->total_part_project) ? trim(str_replace(array(',', '.',), '', $request->total_part_project)) : null,
+//            RealEstateProject::VALUE_PART => !empty($request->value_part_project) ? trim(str_replace(array(',', '.',), '', $request->value_part_project)) : null,
             RealEstateProject::DESCRIPTION_VI => $request->description_project_vi ?? null,
             RealEstateProject::DESCRIPTION_EN => $request->description_project_en ?? null,
             RealEstateProject::UPDATED_BY => Session::get('employee')['email'] ?? null
         ];
-        $project = $this->estateProjectRepository->update($id, $data);
-        return $project;
+
+        if ($project['status'] == RealEstateProject::NEW) {
+//            $data[RealEstateProject::TOTAL_VALUE] = !empty($request->total_value_project) ? trim(str_replace(array(',', '.',), '', $request->total_value_project)) : null;
+            $data[RealEstateProject::PART] = !empty($request->total_part_project) ? trim(str_replace(array(',', '.',), '', $request->total_part_project)) : null;
+            $data[RealEstateProject::VALUE_PART] = !empty($request->value_part_project) ? trim(str_replace(array(',', '.',), '', $request->value_part_project)) : null;
+        }
+        $project_new = $this->estateProjectRepository->update($id, $data);
+        return $project_new;
     }
 
     public function update_status_project($request, $id)
@@ -332,6 +339,16 @@ class RealEstateProjectService
         $project_slug_en = $this->estateProjectRepository->findOne(['slug_vi' => slugify($request->project_name_en)]);
         if ($project_slug_en && $project_slug_vi['id'] != $id) {
             $message[] = __('validate.project_name_already_exists');
+        }
+
+        $project = $this->estateProjectRepository->find($id);
+        if ($project['status'] == RealEstateProject::NEW) {
+            if (empty($request->total_part_project)) {
+                $message[] = __('validate.total_part_project_not_null');
+            }
+            if (empty($request->value_part_project)) {
+                $message[] = __('validate.value_part_project_not_null');
+            }
         }
         return $message;
     }

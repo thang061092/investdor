@@ -24,7 +24,7 @@
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
                                    href="{{route('project.create')}}"
-                                   target="_blank">
+                                >
                                     <i class="fas fa-plus"></i>&nbsp;
                                     Thêm mới
                                 </a>
@@ -104,37 +104,39 @@
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
-                                                            <a class="dropdown-item" target="_blank"
-                                                               href="{{route('project.action',['id'=> $project->id])}}?action=basic">
-                                                                <i class="fa fa-edit"></i>&nbsp;
-                                                                Cập nhật thông tin cơ bản
-                                                            </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            @if(!in_array($project->status, [3,5]))
+                                                                <a class="dropdown-item"
+                                                                   href="{{route('project.action',['id'=> $project->id])}}?action=basic">
+                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    Cập nhật thông tin cơ bản
+                                                                </a>
+                                                            @endif
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=image">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật hình ảnh dự án
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=extend">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin mở rộng
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=asset">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin tài sản
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=investor">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin chủ đầu tư
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=plan">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật kế hoạch dự án
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                href="{{route('project.action',['id'=> $project->id])}}?action=document">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật tài liệu
@@ -149,7 +151,7 @@
                                                 <td>{{type_project($project->type)}}</td>
                                                 <td>
                                                     <select class="form-control status_project" name="status_project"
-                                                            data-id="{{$project->id}}">
+                                                            data-id="{{$project->id}}" {{in_array($project->status, [3,5]) ? 'disabled' : ''}}>
                                                         @foreach(status_project() as $k => $v)
                                                             <option
                                                                 value="{{$k}}" {{$k == $project->status ? "selected" : ''}}>{{$v}}</option>

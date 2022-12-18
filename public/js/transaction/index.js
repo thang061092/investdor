@@ -138,4 +138,18 @@ $(document).ready(function () {
             }
         })
     })
+
+    function addCommas(str) {
+        return str.replace(/^0+/, '').replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $('#tien_goc').on('keyup', function () {
+        var tien_goc = $("input[name='tien_goc']").val()
+        $('#tien_goc').val(addCommas(tien_goc))
+    })
+
+    $('#tien_lai').on('keyup', function () {
+        var tien_lai = $("input[name='tien_lai']").val()
+        $('#tien_lai').val(addCommas(tien_lai))
+    })
 });
