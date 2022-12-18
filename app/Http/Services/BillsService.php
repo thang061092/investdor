@@ -93,7 +93,7 @@ class BillsService
 
     public function update_bill($request)
     {
-        if ($request->file) {
+        if ($request->hasFile('file')) {
             $url = $this->uploadService->upload($request);
         } else {
             $url = null;

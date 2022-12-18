@@ -142,14 +142,14 @@
                                 class="text-danger">*</span></label>
                         <input class="form-control tien_goc" type="text"
                                placeholder="Nhập số tiền"
-                               name="tien_goc">
+                               name="tien_goc" id="tien_goc">
                     </div>
                     <div class="mb-3">
                         <label class="form-label text-bold">Tiền lãi thanh toán<span
                                 class="text-danger">*</span></label>
                         <input class="form-control tien_lai" type="text"
                                placeholder="Nhập số tiền"
-                               name="tien_lai">
+                               name="tien_lai" id="tien_lai">
                     </div>
                     <div class="mb-3">
                         <label class="form-label text-bold">Ngày thanh toán<span
