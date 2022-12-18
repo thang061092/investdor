@@ -38,7 +38,7 @@
                         <label for="upload-avatar" class="upload-avatar">
                             <input type="file" name="file" id="upload-avatar" class="d-none" accept="image/*"
                                    onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"/>
-                            <img src='{{!empty(session()->get("customer")["avatar"]) ? asset(session()->get("customer")["avatar"]): asset("frontend/images/default.png")}}' id="avatar" class="img-fluid" alt=""/>
+                            <img src='{{!empty(session()->get("customer")["avatar"]) ? (session()->get("customer")["avatar"]): asset("frontend/images/default.png")}}' id="avatar" class="img-fluid" alt=""/>
                         </label>
                     </div>
                     @if( isset($error) && $error )
