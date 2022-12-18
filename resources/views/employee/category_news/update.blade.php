@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.list_category')}}"
                                                                    class="text-info">{{__('page_name.list_category')}}</a>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.edit_category', ['id' => $detail->id])}}"
-                                                                   class="text-info">{{__('page_name.update_category')}}</a>
+                                                                   class="text-success">{{__('page_name.update_category')}}</a>
                 </li>
             </ol>
         </div>
@@ -23,7 +23,7 @@
                                 Thông tin chi tiết:
                             </div>
                             <form action='{{route("customer.employee.update_category",["id" => $detail->id])}}' method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-                                @csrf 
+                                @csrf
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
@@ -31,7 +31,7 @@
                                                 <label for="name_category_vi">{{__('profile.name_category_vi')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_vi" id="name_category_vi"
                                                     value="{{$detail->name}}" >
-                                                        
+
                                             </div>
                                             @if($errors->has('name_category_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_vi') }}</p>
@@ -42,7 +42,7 @@
                                                 <label for="name_category_en">{{__('profile.name_category_en')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="name_category_en" id="name_category_en"
                                                     value="{{$detail->name_en}}" >
-                                                        
+
                                             </div>
                                             @if($errors->has('name_category_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('name_category_en') }}</p>
@@ -53,7 +53,7 @@
                                                 <label for="desc_category_vi">{{__('profile.desc_category_vi')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="desc_category_vi" id="desc_category_vi"
-                                                    rows="4" cols="50">{{$detail->description}}</textarea>
+                                                    rows="4" cols="50">{!! $detail->description !!}</textarea>
                                             </div>
                                             @if($errors->has('desc_category_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_vi') }}</p>
@@ -64,7 +64,7 @@
                                                 <label for="desc_category_en">{{__('profile.desc_category_en')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="desc_category_en" id="desc_category_en"
-                                                    rows="4" cols="50">{{$detail->description_en}}</textarea>
+                                                    rows="4" cols="50">{!! $detail->description_en !!}</textarea>
                                             </div>
                                             @if($errors->has('desc_category_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('desc_category_en') }}</p>
@@ -82,7 +82,7 @@
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('img_category') }}</p>
                                             @endif
                                         </div> -->
-                                       
+
                                         <div class="text-center" style="text-align: right !important;">
                                             <div class="btnadmin">
                                                 <button type="submit" id="create" class="btn btn-success action">
@@ -106,5 +106,22 @@
     </div>
 @endsection
 @section('js')
-
+    <script>
+        CKEDITOR.replace('desc_category_vi', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+        CKEDITOR.replace('desc_category_en', {
+            filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+    </script>
 @endsection

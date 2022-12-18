@@ -23,8 +23,7 @@
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
-                                   href="{{route('customer.employee.create_category')}}"
-                                   target="_blank">
+                                   href="{{route('customer.employee.create_category')}}">
                                     <i class="fas fa-plus"></i>&nbsp;
                                     Thêm mới
                                 </a>
@@ -143,12 +142,12 @@
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                 href='{{route("customer.employee.detail_category",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                 href='{{route("customer.employee.edit_category",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật

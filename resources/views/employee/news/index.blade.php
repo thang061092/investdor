@@ -23,8 +23,7 @@
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
-                                   href="{{route('customer.employee.create_news')}}"
-                                   target="_blank">
+                                   href="{{route('customer.employee.create_news')}}">
                                     <i class="fas fa-plus"></i>&nbsp;
                                     Thêm mới
                                 </a>
@@ -50,13 +49,13 @@
                                                                 autocomplete="off">
                                                         </div>
                                                 </div>
-                                                
+
                                                 <div class="form-group mb-3">
                                                     <label class="form-label"><strong>Thể loại</strong></label>
                                                     <div>
                                                         <select class="form-control" name="category_search">
                                                         <option value="">--Chọn thể loại--</option>
-                                                            @foreach ($categories as $item) 
+                                                            @foreach ($categories as $item)
                                                                 <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                             @endforeach
                                                         </select>
@@ -139,7 +138,7 @@
                                                         @if ($i['id'] == $item['category_news_id'])
                                                             {{$i['name']}}
                                                         @endif
-                                                    @endforeach 
+                                                    @endforeach
                                                 </td>
                                                 <td>{{date('Y-m-d',strtotime($item->created_at))}}</td>
                                                 <td>{{$item->created_by}}</td>
@@ -163,12 +162,12 @@
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                 href='{{route("customer.employee.detail_news",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Chi tiết bài viết
                                                             </a>
-                                                            <a class="dropdown-item" target="_blank"
+                                                            <a class="dropdown-item"
                                                                 href='{{route("customer.employee.edit_news",["id" => $item->id])}}'>
                                                                 <i class="fa fa-info-circle"></i>&nbsp;
                                                                 Cập nhật bài viết
@@ -187,7 +186,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                   
+
                                     </tbody>
                                 </table>
                             </div>
