@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 @yield('css')
-@stack('css') // Internal js
 <body>
 @include('customer.layout.header')
 @yield('content')
@@ -41,7 +40,7 @@
 <script src="{{asset('frontend/js/fslightbox.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @yield('js')
-@stack('js') // Internal js
+@stack('js')
 </body>
 
 </html>
