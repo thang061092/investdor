@@ -104,6 +104,11 @@
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
+                                                            <a class="dropdown-item"
+                                                               href="{{route('project.action',['id'=> $project->id])}}">
+                                                                <i class="fa fa-info-circle"></i>&nbsp;
+                                                                Chi tiết dự án
+                                                            </a>
                                                             @if(!in_array($project->status, [3,5]))
                                                                 <a class="dropdown-item"
                                                                    href="{{route('project.action',['id'=> $project->id])}}?action=basic">

@@ -83,6 +83,9 @@ class ProjectController extends BaseController
     {
         $project = $this->realEstateProjectService->find($id);
         if ($project) {
+            $cities = $this->cityService->city();
+            $districts = $this->districtService->get_district_by_city($project['city_id']);
+            $wards = $this->wardService->get_ward_by_district_id($project['district_id']);
             if ($request->action == 'image') {
                 return view('employee.project.image', compact('project'));
             } elseif ($request->action == 'extend') {
@@ -94,14 +97,11 @@ class ProjectController extends BaseController
             } elseif ($request->action == 'investor') {
                 return view('employee.project.investor', compact('project'));
             } elseif ($request->action == 'basic') {
-                $cities = $this->cityService->city();
-                $districts = $this->districtService->get_district_by_city($project['city_id']);
-                $wards = $this->wardService->get_ward_by_district_id($project['district_id']);
                 return view('employee.project.basic', compact('project', 'cities', 'districts', 'wards'));
             } elseif ($request->action == 'plan') {
                 return view('employee.project.plan', compact('project'));
             } else {
-                return view('employee.project.detail', compact('project'));
+                return view('employee.project.detail',compact('project', 'cities', 'districts', 'wards'));
             }
         } else {
             toastr()->error(__("project.id_does_not_exist", ['id' => $id]));
