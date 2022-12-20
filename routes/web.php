@@ -215,6 +215,11 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/store', "Admin\PostController@store")->name('post.store');
             });
 
+            Route::prefix('/config')->group(function () {
+                Route::get('/project', "Admin\ConfigController@config_project")->name('config.project');
+                Route::post('/update_config_project/{id}', "Admin\ConfigController@update_config_project")->name('config.update_config_project');
+            });
+
         });
     });
 

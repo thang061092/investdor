@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.list_category')}}"
                                                                    class="text-info">{{__('page_name.list_category')}}</a>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{route('customer.employee.create_category')}}"
-                                                                   class="text-info">{{__('page_name.create_category')}}</a>
+                                                                   class="text-success">{{__('page_name.create_category')}}</a>
                 </li>
             </ol>
         </div>

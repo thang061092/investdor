@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('/admin')->group(function () {
     Route::post('/create_admin', "Admin\UserController@create_admin")->name('admin.create_admin');
+    Route::post('/create_config', "Admin\ConfigController@create")->name('admin.create_config');
 });
