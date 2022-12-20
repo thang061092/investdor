@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Services\CityService;
+use App\Http\Services\ConfigService;
 use App\Http\Services\InterestService;
 use App\Http\Services\RealEstateProjectService;
 use App\Models\DetailInterest;
@@ -22,18 +23,21 @@ class HomeController extends BaseController
     protected $interestService;
     protected $newsService;
     protected $categoryService;
+    protected $configService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 InterestService $interestService,
                                 NewsService $newsService,
-                                CategoryNewsService $categoryService)
+                                CategoryNewsService $categoryService,
+                                ConfigService $configService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->interestService = $interestService;
         $this->newsService = $newsService;
         $this->categoryService = $categoryService;
+        $this->configService = $configService;
     }
 
     public function index(Request $request)
@@ -59,7 +63,8 @@ class HomeController extends BaseController
     public function detail_project($lug)
     {
         $project = $this->realEstateProjectService->detail_project($lug);
-        return view('customer.home.detail-project', compact('project'));
+        $config = $this->configService->find_config_project();
+        return view('customer.home.detail-project', compact('project', 'config'));
     }
 
     public function detail_knowledge(Request $request)
