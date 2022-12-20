@@ -250,55 +250,55 @@
                                                         <div class="form-group mb-3">
                                                             <label for="">Tổng diện tích xây dựng<span
                                                                     class="text-danger">*</span></label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    class="form-control"
                                                                    name="total_building_area"
                                                                    id="total_building_area" disabled
-                                                                   value="{{!empty($project->assetProject->total_building_area) ? $project->assetProject->total_building_area : ''}}">
+                                                                   value="{{!empty($project->assetProject->total_building_area) ? number_format($project->assetProject->total_building_area) : ''}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group mb-3">
                                                             <label for="">NRSF<span
                                                                     class="text-danger">*</span></label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    class="form-control"
                                                                    name="nrsf" disabled
                                                                    id="nrsf"
-                                                                   value="{{!empty($project->assetProject->nrsf) ? $project->assetProject->nrsf : ''}}">
+                                                                   value="{{!empty($project->assetProject->nrsf) ? number_format($project->assetProject->nrsf) : ''}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group mb-3">
                                                             <label for="">Công suất dự kiến<span
                                                                     class="text-danger">*</span></label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    class="form-control"
                                                                    name="expected_capacity" disabled
                                                                    id="expected_capacity"
-                                                                   value="{{!empty($project->assetProject->expected_capacity) ? $project->assetProject->expected_capacity : ''}}">
+                                                                   value="{{!empty($project->assetProject->expected_capacity) ? number_format($project->assetProject->expected_capacity) : ''}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group mb-3">
                                                             <label for="">Mục tiêu Lợi tức ổn định trên Chi phí<span
                                                                     class="text-danger">*</span></label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    class="form-control"
                                                                    name="target_table"
                                                                    id="target_table" disabled
-                                                                   value="{{!empty($project->assetProject->target_table) ? $project->assetProject->target_table : ''}}">
+                                                                   value="{{!empty($project->assetProject->target_table) ? number_format($project->assetProject->target_table) : ''}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group mb-3">
                                                             <label for="">Giá, Chi phí cho đến nay<span
                                                                     class="text-danger">*</span></label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    class="form-control"
                                                                    name="current_price" disabled
                                                                    id="current_price"
-                                                                   value="{{!empty($project->assetProject->current_price) ? $project->assetProject->current_price : ''}}">
+                                                                   value="{{!empty($project->assetProject->current_price) ? number_format($project->assetProject->current_price) : ''}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-sm-12">
