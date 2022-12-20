@@ -36,4 +36,8 @@ return [
     'create_category' => "Thêm mới danh mục",
     'detail_news' => "Chi tiết bài viết",
     'notification' => 'Thông báo',
+    'create_feedback' => 'Tạo mới ý kiến đánh giá',
+    'update_feedback' => 'Cập nhật ý kiến đánh giá',
+    'detail_feedback' => 'Chi tiết ý kiến đánh giá',
+    'list_feedback' =>   'Danh sách ý kiến đánh giá',
 ];

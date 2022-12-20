@@ -220,6 +220,16 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::post('/update_config_project/{id}', "Admin\ConfigController@update_config_project")->name('config.update_config_project');
             });
 
+            Route::prefix('/feedback')->group(function () {
+                Route::get('/list', "Admin\FeedbackController@index")->name('feedback.index');
+                Route::get('/create', "Admin\FeedbackController@create")->name('feedback.create');
+                Route::post('/save', "Admin\FeedbackController@save")->name('feedback.save');
+                Route::get('/edit/{id}', "Admin\FeedbackController@edit")->name('feedback.edit');
+                Route::post('/update/{id}', "Admin\FeedbackController@update")->name('feedback.update');
+                Route::get('/detail/{id}', "Admin\FeedbackController@detail")->name('feedback.detail');
+                Route::post('/update_status', 'Admin\FeedbackController@update_status')->name('feedback.update_status');
+            });
+
         });
     });
 
