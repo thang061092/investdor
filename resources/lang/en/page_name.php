@@ -36,4 +36,8 @@ return [
     'create_category' => 'Create category',
     'detail_news' => "Detail news",
     'notification' => 'Notification',
+    'create_feedback' => 'Create feedback',
+    'update_feedback' => 'Update feedback',
+    'detail_feedback' => 'Detail feedback',
+    'list_feedback' =>   'List feedback',
 ];
