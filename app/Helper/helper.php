@@ -255,3 +255,8 @@ function convert_money($money)
     $new = "$money";
     return $new;
 }
+
+function show_html($text)
+{
+    return str_replace(array('<p>', '</p>',), '', html_entity_decode($text));
+}

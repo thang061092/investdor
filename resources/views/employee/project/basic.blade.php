@@ -118,7 +118,6 @@
                                                     <p class="text-danger">{{ $errors->first('ward_project') }}</p>
                                                 @endif
                                             </div>
-
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
@@ -131,7 +130,6 @@
                                                     <p class="text-danger">{{ $errors->first('address_project') }}</p>
                                                 @endif
                                             </div>
-
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group mb-3">
