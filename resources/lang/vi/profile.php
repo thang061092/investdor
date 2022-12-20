@@ -64,5 +64,9 @@ return [
     'created_at' => "Ngày tạo",
     'function' => "Chức năng",
     'category' => "Danh mục",
+    'feedback_vi' => "Ý kiến đánh giá (Tiếng Việt)",
+    'feedback_en' => "Ý kiến đánh giá (Tiếng Anh)",
+    'job_en' => "Nghề nghiệp (Tiếng Anh)",
+    'job_vi' => "Nghề nghiệp (Tiếng Việt)",
 
 ];

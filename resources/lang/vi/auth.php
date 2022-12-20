@@ -111,6 +111,8 @@ return array(
     'password_min' => "Mật khẩu ít nhất 6 ký tự",
     'identity_unique' => "Số CMND/CCCD đã tồn tại",
     'parent_not_null' => "Danh mục cha không để trống",
+    'job_not_null' => "Nghề nghiệp không để trống",
+    'feedback_not_null' => "Ý kiến đánh giá không để trống",
 );
 
 
