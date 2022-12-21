@@ -12,22 +12,22 @@
                         {{!empty($project->total_value) ? number_format_vn($project->total_value) : 0}}
                     </div>
                     <p class="c-label-invest mb-1 d-block text-left">
-                        Estimated Hold Period
+                        {{__('project.Estimated_Hold_Period')}}
                     </p>
                     <div class="c-value-invest mb-3 text-left">
-                        0
+                        {{$project->interests()->where('status', 'active')->first()->period ?? 12}} tháng
                     </div>
                     <p class="c-label-invest mb-1 d-block text-left">
-                        Minimum Investment
+                        {{__('project.Minimum_Investment')}}
                     </p>
                     <div class="c-value-invest mb-3 text-left">
-                        0
+                        10 {{__('project.part')}}
                     </div>
                     <p class="c-label-invest mb-1 d-block text-left">
                         {{__('project.expected_profit')}}
                     </p>
                     <div class="c-value-invest mb-3 text-left">
-                        0
+                        {{$project->interests()->where('status', 'active')->first()->interest ?? 10}}%
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInRight">

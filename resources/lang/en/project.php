@@ -66,5 +66,9 @@ return [
     'Investing_always_comes_with_risks' => 'Investing always comes with risks. Investors are responsible for their own investment',
     'I_agree' => 'I agree to the terms and conditions of use.',
     'Estimated_Hold_Period' => 'Estimated hold period',
-    'Minimum_Investment' => 'Minimum investment'
+    'Minimum_Investment' => 'Minimum investment',
+    'Amount_you_want_to_invest' => 'Amount you want to invest',
+    'Investment_part_number' => 'Investment part number',
+    'Enter_the_part_number_you_want_to_invest' => 'Enter the part number you want to invest',
+    'You_need_to_invest_in_the_evening_minimum_10_parts' => 'You need to invest in the evening minimum 10 parts'
 ];

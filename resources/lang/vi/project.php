@@ -66,6 +66,10 @@ return [
     'Investing_always_comes_with_risks' => 'Đầu tư luôn đi kèm với rủi ro. Nhà đầu tư vui lòng tự chịu trách nhiệm với khoản đầu tư của mình',
     'I_agree' => 'Tôi đồng ý với điều khoản và điều kiện sử dụng.',
     'Estimated_Hold_Period' => 'Thời gian dự kiến',
-    'Minimum_Investment' => 'Đầu tư tối thiểu'
+    'Minimum_Investment' => 'Đầu tư tối thiểu',
+    'Amount_you_want_to_invest' => 'Số tiền bạn muốn đầu tư',
+    'Investment_part_number' => 'Số phần đầu tư',
+    'Enter_the_part_number_you_want_to_invest' => 'Nhập số phần bạn muốn đầu tư',
+    'You_need_to_invest_in_the_evening_minimum_10_parts' => 'Bạn cầu đầu tư tối thiểu 10 phần'
 
 ];
