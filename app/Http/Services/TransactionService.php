@@ -62,8 +62,8 @@ class TransactionService
             $message[] = __('validate.payment_date_not_null');
         }
 
-        if (empty(check_undefined($request->file))) {
-            $message[] = __('validate.file_not_null');
+        if (!$request->hasFile('file')) {
+            $message[] = __('validate.payment_vouchers_not_null');
         } else {
             $url = $this->uploadService->upload_param($request->file);
             if (!$url) {

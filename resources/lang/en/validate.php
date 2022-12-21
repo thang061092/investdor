@@ -66,5 +66,6 @@ return [
     'name_member_not_null' => 'Name member not null',
     'position_member_not_null' => 'Position member not null',
     'avatar_not_null'=> 'Avatar not null',
-    'investor_project_id_not_null' => 'Investor project not null'
+    'investor_project_id_not_null' => 'Investor project not null',
+    'payment_vouchers_not_null' => 'Payment vouchers not null'
 ];
