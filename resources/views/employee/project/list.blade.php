@@ -36,7 +36,7 @@
                                      style="width: 300px;">
                                     <div class="card d-flex flex-column">
                                         <div class="card-body d-flex flex-column">
-                                            <form method="get" action="">
+                                            <form method="get" action="{{route('project.list')}}">
                                                 <div class="form-group mb-3">
                                                     <label class="form-label">Ngày bắt đầu</label>
                                                     <div>

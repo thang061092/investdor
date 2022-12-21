@@ -34,8 +34,8 @@ class FormAssetProject extends FormRequest
             'current_price' => 'required',
             'project_highlights_vi' => 'required',
             'project_highlights_en' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
             'id' => 'required',
         ];
     }

@@ -17,8 +17,14 @@ class RealEstateProjectRepository extends BaseRepository
 
     public function getAllPaginate($request)
     {
-        $model = $this->model
-            ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
+        $model = $this->model;
+        if (!empty($request->start) && !empty($request->end)) {
+            $start = $request->start . ' 00:00:00';
+            $end = $request->end . ' 23:59:59';
+            $model = $model->whereBetween(RealEstateProject::CREATED_AT, [$start, $end]);
+        }
+
+        $model = $model->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->paginate(30);
         return $model;
     }

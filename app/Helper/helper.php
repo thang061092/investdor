@@ -260,3 +260,8 @@ function show_html($text)
 {
     return str_replace(array('<p>', '</p>',), '', html_entity_decode($text));
 }
+
+function convert_text_number($value)
+{
+    return trim(str_replace(array(',', '.',), '', $value));
+}

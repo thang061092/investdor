@@ -84,15 +84,15 @@ class RealEstateProjectService
             RealEstateProject::DISTRICT_ID => $request->district_project ?? null,
             RealEstateProject::WARD_ID => $request->ward_project ?? null,
             RealEstateProject::ADDRESS_VI => $request->address_project ?? null,
-            RealEstateProject::TOTAL_VALUE => !empty($request->total_value_project) ? trim(str_replace(array(',', '.',), '', $request->total_value_project)) : null,
-            RealEstateProject::PART => !empty($request->total_part_project) ? trim(str_replace(array(',', '.',), '', $request->total_part_project)) : null,
-            RealEstateProject::VALUE_PART => !empty($request->value_part_project) ? trim(str_replace(array(',', '.',), '', $request->value_part_project)) : null,
+            RealEstateProject::TOTAL_VALUE => !empty($request->total_value_project) ? convert_text_number($request->total_value_project) : null,
+            RealEstateProject::PART => !empty($request->total_part_project) ? convert_text_number($request->total_part_project) : null,
+            RealEstateProject::VALUE_PART => !empty($request->value_part_project) ? convert_text_number($request->value_part_project) : null,
             RealEstateProject::DESCRIPTION_VI => $request->description_project_vi ?? null,
             RealEstateProject::DESCRIPTION_EN => $request->description_project_en ?? null,
             RealEstateProject::TYPE => $request->type_project ?? null,
             RealEstateProject::STATUS => RealEstateProject::NEW,
             RealEstateProject::CREATED_BY => Session::get('employee')['email'] ?? null,
-            RealEstateProject::CURRENT_PART => !empty($request->total_part_project) ? trim(str_replace(array(',', '.',), '', $request->total_part_project)) : null,
+            RealEstateProject::CURRENT_PART => !empty($request->total_part_project) ? convert_text_number($request->total_part_project) : null,
         ];
         $project = $this->estateProjectRepository->create($data);
         $this->interestRepository->create([
@@ -193,11 +193,11 @@ class RealEstateProjectService
         if (!$asset) {
             $this->assetProjectRepository->create([
                 AssetProject::YEAR_BUILT => $request->year_built,
-                AssetProject::TOTAL_BUILDING_AREA => $request->total_building_area,
-                AssetProject::NRSF => $request->nrsf,
-                AssetProject::EXPECTED_CAPACITY => $request->expected_capacity,
-                AssetProject::TARGET_TABLE => $request->target_table,
-                AssetProject::CURRENT_PRICE => $request->current_price,
+                AssetProject::TOTAL_BUILDING_AREA => convert_text_number($request->total_building_area),
+                AssetProject::NRSF => convert_text_number($request->nrsf),
+                AssetProject::EXPECTED_CAPACITY => convert_text_number($request->expected_capacity),
+                AssetProject::TARGET_TABLE => convert_text_number($request->target_table),
+                AssetProject::CURRENT_PRICE => convert_text_number($request->current_price),
                 AssetProject::PROJECT_HIGHLIGHTS_VI => $request->project_highlights_vi,
                 AssetProject::PROJECT_HIGHLIGHTS_EN => $request->project_highlights_en,
                 AssetProject::LONGITUDE => $request->longitude,
@@ -207,11 +207,11 @@ class RealEstateProjectService
         } else {
             $this->assetProjectRepository->update($asset['id'], [
                 AssetProject::YEAR_BUILT => $request->year_built,
-                AssetProject::TOTAL_BUILDING_AREA => $request->total_building_area,
-                AssetProject::NRSF => $request->nrsf,
-                AssetProject::EXPECTED_CAPACITY => $request->expected_capacity,
-                AssetProject::TARGET_TABLE => $request->target_table,
-                AssetProject::CURRENT_PRICE => $request->current_price,
+                AssetProject::TOTAL_BUILDING_AREA => convert_text_number($request->total_building_area),
+                AssetProject::NRSF => convert_text_number($request->nrsf),
+                AssetProject::EXPECTED_CAPACITY => convert_text_number($request->expected_capacity),
+                AssetProject::TARGET_TABLE => convert_text_number($request->target_table),
+                AssetProject::CURRENT_PRICE => convert_text_number($request->current_price),
                 AssetProject::PROJECT_HIGHLIGHTS_VI => $request->project_highlights_vi,
                 AssetProject::PROJECT_HIGHLIGHTS_EN => $request->project_highlights_en,
                 AssetProject::LONGITUDE => $request->longitude,
