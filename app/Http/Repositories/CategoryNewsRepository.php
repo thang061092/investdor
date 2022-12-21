@@ -31,6 +31,10 @@ class CategoryNewsRepository extends BaseRepository
         if (!empty($request['status_search'])) {
             $model = $model->where(CategoryNews::STATUS, $request['status_search']);
         }
+        if (!empty($request['email_search'])) {
+            $email = $request['email_search'];
+            $model = $model->where(CategoryNews::CREATED_BY, 'like', "%$email%");
+        }
         return $model
         ->orderBy(CategoryNews::CREATED_AT, 'DESC')
         ->paginate(10);

@@ -64,5 +64,11 @@ return [
     'status' => "Status",
     'created_at' => "Created at",
     'function' => "Function",
+    'edit_profile' => 'Edit Profile',
+    'feedback_vi' => "FeedBack (Vietnamese)",
+    'feedback_en' => "FeedBack (English)",
+    'job_en' => "Job (English)",
+    'job_vi' => "Job (Vietnamese)",
+    'warning_note' => 'Your personal information has not been verified, please verify your account before investing.'
 
 ];
