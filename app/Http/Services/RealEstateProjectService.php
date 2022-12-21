@@ -246,7 +246,7 @@ class RealEstateProjectService
 
     public function add_document($request)
     {
-        if ($request->file) {
+        if ($request->hasFile('file')) {
             $file = $this->uploadService->upload($request);
         }
         $this->documentProjectRepository->create([
@@ -265,7 +265,7 @@ class RealEstateProjectService
 
     public function add_member_company($request)
     {
-        if ($request->avatar) {
+        if ($request->hasFile('avatar')) {
             $file = $this->uploadService->upload_param($request->avatar);
         }
         $this->memberCompanyRepository->create([
@@ -496,5 +496,31 @@ class RealEstateProjectService
     {
         $projects = $this->estateProjectRepository->list_project_index($request);
         return $projects;
+    }
+
+    public function validate_add_member_company($request)
+    {
+        $validate = Validator::make($request->all(), [
+            'name_member' => 'required',
+            'position_member_vi' => 'required',
+            'position_member_en' => 'required',
+            'investor_project_id' => 'required',
+        ], [
+            'name_member.required' => __('validate.name_member_not_null'),
+            'position_member_vi.required' => __('validate.position_member_not_null'),
+            'position_member_en.required' => __('validate.position_member_not_null'),
+            'investor_project_id.required' => __('validate.investor_project_id_not_null'),
+        ]);
+        return $validate;
+    }
+
+    public function check_validate_add_member_company($request)
+    {
+        $message = [];
+        if (!$request->hasFile('avatar')) {
+            $message[] = __('validate.avatar_not_null');
+        }
+
+        return $message;
     }
 }

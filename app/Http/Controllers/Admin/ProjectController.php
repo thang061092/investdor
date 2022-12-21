@@ -101,7 +101,7 @@ class ProjectController extends BaseController
             } elseif ($request->action == 'plan') {
                 return view('employee.project.plan', compact('project'));
             } else {
-                return view('employee.project.detail',compact('project', 'cities', 'districts', 'wards'));
+                return view('employee.project.detail', compact('project', 'cities', 'districts', 'wards'));
             }
         } else {
             toastr()->error(__("project.id_does_not_exist", ['id' => $id]));
@@ -201,9 +201,19 @@ class ProjectController extends BaseController
     public function add_member_company(Request $request)
     {
         try {
-            $this->realEstateProjectService->add_member_company($request);
-            toastr()->success(__('message.success'));
-            return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+            $validate = $this->realEstateProjectService->validate_add_member_company($request);
+            if ($validate->fails()) {
+                return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
+            } else {
+                $message = $this->realEstateProjectService->check_validate_add_member_company($request);
+                if (count($message) > 0) {
+                    return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $message[0]);
+                } else {
+                    $this->realEstateProjectService->add_member_company($request);
+                    toastr()->success(__('message.success'));
+                    return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+                }
+            }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $error);
