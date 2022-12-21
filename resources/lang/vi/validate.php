@@ -63,5 +63,9 @@ return [
     'part_min' => 'Số phần đầu tư tối thiểu :part',
     'agree' => "Bạn cần tích chọn đồng ý",
     'interest_invalid' => "Lãi suất không đúng định dạng. Ví dụ 10.5",
+    'name_member_not_null' => 'Tên thành viên không để trống',
+    'position_member_not_null' => 'Chức vụ thành viên không để trống',
+    'avatar_not_null'=> 'Ảnh đại diện không để trống',
+    'investor_project_id_not_null' => 'Chưa có chủ đầu tư dự án'
 
 ];

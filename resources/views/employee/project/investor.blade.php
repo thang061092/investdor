@@ -125,7 +125,7 @@
                                                         <th style="text-align: center">Họ tên</th>
                                                         <th style="text-align: center">Chức vụ</th>
                                                         <th style="text-align: center">Ảnh đại diện</th>
-                                                        <th style="text-align: center"></th>
+{{--                                                        <th style="text-align: center"></th>--}}
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -147,9 +147,10 @@
                                                                              width="100px" height="100px">
                                                                     </a>
                                                                 </td>
-                                                                <td>
-                                                                    <a class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                                                </td>
+{{--                                                                <td>--}}
+{{--                                                                    <a class="btn btn-success"><i class="fa fa-edit"--}}
+{{--                                                                                                  aria-hidden="true"></i></a>--}}
+{{--                                                                </td>--}}
                                                             </tr>
                                                         @endforeach
                                                     @endempty
@@ -158,12 +159,14 @@
                                             </div>
                                             <div class="text-center" style="text-align: right !important;">
                                                 <div class="btnadmin">
-                                                    <a data-bs-toggle="modal"
-                                                       data-bs-target="#add-member"
-                                                       class="btn btn-success action">
-                                                        Thêm thành viên &nbsp;
-                                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                    </a>
+                                                    @if(!empty($project->investorProject->name_company_vi))
+                                                        <a data-bs-toggle="modal"
+                                                           data-bs-target="#add-member"
+                                                           class="btn btn-success action">
+                                                            Thêm thành viên &nbsp;
+                                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

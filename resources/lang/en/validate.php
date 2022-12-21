@@ -63,4 +63,8 @@ return [
     'part_min' => 'Part min :part',
     'agree' => "You need to tick to agree",
     'interest_invalid' => "The interest format is invalid. example 10.5",
+    'name_member_not_null' => 'Name member not null',
+    'position_member_not_null' => 'Position member not null',
+    'avatar_not_null'=> 'Avatar not null',
+    'investor_project_id_not_null' => 'Investor project not null'
 ];
