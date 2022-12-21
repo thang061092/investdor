@@ -67,4 +67,29 @@ $(document).ready(function () {
         var value_part_project = $("input[name='value_part_project']").val()
         $('#value_part_project').val(addCommas(value_part_project))
     })
+
+    $('#total_building_area').on('keyup', function () {
+        var total_building_area = $("input[name='total_building_area']").val()
+        $('#total_building_area').val(addCommas(total_building_area))
+    })
+
+    $('#nrsf').on('keyup', function () {
+        var total_building_area = $("input[name='nrsf']").val()
+        $('#nrsf').val(addCommas(nrsf))
+    })
+
+    $('#expected_capacity').on('keyup', function () {
+        var expected_capacity = $("input[name='expected_capacity']").val()
+        $('#expected_capacity').val(addCommas(expected_capacity))
+    })
+
+    $('#target_table').on('keyup', function () {
+        var target_table = $("input[name='target_table']").val()
+        $('#target_table').val(addCommas(target_table))
+    })
+
+    $('#current_price').on('keyup', function () {
+        var current_price = $("input[name='current_price']").val()
+        $('#current_price').val(addCommas(current_price))
+    })
 })

@@ -41,7 +41,7 @@
                                                 <input type="number"
                                                        class="form-control @if($errors->has('year_built'))is-invalid @endif"
                                                        name="year_built"
-                                                       id="year_built"
+                                                       id="year_built" placeholder="Nhập năm xây dựng"
                                                        value="{{$project->assetProject->year_built ?? old('year_built')}}">
                                                 @if($errors->has('year_built'))
                                                     <p class="text-danger">{{ $errors->first('year_built') }}</p>
@@ -50,13 +50,13 @@
                                         </div>
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group mb-3">
-                                                <label for="">Tổng diện tích xây dựng<span
+                                                <label for="">Tổng diện tích xây dựng(m2)<span
                                                         class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <input type="text"
                                                        class="form-control @if($errors->has('total_building_area'))is-invalid @endif"
                                                        name="total_building_area"
-                                                       id="total_building_area"
-                                                       value="{{$project->assetProject->total_building_area ?? old('total_building_area')}}">
+                                                       id="total_building_area" placeholder="Nhập diện tích xây dựng"
+                                                       value="{{!empty($project->assetProject->total_building_area) ? number_format($project->assetProject->total_building_area) : old('total_building_area')}}">
                                                 @if($errors->has('total_building_area'))
                                                     <p class="text-danger">{{ $errors->first('total_building_area') }}</p>
                                                 @endif
@@ -66,11 +66,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="">NRSF<span
                                                         class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <input type="text"
                                                        class="form-control @if($errors->has('nrsf'))is-invalid @endif"
                                                        name="nrsf"
-                                                       id="nrsf"
-                                                       value="{{$project->assetProject->nrsf ?? old('nrsf')}}">
+                                                       id="nrsf" placeholder="nrsf"
+                                                       value="{{!empty($project->assetProject->nrsf) ? number_format($project->assetProject->nrsf) : old('nrsf')}}">
                                                 @if($errors->has('nrsf'))
                                                     <p class="text-danger">{{ $errors->first('nrsf') }}</p>
                                                 @endif
@@ -80,11 +80,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="">Công suất dự kiến<span
                                                         class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <input type="text"
                                                        class="form-control @if($errors->has('expected_capacity'))is-invalid @endif"
                                                        name="expected_capacity"
-                                                       id="expected_capacity"
-                                                       value="{{$project->assetProject->expected_capacity ?? old('expected_capacity')}}">
+                                                       id="expected_capacity" placeholder="Nhập công suất dự kiến"
+                                                       value="{{!empty($project->assetProject->expected_capacity) ? number_format($project->assetProject->expected_capacity) : old('expected_capacity')}}">
                                                 @if($errors->has('expected_capacity'))
                                                     <p class="text-danger">{{ $errors->first('expected_capacity') }}</p>
                                                 @endif
@@ -94,11 +94,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="">Mục tiêu Lợi tức ổn định trên Chi phí<span
                                                         class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <input type="text"
                                                        class="form-control @if($errors->has('target_table'))is-invalid @endif"
                                                        name="target_table"
-                                                       id="target_table"
-                                                       value="{{$project->assetProject->target_table ?? old('target_table')}}">
+                                                       id="target_table" placeholder="Nhập mục tiêu"
+                                                       value="{{!empty($project->assetProject->target_table) ? number_format($project->assetProject->target_table) : old('target_table')}}">
                                                 @if($errors->has('target_table'))
                                                     <p class="text-danger">{{ $errors->first('target_table') }}</p>
                                                 @endif
@@ -108,11 +108,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="">Giá, Chi phí cho đến nay<span
                                                         class="text-danger">*</span></label>
-                                                <input type="number"
+                                                <input type="text"
                                                        class="form-control @if($errors->has('current_price'))is-invalid @endif"
                                                        name="current_price"
-                                                       id="current_price"
-                                                       value="{{$project->assetProject->current_price ?? old('current_price')}}">
+                                                       id="current_price" placeholder="Nhập giá chi phí"
+                                                       value="{{!empty($project->assetProject->current_price) ? number_format($project->assetProject->current_price) : old('current_price')}}">
                                                 @if($errors->has('current_price'))
                                                     <p class="text-danger">{{ $errors->first('current_price') }}</p>
                                                 @endif
@@ -125,7 +125,7 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('longitude'))is-invalid @endif"
                                                        name="longitude"
-                                                       id="longitude"
+                                                       id="longitude" placeholder="Kinh độ"
                                                        value="{{$project->assetProject->longitude ?? old('longitude')}}">
                                                 @if($errors->has('current_price'))
                                                     <p class="text-danger">{{ $errors->first('longitude') }}</p>
@@ -139,7 +139,7 @@
                                                 <input type="text"
                                                        class="form-control @if($errors->has('latitude'))is-invalid @endif"
                                                        name="latitude"
-                                                       id="latitude"
+                                                       id="latitude" placeholder="Vĩ độ"
                                                        value="{{$project->assetProject->latitude ?? old('latitude')}}">
                                                 @if($errors->has('current_price'))
                                                     <p class="text-danger">{{ $errors->first('latitude') }}</p>
@@ -194,6 +194,7 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('js/address/select.js')}}"></script>
 @endsection
 @section('js')
     <script>

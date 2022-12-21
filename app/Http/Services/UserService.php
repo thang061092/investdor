@@ -472,6 +472,10 @@ class UserService
             $message[] = __('auth.email_not_null');
             return $message;
         } else {
+            if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                $message[] = __('auth.email_malformed');
+                return $message;
+            }
             $user = $this->userRepository->findOne([Users::EMAIL => $request->email, Users::STATUS => Users::ACTIVE]);
             if (!$user) {
                 $message[] = __('auth.email_not_exist');

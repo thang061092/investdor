@@ -143,7 +143,7 @@ class ProjectController extends BaseController
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             toastr()->error($error);
-            return redirect()->route('project.list');
+            return back()->withInput();
         }
     }
 
