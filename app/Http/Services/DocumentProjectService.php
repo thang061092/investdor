@@ -41,9 +41,9 @@ class DocumentProjectService
         if (!empty($request->name_file_en)) {
             $data['name_file_en'] = $request->name_file_en;
         }
-        if (!empty($request->file) && $request->file != 'undefined') {
+        if ($request->hasFile('file')) {
             $data['link'] = $this->uploadService->upload_param($request->file);
-            $data['type_file']=  $request->file->getClientOriginalExtension();
+            $data['type_file'] = $request->file->getClientOriginalExtension();
         }
         $this->documentProjectRepository->update($request->id, $data);
         return;
@@ -63,5 +63,15 @@ class DocumentProjectService
             'name_file_en.required' => __('validate.name_file_not_nul'),
         ]);
         return $validate;
+    }
+
+    public function check_validate_update_document($request)
+    {
+        $message = [];
+        if (!$request->hasFile('file')) {
+            $message[] = __('validate.file_not_null');
+        }
+
+        return $message;
     }
 }
