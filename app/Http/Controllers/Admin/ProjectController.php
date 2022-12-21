@@ -167,8 +167,13 @@ class ProjectController extends BaseController
             if ($validate->fails()) {
                 return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $validate->errors()->first());
             } else {
-                $this->realEstateProjectService->add_document($request);
-                return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+                $message = $this->documentProjectService->check_validate_update_document($request);
+                if (count($message) > 0) {
+                    return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $message[0]);
+                } else {
+                    $this->realEstateProjectService->add_document($request);
+                    return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
+                }
             }
         } catch (\Exception $exception) {
             $error = $exception->getMessage();

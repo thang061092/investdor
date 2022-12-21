@@ -523,4 +523,5 @@ class RealEstateProjectService
 
         return $message;
     }
+
 }
