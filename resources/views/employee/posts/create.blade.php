@@ -71,7 +71,7 @@
                                                         id="parent">
                                                     <option value="">Chọn</option>
                                                     @foreach($parents as $parent)
-                                                        <option value="{{$parent->id}}">{{$parent->title_vi}}</option>
+                                                        <option value="{{$parent->id}}"@if(old('parent') == $parent->id){{ 'selected' }}@endif>{{$parent->title_vi}}</option>
                                                     @endforeach
                                                 </select>
                                                 @if($errors->has('parent'))

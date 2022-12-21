@@ -28,7 +28,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="title">{{__('profile.title_vi')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="title_vi" id="title_vi"
-                                                        placeholder="{{__('profile.title_vi')}}" >
+                                                    value="{{old('title_vi', '')}}"    placeholder="{{__('profile.title_vi')}}" >
                                             </div>
                                             @if($errors->has('title_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title_vi') }}</p>
@@ -38,7 +38,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="title">{{__('profile.title_en')}}<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="title_en" id="title_en"
-                                                        placeholder="{{__('profile.title_en')}}" >
+                                                value="{{old('title_en', '')}}"   placeholder="{{__('profile.title_en')}}" >
                                             </div>
                                             @if($errors->has('title_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('title_en') }}</p>
@@ -59,7 +59,7 @@
                                                 <label for="content">{{__('profile.content_vi')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="content_vi" id="content_vi"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.content_vi')}}"></textarea>
+                                                 rows="4" cols="50"    placeholder="{{__('profile.content_vi')}}">{{old('content_vi','')}}</textarea>
                                             </div>
                                             @if($errors->has('content_vi'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content_vi') }}</p>
@@ -71,7 +71,7 @@
                                                 <label for="content">{{__('profile.content_en')}}<span
                                                         class="text-danger">*</span></label>
                                                 <textarea type="text" class="form-control" name="content_en" id="content_en"
-                                                    rows="4" cols="50"    placeholder="{{__('profile.content_en')}}"></textarea>
+                                               rows="4" cols="50"    placeholder="{{__('profile.content_en')}}">{{old('content_en','')}}</textarea>
                                             </div>
                                             @if($errors->has('content_en'))
                                                 <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('content_en') }}</p>
@@ -84,7 +84,7 @@
                                                     <option value="">--Chọn thể loại--</option>
                                                     @if ($categories)
                                                         @foreach ($categories as $item)
-                                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                                            <option value="{{$item->id}}"@if(old('category') == $item->id){{ 'selected' }}@endif>{{$item->name}}</option>
                                                         @endforeach
                                                     @endif
                                                 </select>
