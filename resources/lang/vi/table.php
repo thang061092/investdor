@@ -2,7 +2,7 @@
 return [
     'no_data' => "Không có dữ liệu",
     'project' => 'Dự án',
-    'project_investment_amount' => 'Số tiền đầu tư dự án',
+    'project_investment_amount' => 'Số tiền đầu tư',
     'profit' => 'Lợi nhuận',
     'interest_rate' => 'Lãi suất',
     'start_date' => 'Ngày bắt đầu',

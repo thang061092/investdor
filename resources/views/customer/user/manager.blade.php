@@ -36,7 +36,8 @@
                 <div class="col-lg-auto col-md-6 col-12 mb-lg-0 mb-3">
                     <div class="box-index">
                         <p class="title mb-2">{{__('table.temporary_profit')}}</p>
-                        <div class="index">{{!empty($report['provisional_profit'])  ? number_format_vn($report['provisional_profit']) : 0}}
+                        <div
+                            class="index">{{!empty($report['provisional_profit'])  ? number_format_vn($report['provisional_profit']) : 0}}
                             VND
                         </div>
                     </div>
@@ -111,7 +112,7 @@
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Ngày bắt đầu"
-                           style="text-align: center">{{date('d/m/Y'), $contract->date_init}}</p>
+                           style="text-align: center">{{date('d/m/Y',$contract->date_init)}}</p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Thời gian đầu tư"

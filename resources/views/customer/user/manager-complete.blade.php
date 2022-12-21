@@ -104,22 +104,22 @@
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Lợi nhuận tạm tính" style="text-align: center">
-                            xx.xxx.xxx
+                            {{number_format_vn($contract->transactions()->where('type_method', 2)->sum('money_interest'))}}
                         </p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value"
                            data-title="Lợi nhuận tạm tính"
-                           style="text-align: center"> {{data_get(json_decode($contract->interest, true), 'detail.interest')}}
+                           style="text-align: center"> {{data_get(json_decode($contract->interest, true), 'interest')}}
                             %/{{__('table.year')}}</p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Ngày bắt đầu"
-                           style="text-align: center">{{date('d/m/Y'), $contract->date_init}}</p>
+                           style="text-align: center">{{date('d/m/Y', $contract->date_init) }}</p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Ngày bắt đầu"
-                           style="text-align: center">{{date('d/m/Y'), $contract->due_date}}</p>
+                           style="text-align: center">{{date('d/m/Y', $contract->expire_date) }}</p>
                     </div>
                     <div class="col-lg-auto px-0">
                         <p class="c-value" data-title="Thời gian đầu tư"

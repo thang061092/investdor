@@ -66,6 +66,7 @@ return [
     'name_member_not_null' => 'Tên thành viên không để trống',
     'position_member_not_null' => 'Chức vụ thành viên không để trống',
     'avatar_not_null'=> 'Ảnh đại diện không để trống',
-    'investor_project_id_not_null' => 'Chưa có chủ đầu tư dự án'
+    'investor_project_id_not_null' => 'Chưa có chủ đầu tư dự án',
+    'payment_vouchers_not_null' => 'Chứng từ thanh toán không để trống'
 
 ];
