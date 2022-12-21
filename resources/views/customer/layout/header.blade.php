@@ -185,15 +185,17 @@
                             <div class="wrapper-box content" style="display:none;">
                                 <div class="box">
                                     @if (!empty(session()->get('customer')))
-                                        @if (session()->get('customer')['accuracy'] == 0)
+                                        @inject('user','App\Http\Services\UserService')
+                                        @php( $user = $user->find(session()->get('customer')['id']) )
+                                        @if ($user['accuracy'] == 0)
                                             <p class="alert-confirmed">
                                                 {{__('profile.yet_auth')}}
                                             </p>
-                                        @elseif (session()->get('customer')['accuracy'] == 1)
+                                        @elseif ($user['accuracy'] == 1)
                                             <p class="alert alert-success">
                                                 {{__('profile.success_auth')}}
                                             </p>
-                                        @elseif (session()->get('customer')['accuracy'] == 2)
+                                        @elseif ($user['accuracy'] == 2)
                                             <p class="alert alert-warning">
                                                 {{__('profile.wait_auth')}}
                                             </p>

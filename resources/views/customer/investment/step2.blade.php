@@ -6,29 +6,30 @@
         <div class="container">
             <div class="frm-set-invest invest-step-2 wow fadeInUp">
                 <div class="wrapper-set-invest mx-auto">
-                    <p class="title_lg">Số tiền bạn muốn đầu tư</p>
+                    <p class="title_lg">{{__('project.Amount_you_want_to_invest')}}</p>
                     <label for="" class="d-block mb-2">
-                        Số phần đầu tư
+                        {{__('project.Investment_part_number')}}
                     </label>
-                    <input type="text" name="part_investment" placeholder="Nhập số phần bạn muốn đầu tư"
+                    <input type="number" name="part_investment"
+                           placeholder="{{__('project.Enter_the_part_number_you_want_to_invest')}}"
                            class="form-control part_investment"/>
                     <p class="c-note mb-3 mt-1">
-                        Giá bán: <span class="text-danger">{{number_format_vn($project->value_part)}}</span>vnđ / phần,
-                        Bạn cầu đầu tư tối
-                        thiểu
-                        10 phần
+                        {{__('project.price')}}: <span
+                            class="text-danger">{{number_format_vn($project->value_part)}}</span>VND /
+                        {{__('project.part')}}, &nbsp;
+                        {{__('project.You_need_to_invest_in_the_evening_minimum_10_parts')}}
                     </p>
                     <label for="" class="d-block mb-2">
-                        Số tiền đầu tư
+                        {{__('project.total_investment')}}
                     </label>
                     <input disabled type="text" name="total_value_part"
-                           placeholder="Hiển thị số tiền đầu tư theo số phần"
+                           placeholder="0"
                            class="form-control"/>
                     <input type="hidden" name="checksum" value="{{$checksum}}">
                     <input type="hidden" name="value_part" value="{{$project->value_part}}">
                 </div>
                 <button type="button" class="btn_all mt-xl-5 mt-lg-4 mt-3 step2">
-                    Tiếp tục
+                    {{__('button.continue')}}
                 </button>
             </div>
         </div>
