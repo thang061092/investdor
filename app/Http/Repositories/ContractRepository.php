@@ -37,8 +37,13 @@ class ContractRepository extends BaseRepository
 
     public function get_list($request)
     {
-        $query = DB::table('contract')
-            ->join('users', 'users.id', '=', 'contract.user_id')
+        $query = DB::table('contract');
+        if (!empty($request->start) && !empty($request->end)) {
+            $start = $request->start . ' 00:00:00';
+            $end = $request->end . ' 23:59:59';
+            $query = $query->whereBetween('contract.date_init', [strtotime($start), strtotime($end)]);
+        }
+        $query = $query->join('users', 'users.id', '=', 'contract.user_id')
             ->join('real_estate_project', 'contract.real_estate_project_id', '=', 'real_estate_project.id')
             ->select('contract.*', 'users.full_name as user_full_name', 'real_estate_project.name_vi as project_name_vi');
         if ($request->type_query == 'get') {

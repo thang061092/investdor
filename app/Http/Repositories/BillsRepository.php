@@ -36,6 +36,11 @@ class BillsRepository extends BaseRepository
     public function get_wait_pay($request)
     {
         $model = $this->model;
+        if (!empty($request->start) && !empty($request->end)) {
+            $start = $request->start . ' 00:00:00';
+            $end = $request->end . ' 23:59:59';
+            $model = $model->whereBetween(Bills::CREATED_AT, [$start, $end]);
+        }
         $model = $model
             ->whereIn(Bills::STATUS, [Bills::WARNING, Bills::PENDING])
             ->orderBy(Bills::CREATED_AT, self::DESC)
