@@ -63,8 +63,9 @@ class HomeController extends BaseController
     public function detail_project($lug)
     {
         $project = $this->realEstateProjectService->detail_project($lug);
-        $config = $this->configService->find_config_project();
-        return view('customer.home.detail-project', compact('project', 'config'));
+        $config_view = $this->configService->find_config_view();
+        $config_index = $this->configService->find_config('index');
+        return view('customer.home.detail-project', compact('project', 'config_view', 'config_index'));
     }
 
     public function detail_knowledge(Request $request)

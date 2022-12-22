@@ -217,7 +217,9 @@ Route::group(['middleware' => 'locale'], function () {
 
             Route::prefix('/config')->group(function () {
                 Route::get('/project', "Admin\ConfigController@config_project")->name('config.project');
-                Route::post('/update_config_project/{id}', "Admin\ConfigController@update_config_project")->name('config.update_config_project');
+                Route::get('/config_index', "Admin\ConfigController@config_index")->name('config.config_index');
+                Route::post('/update_config_project', "Admin\ConfigController@update_config_project")->name('config.update_config_project');
+                Route::post('/swap_config_index', "Admin\ConfigController@swap_config_index")->name('config.swap_config_index');
             });
 
             Route::prefix('/feedback')->group(function () {
