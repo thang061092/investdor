@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Models\Bills;
+use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\Session;
 
 class BillsRepository extends BaseRepository
@@ -18,9 +19,15 @@ class BillsRepository extends BaseRepository
     public function get_bill_warning($request)
     {
         $model = $this->model;
-        $model = $model
-            ->where(Bills::USER_ID, Session::get('customer')['id'])
-            ->where(Bills::STATUS, Bills::WARNING)
+        $model = $model->where(Bills::USER_ID, Session::get('customer')['id']);
+
+        if (!empty($request->name_project)) {
+            $name = $request->name_project;
+            $model = $model->whereHas('realEstateProject', function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, 'LIKE', "%$name%");
+            });
+        }
+        $model = $model->where(Bills::STATUS, Bills::WARNING)
             ->orderBy(Bills::CREATED_AT, self::DESC)
             ->paginate(10);
         return $model;
