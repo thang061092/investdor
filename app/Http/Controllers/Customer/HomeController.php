@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Services\NewsService;
 use App\Http\Services\CategoryNewsService;
 use Yoeunes\Toastr\Facades\Toastr;
+use App\Http\Services\FeedBackService;
 
 class HomeController extends BaseController
 {
@@ -24,26 +25,30 @@ class HomeController extends BaseController
     protected $newsService;
     protected $categoryService;
     protected $configService;
+    protected $feedbackService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 InterestService $interestService,
                                 NewsService $newsService,
                                 CategoryNewsService $categoryService,
-                                ConfigService $configService)
+                                ConfigService $configService,
+                                FeedBackService $feedbackService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->interestService = $interestService;
         $this->newsService = $newsService;
         $this->categoryService = $categoryService;
-        $this->configService = $configService;
+        $this->configService = $configService; 
+        $this->feedbackService = $feedbackService; 
     }
 
     public function index(Request $request)
     {
         $projects = $this->realEstateProjectService->list_project_index($request);
-        return view('customer.home.index', compact('projects'));
+        $feedback = $this->feedbackService->get_all();
+        return view('customer.home.index', compact('projects','feedback'));
     }
 
     public function home_page(Request $request)
