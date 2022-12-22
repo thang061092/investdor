@@ -189,8 +189,7 @@
                                             <div class="mb-3">
                                                 <label for="file" class="img-ct">
                                                     <label for="file"
-                                                           class="form-label"><strong>{{__('profile.img_news')}}</strong><span
-                                                            class="text-danger">*</span></label>
+                                                           class="form-label"><strong>{{__('profile.img_news')}}</strong></label>
                                                     <input type="file" name="img_news" accept="image/*" class=""
                                                            id="img_news"
                                                            value="{{!empty($detail->image) ? $detail->image : ''}}"

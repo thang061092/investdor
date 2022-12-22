@@ -1,7 +1,7 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.personal_profile'))
 @section('css')
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"/> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css"/>
     <style>
         .theloading {
             position: fixed;
@@ -17,9 +17,10 @@
             justify-content: center;
             align-items: center
         }
-        /* .selectize-input{
-            height:calc(1.5em + 0.75rem + 2px);
-        } */
+        .selection > .select2-selection {
+            padding: 0.375rem 0.75rem;
+            height: 2.5rem;
+        }
     </style>
 @endsection
 @section("content")
@@ -172,6 +173,7 @@
                         </label>
                         <select style="color:#676767;" name="bank_name" class="nice-select mb-3" id="banks" data-text="Chọn ngân hàng"
                                 data-default="Chọn">
+                            <option value="">--Chọn ngân hàng--</option>
                             @if(isset($banks))
                                 @foreach ($banks as $bank)
                                     <option value="{{$bank->code}}"
@@ -182,7 +184,7 @@
                         @if($errors->has('bank_name'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('bank_name') }}</p>
                         @endif
-                        <label for="account_number" class="d-block mb-2">
+                        <label for="account_number" class="d-block mb-2" style="padding-top: 15px;">
                             {{__('profile.account_number')}}<span class="text-danger">*</span>
                         </label>
                         <input type="number" name="account_number" placeholder="Nhập số tài khoản"
@@ -235,7 +237,7 @@
                         @if($errors->has('province'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('province') }}</p>
                         @endif
-                        <label for="district" class="d-block mb-2">
+                        <label for="district" class="d-block mb-2" style="padding-top: 15px;">
                             {{__('profile.district')}}<span class="text-danger">*</span>
                         </label>
                         <select style="color:#676767;" name="district" class="nice-select mb-3 district" id="district"
@@ -254,7 +256,7 @@
                         @if($errors->has('district'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('district') }}</p>
                         @endif
-                        <label for="ward" class="d-block mb-2">
+                        <label for="ward" class="d-block mb-2" style="padding-top: 15px;">
                             {{__('profile.ward')}}<span class="text-danger">*</span>
                         </label>
                         <select style="color:#676767;" name="ward" class="nice-select mb-3" id="ward"
@@ -272,7 +274,7 @@
                         @if($errors->has('ward'))
                             <p class="text-danger" style="padding-bottom: 10px;">{{ $errors->first('ward') }}</p>
                         @endif
-                        <label for="specific_address" class="d-block mb-2">
+                        <label for="specific_address" class="d-block mb-2" style="padding-top: 15px;">
                             {{__('profile.specific_address')}}<span class="text-danger">*</span>
                         </label>
                         <input type="text" name="specific_address" placeholder="{{__('profile.specific_address')}}"
@@ -294,7 +296,9 @@
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <!-- <script src="/path/to/cdn/jquery.min.js"></script>
+    <script src="/path/to/dist/js/jquery-searchbox.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             toastr.options.timeOut = 10000;
@@ -402,12 +406,8 @@
             });
         });
     </script>
-    <script>
-        // $(document).ready(function () {
-        //     $('select').selectize({
-        //         sortField: 'text'
-        //     });
-        // });
-    </script>
+<!-- <script>
+    $("select").select2();
+</script> -->
 @endsection
 @stop

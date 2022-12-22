@@ -512,85 +512,27 @@
                 dummy text of the printing and typesetting industry. Lorem Ipsum has
                 been the industry's standard dummy text ever since the 1500s, when
                 an unknown printer
+
             </div>
+            @if($feedback)
             <div class="swiper swiper-feels wow fadeInUp">
                 <div class="swiper-wrapper">
+                @foreach($feedback as $item)
                     <div class="swiper-slide h-auto">
                         <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">
                             <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
+                                <img style="border-radius: 50%; width:100px; height:100px;" src='{{!empty($item["avatar"]) ? $item["avatar"]: asset("frontend/images/avatar_user.png")}}' class="img-fluid" alt=""/>
                             </div>
                             <div class="desc mb-lg-3 mb-2">
-                                “ (lời phản hồi) Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since
-                                type specimencluding versions of Lorem Ipsum. ”
+                            {!! $item['feedback_vi'] !!}
                             </div>
-                            <div class="text-center pos">Nhân viên văn phòng</div>
-                            <div class="text-center name">Jennifer Shapiro</div>
+                            <div class="text-center pos">{{$item['job_vi']}}</div>
+                            <div class="text-center name">{{$item['full_name']}}</div>
                         </div>
                     </div>
-                    <div class="swiper-slide h-auto">
-                        <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="0.3s">
-                            <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                            <div class="desc mb-lg-3 mb-2">
-                                “ (lời phản hồi) Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since
-                                type specimencluding versions of Lorem Ipsum. ”
-                            </div>
-                            <div class="text-center pos">Nhân viên văn phòng</div>
-                            <div class="text-center name">Jennifer Shapiro</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide h-auto">
-                        <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.9s" data-wow-duration="0.3s">
-                            <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                            <div class="desc mb-lg-3 mb-2">
-                                “ (lời phản hồi) Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since
-                                type specimencluding versions of Lorem Ipsum. ”
-                            </div>
-                            <div class="text-center pos">Nhân viên văn phòng</div>
-                            <div class="text-center name">Jennifer Shapiro</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide h-auto">
-                        <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="1.1s" data-wow-duration="0.3s">
-                            <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                            <div class="desc mb-lg-3 mb-2">
-                                “ (lời phản hồi) Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since
-                                type specimencluding versions of Lorem Ipsum. ”
-                            </div>
-                            <div class="text-center pos">Nhân viên văn phòng</div>
-                            <div class="text-center name">Jennifer Shapiro</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide h-auto">
-                        <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="1.3s" data-wow-duration="0.3s">
-                            <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img src="{{asset('frontend/images/avatar.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
-                            <div class="desc mb-lg-3 mb-2">
-                                “ (lời phản hồi) Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since
-                                type specimencluding versions of Lorem Ipsum. ”
-                            </div>
-                            <div class="text-center pos">Nhân viên văn phòng</div>
-                            <div class="text-center name">Jennifer Shapiro</div>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
+            @endif
             </div>
         </div>
     </section>
