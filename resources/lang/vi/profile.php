@@ -68,5 +68,7 @@ return [
     'feedback_en' => "Ý kiến đánh giá (Tiếng Anh)",
     'job_en' => "Nghề nghiệp (Tiếng Anh)",
     'job_vi' => "Nghề nghiệp (Tiếng Việt)",
+    'edit_profile' => 'Chỉnh sửa Profile',
+    'warning_note' => 'Thông tin cá nhân của bạn chưa được xác thực, vui lòng xác thực tài khoản trước khi tiến hành đầu tư.'
 
 ];

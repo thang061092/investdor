@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-3 align-items-end justify-content-end d-flex">
                         <a href="{{route('customer.user.manager'). '?main_tab=profile&action=update'}}" title="Chỉnh sửa Profile" class="edit_profile btn_all">
-                            Chỉnh sửa Profile
+                            {{__('profile.edit_profile')}}
                             <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                  viewBox="0 0 20 20" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -55,8 +55,7 @@
                                   d="M11 16C11 15.4477 11.4477 15 12 15H12.01C12.5623 15 13.01 15.4477 13.01 16C13.01 16.5523 12.5623 17 12.01 17H12C11.4477 17 11 16.5523 11 16Z"
                                   fill="#C70404"/>
                         </svg>
-                        Thông tin cá nhân của bạn chưa được xác thực, vui lòng xác
-                        thực tài khoản trước khi tiến hành đầu tư.
+                        {{__('profile.warning_note')}}
                     </div>
                     @endif
                     <div class="group-box mb-xl-4 mb-3">
