@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Models\Contract;
+use App\Models\RealEstateProject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -23,7 +24,12 @@ class ContractRepository extends BaseRepository
         if (!empty($status)) {
             $model = $model->where(Contract::STATUS, $status);
         }
-
+        if (!empty($request->name_project)) {
+            $name = $request->name_project;
+            $model = $model->whereHas('real_estate_project', function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, $name);
+            });
+        }
         $model = $model->orderBy(Contract::CREATED_AT, self::DESC)
             ->paginate(10);
         return $model;
