@@ -16,76 +16,65 @@ class ConfigService
         $this->configRepository = $configRepository;
     }
 
-    public function create()
+    public function create($request)
     {
         $data = [
-            Config::EXTEND => 'block',
-            Config::ASSET => 'block',
-            Config::INVESTOR => 'block',
-            Config::FINANCIAL => 'block',
-            Config::PLAN => 'block',
-            Config::RATE => 'block',
-            Config::DOCUMENT => 'block',
-            Config::TYPE => 'project'
+            Config::TYPE => 'view',
+            Config::NAME => $request->name,
+            Config::KEY => $request->key,
+            Config::STATUS => 'active',
         ];
         $this->configRepository->create($data);
     }
 
-    public function find_config_project()
+    public function find_config($type)
     {
-        return $this->configRepository->findOne([Config::TYPE => 'project']);
+        return $this->configRepository->findManySortColumn([Config::TYPE => $type], Config::LEVEL, "ASC");
     }
 
-    public function update_config_project($request, $id)
+    public function update_config_project($request)
     {
-        $config = $this->configRepository->find($id);
-        if (!empty($request->extend)) {
-            if ($config['extend'] == 'active') {
-                $this->configRepository->update($id, [Config::EXTEND => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::EXTEND => 'active']);
-            }
-        }
-
-        if (!empty($request->asset)) {
-            if ($config['asset'] == 'active') {
-                $this->configRepository->update($id, [Config::ASSET => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::ASSET => 'active']);
-            }
-        }
-
-        if (!empty($request->investor)) {
-            if ($config['investor'] == 'active') {
-                $this->configRepository->update($id, [Config::INVESTOR => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::INVESTOR => 'active']);
-            }
-        }
-
-        if (!empty($request->document)) {
-            if ($config['document'] == 'active') {
-                $this->configRepository->update($id, [Config::DOCUMENT => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::DOCUMENT => 'active']);
-            }
-        }
-
-        if (!empty($request->financial)) {
-            if ($config['financial'] == 'active') {
-                $this->configRepository->update($id, [Config::FINANCIAL => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::FINANCIAL => 'active']);
-            }
-        }
-
-        if (!empty($request->plan)) {
-            if ($config['plan'] == 'active') {
-                $this->configRepository->update($id, [Config::PLAN => 'block']);
-            } else {
-                $this->configRepository->update($id, [Config::PLAN => 'active']);
-            }
+        $config = $this->configRepository->find($request->id);
+        if ($config['status'] == 'active') {
+            $this->configRepository->update($config['id'], [Config::STATUS => 'block']);
+        } else {
+            $this->configRepository->update($config['id'], [Config::STATUS => 'active']);
         }
         return;
+    }
+
+    public function create_index($request)
+    {
+        $data = [
+            Config::TYPE => 'index',
+            Config::NAME => $request->name,
+            Config::KEY => $request->key,
+            Config::STATUS => 'active',
+            Config::LEVEL => $request->level,
+        ];
+        $this->configRepository->create($data);
+    }
+
+    public function swap_config_index($request)
+    {
+        $current_config = $this->configRepository->find($request->current_level);
+        $swap_config = $this->configRepository->find($request->swap_level);
+
+        $current_level = $current_config['level'];
+        $swap_level = $swap_config['level'];
+
+        $this->configRepository->update($current_config['id'], [Config::LEVEL => $swap_level]);
+        $this->configRepository->update($swap_config['id'], [Config::LEVEL => $current_level]);
+        return;
+    }
+
+    public function find_config_view()
+    {
+        $data = [];
+        $configs = $this->configRepository->findMany([Config::TYPE => 'view']);
+        foreach ($configs as $config) {
+            $data[$config['key']] = $config['status'];
+        }
+        return $data;
     }
 }
