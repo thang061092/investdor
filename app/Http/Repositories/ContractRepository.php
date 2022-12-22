@@ -26,8 +26,8 @@ class ContractRepository extends BaseRepository
         }
         if (!empty($request->name_project)) {
             $name = $request->name_project;
-            $model = $model->whereHas('real_estate_project', function ($query) use ($name) {
-                return $query->where(RealEstateProject::NAME_VI, $name);
+            $model = $model->whereHas('realEstateProject', function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, 'LIKE', "%$name%");
             });
         }
         $model = $model->orderBy(Contract::CREATED_AT, self::DESC)
@@ -57,6 +57,12 @@ class ContractRepository extends BaseRepository
         $model = $model->where(Contract::USER_ID, Session::get('customer')['id'])
             ->where(Contract::STATUS, $status);
 
+        if (!empty($request->name_project)) {
+            $name = $request->name_project;
+            $model = $model->whereHas('realEstateProject', function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, 'LIKE', "%$name%");
+            });
+        }
         if ($type_query == 'total_money') {
             return $model->sum(Contract::AMOUNT);
         } elseif ($type_query == 'count') {

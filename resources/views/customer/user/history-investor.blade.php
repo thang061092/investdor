@@ -6,10 +6,12 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
                 <p class="title_lg pt-2 wow fadeInUp">{{__('page_name.investment_history')}}</p>
-                <form action="" method="" accept-charset="utf-8" class="frm-filter">
+                <form action="{{route('customer.user.manager')}}" method="get" accept-charset="utf-8" class="frm-filter">
                     <div class="group-filter group-text wow fadeInUp">
                         <div class="group position-relative">
-                            <input type="text" placeholder="Nhập tên dự án" class="form-control"/>
+                            <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"
+                                   name="name_project" value="{{request()->get('name_project')}}"/>
+                            <input type="hidden" name="main_tab" value="history">
                             <button type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                                      fill="none">
