@@ -54,6 +54,13 @@ class BillsRepository extends BaseRepository
         $model = $model
             ->where(Bills::USER_ID, Session::get('customer')['id'])
             ->where(Bills::STATUS, Bills::WARNING);
+
+        if (!empty($request->name_project)) {
+            $name = $request->name_project;
+            $model = $model->whereHas('realEstateProject', function ($query) use ($name) {
+                return $query->where(RealEstateProject::NAME_VI, 'LIKE', "%$name%");
+            });
+        }
         if ($type_query == 'total_money') {
             return $model->sum(Bills::AMOUNT_MONEY);
         } elseif ($type_query == 'count') {
