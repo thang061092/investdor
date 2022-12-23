@@ -101,8 +101,9 @@
                         <p class="title_lg">{{__('auth.Or_scan_the_following_QR_code')}}</p>
                         <div class="qr d-block">
                             <a href="{{$bill->link_qr ?? ''}}" title="{{__('auth.download')}}" class="dl-qrcode"
-                               download="Qrcode">{{__('auth.download')}}</a>
-                            <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/>
+                               download="qr.png">{{__('auth.download')}}
+                                <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/></a>
+
                         </div>
                     </div>
                 </div>
@@ -137,5 +138,11 @@
                 console.log(err)
             }
         }
+
+        let link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = url;
+        link.click();
+        link.remove();
     </script>
 @endsection
