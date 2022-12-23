@@ -99,7 +99,7 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
                                                             <a class="dropdown-item"
-                                                               href="{{route('post.detail',['id'=> $post->id])}}">
+                                                               href="{{route('post.show',['id'=> $post->id])}}">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin
                                                             </a>
