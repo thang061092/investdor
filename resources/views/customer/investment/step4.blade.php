@@ -124,7 +124,7 @@
                 await navigator.clipboard.writeText(text_bank.value);
                 toastr.success('Copied!')
             } catch (err) {
-                toastr.error(err)
+                console.log(err)
             }
         }
 
@@ -134,7 +134,7 @@
                 await navigator.clipboard.writeText(text_code.value);
                 toastr.success('Copied!')
             } catch (err) {
-                toastr.error(err)
+                console.log(err)
             }
         }
     </script>
