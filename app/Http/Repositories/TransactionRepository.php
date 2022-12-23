@@ -29,7 +29,7 @@ class TransactionRepository extends BaseRepository
             ->join('real_estate_project', 'contract.real_estate_project_id', '=', 'real_estate_project.id')
             ->select('transaction.*', 'users.full_name as user_full_name', 'real_estate_project.name_vi as project_name_vi');
         if ($request->type_query == 'get') {
-            return $query->orderBy('transaction.created_at')
+            return $query->orderBy('transaction.created_at', 'DESC')
                 ->paginate(30);
         } elseif ($request->type == 'count') {
             return $query->count();
