@@ -191,9 +191,17 @@
                     contentType: false,
                     success: function (data) {
                         if (data.status == 200) {
-                            toastr.success({{__('message.send_question_success')}})
+                            Swal.fire(
+                                "{{__('message.success')}}",
+                                "{{__('message.send_question_success')}}",
+                                'success'
+                            )
                         } else {
-                            console.log('error')
+                            Swal.fire(
+                                "{{__('message.fail')}}",
+                                "{{__('message.fail')}}",
+                                'error'
+                            )
                         }
                     }
                 });
