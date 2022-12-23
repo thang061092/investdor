@@ -152,7 +152,7 @@ class ProjectController extends BaseController
         try {
             $this->realEstateProjectService->update_investor($request);
             toastr()->success(__('message.success'));
-            return redirect()->route('project.list');
+            return back();
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
             toastr()->error($error);
@@ -215,7 +215,6 @@ class ProjectController extends BaseController
                     return BaseController::send_response(BaseController::HTTP_BAD_REQUEST, $message[0]);
                 } else {
                     $this->realEstateProjectService->add_member_company($request);
-                    toastr()->success(__('message.success'));
                     return BaseController::send_response(BaseController::HTTP_OK, __('message.success'));
                 }
             }
