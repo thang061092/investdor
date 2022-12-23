@@ -213,7 +213,7 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/list', "Admin\PostController@index")->name('post.index');
                 Route::get('/create', "Admin\PostController@create")->name('post.create');
                 Route::post('/store', "Admin\PostController@store")->name('post.store');
-                Route::get('/detail/{id}', "Admin\PostController@detail")->name('post.detail');
+                Route::get('/show/{id}', "Admin\PostController@detail")->name('post.show');
                 Route::post('/update', "Admin\PostController@update")->name('post.update');
             });
 
