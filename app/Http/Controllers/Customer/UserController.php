@@ -138,10 +138,10 @@ class UserController extends BaseController
         $update_profile = $this->userService->update_profile($request, $userId);
         if ($update_profile) {
             Session::put('customer', $update_profile);
-            toastr()->success('Cập nhật thành công :)', __('message.success'));
+            toastr()->success('Cập nhật thành công', __('message.success'));
             return redirect("/customer/user/manager?main_tab=profile");
         }
-        toastr()->error('Cập nhật thất bại :)', __('message.fail'));
+        toastr()->error('Cập nhật thất bại', __('message.fail'));
         return redirect("/customer/user/manager?main_tab=profile");
     }
 
