@@ -153,7 +153,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
-                    title: "__('auth.email_not_null')",
+                    title: "{{__('auth.email_not_null')}}",
                     showConfirmButton: true,
                     // timer: 1500
                 });
@@ -191,17 +191,9 @@
                     contentType: false,
                     success: function (data) {
                         if (data.status == 200) {
-                            Swal.fire(
-                                "{{__('message.success')}}",
-                                "{{__('message.send_question_success')}}",
-                                'success'
-                            )
+                            toastr.success({{__('message.send_question_success')}})
                         } else {
-                            Swal.fire(
-                                "{{__('message.fail')}}",
-                                "{{__('message.fail')}}",
-                                'error'
-                            )
+                            console.log('error')
                         }
                     }
                 });
