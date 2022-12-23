@@ -55,7 +55,8 @@
                                 <label for="name_project"
                                        class="name_group label">{{__('project.name_project')}}</label>
                                 <div class="group position-relative">
-                                    <input type="text" placeholder="{{__('project.enter_name_project')}}" class="form-control"
+                                    <input type="text" placeholder="{{__('project.enter_name_project')}}"
+                                           class="form-control"
                                            name="name_project" value="{{request()->get('name_project')}}"/>
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -162,10 +163,13 @@
                                                         class="number ml-3">{{number_format_vn($v->total_value)}}</span>
                                                 </div>
                                                 <div class="process d-flex flex-nowrap">
-                                                <span class="d-block text-center"
-                                                      style="width: {{($v->part - $v->current_part)/ $v->part * 100}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
-                                                    <span class="d-block text-center"
-                                                          style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
+                                                    @php($rate_current = ($v->part - $v->current_part)/ $v->part * 100)
+                                                    @if($v->status == 2 && $rate_current <= 80)
+                                                        <span class="d-block text-center"
+                                                              style="width: {{$rate_current}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
+                                                        <span class="d-block text-center"
+                                                              style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="ls-profit">
@@ -232,7 +236,7 @@
     </section>
 @endsection
 @section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {
             var name_project = $("input[name='name_project']").val();

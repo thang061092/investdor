@@ -422,10 +422,13 @@
                                                 <span class="number ml-3">{{number_format_vn($v->total_value)}}</span>
                                             </div>
                                             <div class="process d-flex flex-nowrap">
-                                                <span class="d-block text-center"
-                                                      style="width: {{($v->part - $v->current_part)/ $v->part * 100}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
-                                                <span class="d-block text-center"
-                                                      style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
+                                                @php($rate_current = ($v->part - $v->current_part)/ $v->part * 100)
+                                                @if($v->status == 2 && $rate_current <= 80)
+                                                    <span class="d-block text-center"
+                                                          style="width: {{$rate_current}}%">{{number_format_vn($v->part - $v->current_part)}}</span>
+                                                    <span class="d-block text-center"
+                                                          style="width: {{$v->current_part / $v->part * 100}}%">{{number_format_vn($v->current_part)}}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="ls-profit">
@@ -515,25 +518,28 @@
 
             </div>
             @if($feedback)
-            <div class="swiper swiper-feels wow fadeInUp">
-                <div class="swiper-wrapper">
-                @foreach($feedback as $item)
-                    <div class="swiper-slide h-auto">
-                        <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">
-                            <div class="img mx-auto d-block mb-lg-3 mb-2">
-                                <img style="border-radius: 50%; width:100px; height:100px;" src='{{!empty($item["avatar"]) ? $item["avatar"]: asset("frontend/images/avatar_user.png")}}' class="img-fluid" alt=""/>
+                <div class="swiper swiper-feels wow fadeInUp">
+                    <div class="swiper-wrapper">
+                        @foreach($feedback as $item)
+                            <div class="swiper-slide h-auto">
+                                <div class="item_fell p-lg-3 p-2 wow fadeInUp" data-wow-delay="0.5s"
+                                     data-wow-duration="0.3s">
+                                    <div class="img mx-auto d-block mb-lg-3 mb-2">
+                                        <img style="border-radius: 50%; width:100px; height:100px;"
+                                             src='{{!empty($item["avatar"]) ? $item["avatar"]: asset("frontend/images/avatar_user.png")}}'
+                                             class="img-fluid" alt=""/>
+                                    </div>
+                                    <div class="desc mb-lg-3 mb-2">
+                                        {!! $item['feedback_vi'] !!}
+                                    </div>
+                                    <div class="text-center pos">{{$item['job_vi']}}</div>
+                                    <div class="text-center name">{{$item['full_name']}}</div>
+                                </div>
                             </div>
-                            <div class="desc mb-lg-3 mb-2">
-                            {!! $item['feedback_vi'] !!}
-                            </div>
-                            <div class="text-center pos">{{$item['job_vi']}}</div>
-                            <div class="text-center name">{{$item['full_name']}}</div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
+                    @endif
                 </div>
-            @endif
-            </div>
         </div>
     </section>
 @stop

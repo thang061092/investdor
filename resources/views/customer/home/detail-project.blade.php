@@ -14,10 +14,13 @@
                             {{$project->address_vi. ', '. $project->ward->name.', '. $project->district->name .', '. $project->city->name}}
                         </div>
                         <div class="process d-flex flex-nowrap wow fadeInUp">
-                             <span class="d-block text-center"
-                                   style="width: {{($project->part - $project->current_part)/ $project->part * 100}}%">{{number_format_vn($project->part - $project->current_part)}}</span>
-                            <span class="d-block text-center"
-                                  style="width: {{$project->current_part / $project->part * 100}}%">{{number_format_vn($project->current_part)}}</span>
+                            @php($rate_current = ($project->part - $project->current_part)/ $project->part * 100)
+                            @if($project->status == 2 && $rate_current <= 80)
+                                <span class="d-block text-center"
+                                      style="width: {{$rate_current}}%">{{number_format_vn($project->part - $project->current_part)}}</span>
+                                <span class="d-block text-center"
+                                      style="width: {{$project->current_part / $project->part * 100}}%">{{number_format_vn($project->current_part)}}</span>
+                            @endif
                         </div>
                         <div class="banner-content wow fadeInUp">
                             @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
