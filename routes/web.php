@@ -93,7 +93,9 @@ Route::group(['middleware' => 'locale'], function () {
         // Route::post('/question','Customer\UserController@question')->name('question');
 
     });
+});
 
+Route::group(['middleware' => 'locale_admin'], function () {
     //employee
     Route::prefix('/admin')->group(function () {
         Route::get('/', "Admin\UserController@login")->name('admin');
