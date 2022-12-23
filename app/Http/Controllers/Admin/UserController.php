@@ -77,7 +77,7 @@ class UserController extends BaseController
             }
         }
         Toastr::error($error);
-        return redirect(route('admin.login'))->withInput();
+        return back()->withInput();
     }
 
     public function login(Request $request)
