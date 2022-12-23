@@ -101,9 +101,8 @@
                         <p class="title_lg">{{__('auth.Or_scan_the_following_QR_code')}}</p>
                         <div class="qr d-block">
                             <a href="{{$bill->link_qr ?? ''}}" title="{{__('auth.download')}}" class="dl-qrcode"
-                               download="qr.png">{{__('auth.download')}}
-                                <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/></a>
-
+                               download="qr.png">{{__('auth.download')}}</a>
+                            <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
                 </div>
