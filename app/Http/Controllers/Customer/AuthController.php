@@ -52,7 +52,7 @@ class AuthController extends BaseController
             }
         }
         Toastr::error($error);
-        return redirect(route('customer.login'))->withInput();
+        return back()->withInput();
     }
 
     public function register_submit(FormRegister $request)
