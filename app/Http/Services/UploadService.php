@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Services;
+
 use Illuminate\Http\UploadedFile;
 
 
@@ -9,11 +10,15 @@ class UploadService
 {
     public function upload($request)
     {
-        $file = $request->file;
-        $extension = $file->getClientOriginalExtension();
-        $fileName = time() . '-' . hash('SHA256', uniqid()) . '.' . $extension;
-        $path = $file->storeAs('uploads', $fileName, 'public');
-        $url = env('BASE_URL') . 'storage/' . $path;
+        if ($request->hasFile('file')) {
+            $file = $request->file;
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . '-' . hash('SHA256', uniqid()) . '.' . $extension;
+            $path = $file->storeAs('uploads', $fileName, 'public');
+            $url = env('BASE_URL') . 'storage/' . $path;
+        } else {
+            $url = '';
+        }
         return $url;
     }
 

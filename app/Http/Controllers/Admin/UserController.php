@@ -319,10 +319,10 @@ class UserController extends BaseController
         $create = $this->categoryService->create($request);
         if ($create) {
             toastr()->success(__("message.create_success"), __('message.success'));
-            return redirect()->route('customer.employee.create_category');
+            return redirect()->route('customer.employee.list_category');
         }
         toastr()->error(__("message.create_fail"), __('message.fail'));
-        return redirect()->route('customer.employee.create_category');
+        return back()->withInput();
     }
 
     public function edit_category($id)
@@ -341,7 +341,7 @@ class UserController extends BaseController
             return redirect()->route('customer.employee.edit_category', ['id' => $id]);
         }
         toastr()->error(__("message.update_fail"), __('message.fail'));
-        return redirect()->route('customer.employee.edit_category', ['id' => $id]);
+        return back()->withInput();
     }
 
     public function update_status_category(Request $request)
@@ -404,7 +404,8 @@ class UserController extends BaseController
         return BaseController::send_response(self::HTTP_OK, __('message.success'));
     }
 
-    public function send_answer(FormAnswer $request, $id) {
+    public function send_answer(FormAnswer $request, $id)
+    {
         $answer = $this->questionService->send_answer($request, $id);
         if ($answer) {
             toastr()->success(__("message.answer_success"), __('message.success'));
@@ -414,7 +415,8 @@ class UserController extends BaseController
         return redirect()->route('detail_question', ['id' => $id]);
     }
 
-    public function change_password(Request $request, $id) {
+    public function change_password(Request $request, $id)
+    {
         $pass = $this->userService->change_password_employee($request, $id);
         if ($pass) {
             return BaseController::send_response(BaseController::HTTP_OK, __('message.success'), $pass);
