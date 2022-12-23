@@ -23,7 +23,7 @@
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
                                 <a class="btn btn-success"
-                                   href="{{route('customer.employee.create_news')}}">
+                                   href="{{route('feedback.create')}}">
                                     <i class="fas fa-plus"></i>&nbsp;
                                     Thêm mới
                                 </a>

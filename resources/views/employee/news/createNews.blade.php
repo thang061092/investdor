@@ -96,8 +96,7 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="img_news" class="img-ct">
-                                                <label class="form-label"><strong>{{__('profile.img_news')}}</strong><span
-                                                                class="text-danger">*</span></label>
+                                                <label class="form-label"><strong>{{__('profile.img_news')}}</strong></label>
                                                     <input type="file" name="img_news" accept="image/*" class="d-none"
                                                             id="img_news" value="{{!empty($detail->image) ? $detail->image : ''}}"
                                                             onchange="document.getElementById('img-news').src = window.URL.createObjectURL(this.files[0])"/>
