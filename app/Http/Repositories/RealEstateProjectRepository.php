@@ -76,8 +76,8 @@ class RealEstateProjectRepository extends BaseRepository
     public function list_project_index($request)
     {
         $model = $this->model
-            ->whereNotIn(RealEstateProject::STATUS, [RealEstateProject::NEW])
-            ->limit(10)
+            ->whereIn(RealEstateProject::STATUS, [RealEstateProject::ON_SALE])
+            ->limit(6)
             ->orderBy(RealEstateProject::CREATED_AT, self::DESC)
             ->get();
         return $model;

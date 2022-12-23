@@ -137,7 +137,8 @@
                                name="name_file_en">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-bold">Tệp đính kèm :</label>
+                        <label class="form-label text-bold">Tệp đính kèm :<span
+                                class="text-danger">*</span></label>
                         <input class="form-control file_document" type="file" id="file_document"
                                name="file_document">
                     </div>
@@ -191,8 +192,7 @@
                                name="edit_name_file_en">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-bold">Tệp đính kèm :<span
-                                class="text-danger">*</span></label>
+                        <label class="form-label text-bold">Tệp đính kèm :</label>
                         <input class="form-control edit_file_document" type="file" id="edit_file_document"
                                name="edit_file_document">
                     </div>
