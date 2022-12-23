@@ -32,7 +32,22 @@ class PostController extends BaseController
 
     public function store(FormCreatePost $request)
     {
+        toastr()->success(__('message.success'));
         $this->postService->create($request);
+        return redirect()->route('post.index');
+    }
+
+    public function detail($id)
+    {
+        $post = $this->postService->find($id);
+        $parents = $this->postService->get_parent();
+        return view('employee.posts.detail', compact('post', 'parents'));
+    }
+
+    public function update(FormCreatePost $request)
+    {
+        toastr()->success(__('message.success'));
+        $this->postService->update($request);
         return redirect()->route('post.index');
     }
 }

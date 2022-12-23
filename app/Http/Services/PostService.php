@@ -51,4 +51,23 @@ class PostService
     {
         return $this->postRepository->get_parent();
     }
+
+    public function find($id)
+    {
+        return $this->postRepository->find($id);
+    }
+
+    public function update($request)
+    {
+        $data = [
+            Posts::TITLE_VI => $request->title_vi,
+            Posts::TITLE_EN => $request->title_en,
+            Posts::PARENT_ID => $request->parent,
+            Posts::CONTENT_VI => $request->content_vi,
+            Posts::CONTENT_EN => $request->content_en,
+            Posts::SLUG => slugify($request->title_vi),
+            Posts::UPDATED_BY => Session::get('employee')['email'],
+        ];
+        return $this->postRepository->update($request->id, $data);
+    }
 }
