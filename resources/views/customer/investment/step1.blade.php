@@ -2,37 +2,42 @@
 @section('page_name', __('page_name.investment'))
 @section("content")
     @include('customer.investment.header')
+    @inject('user','App\Http\Services\UserService')
+    @php( $user = $user->find(session()->get('customer')['id']) )
     <section class="invest mt-lg-3 pt-2">
         <div class="container">
             <div class="frm-set-invest invest-step-1 wow fadeInUp">
                 <div class="wrapper-set-invest mx-auto">
                     <p class="title_lg">{{__('profile.personal_information')}}</p>
                     <label for="" class="d-block mb-2"> {{__('profile.full_name')}} </label>
-                    <input type="text" name="" placeholder="" class="form-control mb-3"
-                           value="{{session()->get('customer')['full_name'] ?? ''}}" disabled/>
+                    <input type="text" name="full_name" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['full_name'] ?? ''}}" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}/>
                     <label for="" class="d-block mb-2"> {{__('profile.date_of_birth')}} </label>
-                    <input type="date" name="" placeholder="Chọn ngày" class="form-control mb-3" disabled
+                    <input type="date" name="birthday" placeholder="Chọn ngày" class="form-control mb-3"
+                           {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}
                            value="{{session()->get('customer')['birthday'] ?? ''}}"/>
                     <label for="" class="d-block mb-2"> {{__('profile.gender')}} </label>
                     <div class="radios mb-3">
                         <label class="gender-choose" for="male">
                             <input type="radio"
                                    {{session()->get('customer')['gender'] == '1' ? 'checked' : ''}} value="1"
-                                   name="gender" disabled/>
+                                   name="gender" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}/>
                             {{__('profile.male')}}
                         </label>
                         <label class="gender-choose" for="female">
                             <input type="radio" value="2"
                                    name="gender"
-                                   {{session()->get('customer')['gender'] == '2' ? 'checked' : ''}} value="2" name="gender" disabled/>
+                                   {{session()->get('customer')['gender'] == '2' ? 'checked' : ''}} value="2"
+                                   name="gender" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}/>
                             {{__('profile.female')}}
                         </label>
                     </div>
                     <label for="" class="d-block mb-2">
                         {{__('profile.phone_number')}}
                     </label>
-                    <input type="text" name="" placeholder=" {{__('profile.phone_number')}}" class="form-control mb-3"
-                           disabled
+                    <input type="text" name="phone_number" placeholder=" {{__('profile.phone_number')}}"
+                           class="form-control mb-3"
+                           {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}
                            value="{{!empty(session()->get('customer')['phone']) ? hide_phone(session()->get('customer')['phone']): ''}}"/>
                     <label for="" class="d-block mb-2"> {{__('profile.email')}} </label>
                     <input disabled type="text" name="" placeholder=""
@@ -41,7 +46,8 @@
                     <label for="" class="d-block mb-2">
                         {{__('profile.bank_name')}}
                     </label>
-                    <select name="bank" class="form-control mb-3" disabled>
+                    <select name="bank_code"
+                            class="form-control mb-3" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}>
                         <option value="">Chọn ngân hàng</option>
                         @foreach($banks as $bank)
                             <option
@@ -53,13 +59,13 @@
                     <label for="" class="d-block mb-2">
                         {{__('profile.account_number')}}
                     </label>
-                    <input type="text" name="" placeholder="" class="form-control mb-3"
-                           value="{{session()->get('customer')['account_number'] ?? ""}}" disabled/>
+                    <input type="text" name="account_number" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['account_number'] ?? ""}}" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}/>
                     <label for="" class="d-block mb-2">
                         {{__('profile.account_holder')}}
                     </label>
-                    <input type="text" name="" placeholder="" class="form-control mb-3"
-                           value="{{session()->get('customer')['account_name'] ?? ""}}" disabled/>
+                    <input type="text" name="account_name" placeholder="" class="form-control mb-3"
+                           value="{{session()->get('customer')['account_name'] ?? ""}}" {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}/>
                     <div class="ping-alert-note">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"

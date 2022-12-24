@@ -211,7 +211,7 @@
                                             </p>
                                         @endif
                                     @endif
-                                    <a href="{{route('customer.user.manager')}}" title=""
+                                    <a href="{{route('customer.user.manager')}}?main_tab=profile" title=""
                                        class="d-flex align-items-center justify-content-between action">
                                         {{__('auth.personal_information')}}
                                         <svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"

@@ -14,6 +14,7 @@ use App\Http\Repositories\InvestorProjectRepository;
 use App\Http\Repositories\MemberCompanyRepository;
 use App\Http\Repositories\OverviewRepository;
 use App\Http\Repositories\RealEstateProjectRepository;
+use App\Http\Repositories\UserRepository;
 use App\Models\AssetProject;
 use App\Models\Bills;
 use App\Models\BusinessPlane;
@@ -25,6 +26,7 @@ use App\Models\InvestorProject;
 use App\Models\MemberCompany;
 use App\Models\OverviewProject;
 use App\Models\RealEstateProject;
+use App\Models\Users;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,6 +45,7 @@ class RealEstateProjectService
     protected $businessPlanRepository;
     protected $contractRepository;
     protected $billsService;
+    protected $userRepository;
 
     public function __construct(RealEstateProjectRepository $estateProjectRepository,
                                 InterestService $interestService,
@@ -56,7 +59,8 @@ class RealEstateProjectService
                                 InterestRepository $interestRepository,
                                 BusinessPlanRepository $businessPlanRepository,
                                 ContractRepository $contractRepository,
-                                BillsService $billsService)
+                                BillsService $billsService,
+                                UserRepository $userRepository)
     {
         $this->estateProjectRepository = $estateProjectRepository;
         $this->interestService = $interestService;
@@ -71,6 +75,7 @@ class RealEstateProjectService
         $this->businessPlanRepository = $businessPlanRepository;
         $this->contractRepository = $contractRepository;
         $this->billsService = $billsService;
+        $this->userRepository = $userRepository;
     }
 
     public function create($request)
@@ -406,6 +411,14 @@ class RealEstateProjectService
         if (empty($request->project_id)) {
             $message[] = __('validate.id_project_not_null');
             return $message;
+        }
+
+        if (!empty($request->phone_number)) {
+            $user = $this->userRepository->findOne([Users::PHONE => $request->phone_number]);
+            if ($user && $user['id'] != Session::get('customer')['id']) {
+                $message[] = __('auth.phone_number_unique');
+                return $message;
+            }
         }
         return $message;
     }
