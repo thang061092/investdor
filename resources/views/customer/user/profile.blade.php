@@ -323,6 +323,10 @@
                 let formData = new FormData();
                 formData.append('_token', $('[name="_token"]').val());
                 formData.append('code', province);
+                // $('#district').select2({
+                //     placeholder: "Chọn quận/huyện",
+                //     disabled: false
+                // });
                 $.ajax({
                     type: "POST",
                     url: "{{route('customer.user.district')}}",
@@ -334,10 +338,12 @@
                         $('#district').html('');
                         $('#ward').html('');
                         if (data.status == 200) {
-                            $('#district').append('<option value="">' + '--Chọn quận/huyện--' + '</option>')
-                            $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
+                            var provinSelect = $('#district');
+                            provinSelect.empty().trigger("change");
                             $.each(data.data, function (key, value) {
-                                $('#district').append('<option value="' + value.code + '">' + value.name + '</option>');
+                                if (!provinSelect.find("option[value='" + value.code + "']").length) {
+                                    provinSelect.append(new Option(value.name, value.code, true, true));
+                                }
                             });
                         }
                     }
@@ -359,9 +365,13 @@
                     success: function (data) {
                         $('#ward').html('');
                         if (data.status == 200) {
-                            $('#ward').append('<option value="">' + '--Chọn phường/xã--' + '</option>')
+                            var districtSelect = $('#ward');
+                            districtSelect.empty().trigger("change");
                             $.each(data.data, function (key, value) {
-                                $('#ward').append('<option value="' + value.code + '">' + value.name + '</option>');
+                                if (!districtSelect.find("option[value='" + value.code + "']").length) {
+                                    districtSelect.append(new Option(value.name, value.code, true, true));
+                                }
+
                             });
                         }
                     }
@@ -406,8 +416,23 @@
             });
         });
     </script>
-<!-- <script>
-    $("select").select2();
-</script> -->
+<script>
+    $("#district").select2({
+        placeholder: "Chọn quận/huyện",
+		allowClear: true,
+    });
+    $("#city").select2({
+        placeholder: "Chọn tỉnh/thành phố",
+		allowClear: true,
+    });
+    $("#ward").select2({
+        placeholder: "Chọn xã/phường",
+		allowClear: true,
+    });
+    $("#banks").select2({
+        placeholder: "Chọn ngân hàng",
+		allowClear: true,
+    });
+</script>
 @endsection
 @stop
