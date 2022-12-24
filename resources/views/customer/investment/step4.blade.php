@@ -1,5 +1,26 @@
 @extends("customer.layout.master")
 @section('page_name', __('page_name.investment'))
+@section('css')
+    <style>
+        .btn-copy {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            background: #03204c;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.4688rem 0.75rem;
+            font-weight: 600;
+            border-radius: 0.3125rem;
+            cursor: pointer;
+            border: solid thin transparent;
+            z-index: 1;
+            transition: 0.3s all 0s;
+        }
+    </style>
+@endsection
 @section("content")
     <section class="invest-complete mt-lg-4 mt-3 pt-2">
         <div class="container">
@@ -41,8 +62,9 @@
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
                             <input disabled type="text" name="" value="{{$bill->bank_account ?? ''}}"
-                                   class="form-control"/>
-                            <span class="copy" data-title-success="{{__('message.success')}}" data-title-fail="{{__('message.fail')}}">{{__('auth.copy')}}</span>
+                                   class="form-control" id="copy_bank_account"/>
+                            <span class="btn-copy btn" onclick="copy_bank_account()">{{__('auth.copy')}}</span>
+                            {{--                            <span class="copy" data-title-success="{{__('message.success')}}" data-title-fail="{{__('message.fail')}}">{{__('auth.copy')}}</span>--}}
                         </div>
                         <label for="" class="d-block c-label">
                             {{__('auth.money')}}
@@ -54,9 +76,8 @@
                         </label>
                         <div class="box-copy mb-lg-3 mb-2 pb-1">
                             <input type="text" name="" value="{{$bill->order_code ?? ''}}"
-                                   class="form-control"/>
-                            <span class="copy" data-title-success="{{__('message.success')}}"
-                                  data-title-fail="{{__('message.fail')}}">{{__('auth.copy')}}</span>
+                                   class="form-control" id="copy_order_code"/>
+                            <span class="btn-copy btn" onclick="copy_order_code()">{{__('auth.copy')}}</span>
                         </div>
                         <div class="ping-alert-note">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -80,7 +101,7 @@
                         <p class="title_lg">{{__('auth.Or_scan_the_following_QR_code')}}</p>
                         <div class="qr d-block">
                             <a href="{{$bill->link_qr ?? ''}}" title="{{__('auth.download')}}" class="dl-qrcode"
-                               download="Qrcode">{{__('auth.download')}}</a>
+                               download="qr.png">{{__('auth.download')}}</a>
                             <img src="{{$bill->link_qr ?? ''}}" class="img-fluid" alt=""/>
                         </div>
                     </div>
@@ -94,4 +115,33 @@
             </div>
         </div>
     </section>
-@stop
+@endsection
+@section('js')
+    <script>
+        let text_bank = document.getElementById('copy_bank_account');
+        const copy_bank_account = async () => {
+            try {
+                await navigator.clipboard.writeText(text_bank.value);
+                toastr.success('Copied!')
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        let text_code = document.getElementById('copy_order_code');
+        const copy_order_code = async () => {
+            try {
+                await navigator.clipboard.writeText(text_code.value);
+                toastr.success('Copied!')
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        let link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = url;
+        link.click();
+        link.remove();
+    </script>
+@endsection

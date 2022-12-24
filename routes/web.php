@@ -93,7 +93,9 @@ Route::group(['middleware' => 'locale'], function () {
         // Route::post('/question','Customer\UserController@question')->name('question');
 
     });
+});
 
+Route::group(['middleware' => 'locale_admin'], function () {
     //employee
     Route::prefix('/admin')->group(function () {
         Route::get('/', "Admin\UserController@login")->name('admin');
@@ -213,6 +215,8 @@ Route::group(['middleware' => 'locale'], function () {
                 Route::get('/list', "Admin\PostController@index")->name('post.index');
                 Route::get('/create', "Admin\PostController@create")->name('post.create');
                 Route::post('/store', "Admin\PostController@store")->name('post.store');
+                Route::get('/show/{id}', "Admin\PostController@detail")->name('post.show');
+                Route::post('/update', "Admin\PostController@update")->name('post.update');
             });
 
             Route::prefix('/config')->group(function () {

@@ -70,6 +70,12 @@
                         <a href="{{route('customer.knowledge')}}" title=""
                            class="{{request()->path() == 'knowledge' ? 'current-page' : ''}}">{{__('page_name.knowledge')}}</a>
                     </li>
+                    @if(!empty(session()->get('customer')))
+                        <li>
+                            <a href="{{route('customer.user.manager')}}" title=""
+                               class="{{request()->path() == 'customer/user/manager' ? 'current-page' : ''}}">{{__('page_name.your_manager')}}</a>
+                        </li>
+                    @endif
                 </ul>
 
             @if(!empty(session()->get('customer')))

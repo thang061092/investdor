@@ -98,8 +98,8 @@
                                                             </button>
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-demo">
-                                                            <a class="dropdown-item" target="_blank"
-                                                               href="">
+                                                            <a class="dropdown-item"
+                                                               href="{{route('post.show',['id'=> $post->id])}}">
                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                 Cập nhật thông tin
                                                             </a>
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </td>
                                                 <td>{{$post->title_vi}}</td>
-                                                <td>{!! $post->content_vi !!}</td>
+                                                <td>{!! \Illuminate\Support\Str::limit($post->content_vi, 200) !!}</td>
                                                 <td>
                                                     {{$post->created_at}}
                                                     <br>

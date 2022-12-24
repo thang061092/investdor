@@ -31,7 +31,7 @@ class ContractService
     {
         $project = $this->realEstateProjectRepository->find($bill['real_estate_project_id']);
         $this->realEstateProjectRepository->update($bill['real_estate_project_id'], [
-            RealEstateProject::CURRENT_PART => $project['part'] - $bill['part']
+            RealEstateProject::CURRENT_PART => convert_money($project['current_part'] - $bill['part'])
         ]);
         $interest = $project->interests()->where(Interest::STATUS, Interest::ACTIVE)->first();
         $data = [

@@ -153,7 +153,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
-                    title: "__('auth.email_not_null')",
+                    title: "{{__('auth.email_not_null')}}",
                     showConfirmButton: true,
                     // timer: 1500
                 });

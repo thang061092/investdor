@@ -14,10 +14,13 @@
                             {{$project->address_vi. ', '. $project->ward->name.', '. $project->district->name .', '. $project->city->name}}
                         </div>
                         <div class="process d-flex flex-nowrap wow fadeInUp">
-                             <span class="d-block text-center"
-                                   style="width: {{($project->part - $project->current_part)/ $project->part * 100}}%">{{number_format_vn($project->part - $project->current_part)}}</span>
-                            <span class="d-block text-center"
-                                  style="width: {{$project->current_part / $project->part * 100}}%">{{number_format_vn($project->current_part)}}</span>
+                            @php($rate_current = ($project->part - $project->current_part)/ $project->part * 100)
+                            @if($project->status == 2 && $rate_current <= 80)
+                                <span class="d-block text-center"
+                                      style="width: {{$rate_current}}%">{{number_format_vn($project->part - $project->current_part)}}</span>
+                                <span class="d-block text-center"
+                                      style="width: {{$project->current_part / $project->part * 100}}%">{{number_format_vn($project->current_part)}}</span>
+                            @endif
                         </div>
                         <div class="banner-content wow fadeInUp">
                             @if(session()->get('lang') == \App\Http\Controllers\BaseController::LANG_EN)
@@ -166,7 +169,7 @@
     @endforeach
     @if(!in_array($project->status, [1,3,4,5]))
         <a href="{{route('investment.step1',['slug'=> $project->slug_vi])}}" title="{{__('project.invest_now')}}"
-           class="btn_all lg mx-auto invest-now">{{__('project.invest_now')}}
+           class="btn_all lg mx-auto invest-now" style="margin-top: 20px">{{__('project.invest_now')}}
             <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M3.33398 9.99935C3.33398 9.53911 3.70708 9.16602 4.16732 9.16602H15.834C16.2942 9.16602 16.6673 9.53911 16.6673 9.99935C16.6673 10.4596 16.2942 10.8327 15.834 10.8327H4.16732C3.70708 10.8327 3.33398 10.4596 3.33398 9.99935Z"
