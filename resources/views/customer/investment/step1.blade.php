@@ -38,7 +38,7 @@
                     <input type="text" name="phone_number" placeholder=" {{__('profile.phone_number')}}"
                            class="form-control mb-3"
                            {{in_array($user['accuracy'], [1,2]) ? 'disabled' : ''}}
-                           value="{{!empty(session()->get('customer')['phone']) ? hide_phone(session()->get('customer')['phone']): ''}}"/>
+                           value="{{!empty(session()->get('customer')['phone']) ? (session()->get('customer')['phone']): ''}}"/>
                     <label for="" class="d-block mb-2"> {{__('profile.email')}} </label>
                     <input disabled type="text" name="" placeholder=""
                            class="form-control mb-3" value="{{session()->get('customer')['email'] ?? ''}}"/>

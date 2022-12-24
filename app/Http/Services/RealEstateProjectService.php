@@ -419,6 +419,20 @@ class RealEstateProjectService
                 $message[] = __('auth.phone_number_unique');
                 return $message;
             }
+        } else {
+            $message[] = __('auth.phone_number_not_null');
+        }
+
+        if (empty($request->bank_code)) {
+            $message[] = __('auth.bank_name_not_null');
+        }
+
+        if (empty($request->account_number)) {
+            $message[] = __('auth.account_number_not_null');
+        }
+
+        if (empty($request->account_name)) {
+            $message[] = __('auth.account_name_not_null');
         }
         return $message;
     }
