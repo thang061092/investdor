@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use App\Http\Repositories\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Users;
 use App\Http\Services\UploadService;
@@ -563,5 +564,26 @@ class UserService
             return $pass;
         }
         return false;
+    }
+
+    public function investment_update_profile($request)
+    {
+        $user = Session::get('customer');
+        if (in_array($user['accuracy'], [1, 2])) {
+            $data = [
+                Users::FULL_NAME => $request->full_name ?? $user['full_name'],
+                Users::PHONE => $request->phone_number ?? $user['phone'],
+                Users::GENDER => $request->gender ?? $user['gender'],
+                Users::BIRTHDAY => $request->birthday ?? $user['birthday'],
+                Users::BANK_NAME => $request->bank_name ?? $user['bank_name'],
+                Users::ACCOUNT_NUMBER => $request->account_number ?? $user['account_number'],
+                Users::ACCOUNT_NAME => $request->account_name ?? $user['account_name'],
+            ];
+            $user_new = $this->userRepository->update($user['id'], $data);
+            return $user_new;
+        } else {
+            return $user;
+        }
+
     }
 }

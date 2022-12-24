@@ -10,6 +10,7 @@ use App\Http\Services\BankService;
 use App\Http\Services\BillsService;
 use App\Http\Services\CityService;
 use App\Http\Services\RealEstateProjectService;
+use App\Http\Services\UserService;
 use App\Http\Services\VietQr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,18 +24,21 @@ class InvestmentController extends BaseController
     protected $vietQr;
     protected $billsService;
     protected $bankService;
+    protected $userService;
 
     public function __construct(CityService $cityService,
                                 RealEstateProjectService $realEstateProjectService,
                                 VietQr $vietQr,
                                 BillsService $billsService,
-                                BankService $bankService)
+                                BankService $bankService,
+                                UserService $userService)
     {
         $this->cityService = $cityService;
         $this->realEstateProjectService = $realEstateProjectService;
         $this->vietQr = $vietQr;
         $this->billsService = $billsService;
         $this->bankService = $bankService;
+        $this->userService = $userService;
     }
 
     public function step1($slug)
@@ -50,6 +54,8 @@ class InvestmentController extends BaseController
         if (count($message) > 0) {
             return BaseController::send_response(self::HTTP_BAD_REQUEST, $message[0]);
         } else {
+            $user = $this->userService->investment_update_profile($request);
+            Session::put('customer', $user);
             $project = $this->realEstateProjectService->find($request->project_id);
             $bill = $this->billsService->create_step1($request, $project);
             $data = [
