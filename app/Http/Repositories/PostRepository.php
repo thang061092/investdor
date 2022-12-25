@@ -17,7 +17,15 @@ class PostRepository extends BaseRepository
     public function get_list($request)
     {
         $model = $this->model;
-        return $model->paginate(20);
+
+        if (!empty($request->start) && !empty($request->end)) {
+            $start = $request->start . ' 00:00:00';
+            $end = $request->end . ' 23:59:59';
+            $model = $model->whereBetween(Posts::CREATED_AT, [$start, $end]);
+        }
+        $model = $model->orderBy(Posts::CREATED_AT, self::DESC)
+            ->paginate(20);
+        return $model;
     }
 
     public function get_parent()

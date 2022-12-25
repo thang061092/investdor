@@ -16,18 +16,21 @@ class BillsService
     protected $uploadService;
     protected $contractService;
     protected $transactionService;
+    protected $mailService;
 
     public function __construct(BillsRepository $billsRepository,
                                 VietQr $vietQr,
                                 UploadService $uploadService,
                                 ContractService $contractService,
-                                TransactionService $transactionService)
+                                TransactionService $transactionService,
+                                MailService $mailService)
     {
         $this->billsRepository = $billsRepository;
         $this->vietQr = $vietQr;
         $this->uploadService = $uploadService;
         $this->contractService = $contractService;
         $this->transactionService = $transactionService;
+        $this->mailService = $mailService;
     }
 
     public function create_step1($request, $project)
@@ -113,6 +116,11 @@ class BillsService
                     Bills::CONTRACT_ID => $contract['id'],
                     Bills::TRANSACTION_ID => $transaction['id']
                 ]);
+                $subject = "Đầu tư thành công";
+                $to = $contract->user->email;
+                $name_to = $contract->user->full_name;
+                $template = view('email.thongbaodaututhanhcong', compact('contract'))->render();
+                $this->mailService->sendMail($subject, $to, $name_to, $template);
             }
         }
         return $bill_new;
