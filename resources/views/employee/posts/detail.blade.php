@@ -1,5 +1,5 @@
 @extends('employee.layout.master')
-@section('page_name', '- Cập nhật bài viết')
+@section('page_name', '- Cập nhật tin tức')
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
@@ -9,12 +9,12 @@
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{route('post.index')}}"
-                       class="text-info">Danh sách bài viết
+                       class="text-info">Danh sách tin tức
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
                     <a href=""
-                       class="text-success">Cập nhật bài viết
+                       class="text-success">Cập nhật tin tức
                     </a>
                 </li>
             </ol>
@@ -27,7 +27,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card" style="border-radius: 10px;">
                             <div class="card-header">
-                                Cập nhật bài viết &nbsp;
+                                Cập nhật tin tức &nbsp;
                             </div>
                             <div class="card-body ">
                                 <form method="post" action="{{route('post.update')}}">

@@ -1,12 +1,12 @@
 @extends('employee.layout.master')
-@section('page_name','- Danh sách bài viết')
+@section('page_name','- Danh sách tin tức')
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
             <ol class="breadcrumb" aria-label="breadcrumbs">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href=""
-                                                                   class="text-info">Danh sách bài viết</a>
+                                                                   class="text-info">Danh sách tin tức</a>
                 </li>
             </ol>
         </div>
@@ -18,7 +18,7 @@
                     {{-- Head --}}
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h1 class="d-inline-block">Danh sách bài viết <span
+                            <h1 class="d-inline-block">Danh sách tin tức <span
                                     style="color: red">({{$posts->total() ?? 0}})</span></h1>
                             {{-- Search --}}
                             <div class="float-right d-inline-block" id="filter-data">
