@@ -175,6 +175,11 @@
                 </div>
             </div>
         </div>
+        @if(session()->get('customer')['accuracy'] == 1 || session()->get('customer')['accuracy'] == 2)
+        <div class="container" style="text-align:center">
+            <a href="{{route('customer.home_page')}}" title="" class="btn_all lg mt-lg-4 mt-4 mb-lg-0 mb-4">Xem ngay các khoản đầu tư</a>
+        </div>
+        @endif
     </section>
     @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
