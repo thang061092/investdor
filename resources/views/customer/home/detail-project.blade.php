@@ -58,7 +58,6 @@
                                 </div>
                             </div>
                             @if(!in_array($project->status, [1,3,4,5]))
-                                @if(session()->get('customer')['accuracy'] == 2 || session()->get('customer')['accuracy'] == 1)
                                 <a href="{{route('investment.step1',['slug'=> $project->slug_vi])}}" title=""
                                    class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
                                     <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -71,20 +70,6 @@
                                               fill="white"/>
                                     </svg>
                                 </a>
-                                @else
-                                <a href="{{route('customer.user.manager').'?main_tab=profile'}}" title=""
-                                   class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
-                                    <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                         viewBox="0 0 20 20" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M3.33398 9.99935C3.33398 9.53911 3.70708 9.16602 4.16732 9.16602H15.834C16.2942 9.16602 16.6673 9.53911 16.6673 9.99935C16.6673 10.4596 16.2942 10.8327 15.834 10.8327H4.16732C3.70708 10.8327 3.33398 10.4596 3.33398 9.99935Z"
-                                              fill="white"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M9.41009 3.57806C9.73553 3.25263 10.2632 3.25263 10.5886 3.57806L16.4219 9.4114C16.7474 9.73683 16.7474 10.2645 16.4219 10.5899L10.5886 16.4232C10.2632 16.7487 9.73553 16.7487 9.41009 16.4232C9.08466 16.0978 9.08466 15.5702 9.41009 15.2447L14.6542 10.0007L9.41009 4.75657C9.08466 4.43114 9.08466 3.9035 9.41009 3.57806Z"
-                                              fill="white"/>
-                                    </svg>
-                                </a>
-                                @endif
                             @endif
                         </div>
                     </div>
@@ -121,7 +106,6 @@
                     </div>
                 </div>
                 @if(!in_array($project->status, [1,3,4,5]))
-                    @if(session()->get('customer')['accuracy'] == 2 || session()->get('customer')['accuracy'] == 1)
                     <a href="{{route('investment.step1',['slug'=> $project->slug_vi])}}" title=""
                        class="btn_all lg">{{__('project.invest_now')}}
                         <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
@@ -134,20 +118,6 @@
                                   fill="white"/>
                         </svg>
                     </a>
-                    @else
-                    <a href="{{route('customer.user.manager').'?main_tab=profile'}}" title=""
-                        class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
-                        <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 20 20" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.33398 9.99935C3.33398 9.53911 3.70708 9.16602 4.16732 9.16602H15.834C16.2942 9.16602 16.6673 9.53911 16.6673 9.99935C16.6673 10.4596 16.2942 10.8327 15.834 10.8327H4.16732C3.70708 10.8327 3.33398 10.4596 3.33398 9.99935Z"
-                                    fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M9.41009 3.57806C9.73553 3.25263 10.2632 3.25263 10.5886 3.57806L16.4219 9.4114C16.7474 9.73683 16.7474 10.2645 16.4219 10.5899L10.5886 16.4232C10.2632 16.7487 9.73553 16.7487 9.41009 16.4232C9.08466 16.0978 9.08466 15.5702 9.41009 15.2447L14.6542 10.0007L9.41009 4.75657C9.08466 4.43114 9.08466 3.9035 9.41009 3.57806Z"
-                                    fill="white"/>
-                        </svg>
-                    </a>
-                    @endif
                 @endif
             </div>
         </div>
@@ -198,7 +168,6 @@
         @include('customer.home.block.'. $index['key'])
     @endforeach
     @if(!in_array($project->status, [1,3,4,5]))
-        @if(session()->get('customer')['accuracy'] == 2 || session()->get('customer')['accuracy'] == 1)
         <a href="{{route('investment.step1',['slug'=> $project->slug_vi])}}" title="{{__('project.invest_now')}}"
            class="btn_all lg mx-auto invest-now" style="margin-top: 20px">{{__('project.invest_now')}}
             <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -210,19 +179,5 @@
                       fill="white"></path>
             </svg>
         </a>
-        @else
-        <a href="{{route('customer.user.manager').'?main_tab=profile'}}" title=""
-            class="btn_all lg wow fadeInUp">{{__('project.invest_now')}}
-            <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                    viewBox="0 0 20 20" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M3.33398 9.99935C3.33398 9.53911 3.70708 9.16602 4.16732 9.16602H15.834C16.2942 9.16602 16.6673 9.53911 16.6673 9.99935C16.6673 10.4596 16.2942 10.8327 15.834 10.8327H4.16732C3.70708 10.8327 3.33398 10.4596 3.33398 9.99935Z"
-                        fill="white"/>
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9.41009 3.57806C9.73553 3.25263 10.2632 3.25263 10.5886 3.57806L16.4219 9.4114C16.7474 9.73683 16.7474 10.2645 16.4219 10.5899L10.5886 16.4232C10.2632 16.7487 9.73553 16.7487 9.41009 16.4232C9.08466 16.0978 9.08466 15.5702 9.41009 15.2447L14.6542 10.0007L9.41009 4.75657C9.08466 4.43114 9.08466 3.9035 9.41009 3.57806Z"
-                        fill="white"/>
-            </svg>
-        </a>
-        @endif
     @endif
 @stop

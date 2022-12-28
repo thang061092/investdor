@@ -98,13 +98,9 @@
                             </div>
                         </div>
                     </div>
-                    @if(session()->get('customer')['accuracy'] == 2 || session()->get('customer')['accuracy'] == 1)
-                    <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem
+                    <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư"
+                       class="btn_all lg wow fadeInUp">Xem
                         ngay các khoản đầu tư</a>
-                    @else
-                    <a href="{{route('customer.user.manager').'?main_tab=profile'}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem
-                        ngay các khoản đầu tư</a>
-                    @endif
                 </div>
                 <div class="col-lg-6 max-w wow fadeInRight">
                     <p class="title_small">OUR GROWTH BUSINESS</p>
@@ -503,13 +499,9 @@
                 took a galley of type and scrambled it to make a type specimen
                 book.of Lorem Ipsum. ”
             </div>
-            @if(session()->get('customer')['accuracy'] == 2 || session()->get('customer')['accuracy'] == 1)
-            <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem
+            <a href="{{route('customer.home_page')}}" title="Xem ngay các khoản đầu tư"
+               class="btn_all lg wow fadeInUp">Xem
                 ngay các khoản đầu tư</a>
-            @else
-            <a href="{{route('customer.user.manager').'?main_tab=profile'}}" title="Xem ngay các khoản đầu tư" class="btn_all lg wow fadeInUp">Xem
-                ngay các khoản đầu tư</a>
-            @endif
         </div>
     </section>
     <section class="feel section_all">
