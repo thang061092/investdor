@@ -569,7 +569,7 @@ class UserService
     public function investment_update_profile($request)
     {
         $user = Session::get('customer');
-        if (in_array($user['accuracy'], [1, 2])) {
+        if (in_array($user['accuracy'], [0, 3])) {
             $data = [
                 Users::FULL_NAME => $request->full_name ?? $user['full_name'],
                 Users::PHONE => $request->phone_number ?? $user['phone'],
