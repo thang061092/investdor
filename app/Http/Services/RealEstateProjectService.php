@@ -423,7 +423,7 @@ class RealEstateProjectService
             $message[] = __('auth.phone_number_not_null');
         }
 
-        if (empty($request->bank_code)) {
+        if (empty($request->bank_name)) {
             $message[] = __('auth.bank_name_not_null');
         }
 
